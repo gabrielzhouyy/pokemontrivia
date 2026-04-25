@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fff8e8;
+  --foreground: #1f2937;
+  --primary: #ef4444;
+  --primary-dark: #b91c1c;
+  --accent: #fbbf24;
+  --tier-1: #86efac;
+  --tier-2: #93c5fd;
+  --tier-3: #c4b5fd;
+  --tier-4: #fda4af;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --font-sans: ui-rounded, system-ui, -apple-system, "Segoe UI Rounded", "Helvetica Rounded", sans-serif;
+}
+
+html, body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+button {
+  font-family: var(--font-sans);
+}
+
+@keyframes bounce-in {
+  0% { transform: scale(0.2) translateY(40px); opacity: 0; }
+  60% { transform: scale(1.1) translateY(-10px); opacity: 1; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+.animate-bounce-in { animation: bounce-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+.animate-shake { animation: shake 0.4s ease-in-out; }
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+.animate-pulse-ring { animation: pulse-ring 0.7s ease-out forwards; }
+
+@keyframes evolve-flash {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(3) saturate(0); }
+}
+.animate-evolve { animation: evolve-flash 0.6s ease-in-out 4; }
+
+@keyframes float-up {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-40px); opacity: 0; }
+}
+.animate-float-up { animation: float-up 1s ease-out forwards; }

@@ -1,0 +1,146 @@
+"use client";
+import { useEffect, useState } from "react";
+import type { Question } from "@/lib/questions";
+import { playCorrect, playWrong, playClick } from "@/lib/audio";
+
+type Props = {
+  question: Question;
+  onAnswer: (correct: boolean) => void;
+  // Optional info shown above the question (e.g. "Attempt 2 of 3")
+  subtitle?: string;
+  // Optional escape hatch — when set, the modal shows a "back" pill the player
+  // can tap any time (except mid feedback-reveal) to leave the loop.
+  onExit?: () => void;
+  exitLabel?: string;
+};
+
+export default function QuestionModal({ question, onAnswer, subtitle, onExit, exitLabel }: Props) {
+  const [typed, setTyped] = useState("");
+  const [feedback, setFeedback] = useState<"none" | "correct" | "wrong">("none");
+  const [locked, setLocked] = useState(false);
+
+  // Reset state when a new question arrives.
+  useEffect(() => {
+    setTyped("");
+    setFeedback("none");
+    setLocked(false);
+  }, [question.id]);
+
+  function reveal(correct: boolean) {
+    setLocked(true);
+    setFeedback(correct ? "correct" : "wrong");
+    if (correct) playCorrect();
+    else playWrong();
+    setTimeout(() => onAnswer(correct), 900);
+  }
+
+  function pickChoice(c: string) {
+    if (locked) return;
+    playClick();
+    reveal(c === question.answer);
+  }
+  function pad(d: string) {
+    if (locked) return;
+    playClick();
+    if (d === "⌫") setTyped(typed.slice(0, -1));
+    else if (typed.length < 4) setTyped(typed + d);
+  }
+  function submitPad() {
+    if (locked || !typed) return;
+    reveal(typed === question.answer);
+  }
+
+  return (
+    <div className="fixed inset-0 bg-black/40 flex items-center justify-center p-4 z-50">
+      <div
+        className={`bg-white rounded-3xl shadow-2xl p-6 w-full max-w-md ${
+          feedback === "wrong" ? "animate-shake" : ""
+        } ${feedback === "correct" ? "ring-4 ring-green-400" : ""}`}
+      >
+        {onExit && (
+          <button
+            onClick={onExit}
+            disabled={locked}
+            className="bg-gray-100 hover:bg-gray-200 disabled:opacity-40 text-sm font-bold rounded-full px-3 py-1 active:scale-95 transition mb-2"
+          >
+            {exitLabel ?? "← Back to Pokedex"}
+          </button>
+        )}
+        {subtitle && (
+          <p className="text-center text-sm text-gray-500 font-bold mb-2">{subtitle}</p>
+        )}
+        <div className="text-3xl sm:text-4xl font-extrabold text-center my-6">
+          {question.prompt}
+        </div>
+
+        {question.format === "multiple_choice" && question.choices && (
+          <div className="grid grid-cols-2 gap-3">
+            {question.choices.map((c) => {
+              const isAnswer = c === question.answer;
+              const showResult = feedback !== "none";
+              const cls = !showResult
+                ? "bg-yellow-200 hover:bg-yellow-300"
+                : isAnswer
+                ? "bg-green-400 text-white"
+                : "bg-gray-200 text-gray-500";
+              return (
+                <button
+                  key={c}
+                  onClick={() => pickChoice(c)}
+                  disabled={locked}
+                  className={`${cls} rounded-2xl py-5 text-2xl font-extrabold active:scale-95 transition`}
+                >
+                  {c}
+                </button>
+              );
+            })}
+          </div>
+        )}
+
+        {question.format === "number_pad" && (
+          <>
+            <div className="flex justify-center mb-3">
+              <div className="bg-gray-100 rounded-2xl px-6 py-3 min-w-[120px] text-center text-3xl font-extrabold tracking-widest">
+                {typed || <span className="text-gray-300">_</span>}
+              </div>
+            </div>
+            <div className="grid grid-cols-3 gap-2">
+              {["1", "2", "3", "4", "5", "6", "7", "8", "9", "⌫", "0", "✓"].map((d) => {
+                if (d === "✓")
+                  return (
+                    <button
+                      key={d}
+                      onClick={submitPad}
+                      disabled={locked || !typed}
+                      className="bg-green-500 disabled:bg-gray-300 text-white rounded-2xl py-4 text-xl font-bold active:scale-95 transition"
+                    >
+                      {d}
+                    </button>
+                  );
+                return (
+                  <button
+                    key={d}
+                    onClick={() => pad(d)}
+                    disabled={locked}
+                    className="bg-yellow-200 hover:bg-yellow-300 rounded-2xl py-4 text-2xl font-bold active:scale-95 transition"
+                  >
+                    {d}
+                  </button>
+                );
+              })}
+            </div>
+          </>
+        )}
+
+        {feedback === "correct" && (
+          <p className="text-center text-green-600 font-extrabold text-2xl mt-4">Correct! 🎉</p>
+        )}
+        {feedback === "wrong" && (
+          <p className="text-center text-red-500 font-extrabold text-xl mt-4">
+            Not quite — answer was {question.answer}
+          </p>
+        )}
+      </div>
+    </div>
+  );
+}

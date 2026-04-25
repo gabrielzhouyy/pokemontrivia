@@ -1,0 +1,1306 @@
+[
+  {
+    "id": "t3-add-0",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "18 + 16 = ?",
+    "answer": "34",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-1",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "63 + 13 = ?",
+    "answer": "76",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-2",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "46 + 10 = ?",
+    "answer": "56",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-3",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "47 + 18 = ?",
+    "answer": "65",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-4",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "45 + 24 = ?",
+    "answer": "69",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-5",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "57 + 16 = ?",
+    "answer": "73",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-6",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "66 + 22 = ?",
+    "answer": "88",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-7",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "63 + 13 = ?",
+    "answer": "76",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-8",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "58 + 14 = ?",
+    "answer": "72",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-9",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "53 + 29 = ?",
+    "answer": "82",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-10",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "70 + 14 = ?",
+    "answer": "84",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-11",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "58 + 5 = ?",
+    "answer": "63",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-12",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "52 + 17 = ?",
+    "answer": "69",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-13",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "10 + 27 = ?",
+    "answer": "37",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-14",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "22 + 15 = ?",
+    "answer": "37",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-15",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "48 + 16 = ?",
+    "answer": "64",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-16",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "40 + 25 = ?",
+    "answer": "65",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-17",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "62 + 19 = ?",
+    "answer": "81",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-18",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "44 + 12 = ?",
+    "answer": "56",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-19",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "44 + 26 = ?",
+    "answer": "70",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-20",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "33 + 14 = ?",
+    "answer": "47",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-21",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "63 + 9 = ?",
+    "answer": "72",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-22",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "23 + 18 = ?",
+    "answer": "41",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-23",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "10 + 7 = ?",
+    "answer": "17",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-24",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "18 + 12 = ?",
+    "answer": "30",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-25",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "48 + 8 = ?",
+    "answer": "56",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-26",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "36 + 24 = ?",
+    "answer": "60",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-27",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "25 + 27 = ?",
+    "answer": "52",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-28",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "16 + 18 = ?",
+    "answer": "34",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-29",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "59 + 28 = ?",
+    "answer": "87",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-30",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "73 + 19 = ?",
+    "answer": "92",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-31",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "34 + 14 = ?",
+    "answer": "48",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-32",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "30 + 18 = ?",
+    "answer": "48",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-33",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "64 + 17 = ?",
+    "answer": "81",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-34",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "40 + 11 = ?",
+    "answer": "51",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-35",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "54 + 14 = ?",
+    "answer": "68",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-36",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "10 + 28 = ?",
+    "answer": "38",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-37",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "27 + 22 = ?",
+    "answer": "49",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-38",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "49 + 26 = ?",
+    "answer": "75",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-39",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "39 + 12 = ?",
+    "answer": "51",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-40",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "38 + 10 = ?",
+    "answer": "48",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-41",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "38 + 7 = ?",
+    "answer": "45",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-42",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "48 + 26 = ?",
+    "answer": "74",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-43",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "49 + 8 = ?",
+    "answer": "57",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-44",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "53 + 16 = ?",
+    "answer": "69",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-45",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "15 + 27 = ?",
+    "answer": "42",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-46",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "43 + 21 = ?",
+    "answer": "64",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-47",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "65 + 7 = ?",
+    "answer": "72",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-48",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "37 + 9 = ?",
+    "answer": "46",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-49",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "20 + 12 = ?",
+    "answer": "32",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-50",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "36 + 19 = ?",
+    "answer": "55",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-51",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "50 + 11 = ?",
+    "answer": "61",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-52",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "10 + 19 = ?",
+    "answer": "29",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-53",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "60 + 14 = ?",
+    "answer": "74",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-54",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "24 + 29 = ?",
+    "answer": "53",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-55",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "33 + 5 = ?",
+    "answer": "38",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-56",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "34 + 25 = ?",
+    "answer": "59",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-57",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "22 + 9 = ?",
+    "answer": "31",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-58",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "14 + 24 = ?",
+    "answer": "38",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-add-59",
+    "tier": 3,
+    "skill": "addition_within_100",
+    "prompt": "22 + 15 = ?",
+    "answer": "37",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-0",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "66 - 44 = ?",
+    "answer": "22",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-1",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "89 - 20 = ?",
+    "answer": "69",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-2",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "41 - 11 = ?",
+    "answer": "30",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-3",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "84 - 78 = ?",
+    "answer": "6",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-4",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "70 - 64 = ?",
+    "answer": "6",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-5",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "60 - 57 = ?",
+    "answer": "3",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-6",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "37 - 5 = ?",
+    "answer": "32",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-7",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "41 - 34 = ?",
+    "answer": "7",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-8",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "88 - 46 = ?",
+    "answer": "42",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-9",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "47 - 45 = ?",
+    "answer": "2",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-10",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "45 - 16 = ?",
+    "answer": "29",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-11",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "89 - 54 = ?",
+    "answer": "35",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-12",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "82 - 43 = ?",
+    "answer": "39",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-13",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "81 - 42 = ?",
+    "answer": "39",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-14",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "73 - 7 = ?",
+    "answer": "66",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-15",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "84 - 36 = ?",
+    "answer": "48",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-16",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "34 - 24 = ?",
+    "answer": "10",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-17",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "41 - 23 = ?",
+    "answer": "18",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-18",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "53 - 44 = ?",
+    "answer": "9",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-19",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "66 - 15 = ?",
+    "answer": "51",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-20",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "47 - 28 = ?",
+    "answer": "19",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-21",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "43 - 6 = ?",
+    "answer": "37",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-22",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "67 - 41 = ?",
+    "answer": "26",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-23",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "45 - 23 = ?",
+    "answer": "22",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-24",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "74 - 57 = ?",
+    "answer": "17",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-25",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "72 - 58 = ?",
+    "answer": "14",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-26",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "31 - 16 = ?",
+    "answer": "15",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-27",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "59 - 11 = ?",
+    "answer": "48",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-28",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "81 - 43 = ?",
+    "answer": "38",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-29",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "83 - 81 = ?",
+    "answer": "2",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-30",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "43 - 10 = ?",
+    "answer": "33",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-31",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "48 - 31 = ?",
+    "answer": "17",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-32",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "87 - 22 = ?",
+    "answer": "65",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-33",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "42 - 5 = ?",
+    "answer": "37",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-34",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "33 - 23 = ?",
+    "answer": "10",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-35",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "77 - 58 = ?",
+    "answer": "19",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-36",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "57 - 19 = ?",
+    "answer": "38",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-37",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "38 - 35 = ?",
+    "answer": "3",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-38",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "30 - 25 = ?",
+    "answer": "5",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-sub-39",
+    "tier": 3,
+    "skill": "subtraction_within_100",
+    "prompt": "48 - 36 = ?",
+    "answer": "12",
+    "format": "number_pad"
+  },
+  {
+    "id": "t3-mult-2x1",
+    "tier": 3,
+    "skill": "multiplication_2x",
+    "prompt": "2 × 1 = ?",
+    "answer": "2",
+    "format": "multiple_choice",
+    "choices": [
+      "2",
+      "1",
+      "3",
+      "4"
+    ]
+  },
+  {
+    "id": "t3-mult-2x2",
+    "tier": 3,
+    "skill": "multiplication_2x",
+    "prompt": "2 × 2 = ?",
+    "answer": "4",
+    "format": "multiple_choice",
+    "choices": [
+      "5",
+      "4",
+      "6",
+      "2"
+    ]
+  },
+  {
+    "id": "t3-mult-2x3",
+    "tier": 3,
+    "skill": "multiplication_2x",
+    "prompt": "2 × 3 = ?",
+    "answer": "6",
+    "format": "multiple_choice",
+    "choices": [
+      "6",
+      "4",
+      "5",
+      "7"
+    ]
+  },
+  {
+    "id": "t3-mult-2x4",
+    "tier": 3,
+    "skill": "multiplication_2x",
+    "prompt": "2 × 4 = ?",
+    "answer": "8",
+    "format": "multiple_choice",
+    "choices": [
+      "8",
+      "10",
+      "9",
+      "6"
+    ]
+  },
+  {
+    "id": "t3-mult-2x5",
+    "tier": 3,
+    "skill": "multiplication_2x",
+    "prompt": "2 × 5 = ?",
+    "answer": "10",
+    "format": "multiple_choice",
+    "choices": [
+      "11",
+      "9",
+      "10",
+      "12"
+    ]
+  },
+  {
+    "id": "t3-mult-2x6",
+    "tier": 3,
+    "skill": "multiplication_2x",
+    "prompt": "2 × 6 = ?",
+    "answer": "12",
+    "format": "multiple_choice",
+    "choices": [
+      "14",
+      "13",
+      "11",
+      "12"
+    ]
+  },
+  {
+    "id": "t3-mult-2x7",
+    "tier": 3,
+    "skill": "multiplication_2x",
+    "prompt": "2 × 7 = ?",
+    "answer": "14",
+    "format": "multiple_choice",
+    "choices": [
+      "16",
+      "12",
+      "14",
+      "15"
+    ]
+  },
+  {
+    "id": "t3-mult-2x8",
+    "tier": 3,
+    "skill": "multiplication_2x",
+    "prompt": "2 × 8 = ?",
+    "answer": "16",
+    "format": "multiple_choice",
+    "choices": [
+      "18",
+      "17",
+      "15",
+      "16"
+    ]
+  },
+  {
+    "id": "t3-mult-2x9",
+    "tier": 3,
+    "skill": "multiplication_2x",
+    "prompt": "2 × 9 = ?",
+    "answer": "18",
+    "format": "multiple_choice",
+    "choices": [
+      "16",
+      "19",
+      "20",
+      "18"
+    ]
+  },
+  {
+    "id": "t3-mult-2x10",
+    "tier": 3,
+    "skill": "multiplication_2x",
+    "prompt": "2 × 10 = ?",
+    "answer": "20",
+    "format": "multiple_choice",
+    "choices": [
+      "21",
+      "18",
+      "22",
+      "20"
+    ]
+  },
+  {
+    "id": "t3-mult-2x11",
+    "tier": 3,
+    "skill": "multiplication_2x",
+    "prompt": "2 × 11 = ?",
+    "answer": "22",
+    "format": "multiple_choice",
+    "choices": [
+      "20",
+      "22",
+      "23",
+      "21"
+    ]
+  },
+  {
+    "id": "t3-mult-2x12",
+    "tier": 3,
+    "skill": "multiplication_2x",
+    "prompt": "2 × 12 = ?",
+    "answer": "24",
+    "format": "multiple_choice",
+    "choices": [
+      "26",
+      "24",
+      "23",
+      "22"
+    ]
+  },
+  {
+    "id": "t3-mult-5x1",
+    "tier": 3,
+    "skill": "multiplication_5x",
+    "prompt": "5 × 1 = ?",
+    "answer": "5",
+    "format": "multiple_choice",
+    "choices": [
+      "6",
+      "4",
+      "5",
+      "10"
+    ]
+  },
+  {
+    "id": "t3-mult-5x2",
+    "tier": 3,
+    "skill": "multiplication_5x",
+    "prompt": "5 × 2 = ?",
+    "answer": "10",
+    "format": "multiple_choice",
+    "choices": [
+      "9",
+      "5",
+      "10",
+      "11"
+    ]
+  },
+  {
+    "id": "t3-mult-5x3",
+    "tier": 3,
+    "skill": "multiplication_5x",
+    "prompt": "5 × 3 = ?",
+    "answer": "15",
+    "format": "multiple_choice",
+    "choices": [
+      "15",
+      "16",
+      "20",
+      "10"
+    ]
+  },
+  {
+    "id": "t3-mult-5x4",
+    "tier": 3,
+    "skill": "multiplication_5x",
+    "prompt": "5 × 4 = ?",
+    "answer": "20",
+    "format": "multiple_choice",
+    "choices": [
+      "19",
+      "21",
+      "15",
+      "20"
+    ]
+  },
+  {
+    "id": "t3-mult-5x5",
+    "tier": 3,
+    "skill": "multiplication_5x",
+    "prompt": "5 × 5 = ?",
+    "answer": "25",
+    "format": "multiple_choice",
+    "choices": [
+      "25",
+      "24",
+      "26",
+      "20"
+    ]
+  },
+  {
+    "id": "t3-mult-5x6",
+    "tier": 3,
+    "skill": "multiplication_5x",
+    "prompt": "5 × 6 = ?",
+    "answer": "30",
+    "format": "multiple_choice",
+    "choices": [
+      "31",
+      "29",
+      "30",
+      "35"
+    ]
+  },
+  {
+    "id": "t3-mult-5x7",
+    "tier": 3,
+    "skill": "multiplication_5x",
+    "prompt": "5 × 7 = ?",
+    "answer": "35",
+    "format": "multiple_choice",
+    "choices": [
+      "35",
+      "30",
+      "34",
+      "40"
+    ]
+  },
+  {
+    "id": "t3-mult-5x8",
+    "tier": 3,
+    "skill": "multiplication_5x",
+    "prompt": "5 × 8 = ?",
+    "answer": "40",
+    "format": "multiple_choice",
+    "choices": [
+      "35",
+      "41",
+      "39",
+      "40"
+    ]
+  },
+  {
+    "id": "t3-mult-5x9",
+    "tier": 3,
+    "skill": "multiplication_5x",
+    "prompt": "5 × 9 = ?",
+    "answer": "45",
+    "format": "multiple_choice",
+    "choices": [
+      "40",
+      "45",
+      "44",
+      "50"
+    ]
+  },
+  {
+    "id": "t3-mult-5x10",
+    "tier": 3,
+    "skill": "multiplication_5x",
+    "prompt": "5 × 10 = ?",
+    "answer": "50",
+    "format": "multiple_choice",
+    "choices": [
+      "50",
+      "45",
+      "49",
+      "55"
+    ]
+  },
+  {
+    "id": "t3-mult-5x11",
+    "tier": 3,
+    "skill": "multiplication_5x",
+    "prompt": "5 × 11 = ?",
+    "answer": "55",
+    "format": "multiple_choice",
+    "choices": [
+      "60",
+      "50",
+      "54",
+      "55"
+    ]
+  },
+  {
+    "id": "t3-mult-5x12",
+    "tier": 3,
+    "skill": "multiplication_5x",
+    "prompt": "5 × 12 = ?",
+    "answer": "60",
+    "format": "multiple_choice",
+    "choices": [
+      "61",
+      "60",
+      "59",
+      "55"
+    ]
+  },
+  {
+    "id": "t3-mult-10x1",
+    "tier": 3,
+    "skill": "multiplication_10x",
+    "prompt": "10 × 1 = ?",
+    "answer": "10",
+    "format": "multiple_choice",
+    "choices": [
+      "10",
+      "11",
+      "9",
+      "20"
+    ]
+  },
+  {
+    "id": "t3-mult-10x2",
+    "tier": 3,
+    "skill": "multiplication_10x",
+    "prompt": "10 × 2 = ?",
+    "answer": "20",
+    "format": "multiple_choice",
+    "choices": [
+      "21",
+      "10",
+      "20",
+      "30"
+    ]
+  },
+  {
+    "id": "t3-mult-10x3",
+    "tier": 3,
+    "skill": "multiplication_10x",
+    "prompt": "10 × 3 = ?",
+    "answer": "30",
+    "format": "multiple_choice",
+    "choices": [
+      "30",
+      "29",
+      "31",
+      "40"
+    ]
+  },
+  {
+    "id": "t3-mult-10x4",
+    "tier": 3,
+    "skill": "multiplication_10x",
+    "prompt": "10 × 4 = ?",
+    "answer": "40",
+    "format": "multiple_choice",
+    "choices": [
+      "39",
+      "30",
+      "40",
+      "41"
+    ]
+  },
+  {
+    "id": "t3-mult-10x5",
+    "tier": 3,
+    "skill": "multiplication_10x",
+    "prompt": "10 × 5 = ?",
+    "answer": "50",
+    "format": "multiple_choice",
+    "choices": [
+      "50",
+      "51",
+      "49",
+      "40"
+    ]
+  },
+  {
+    "id": "t3-mult-10x6",
+    "tier": 3,
+    "skill": "multiplication_10x",
+    "prompt": "10 × 6 = ?",
+    "answer": "60",
+    "format": "multiple_choice",
+    "choices": [
+      "60",
+      "50",
+      "70",
+      "59"
+    ]
+  },
+  {
+    "id": "t3-mult-10x7",
+    "tier": 3,
+    "skill": "multiplication_10x",
+    "prompt": "10 × 7 = ?",
+    "answer": "70",
+    "format": "multiple_choice",
+    "choices": [
+      "71",
+      "69",
+      "70",
+      "60"
+    ]
+  },
+  {
+    "id": "t3-mult-10x8",
+    "tier": 3,
+    "skill": "multiplication_10x",
+    "prompt": "10 × 8 = ?",
+    "answer": "80",
+    "format": "multiple_choice",
+    "choices": [
+      "70",
+      "79",
+      "80",
+      "90"
+    ]
+  },
+  {
+    "id": "t3-mult-10x9",
+    "tier": 3,
+    "skill": "multiplication_10x",
+    "prompt": "10 × 9 = ?",
+    "answer": "90",
+    "format": "multiple_choice",
+    "choices": [
+      "80",
+      "89",
+      "90",
+      "100"
+    ]
+  },
+  {
+    "id": "t3-mult-10x10",
+    "tier": 3,
+    "skill": "multiplication_10x",
+    "prompt": "10 × 10 = ?",
+    "answer": "100",
+    "format": "multiple_choice",
+    "choices": [
+      "100",
+      "99",
+      "101",
+      "90"
+    ]
+  },
+  {
+    "id": "t3-mult-10x11",
+    "tier": 3,
+    "skill": "multiplication_10x",
+    "prompt": "10 × 11 = ?",
+    "answer": "110",
+    "format": "multiple_choice",
+    "choices": [
+      "109",
+      "110",
+      "100",
+      "120"
+    ]
+  },
+  {
+    "id": "t3-mult-10x12",
+    "tier": 3,
+    "skill": "multiplication_10x",
+    "prompt": "10 × 12 = ?",
+    "answer": "120",
+    "format": "multiple_choice",
+    "choices": [
+      "130",
+      "110",
+      "120",
+      "121"
+    ]
+  }
+]
