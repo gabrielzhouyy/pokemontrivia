@@ -333,7 +333,7 @@ const banks = {
 for (const [subject, tiers] of Object.entries(banks)) {
   for (const [tier, qs] of Object.entries(tiers)) {
     writeFileSync(
-      join(QDIR, subject, `tier-${tier}.json`),
+      join(QDIR, "age-7", subject, `tier-${tier}.json`),
       JSON.stringify(qs, null, 2) + "\n",
     );
     console.log(`${subject} tier ${tier}: ${qs.length} questions`);

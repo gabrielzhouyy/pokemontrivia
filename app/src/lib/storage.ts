@@ -21,6 +21,8 @@ export type Profile = {
   username: string;
   pin: string;
   starterId: number | null;
+  // The kid's age — drives which question bank bucket is used. Default 7.
+  age: number;
   // Set of species IDs the player has obtained (caught in wild OR via evolution).
   caught: number[];
   // One entry per owned species, keyed by species id directly.
@@ -37,6 +39,8 @@ export type Profile = {
   };
   createdAt: number;
 };
+
+export const DEFAULT_AGE = 7;
 
 const KEY_PREFIX = "pmc:profile:";
 const KEY_CURRENT = "pmc:current";
@@ -85,21 +89,49 @@ function migrateOwned(profile: Profile): Profile {
   return { ...profile, owned: newOwned, caught: Array.from(newCaught) };
 }
 
+function migrateAge(profile: Profile): Profile {
+  if (typeof profile.age === "number" && profile.age > 0) return profile;
+  return { ...profile, age: DEFAULT_AGE };
+}
+
 export function loadProfile(username: string): Profile | null {
   if (typeof window === "undefined") return null;
   const raw = localStorage.getItem(profileKey(username));
   if (!raw) return null;
   try {
     const parsed = JSON.parse(raw) as Profile;
-    const migrated = migrateOwned(parsed);
-    if (migrated !== parsed) {
+    const afterOwned = migrateOwned(parsed);
+    const final = migrateAge(afterOwned);
+    if (final !== parsed) {
       // Persist migration so it only runs once.
-      localStorage.setItem(profileKey(username), JSON.stringify(migrated));
+      localStorage.setItem(profileKey(username), JSON.stringify(final));
     }
-    return migrated;
+    return final;
   } catch {
     return null;
   }
+}
+
+export function listAllProfiles(): Profile[] {
+  if (typeof window === "undefined") return [];
+  const profiles: Profile[] = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (!key || !key.startsWith(KEY_PREFIX)) continue;
+    const username = key.slice(KEY_PREFIX.length);
+    const p = loadProfile(username);
+    if (p) profiles.push(p);
+  }
+  return profiles;
+}
+
+export function resetProfile(username: string): Profile | null {
+  const existing = loadProfile(username);
+  if (!existing) return null;
+  const fresh = newProfile(existing.username, existing.pin);
+  fresh.age = existing.age;
+  saveProfile(fresh);
+  return fresh;
 }
 
 export function saveProfile(profile: Profile): void {
@@ -128,6 +160,7 @@ export function newProfile(username: string, pin: string): Profile {
     username,
     pin,
     starterId: null,
+    age: DEFAULT_AGE,
     caught: [],
     owned: {},
     evolved: [],

@@ -45,7 +45,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
     }
     setProfile(p);
     const sp = getPokemon(speciesId);
-    setQuestion(pickQuestion(subjectFor(sp.id), sp.tier, p.history));
+    setQuestion(pickQuestion(p.age, subjectFor(sp.id), sp.tier, p.history));
   }, [router, speciesId]);
 
   if (!profile) return null;
@@ -61,7 +61,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
 
   function nextQuestion(p: Profile, sid: number) {
     const sp = getPokemon(sid);
-    setQuestion(pickQuestion(subjectFor(sp.id), sp.tier, p.history));
+    setQuestion(pickQuestion(p.age, subjectFor(sp.id), sp.tier, p.history));
   }
 
   function handleAnswer(correct: boolean) {
