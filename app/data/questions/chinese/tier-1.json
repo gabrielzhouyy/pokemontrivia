@@ -1,1 +1,422 @@
-[]
+[
+  {
+    "id": "zh1-en2zh-1",
+    "tier": 1,
+    "skill": "char_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is one?",
+    "answer": "一",
+    "choices": [
+      "三",
+      "一",
+      "四",
+      "二"
+    ]
+  },
+  {
+    "id": "zh1-en2zh-2",
+    "tier": 1,
+    "skill": "char_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is two?",
+    "answer": "二",
+    "choices": [
+      "五",
+      "一",
+      "三",
+      "二"
+    ]
+  },
+  {
+    "id": "zh1-en2zh-3",
+    "tier": 1,
+    "skill": "char_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is three?",
+    "answer": "三",
+    "choices": [
+      "三",
+      "五",
+      "二",
+      "四"
+    ]
+  },
+  {
+    "id": "zh1-en2zh-4",
+    "tier": 1,
+    "skill": "char_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is four?",
+    "answer": "四",
+    "choices": [
+      "五",
+      "六",
+      "三",
+      "四"
+    ]
+  },
+  {
+    "id": "zh1-en2zh-5",
+    "tier": 1,
+    "skill": "char_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is five?",
+    "answer": "五",
+    "choices": [
+      "六",
+      "五",
+      "三",
+      "四"
+    ]
+  },
+  {
+    "id": "zh1-en2zh-6",
+    "tier": 1,
+    "skill": "char_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is six?",
+    "answer": "六",
+    "choices": [
+      "七",
+      "五",
+      "八",
+      "六"
+    ]
+  },
+  {
+    "id": "zh1-en2zh-7",
+    "tier": 1,
+    "skill": "char_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is seven?",
+    "answer": "七",
+    "choices": [
+      "六",
+      "九",
+      "八",
+      "七"
+    ]
+  },
+  {
+    "id": "zh1-en2zh-big",
+    "tier": 1,
+    "skill": "char_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is big?",
+    "answer": "大",
+    "choices": [
+      "大",
+      "上",
+      "中",
+      "小"
+    ]
+  },
+  {
+    "id": "zh1-en2zh-small",
+    "tier": 1,
+    "skill": "char_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is small?",
+    "answer": "小",
+    "choices": [
+      "中",
+      "大",
+      "下",
+      "小"
+    ]
+  },
+  {
+    "id": "zh1-en2zh-water",
+    "tier": 1,
+    "skill": "char_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is water?",
+    "answer": "水",
+    "choices": [
+      "水",
+      "木",
+      "山",
+      "火"
+    ]
+  },
+  {
+    "id": "zh1-en2zh-fire",
+    "tier": 1,
+    "skill": "char_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is fire?",
+    "answer": "火",
+    "choices": [
+      "水",
+      "木",
+      "土",
+      "火"
+    ]
+  },
+  {
+    "id": "zh1-en2zh-mountain",
+    "tier": 1,
+    "skill": "char_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is mountain?",
+    "answer": "山",
+    "choices": [
+      "石",
+      "木",
+      "山",
+      "水"
+    ]
+  },
+  {
+    "id": "zh1-en2zh-up",
+    "tier": 1,
+    "skill": "char_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is up?",
+    "answer": "上",
+    "choices": [
+      "中",
+      "左",
+      "下",
+      "上"
+    ]
+  },
+  {
+    "id": "zh1-en2zh-down",
+    "tier": 1,
+    "skill": "char_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is down?",
+    "answer": "下",
+    "choices": [
+      "右",
+      "中",
+      "上",
+      "下"
+    ]
+  },
+  {
+    "id": "zh1-en2zh-tree",
+    "tier": 1,
+    "skill": "char_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is tree?",
+    "answer": "木",
+    "choices": [
+      "水",
+      "火",
+      "木",
+      "山"
+    ]
+  },
+  {
+    "id": "zh1-zh2en-1",
+    "tier": 1,
+    "skill": "char_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 一 mean?",
+    "answer": "one",
+    "choices": [
+      "three",
+      "two",
+      "four",
+      "one"
+    ]
+  },
+  {
+    "id": "zh1-zh2en-2",
+    "tier": 1,
+    "skill": "char_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 二 mean?",
+    "answer": "two",
+    "choices": [
+      "two",
+      "five",
+      "one",
+      "three"
+    ]
+  },
+  {
+    "id": "zh1-zh2en-5",
+    "tier": 1,
+    "skill": "char_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 五 mean?",
+    "answer": "five",
+    "choices": [
+      "three",
+      "six",
+      "five",
+      "four"
+    ]
+  },
+  {
+    "id": "zh1-zh2en-8",
+    "tier": 1,
+    "skill": "char_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 八 mean?",
+    "answer": "eight",
+    "choices": [
+      "nine",
+      "seven",
+      "eight",
+      "six"
+    ]
+  },
+  {
+    "id": "zh1-zh2en-10",
+    "tier": 1,
+    "skill": "char_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 十 mean?",
+    "answer": "ten",
+    "choices": [
+      "eleven",
+      "five",
+      "ten",
+      "nine"
+    ]
+  },
+  {
+    "id": "zh1-zh2en-big",
+    "tier": 1,
+    "skill": "char_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 大 mean?",
+    "answer": "big",
+    "choices": [
+      "long",
+      "tall",
+      "big",
+      "small"
+    ]
+  },
+  {
+    "id": "zh1-zh2en-small",
+    "tier": 1,
+    "skill": "char_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 小 mean?",
+    "answer": "small",
+    "choices": [
+      "small",
+      "short",
+      "wide",
+      "big"
+    ]
+  },
+  {
+    "id": "zh1-zh2en-water",
+    "tier": 1,
+    "skill": "char_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 水 mean?",
+    "answer": "water",
+    "choices": [
+      "tree",
+      "fire",
+      "water",
+      "mountain"
+    ]
+  },
+  {
+    "id": "zh1-zh2en-fire",
+    "tier": 1,
+    "skill": "char_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 火 mean?",
+    "answer": "fire",
+    "choices": [
+      "wood",
+      "fire",
+      "water",
+      "earth"
+    ]
+  },
+  {
+    "id": "zh1-zh2en-tree",
+    "tier": 1,
+    "skill": "char_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 木 mean?",
+    "answer": "tree",
+    "choices": [
+      "fire",
+      "tree",
+      "mountain",
+      "water"
+    ]
+  },
+  {
+    "id": "zh1-zh2en-mountain",
+    "tier": 1,
+    "skill": "char_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 山 mean?",
+    "answer": "mountain",
+    "choices": [
+      "mountain",
+      "river",
+      "tree",
+      "sky"
+    ]
+  },
+  {
+    "id": "zh1-zh2en-up",
+    "tier": 1,
+    "skill": "char_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 上 mean?",
+    "answer": "up",
+    "choices": [
+      "up",
+      "down",
+      "right",
+      "left"
+    ]
+  },
+  {
+    "id": "zh1-zh2en-down",
+    "tier": 1,
+    "skill": "char_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 下 mean?",
+    "answer": "down",
+    "choices": [
+      "middle",
+      "up",
+      "down",
+      "side"
+    ]
+  },
+  {
+    "id": "zh1-zh2en-left",
+    "tier": 1,
+    "skill": "char_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 左 mean?",
+    "answer": "left",
+    "choices": [
+      "left",
+      "down",
+      "right",
+      "up"
+    ]
+  },
+  {
+    "id": "zh1-zh2en-right",
+    "tier": 1,
+    "skill": "char_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 右 mean?",
+    "answer": "right",
+    "choices": [
+      "right",
+      "down",
+      "left",
+      "up"
+    ]
+  }
+]

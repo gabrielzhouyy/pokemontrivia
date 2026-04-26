@@ -13,7 +13,7 @@ import chineseTier4 from "../../data/questions/chinese/tier-4.json";
 
 import { FALLBACK_SUBJECT, type SubjectId } from "./subjects";
 
-export type QuestionFormat = "multiple_choice" | "number_pad";
+export type QuestionFormat = "multiple_choice" | "number_pad" | "text_pad";
 
 export type Question = {
   id: string;

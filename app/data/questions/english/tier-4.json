@@ -1,1 +1,242 @@
-[]
+[
+  {
+    "id": "en4-clue-butter",
+    "tier": 4,
+    "skill": "spell_clue",
+    "format": "text_pad",
+    "prompt": "Yellow spread for bread (6 letters)",
+    "answer": "BUTTER"
+  },
+  {
+    "id": "en4-clue-orange",
+    "tier": 4,
+    "skill": "spell_clue",
+    "format": "text_pad",
+    "prompt": "A round juicy fruit, also a color (6 letters)",
+    "answer": "ORANGE"
+  },
+  {
+    "id": "en4-clue-jungle",
+    "tier": 4,
+    "skill": "spell_clue",
+    "format": "text_pad",
+    "prompt": "A thick wild forest (6 letters)",
+    "answer": "JUNGLE"
+  },
+  {
+    "id": "en4-clue-pencil",
+    "tier": 4,
+    "skill": "spell_clue",
+    "format": "text_pad",
+    "prompt": "You write with this (6 letters)",
+    "answer": "PENCIL"
+  },
+  {
+    "id": "en4-clue-rocket",
+    "tier": 4,
+    "skill": "spell_clue",
+    "format": "text_pad",
+    "prompt": "Goes to space (6 letters)",
+    "answer": "ROCKET"
+  },
+  {
+    "id": "en4-clue-banana",
+    "tier": 4,
+    "skill": "spell_clue",
+    "format": "text_pad",
+    "prompt": "A yellow fruit monkeys love (6 letters)",
+    "answer": "BANANA"
+  },
+  {
+    "id": "en4-miss-butterfly",
+    "tier": 4,
+    "skill": "spell_missing",
+    "format": "text_pad",
+    "prompt": "B_TTERFLY",
+    "answer": "BUTTERFLY"
+  },
+  {
+    "id": "en4-miss-elephant",
+    "tier": 4,
+    "skill": "spell_missing",
+    "format": "text_pad",
+    "prompt": "ELEPH_NT",
+    "answer": "ELEPHANT"
+  },
+  {
+    "id": "en4-miss-mountain",
+    "tier": 4,
+    "skill": "spell_missing",
+    "format": "text_pad",
+    "prompt": "MOUNT_IN",
+    "answer": "MOUNTAIN"
+  },
+  {
+    "id": "en4-miss-rainbow",
+    "tier": 4,
+    "skill": "spell_missing",
+    "format": "text_pad",
+    "prompt": "R_INBOW",
+    "answer": "RAINBOW"
+  },
+  {
+    "id": "en4-miss-friend",
+    "tier": 4,
+    "skill": "spell_missing",
+    "format": "text_pad",
+    "prompt": "FR_END",
+    "answer": "FRIEND"
+  },
+  {
+    "id": "en4-miss-school",
+    "tier": 4,
+    "skill": "spell_missing",
+    "format": "text_pad",
+    "prompt": "SCH_OL",
+    "answer": "SCHOOL"
+  },
+  {
+    "id": "en4-miss-because",
+    "tier": 4,
+    "skill": "spell_missing",
+    "format": "text_pad",
+    "prompt": "BEC_USE",
+    "answer": "BECAUSE"
+  },
+  {
+    "id": "en4-copy-bicycle",
+    "tier": 4,
+    "skill": "spell_copy",
+    "format": "text_pad",
+    "prompt": "Spell: BICYCLE",
+    "answer": "BICYCLE"
+  },
+  {
+    "id": "en4-copy-monkey",
+    "tier": 4,
+    "skill": "spell_copy",
+    "format": "text_pad",
+    "prompt": "Spell: MONKEY",
+    "answer": "MONKEY"
+  },
+  {
+    "id": "en4-copy-window",
+    "tier": 4,
+    "skill": "spell_copy",
+    "format": "text_pad",
+    "prompt": "Spell: WINDOW",
+    "answer": "WINDOW"
+  },
+  {
+    "id": "en4-copy-purple",
+    "tier": 4,
+    "skill": "spell_copy",
+    "format": "text_pad",
+    "prompt": "Spell: PURPLE",
+    "answer": "PURPLE"
+  },
+  {
+    "id": "en4-emoji-butterfly",
+    "tier": 4,
+    "skill": "spell_emoji",
+    "format": "text_pad",
+    "prompt": "🦋 (9 letters)",
+    "answer": "BUTTERFLY"
+  },
+  {
+    "id": "en4-emoji-elephant",
+    "tier": 4,
+    "skill": "spell_emoji",
+    "format": "text_pad",
+    "prompt": "🐘 (8 letters)",
+    "answer": "ELEPHANT"
+  },
+  {
+    "id": "en4-emoji-mountain",
+    "tier": 4,
+    "skill": "spell_emoji",
+    "format": "text_pad",
+    "prompt": "⛰️ (8 letters)",
+    "answer": "MOUNTAIN"
+  },
+  {
+    "id": "en4-emoji-rainbow",
+    "tier": 4,
+    "skill": "spell_emoji",
+    "format": "text_pad",
+    "prompt": "🌈 (7 letters)",
+    "answer": "RAINBOW"
+  },
+  {
+    "id": "en4-emoji-strawberry",
+    "tier": 4,
+    "skill": "spell_emoji",
+    "format": "text_pad",
+    "prompt": "🍓 (10 letters)",
+    "answer": "STRAWBERRY"
+  },
+  {
+    "id": "en4-emoji-octopus",
+    "tier": 4,
+    "skill": "spell_emoji",
+    "format": "text_pad",
+    "prompt": "🐙 (7 letters)",
+    "answer": "OCTOPUS"
+  },
+  {
+    "id": "en4-emoji-volcano",
+    "tier": 4,
+    "skill": "spell_emoji",
+    "format": "text_pad",
+    "prompt": "🌋 (7 letters)",
+    "answer": "VOLCANO"
+  },
+  {
+    "id": "en4-emoji-dolphin",
+    "tier": 4,
+    "skill": "spell_emoji",
+    "format": "text_pad",
+    "prompt": "🐬 (7 letters)",
+    "answer": "DOLPHIN"
+  },
+  {
+    "id": "en4-emoji-penguin",
+    "tier": 4,
+    "skill": "spell_emoji",
+    "format": "text_pad",
+    "prompt": "🐧 (7 letters)",
+    "answer": "PENGUIN"
+  },
+  {
+    "id": "en4-clue-ocean",
+    "tier": 4,
+    "skill": "spell_clue",
+    "format": "text_pad",
+    "prompt": "The big salty body of water (5 letters)",
+    "answer": "OCEAN"
+  },
+  {
+    "id": "en4-clue-circle",
+    "tier": 4,
+    "skill": "spell_clue",
+    "format": "text_pad",
+    "prompt": "A round shape (6 letters)",
+    "answer": "CIRCLE"
+  },
+  {
+    "id": "en4-clue-yellow",
+    "tier": 4,
+    "skill": "spell_clue",
+    "format": "text_pad",
+    "prompt": "Color of the sun (6 letters)",
+    "answer": "YELLOW"
+  },
+  {
+    "id": "en4-clue-purple",
+    "tier": 4,
+    "skill": "spell_clue",
+    "format": "text_pad",
+    "prompt": "Mix of red and blue (6 letters)",
+    "answer": "PURPLE"
+  }
+]

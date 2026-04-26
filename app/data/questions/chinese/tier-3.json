@@ -1,1 +1,422 @@
-[]
+[
+  {
+    "id": "zh3-en2zh-mom",
+    "tier": 3,
+    "skill": "family_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is mother?",
+    "answer": "妈妈",
+    "choices": [
+      "爸爸",
+      "哥哥",
+      "妈妈",
+      "姐姐"
+    ]
+  },
+  {
+    "id": "zh3-en2zh-dad",
+    "tier": 3,
+    "skill": "family_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is father?",
+    "answer": "爸爸",
+    "choices": [
+      "哥哥",
+      "弟弟",
+      "爸爸",
+      "妈妈"
+    ]
+  },
+  {
+    "id": "zh3-en2zh-elder-sis",
+    "tier": 3,
+    "skill": "family_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is older sister?",
+    "answer": "姐姐",
+    "choices": [
+      "妈妈",
+      "姐姐",
+      "哥哥",
+      "妹妹"
+    ]
+  },
+  {
+    "id": "zh3-en2zh-younger-sis",
+    "tier": 3,
+    "skill": "family_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is younger sister?",
+    "answer": "妹妹",
+    "choices": [
+      "姐姐",
+      "哥哥",
+      "妹妹",
+      "弟弟"
+    ]
+  },
+  {
+    "id": "zh3-en2zh-elder-bro",
+    "tier": 3,
+    "skill": "family_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is older brother?",
+    "answer": "哥哥",
+    "choices": [
+      "哥哥",
+      "姐姐",
+      "爸爸",
+      "弟弟"
+    ]
+  },
+  {
+    "id": "zh3-en2zh-younger-bro",
+    "tier": 3,
+    "skill": "family_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is younger brother?",
+    "answer": "弟弟",
+    "choices": [
+      "爸爸",
+      "妹妹",
+      "弟弟",
+      "哥哥"
+    ]
+  },
+  {
+    "id": "zh3-en2zh-grandma",
+    "tier": 3,
+    "skill": "family_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is grandmother (paternal)?",
+    "answer": "奶奶",
+    "choices": [
+      "妹妹",
+      "爷爷",
+      "奶奶",
+      "妈妈"
+    ]
+  },
+  {
+    "id": "zh3-en2zh-grandpa",
+    "tier": 3,
+    "skill": "family_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is grandfather (paternal)?",
+    "answer": "爷爷",
+    "choices": [
+      "哥哥",
+      "爸爸",
+      "爷爷",
+      "奶奶"
+    ]
+  },
+  {
+    "id": "zh3-en2zh-home",
+    "tier": 3,
+    "skill": "object_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is home?",
+    "answer": "家",
+    "choices": [
+      "家",
+      "学校",
+      "朋友",
+      "房间"
+    ]
+  },
+  {
+    "id": "zh3-en2zh-school",
+    "tier": 3,
+    "skill": "object_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is school?",
+    "answer": "学校",
+    "choices": [
+      "公园",
+      "学校",
+      "家",
+      "朋友"
+    ]
+  },
+  {
+    "id": "zh3-en2zh-apple",
+    "tier": 3,
+    "skill": "object_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is apple?",
+    "answer": "苹果",
+    "choices": [
+      "苹果",
+      "鱼",
+      "饭",
+      "香蕉"
+    ]
+  },
+  {
+    "id": "zh3-en2zh-banana",
+    "tier": 3,
+    "skill": "object_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is banana?",
+    "answer": "香蕉",
+    "choices": [
+      "香蕉",
+      "苹果",
+      "鱼",
+      "饭"
+    ]
+  },
+  {
+    "id": "zh3-en2zh-fish",
+    "tier": 3,
+    "skill": "object_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is fish?",
+    "answer": "鱼",
+    "choices": [
+      "鱼",
+      "饭",
+      "肉",
+      "鸡"
+    ]
+  },
+  {
+    "id": "zh3-en2zh-rice",
+    "tier": 3,
+    "skill": "object_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is rice?",
+    "answer": "饭",
+    "choices": [
+      "肉",
+      "饭",
+      "鱼",
+      "面"
+    ]
+  },
+  {
+    "id": "zh3-en2zh-tea",
+    "tier": 3,
+    "skill": "object_en2zh",
+    "format": "multiple_choice",
+    "prompt": "What is tea?",
+    "answer": "茶",
+    "choices": [
+      "水",
+      "茶",
+      "咖啡",
+      "牛奶"
+    ]
+  },
+  {
+    "id": "zh3-zh2en-mama",
+    "tier": 3,
+    "skill": "family_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 妈妈 mean?",
+    "answer": "mother",
+    "choices": [
+      "sister",
+      "brother",
+      "mother",
+      "father"
+    ]
+  },
+  {
+    "id": "zh3-zh2en-baba",
+    "tier": 3,
+    "skill": "family_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 爸爸 mean?",
+    "answer": "father",
+    "choices": [
+      "brother",
+      "mother",
+      "uncle",
+      "father"
+    ]
+  },
+  {
+    "id": "zh3-zh2en-jiejie",
+    "tier": 3,
+    "skill": "family_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 姐姐 mean?",
+    "answer": "older sister",
+    "choices": [
+      "mother",
+      "aunt",
+      "younger sister",
+      "older sister"
+    ]
+  },
+  {
+    "id": "zh3-zh2en-meimei",
+    "tier": 3,
+    "skill": "family_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 妹妹 mean?",
+    "answer": "younger sister",
+    "choices": [
+      "mother",
+      "older sister",
+      "younger sister",
+      "younger brother"
+    ]
+  },
+  {
+    "id": "zh3-zh2en-gege",
+    "tier": 3,
+    "skill": "family_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 哥哥 mean?",
+    "answer": "older brother",
+    "choices": [
+      "uncle",
+      "older brother",
+      "father",
+      "younger brother"
+    ]
+  },
+  {
+    "id": "zh3-zh2en-didi",
+    "tier": 3,
+    "skill": "family_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 弟弟 mean?",
+    "answer": "younger brother",
+    "choices": [
+      "younger sister",
+      "younger brother",
+      "cousin",
+      "older brother"
+    ]
+  },
+  {
+    "id": "zh3-zh2en-jia",
+    "tier": 3,
+    "skill": "object_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 家 mean?",
+    "answer": "home",
+    "choices": [
+      "home",
+      "school",
+      "friend",
+      "park"
+    ]
+  },
+  {
+    "id": "zh3-zh2en-xuexiao",
+    "tier": 3,
+    "skill": "object_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 学校 mean?",
+    "answer": "school",
+    "choices": [
+      "home",
+      "park",
+      "store",
+      "school"
+    ]
+  },
+  {
+    "id": "zh3-zh2en-pingguo",
+    "tier": 3,
+    "skill": "object_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 苹果 mean?",
+    "answer": "apple",
+    "choices": [
+      "banana",
+      "apple",
+      "fish",
+      "orange"
+    ]
+  },
+  {
+    "id": "zh3-zh2en-xiangjiao",
+    "tier": 3,
+    "skill": "object_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 香蕉 mean?",
+    "answer": "banana",
+    "choices": [
+      "fish",
+      "banana",
+      "orange",
+      "apple"
+    ]
+  },
+  {
+    "id": "zh3-zh2en-yu",
+    "tier": 3,
+    "skill": "object_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 鱼 mean?",
+    "answer": "fish",
+    "choices": [
+      "fish",
+      "meat",
+      "chicken",
+      "rice"
+    ]
+  },
+  {
+    "id": "zh3-zh2en-fan",
+    "tier": 3,
+    "skill": "object_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 饭 mean?",
+    "answer": "rice/meal",
+    "choices": [
+      "tea",
+      "rice/meal",
+      "meat",
+      "fish"
+    ]
+  },
+  {
+    "id": "zh3-zh2en-cha",
+    "tier": 3,
+    "skill": "object_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 茶 mean?",
+    "answer": "tea",
+    "choices": [
+      "tea",
+      "coffee",
+      "water",
+      "milk"
+    ]
+  },
+  {
+    "id": "zh3-zh2en-shu",
+    "tier": 3,
+    "skill": "object_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 书 mean?",
+    "answer": "book",
+    "choices": [
+      "desk",
+      "paper",
+      "pen",
+      "book"
+    ]
+  },
+  {
+    "id": "zh3-zh2en-bi",
+    "tier": 3,
+    "skill": "object_zh2en",
+    "format": "multiple_choice",
+    "prompt": "What does 笔 mean?",
+    "answer": "pen/pencil",
+    "choices": [
+      "book",
+      "pen/pencil",
+      "paper",
+      "desk"
+    ]
+  }
+]
