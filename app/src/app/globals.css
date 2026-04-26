@@ -26,6 +26,12 @@ html, body {
   font-family: var(--font-sans);
 }
 
+/* Crisp upscaling for the 96x96 PokeAPI pixel sprites in the Pokedex grid. */
+.image-pixelated {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+}
+
 button {
   font-family: var(--font-sans);
 }

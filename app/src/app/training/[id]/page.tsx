@@ -163,7 +163,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
         <QuestionModal
           question={question}
           onAnswer={handleAnswer}
-          subtitle={`Train ${current.name} — answer to level up!`}
+          subtitle={`Train ${current.name} L${owned.level} — answer to level up!`}
           onExit={() => router.replace("/pokedex")}
           exitLabel="← Stop training"
         />

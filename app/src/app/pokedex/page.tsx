@@ -99,7 +99,7 @@ export default function PokedexPage() {
       </div>
 
       <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-8 gap-3 pb-8">
-        {POKEMON.map((p) => {
+        {POKEMON.map((p, idx) => {
           const caught = profile.caught.includes(p.id);
           const owned = profile.owned[p.id];
           const currentSpriteId = owned?.speciesId ?? p.id;
@@ -114,12 +114,13 @@ export default function PokedexPage() {
               <div className="relative w-full aspect-square flex items-center justify-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${currentSpriteId}.png`}
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${currentSpriteId}.png`}
                   alt={caught ? p.name : "???"}
-                  className={`w-full h-full object-contain ${
+                  className={`w-full h-full object-contain image-pixelated ${
                     caught ? "" : "brightness-0 opacity-40"
                   }`}
-                  loading="lazy"
+                  loading={idx < 60 ? "eager" : "lazy"}
+                  decoding="async"
                 />
                 {caught && (
                   <span className="absolute top-0 right-0 bg-green-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
