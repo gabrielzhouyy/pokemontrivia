@@ -27,7 +27,7 @@ export default function StarterPage() {
     if (!p) return;
     p.starterId = chosen;
     p.caught = [chosen];
-    p.owned[chosen] = { id: chosen, level: 5, speciesId: chosen };
+    p.owned[chosen] = { level: 5, evolved: false };
     saveProfile(p);
     setConfirming(true);
     playCatch();

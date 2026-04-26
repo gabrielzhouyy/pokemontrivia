@@ -104,12 +104,17 @@ function tierFor(id) {
   return 2;
 }
 
+// A species is "evolution-only" if it is the evolves_to target of some other
+// species — i.e. it can never appear as a wild encounter, only via evolution.
+const EVOLUTION_ONLY = EVOLVED_INTO;
+
 const out = SPECIES.map(([id, name, evolves_to, evolve_level]) => ({
   id,
   name,
   tier: tierFor(id),
   evolves_to,
   evolve_level,
+  evolution_only: EVOLUTION_ONLY.has(id),
   sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`,
   sprite_pixel: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`,
 }));

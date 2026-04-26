@@ -29,13 +29,20 @@ export default function EncounterPage({ params }: { params: Promise<{ id: string
       router.replace("/login");
       return;
     }
+    const pkmn = getPokemon(pokemonId);
+    // Evolution-only species (Ivysaur, Charmeleon, …) cannot appear in the
+    // wild — only via evolution. Bounce the player back to the Pokedex.
+    if (pkmn.evolution_only) {
+      router.replace("/pokedex");
+      return;
+    }
     if (p.caught.includes(pokemonId)) {
       router.replace(`/training/${pokemonId}`);
       return;
     }
     setProfile(p);
     const t = setTimeout(() => {
-      const q = pickQuestion(getPokemon(pokemonId).tier, p.history);
+      const q = pickQuestion(pkmn.tier, p.history);
       setQuestion(q);
       setPhase("question");
     }, 1100);
@@ -55,7 +62,7 @@ export default function EncounterPage({ params }: { params: Promise<{ id: string
       p.stats.currentStreak += 1;
       p.stats.longestStreak = Math.max(p.stats.longestStreak, p.stats.currentStreak);
       p.caught = Array.from(new Set([...p.caught, pokemonId]));
-      p.owned[pokemonId] = { id: pokemonId, level: 5, speciesId: pokemonId };
+      p.owned[pokemonId] = { level: 5, evolved: false };
       saveProfile(p);
       setProfile(p);
       setPhase("caught");

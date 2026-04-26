@@ -5,6 +5,7 @@
     "tier": 1,
     "evolves_to": 2,
     "evolve_level": 16,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
   },
@@ -14,6 +15,7 @@
     "tier": 2,
     "evolves_to": 3,
     "evolve_level": 32,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png"
   },
@@ -23,6 +25,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png"
   },
@@ -32,6 +35,7 @@
     "tier": 1,
     "evolves_to": 5,
     "evolve_level": 16,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
   },
@@ -41,6 +45,7 @@
     "tier": 2,
     "evolves_to": 6,
     "evolve_level": 36,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/5.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png"
   },
@@ -50,6 +55,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
   },
@@ -59,6 +65,7 @@
     "tier": 1,
     "evolves_to": 8,
     "evolve_level": 16,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
   },
@@ -68,6 +75,7 @@
     "tier": 2,
     "evolves_to": 9,
     "evolve_level": 36,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/8.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png"
   },
@@ -77,6 +85,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png"
   },
@@ -86,6 +95,7 @@
     "tier": 1,
     "evolves_to": 11,
     "evolve_level": 7,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png"
   },
@@ -95,6 +105,7 @@
     "tier": 2,
     "evolves_to": 12,
     "evolve_level": 10,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/11.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png"
   },
@@ -104,6 +115,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/12.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/12.png"
   },
@@ -113,6 +125,7 @@
     "tier": 1,
     "evolves_to": 14,
     "evolve_level": 7,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/13.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/13.png"
   },
@@ -122,6 +135,7 @@
     "tier": 2,
     "evolves_to": 15,
     "evolve_level": 10,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/14.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/14.png"
   },
@@ -131,6 +145,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/15.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/15.png"
   },
@@ -140,6 +155,7 @@
     "tier": 1,
     "evolves_to": 17,
     "evolve_level": 18,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/16.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/16.png"
   },
@@ -149,6 +165,7 @@
     "tier": 2,
     "evolves_to": 18,
     "evolve_level": 36,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/17.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/17.png"
   },
@@ -158,6 +175,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/18.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/18.png"
   },
@@ -167,6 +185,7 @@
     "tier": 1,
     "evolves_to": 20,
     "evolve_level": 20,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/19.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/19.png"
   },
@@ -176,6 +195,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/20.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/20.png"
   },
@@ -185,6 +205,7 @@
     "tier": 1,
     "evolves_to": 22,
     "evolve_level": 20,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/21.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/21.png"
   },
@@ -194,6 +215,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/22.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/22.png"
   },
@@ -203,6 +225,7 @@
     "tier": 1,
     "evolves_to": 24,
     "evolve_level": 22,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/23.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/23.png"
   },
@@ -212,6 +235,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/24.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/24.png"
   },
@@ -221,6 +245,7 @@
     "tier": 1,
     "evolves_to": 26,
     "evolve_level": 36,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
   },
@@ -230,6 +255,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/26.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/26.png"
   },
@@ -239,6 +265,7 @@
     "tier": 1,
     "evolves_to": 28,
     "evolve_level": 22,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/27.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png"
   },
@@ -248,6 +275,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/28.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/28.png"
   },
@@ -257,6 +285,7 @@
     "tier": 1,
     "evolves_to": 30,
     "evolve_level": 16,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/29.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/29.png"
   },
@@ -266,6 +295,7 @@
     "tier": 2,
     "evolves_to": 31,
     "evolve_level": 36,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/30.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/30.png"
   },
@@ -275,6 +305,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/31.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/31.png"
   },
@@ -284,6 +315,7 @@
     "tier": 1,
     "evolves_to": 33,
     "evolve_level": 16,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/32.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/32.png"
   },
@@ -293,6 +325,7 @@
     "tier": 2,
     "evolves_to": 34,
     "evolve_level": 36,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/33.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/33.png"
   },
@@ -302,6 +335,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/34.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/34.png"
   },
@@ -311,6 +345,7 @@
     "tier": 1,
     "evolves_to": 36,
     "evolve_level": 36,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/35.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png"
   },
@@ -320,6 +355,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/36.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/36.png"
   },
@@ -329,6 +365,7 @@
     "tier": 1,
     "evolves_to": 38,
     "evolve_level": 36,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/37.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/37.png"
   },
@@ -338,6 +375,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/38.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/38.png"
   },
@@ -347,6 +385,7 @@
     "tier": 1,
     "evolves_to": 40,
     "evolve_level": 36,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/39.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/39.png"
   },
@@ -356,6 +395,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/40.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/40.png"
   },
@@ -365,6 +405,7 @@
     "tier": 1,
     "evolves_to": 42,
     "evolve_level": 22,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/41.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/41.png"
   },
@@ -374,6 +415,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/42.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/42.png"
   },
@@ -383,6 +425,7 @@
     "tier": 1,
     "evolves_to": 44,
     "evolve_level": 21,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/43.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/43.png"
   },
@@ -392,6 +435,7 @@
     "tier": 2,
     "evolves_to": 45,
     "evolve_level": 36,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/44.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/44.png"
   },
@@ -401,6 +445,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/45.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/45.png"
   },
@@ -410,6 +455,7 @@
     "tier": 1,
     "evolves_to": 47,
     "evolve_level": 24,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/46.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/46.png"
   },
@@ -419,6 +465,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/47.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/47.png"
   },
@@ -428,6 +475,7 @@
     "tier": 1,
     "evolves_to": 49,
     "evolve_level": 31,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/48.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/48.png"
   },
@@ -437,6 +485,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/49.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/49.png"
   },
@@ -446,6 +495,7 @@
     "tier": 1,
     "evolves_to": 51,
     "evolve_level": 26,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/50.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/50.png"
   },
@@ -455,6 +505,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/51.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/51.png"
   },
@@ -464,6 +515,7 @@
     "tier": 1,
     "evolves_to": 53,
     "evolve_level": 28,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/52.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/52.png"
   },
@@ -473,6 +525,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/53.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/53.png"
   },
@@ -482,6 +535,7 @@
     "tier": 1,
     "evolves_to": 55,
     "evolve_level": 33,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/54.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/54.png"
   },
@@ -491,6 +545,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/55.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/55.png"
   },
@@ -500,6 +555,7 @@
     "tier": 1,
     "evolves_to": 57,
     "evolve_level": 28,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/56.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/56.png"
   },
@@ -509,6 +565,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/57.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/57.png"
   },
@@ -518,6 +575,7 @@
     "tier": 1,
     "evolves_to": 59,
     "evolve_level": 36,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/58.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/58.png"
   },
@@ -527,6 +585,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/59.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/59.png"
   },
@@ -536,6 +595,7 @@
     "tier": 1,
     "evolves_to": 61,
     "evolve_level": 25,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/60.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/60.png"
   },
@@ -545,6 +605,7 @@
     "tier": 2,
     "evolves_to": 62,
     "evolve_level": 40,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/61.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/61.png"
   },
@@ -554,6 +615,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/62.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/62.png"
   },
@@ -563,6 +625,7 @@
     "tier": 1,
     "evolves_to": 64,
     "evolve_level": 16,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/63.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/63.png"
   },
@@ -572,6 +635,7 @@
     "tier": 2,
     "evolves_to": 65,
     "evolve_level": 36,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/64.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/64.png"
   },
@@ -581,6 +645,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/65.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/65.png"
   },
@@ -590,6 +655,7 @@
     "tier": 1,
     "evolves_to": 67,
     "evolve_level": 28,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/66.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/66.png"
   },
@@ -599,6 +665,7 @@
     "tier": 2,
     "evolves_to": 68,
     "evolve_level": 48,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/67.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/67.png"
   },
@@ -608,6 +675,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/68.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/68.png"
   },
@@ -617,6 +685,7 @@
     "tier": 1,
     "evolves_to": 70,
     "evolve_level": 21,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/69.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/69.png"
   },
@@ -626,6 +695,7 @@
     "tier": 2,
     "evolves_to": 71,
     "evolve_level": 36,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/70.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/70.png"
   },
@@ -635,6 +705,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/71.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/71.png"
   },
@@ -644,6 +715,7 @@
     "tier": 1,
     "evolves_to": 73,
     "evolve_level": 30,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/72.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/72.png"
   },
@@ -653,6 +725,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/73.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/73.png"
   },
@@ -662,6 +735,7 @@
     "tier": 1,
     "evolves_to": 75,
     "evolve_level": 25,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/74.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/74.png"
   },
@@ -671,6 +745,7 @@
     "tier": 2,
     "evolves_to": 76,
     "evolve_level": 48,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/75.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/75.png"
   },
@@ -680,6 +755,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/76.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/76.png"
   },
@@ -689,6 +765,7 @@
     "tier": 1,
     "evolves_to": 78,
     "evolve_level": 40,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/77.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/77.png"
   },
@@ -698,6 +775,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/78.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/78.png"
   },
@@ -707,6 +785,7 @@
     "tier": 1,
     "evolves_to": 80,
     "evolve_level": 37,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/79.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/79.png"
   },
@@ -716,6 +795,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/80.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/80.png"
   },
@@ -725,6 +805,7 @@
     "tier": 1,
     "evolves_to": 82,
     "evolve_level": 30,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/81.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/81.png"
   },
@@ -734,6 +815,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/82.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/82.png"
   },
@@ -743,6 +825,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/83.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/83.png"
   },
@@ -752,6 +835,7 @@
     "tier": 1,
     "evolves_to": 85,
     "evolve_level": 31,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/84.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/84.png"
   },
@@ -761,6 +845,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/85.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/85.png"
   },
@@ -770,6 +855,7 @@
     "tier": 1,
     "evolves_to": 87,
     "evolve_level": 34,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/86.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/86.png"
   },
@@ -779,6 +865,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/87.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/87.png"
   },
@@ -788,6 +875,7 @@
     "tier": 1,
     "evolves_to": 89,
     "evolve_level": 38,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/88.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/88.png"
   },
@@ -797,6 +885,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/89.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/89.png"
   },
@@ -806,6 +895,7 @@
     "tier": 1,
     "evolves_to": 91,
     "evolve_level": 36,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/90.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/90.png"
   },
@@ -815,6 +905,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/91.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/91.png"
   },
@@ -824,6 +915,7 @@
     "tier": 1,
     "evolves_to": 93,
     "evolve_level": 25,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/92.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/92.png"
   },
@@ -833,6 +925,7 @@
     "tier": 2,
     "evolves_to": 94,
     "evolve_level": 48,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/93.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/93.png"
   },
@@ -842,6 +935,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png"
   },
@@ -851,6 +945,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/95.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/95.png"
   },
@@ -860,6 +955,7 @@
     "tier": 1,
     "evolves_to": 97,
     "evolve_level": 26,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/96.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/96.png"
   },
@@ -869,6 +965,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/97.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/97.png"
   },
@@ -878,6 +975,7 @@
     "tier": 1,
     "evolves_to": 99,
     "evolve_level": 28,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/98.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/98.png"
   },
@@ -887,6 +985,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/99.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/99.png"
   },
@@ -896,6 +995,7 @@
     "tier": 1,
     "evolves_to": 101,
     "evolve_level": 30,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/100.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/100.png"
   },
@@ -905,6 +1005,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/101.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/101.png"
   },
@@ -914,6 +1015,7 @@
     "tier": 1,
     "evolves_to": 103,
     "evolve_level": 36,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/102.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/102.png"
   },
@@ -923,6 +1025,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/103.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/103.png"
   },
@@ -932,6 +1035,7 @@
     "tier": 1,
     "evolves_to": 105,
     "evolve_level": 28,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/104.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/104.png"
   },
@@ -941,6 +1045,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/105.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/105.png"
   },
@@ -950,6 +1055,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/106.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/106.png"
   },
@@ -959,6 +1065,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/107.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/107.png"
   },
@@ -968,6 +1075,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/108.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/108.png"
   },
@@ -977,6 +1085,7 @@
     "tier": 1,
     "evolves_to": 110,
     "evolve_level": 35,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/109.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/109.png"
   },
@@ -986,6 +1095,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/110.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/110.png"
   },
@@ -995,6 +1105,7 @@
     "tier": 1,
     "evolves_to": 112,
     "evolve_level": 42,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/111.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/111.png"
   },
@@ -1004,6 +1115,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/112.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/112.png"
   },
@@ -1013,6 +1125,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/113.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/113.png"
   },
@@ -1022,6 +1135,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/114.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/114.png"
   },
@@ -1031,6 +1145,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/115.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/115.png"
   },
@@ -1040,6 +1155,7 @@
     "tier": 1,
     "evolves_to": 117,
     "evolve_level": 32,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/116.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/116.png"
   },
@@ -1049,6 +1165,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/117.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/117.png"
   },
@@ -1058,6 +1175,7 @@
     "tier": 1,
     "evolves_to": 119,
     "evolve_level": 33,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/118.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/118.png"
   },
@@ -1067,6 +1185,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/119.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/119.png"
   },
@@ -1076,6 +1195,7 @@
     "tier": 1,
     "evolves_to": 121,
     "evolve_level": 36,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/120.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/120.png"
   },
@@ -1085,6 +1205,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/121.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/121.png"
   },
@@ -1094,6 +1215,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/122.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/122.png"
   },
@@ -1103,6 +1225,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/123.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/123.png"
   },
@@ -1112,6 +1235,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/124.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/124.png"
   },
@@ -1121,6 +1245,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/125.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/125.png"
   },
@@ -1130,6 +1255,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/126.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/126.png"
   },
@@ -1139,6 +1265,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/127.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/127.png"
   },
@@ -1148,6 +1275,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/128.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/128.png"
   },
@@ -1157,6 +1285,7 @@
     "tier": 1,
     "evolves_to": 130,
     "evolve_level": 20,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/129.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/129.png"
   },
@@ -1166,6 +1295,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/130.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/130.png"
   },
@@ -1175,6 +1305,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/131.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/131.png"
   },
@@ -1184,6 +1315,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
   },
@@ -1193,6 +1325,7 @@
     "tier": 1,
     "evolves_to": 134,
     "evolve_level": 36,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png"
   },
@@ -1202,6 +1335,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/134.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/134.png"
   },
@@ -1211,6 +1345,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/135.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png"
   },
@@ -1220,6 +1355,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/136.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/136.png"
   },
@@ -1229,6 +1365,7 @@
     "tier": 2,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/137.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/137.png"
   },
@@ -1238,6 +1375,7 @@
     "tier": 1,
     "evolves_to": 139,
     "evolve_level": 40,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/138.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/138.png"
   },
@@ -1247,6 +1385,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/139.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/139.png"
   },
@@ -1256,6 +1395,7 @@
     "tier": 1,
     "evolves_to": 141,
     "evolve_level": 40,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/140.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/140.png"
   },
@@ -1265,6 +1405,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/141.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/141.png"
   },
@@ -1274,6 +1415,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/142.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/142.png"
   },
@@ -1283,6 +1425,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/143.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png"
   },
@@ -1292,6 +1435,7 @@
     "tier": 4,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/144.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/144.png"
   },
@@ -1301,6 +1445,7 @@
     "tier": 4,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/145.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/145.png"
   },
@@ -1310,6 +1455,7 @@
     "tier": 4,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/146.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png"
   },
@@ -1319,6 +1465,7 @@
     "tier": 1,
     "evolves_to": 148,
     "evolve_level": 30,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/147.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/147.png"
   },
@@ -1328,6 +1475,7 @@
     "tier": 2,
     "evolves_to": 149,
     "evolve_level": 55,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/148.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/148.png"
   },
@@ -1337,6 +1485,7 @@
     "tier": 3,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": true,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/149.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/149.png"
   },
@@ -1346,6 +1495,7 @@
     "tier": 4,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png"
   },
@@ -1355,6 +1505,7 @@
     "tier": 4,
     "evolves_to": null,
     "evolve_level": null,
+    "evolution_only": false,
     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/151.png",
     "sprite_pixel": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png"
   }

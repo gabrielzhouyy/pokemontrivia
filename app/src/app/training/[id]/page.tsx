@@ -15,7 +15,7 @@ const LEVEL_CAP = 100;
 
 export default function TrainingPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
-  const baseId = Number(id);
+  const speciesId = Number(id);
   const router = useRouter();
 
   const [profile, setProfile] = useState<Profile | null>(null);
@@ -30,21 +30,27 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
       router.replace("/login");
       return;
     }
-    if (!p.caught.includes(baseId)) {
-      router.replace(`/encounter/${baseId}`);
+    const owned = p.owned[speciesId];
+    // Not owned at all → bounce to encounter (or pokedex if evolution-only).
+    if (!owned) {
+      const sp = getPokemon(speciesId);
+      router.replace(sp.evolution_only ? "/pokedex" : `/encounter/${speciesId}`);
+      return;
+    }
+    // Owned but already evolved past — this slot is locked.
+    if (owned.evolved) {
+      router.replace("/pokedex");
       return;
     }
     setProfile(p);
-    const owned = p.owned[baseId];
-    const tier = getPokemon(owned.speciesId).tier;
+    const tier = getPokemon(speciesId).tier;
     setQuestion(pickQuestion(tier, p.history));
-  }, [router, baseId]);
+  }, [router, speciesId]);
 
   if (!profile) return null;
-  const owned = profile.owned[baseId];
+  const owned = profile.owned[speciesId];
   if (!owned) return null;
-  const current = getPokemon(owned.speciesId);
-  const base = getPokemon(baseId);
+  const current = getPokemon(speciesId);
 
   function pushFloat(text: string, cls: string) {
     const key = Date.now() + Math.random();
@@ -52,8 +58,8 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
     setTimeout(() => setFloats((f) => f.filter((x) => x.key !== key)), 1000);
   }
 
-  function nextQuestion(p: Profile) {
-    const tier = getPokemon(p.owned[baseId].speciesId).tier;
+  function nextQuestion(p: Profile, sid: number) {
+    const tier = getPokemon(sid).tier;
     setQuestion(pickQuestion(tier, p.history));
   }
 
@@ -67,28 +73,35 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
       saveProfile(p);
       setProfile(p);
       pushFloat("Try again!", "text-red-500");
-      nextQuestion(p);
+      nextQuestion(p, speciesId);
       return;
     }
     p.stats.correct += 1;
     p.stats.currentStreak += 1;
     p.stats.longestStreak = Math.max(p.stats.longestStreak, p.stats.currentStreak);
 
-    const ownedNow = p.owned[baseId];
+    const ownedNow = p.owned[speciesId];
     let level = ownedNow.level;
     if (level < LEVEL_CAP) level += 1;
-    let speciesId = ownedNow.speciesId;
+
     const cur = getPokemon(speciesId);
     const evolvesAt = cur.evolve_level;
     let didEvolve = false;
+    let evolvedToId = speciesId;
     if (cur.evolves_to !== null && evolvesAt !== null && level >= evolvesAt) {
       const evolvedTo = getPokemon(cur.evolves_to);
-      speciesId = evolvedTo.id;
-      p.evolved = Array.from(new Set([...p.evolved, baseId]));
+      // Lock the current slot (frozen at evolve_level) and unlock the evolved
+      // form as a new owned entry, auto-caught.
+      p.owned[speciesId] = { level: evolvesAt, evolved: true };
+      p.owned[evolvedTo.id] = { level: evolvesAt, evolved: false };
+      p.caught = Array.from(new Set([...p.caught, evolvedTo.id]));
+      p.evolved = Array.from(new Set([...p.evolved, speciesId]));
       didEvolve = true;
+      evolvedToId = evolvedTo.id;
       setEvolveMessage(`${cur.name} evolved into ${evolvedTo.name}!`);
+    } else {
+      p.owned[speciesId] = { level, evolved: false };
     }
-    p.owned[baseId] = { id: ownedNow.id, level, speciesId };
     saveProfile(p);
     setProfile(p);
 
@@ -100,10 +113,11 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
       setTimeout(() => {
         setEvolving(false);
         setEvolveMessage("");
-        nextQuestion(p);
+        // Route to the evolved form's training page so the kid keeps going.
+        router.replace(`/training/${evolvedToId}`);
       }, 2400);
     } else {
-      nextQuestion(p);
+      nextQuestion(p, speciesId);
     }
   }
 

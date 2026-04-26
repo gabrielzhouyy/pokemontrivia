@@ -102,19 +102,30 @@ export default function PokedexPage() {
         {POKEMON.map((p, idx) => {
           const caught = profile.caught.includes(p.id);
           const owned = profile.owned[p.id];
-          const currentSpriteId = owned?.speciesId ?? p.id;
           const tierClass = TIER_COLOR[p.tier];
-          const href = caught ? `/training/${p.id}` : `/encounter/${p.id}`;
-          return (
-            <Link
-              href={href}
-              key={p.id}
-              className={`flex flex-col items-center p-2 rounded-2xl border-2 ${tierClass} hover:scale-105 active:scale-95 transition`}
-            >
+
+          // Three states for the cell:
+          //   1. owned + active   → clickable, routes to /training/[id]
+          //   2. owned + evolved  → locked, base sprite, ⛓ badge, NOT a link
+          //   3. uncaught         → silhouette + "???". Evolution-only species
+          //                         get an extra ✨ "evolve to unlock" hint.
+          //   4. uncaught wild    → clickable, routes to /encounter/[id]
+          const isOwnedActive = caught && owned && !owned.evolved;
+          const isOwnedEvolved = caught && owned && owned.evolved;
+          const isLockedEvolutionOnly = !caught && p.evolution_only;
+
+          const cellClass = `flex flex-col items-center p-2 rounded-2xl border-2 ${tierClass} transition ${
+            isOwnedEvolved || isLockedEvolutionOnly
+              ? "opacity-90 cursor-not-allowed"
+              : "hover:scale-105 active:scale-95"
+          }`;
+
+          const inner = (
+            <>
               <div className="relative w-full aspect-square flex items-center justify-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${currentSpriteId}.png`}
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${p.id}.png`}
                   alt={caught ? p.name : "???"}
                   className={`w-full h-full object-contain image-pixelated ${
                     caught ? "" : "brightness-0 opacity-40"
@@ -122,9 +133,25 @@ export default function PokedexPage() {
                   loading={idx < 60 ? "eager" : "lazy"}
                   decoding="async"
                 />
-                {caught && (
+                {isOwnedActive && (
                   <span className="absolute top-0 right-0 bg-green-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                     ✓
+                  </span>
+                )}
+                {isOwnedEvolved && (
+                  <span
+                    className="absolute top-0 right-0 bg-purple-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center"
+                    title="Evolved past — locked"
+                  >
+                    ⛓
+                  </span>
+                )}
+                {isLockedEvolutionOnly && (
+                  <span
+                    className="absolute top-0 right-0 bg-yellow-400 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center"
+                    title="Evolve the previous form to unlock"
+                  >
+                    ✨
                   </span>
                 )}
               </div>
@@ -135,8 +162,28 @@ export default function PokedexPage() {
                 {caught ? p.name : "???"}
               </div>
               {owned && (
-                <div className="text-[10px] text-gray-500">L{owned.level}</div>
+                <div className="text-[10px] text-gray-500">
+                  L{owned.level}
+                  {owned.evolved && " ⛓"}
+                </div>
               )}
+              {isLockedEvolutionOnly && (
+                <div className="text-[10px] text-yellow-600 font-bold">evolve only</div>
+              )}
+            </>
+          );
+
+          if (isOwnedEvolved || isLockedEvolutionOnly) {
+            return (
+              <div key={p.id} className={cellClass}>
+                {inner}
+              </div>
+            );
+          }
+          const href = isOwnedActive ? `/training/${p.id}` : `/encounter/${p.id}`;
+          return (
+            <Link href={href} key={p.id} className={cellClass}>
+              {inner}
             </Link>
           );
         })}
