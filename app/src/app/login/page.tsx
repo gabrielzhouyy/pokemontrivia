@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { loadProfile, newProfile, saveProfile } from "@/lib/storage";
 import { playClick, playWrong } from "@/lib/audio";
@@ -58,7 +59,25 @@ export default function LoginPage() {
         <h1 className="text-3xl font-extrabold text-center mb-2">
           Pokemon <span className="text-red-500">Math</span> Catcher
         </h1>
-        <p className="text-center text-gray-600 mb-6">Sign in or create a trainer</p>
+        <p className="text-center text-gray-600 mb-4">Who&apos;s playing?</p>
+
+        <div className="grid grid-cols-2 gap-3 mb-5">
+          <button
+            type="button"
+            disabled
+            className="bg-red-100 border-2 border-red-400 rounded-2xl py-3 px-2 flex flex-col items-center cursor-default"
+          >
+            <span className="text-3xl">🧒</span>
+            <span className="font-extrabold text-sm mt-1">Player</span>
+          </button>
+          <Link
+            href="/admin/login"
+            className="bg-yellow-50 hover:bg-yellow-100 border-2 border-yellow-300 rounded-2xl py-3 px-2 flex flex-col items-center active:scale-95 transition"
+          >
+            <span className="text-3xl">🧓</span>
+            <span className="font-extrabold text-sm mt-1">Professor Oak</span>
+          </Link>
+        </div>
 
         <label className="block text-sm font-bold mb-1">Trainer name</label>
         <input

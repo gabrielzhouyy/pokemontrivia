@@ -21,6 +21,11 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
 
   const [profile, setProfile] = useState<Profile | null>(null);
   const [question, setQuestion] = useState<Question | null>(null);
+  // Increments on every new question presentation. Used as a key on the
+  // QuestionModal so it remounts even when the same question is re-presented
+  // (e.g. tiny bank where pickQuestion returns the same object) — otherwise
+  // the modal stays locked on its previous feedback state.
+  const [qSerial, setQSerial] = useState(0);
   const [floats, setFloats] = useState<{ key: number; text: string; cls: string }[]>([]);
   const [evolving, setEvolving] = useState(false);
   const [evolveMessage, setEvolveMessage] = useState("");
@@ -46,6 +51,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
     setProfile(p);
     const sp = getPokemon(speciesId);
     setQuestion(pickQuestion(p.age, subjectFor(sp.id), sp.tier, p.history));
+    setQSerial((s) => s + 1);
   }, [router, speciesId]);
 
   if (!profile) return null;
@@ -62,6 +68,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
   function nextQuestion(p: Profile, sid: number) {
     const sp = getPokemon(sid);
     setQuestion(pickQuestion(p.age, subjectFor(sp.id), sp.tier, p.history));
+    setQSerial((s) => s + 1);
   }
 
   function handleAnswer(correct: boolean) {
@@ -179,6 +186,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
         const prefix = sub && sub.id !== "math" ? `${sub.label} — ` : "";
         return (
           <QuestionModal
+            key={qSerial}
             question={question}
             onAnswer={handleAnswer}
             subtitle={`${prefix}Train ${current.name} L${owned.level} — answer to level up!`}
