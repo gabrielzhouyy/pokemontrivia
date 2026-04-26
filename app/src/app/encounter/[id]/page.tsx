@@ -7,6 +7,7 @@ import {
   recordAnswer,
   type Question,
 } from "@/lib/questions";
+import { subjectFor, getSubject } from "@/lib/subjects";
 import { loadCurrentProfile, saveProfile, type Profile } from "@/lib/storage";
 import { playCatch } from "@/lib/audio";
 import QuestionModal from "@/components/QuestionModal";
@@ -42,7 +43,8 @@ export default function EncounterPage({ params }: { params: Promise<{ id: string
     }
     setProfile(p);
     const t = setTimeout(() => {
-      const q = pickQuestion(pkmn.tier, p.history);
+      const subject = subjectFor(pkmn.id);
+      const q = pickQuestion(subject, pkmn.tier, p.history);
       setQuestion(q);
       setPhase("question");
     }, 1100);
@@ -77,7 +79,7 @@ export default function EncounterPage({ params }: { params: Promise<{ id: string
         setTimeout(() => router.replace("/pokedex"), 1800);
       } else {
         setAttempt(attempt + 1);
-        const nextQ = pickQuestion(pokemon.tier, p.history);
+        const nextQ = pickQuestion(subjectFor(pokemon.id), pokemon.tier, p.history);
         setQuestion(nextQ);
       }
     }
@@ -126,15 +128,19 @@ export default function EncounterPage({ params }: { params: Promise<{ id: string
         </div>
       </div>
 
-      {phase === "question" && question && (
-        <QuestionModal
-          question={question}
-          onAnswer={handleAnswer}
-          subtitle={`Throw ${attempt} of 3 — answer to catch ${pokemon.name}!`}
-          onExit={() => router.replace("/pokedex")}
-          exitLabel="← Run away"
-        />
-      )}
+      {phase === "question" && question && (() => {
+        const sub = getSubject(subjectFor(pokemon.id));
+        const prefix = sub && sub.id !== "math" ? `${sub.label} — ` : "";
+        return (
+          <QuestionModal
+            question={question}
+            onAnswer={handleAnswer}
+            subtitle={`${prefix}Throw ${attempt} of 3 — answer to catch ${pokemon.name}!`}
+            onExit={() => router.replace("/pokedex")}
+            exitLabel="← Run away"
+          />
+        );
+      })()}
 
       {phase === "caught" && (
         <div className="mt-6 text-center">

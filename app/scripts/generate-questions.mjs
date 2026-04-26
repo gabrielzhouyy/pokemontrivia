@@ -195,8 +195,8 @@ for (const denom of [2, 4, 5, 10]) {
 const banks = { 1: tier1, 2: tier2, 3: tier3, 4: tier4 };
 for (const [tier, bank] of Object.entries(banks)) {
   writeFileSync(
-    join(__dirname, "..", "data", "questions", `tier-${tier}.json`),
+    join(__dirname, "..", "data", "questions", "math", `tier-${tier}.json`),
     JSON.stringify(bank, null, 2) + "\n",
   );
-  console.log(`Tier ${tier}: ${bank.length} questions`);
+  console.log(`Math tier ${tier}: ${bank.length} questions`);
 }

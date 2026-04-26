@@ -7,6 +7,7 @@ import {
   recordAnswer,
   type Question,
 } from "@/lib/questions";
+import { subjectFor, getSubject } from "@/lib/subjects";
 import { loadCurrentProfile, saveProfile, type Profile } from "@/lib/storage";
 import { playEvolve } from "@/lib/audio";
 import QuestionModal from "@/components/QuestionModal";
@@ -43,8 +44,8 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
       return;
     }
     setProfile(p);
-    const tier = getPokemon(speciesId).tier;
-    setQuestion(pickQuestion(tier, p.history));
+    const sp = getPokemon(speciesId);
+    setQuestion(pickQuestion(subjectFor(sp.id), sp.tier, p.history));
   }, [router, speciesId]);
 
   if (!profile) return null;
@@ -59,8 +60,8 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
   }
 
   function nextQuestion(p: Profile, sid: number) {
-    const tier = getPokemon(sid).tier;
-    setQuestion(pickQuestion(tier, p.history));
+    const sp = getPokemon(sid);
+    setQuestion(pickQuestion(subjectFor(sp.id), sp.tier, p.history));
   }
 
   function handleAnswer(correct: boolean) {
@@ -173,15 +174,19 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
         </div>
       )}
 
-      {!evolving && question && (
-        <QuestionModal
-          question={question}
-          onAnswer={handleAnswer}
-          subtitle={`Train ${current.name} L${owned.level} — answer to level up!`}
-          onExit={() => router.replace("/pokedex")}
-          exitLabel="← Stop training"
-        />
-      )}
+      {!evolving && question && (() => {
+        const sub = getSubject(subjectFor(current.id));
+        const prefix = sub && sub.id !== "math" ? `${sub.label} — ` : "";
+        return (
+          <QuestionModal
+            question={question}
+            onAnswer={handleAnswer}
+            subtitle={`${prefix}Train ${current.name} L${owned.level} — answer to level up!`}
+            onExit={() => router.replace("/pokedex")}
+            exitLabel="← Stop training"
+          />
+        );
+      })()}
     </main>
   );
 }

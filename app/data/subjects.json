@@ -1,0 +1,8 @@
+{
+  "subjects": [
+    { "id": "math",    "label": "Math",    "pokemon_range": [1, 50] },
+    { "id": "english", "label": "English", "pokemon_range": [51, 100] },
+    { "id": "chinese", "label": "Chinese", "pokemon_range": [101, 151] }
+  ],
+  "fallback_subject": "math"
+}
