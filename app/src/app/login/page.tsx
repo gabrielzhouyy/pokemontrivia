@@ -33,8 +33,9 @@ export default function LoginPage() {
     if (pin.length !== 4) return setError("PIN must be 4 digits");
     setBusy(true);
     try {
-      // Try login first; if it 401s, register (Pri level applied to new profile).
-      let profile = await apiLogin(u, pin);
+      // Try login first (passing priLevel so a returning kid can switch
+      // levels on this screen); if it 401s, fall back to register.
+      let profile = await apiLogin(u, pin, priLevel);
       if (!profile) {
         profile = await apiRegister(u, pin, priLevel);
         if (!profile) {
@@ -88,9 +89,7 @@ export default function LoginPage() {
           autoFocus
         />
 
-        <label className="block text-sm font-bold mb-1">
-          Primary level <span className="text-gray-400 font-normal">(new players only)</span>
-        </label>
+        <label className="block text-sm font-bold mb-1">Primary level</label>
         <select
           value={priLevel}
           onChange={(e) => setPriLevel(Number(e.target.value))}

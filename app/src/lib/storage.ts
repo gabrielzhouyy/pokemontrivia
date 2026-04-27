@@ -20,11 +20,15 @@ const LEGACY_KEY_CURRENT = "pmc:current";
 
 // ---------- Auth-flow helpers (used by /login and /admin/login) ----------
 
-export async function login(username: string, pin: string): Promise<Profile | null> {
+export async function login(
+  username: string,
+  pin: string,
+  priLevel?: number,
+): Promise<Profile | null> {
   const res = await fetch("/api/auth/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username, pin }),
+    body: JSON.stringify({ username, pin, priLevel }),
   });
   if (!res.ok) return null;
   await maybeMigrateLocalProfile(username);

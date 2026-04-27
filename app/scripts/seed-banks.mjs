@@ -183,11 +183,13 @@ for (let n = 1; n <= 6; n++) {
 }
 console.log("Pri banks:", banks);
 
-// Repopulate each Pri N bank's links: questions where pri_level <= N.
+// Repopulate each Pri N bank's links: STRICT (pri_level = N only).
+// Earlier draft used <= N (cumulative); switched to strict per dad's
+// preference — each level should drill its own content, no overlap.
 for (let n = 1; n <= 6; n++) {
   const bankId = banks[n];
   await sql`delete from bank_questions where bank_id = ${bankId}`;
-  const matching = await sql`select id from questions where pri_level <= ${n}`;
+  const matching = await sql`select id from questions where pri_level = ${n}`;
   if (matching.length > 0) {
     const chunkSize = 500;
     for (let i = 0; i < matching.length; i += chunkSize) {

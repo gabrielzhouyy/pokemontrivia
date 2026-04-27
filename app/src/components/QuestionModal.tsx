@@ -56,8 +56,13 @@ export default function QuestionModal({ question, onAnswer, subtitle, onExit, ex
   function numPad(d: string) {
     if (locked) return;
     playClick();
-    if (d === "⌫") setTyped(typed.slice(0, -1));
-    else if (typed.length < 4) setTyped(typed + d);
+    if (d === "⌫") {
+      setTyped(typed.slice(0, -1));
+      return;
+    }
+    // Only one decimal point allowed.
+    if (d === "." && typed.includes(".")) return;
+    if (typed.length < 6) setTyped(typed + d);
   }
   function submitNumPad() {
     if (locked || !typed) return;
@@ -136,18 +141,7 @@ export default function QuestionModal({ question, onAnswer, subtitle, onExit, ex
               </div>
             </div>
             <div className="grid grid-cols-3 gap-2">
-              {["1", "2", "3", "4", "5", "6", "7", "8", "9", "⌫", "0", "✓"].map((d) => {
-                if (d === "✓")
-                  return (
-                    <button
-                      key={d}
-                      onClick={submitNumPad}
-                      disabled={locked || !typed}
-                      className="bg-green-500 disabled:bg-gray-300 text-white rounded-2xl py-4 text-xl font-bold active:scale-95 transition"
-                    >
-                      {d}
-                    </button>
-                  );
+              {["1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "0", "⌫"].map((d) => {
                 return (
                   <button
                     key={d}
@@ -159,6 +153,14 @@ export default function QuestionModal({ question, onAnswer, subtitle, onExit, ex
                   </button>
                 );
               })}
+              <button
+                key="submit"
+                onClick={submitNumPad}
+                disabled={locked || !typed}
+                className="col-span-3 bg-green-500 disabled:bg-gray-300 text-white rounded-2xl py-3 text-xl font-bold active:scale-95 transition"
+              >
+                ✓
+              </button>
             </div>
           </>
         )}
