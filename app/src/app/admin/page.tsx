@@ -22,11 +22,13 @@ export default function AdminDashboard() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    if (!isAdminAuthenticated()) {
-      router.replace("/admin/login");
-      return;
-    }
-    setReady(true);
+    (async () => {
+      if (!(await isAdminAuthenticated())) {
+        router.replace("/admin/login");
+        return;
+      }
+      setReady(true);
+    })();
   }, [router]);
 
   if (!ready) {
@@ -52,8 +54,10 @@ export default function AdminDashboard() {
                   "Reset admin? This clears your password AND all admin overrides (subjects, ad-hoc questions). Player profiles are kept.",
                 )
               ) {
-                resetAdmin();
-                router.replace("/admin/login");
+                (async () => {
+                  await resetAdmin();
+                  router.replace("/admin/login");
+                })();
               }
             }}
             className="bg-gray-200 hover:bg-gray-300 px-3 py-2 rounded-2xl text-sm font-bold active:scale-95 transition"
@@ -62,8 +66,10 @@ export default function AdminDashboard() {
           </button>
           <button
             onClick={() => {
-              endAdminSession();
-              router.replace("/admin/login");
+              (async () => {
+                await endAdminSession();
+                router.replace("/admin/login");
+              })();
             }}
             className="bg-red-200 hover:bg-red-300 px-3 py-2 rounded-2xl text-sm font-bold active:scale-95 transition"
           >

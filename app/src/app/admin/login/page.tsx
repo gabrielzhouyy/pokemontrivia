@@ -19,11 +19,13 @@ export default function AdminLoginPage() {
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
-    if (isAdminAuthenticated()) {
-      router.replace("/admin");
-      return;
-    }
-    setMode(adminPasswordExists() ? "login" : "first-run");
+    (async () => {
+      if (await isAdminAuthenticated()) {
+        router.replace("/admin");
+        return;
+      }
+      setMode((await adminPasswordExists()) ? "login" : "first-run");
+    })();
   }, [router]);
 
   async function handleFirstRun(e: React.FormEvent) {
