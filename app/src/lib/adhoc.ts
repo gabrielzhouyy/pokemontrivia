@@ -23,6 +23,36 @@ function save(data: AdhocOverlay): void {
   localStorage.setItem(KEY, JSON.stringify(data));
 }
 
+// Push the entire overlay to the cloud (admin-only). Best-effort: on
+// failure we keep the local change but warn. Called by every mutating
+// helper below, so every admin edit also persists server-side.
+async function pushToCloud(data: AdhocOverlay): Promise<void> {
+  try {
+    await fetch("/api/admin/adhoc", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ overlay: data }),
+    });
+  } catch {
+    // Offline — local copy persists. Drop 4d will add a "stuck local"
+    // indicator so the dad knows there's an unsynced edit.
+  }
+}
+
+// Pull the latest overlay from the cloud and write it to localStorage.
+// Called from loadCurrentProfile so every session sees the latest edits.
+export async function syncAdhocFromCloud(): Promise<void> {
+  if (typeof window === "undefined") return;
+  try {
+    const res = await fetch("/api/config/adhoc", { cache: "no-store" });
+    if (!res.ok) return;
+    const j = (await res.json()) as { overlay: AdhocOverlay };
+    save(j.overlay ?? {});
+  } catch {
+    // Offline → keep local cache.
+  }
+}
+
 export function getAdhocBank(age: SeededAge, tier: Tier): Question[] {
   const data = load();
   return data[`age-${age}`]?.[String(tier)] ?? [];
@@ -33,6 +63,7 @@ export function setAdhocBank(age: SeededAge, tier: Tier, qs: Question[]): void {
   if (!data[`age-${age}`]) data[`age-${age}`] = {};
   data[`age-${age}`][String(tier)] = qs;
   save(data);
+  void pushToCloud(data);
 }
 
 export function addAdhocQuestion(age: SeededAge, tier: Tier, q: Question): void {

@@ -4,6 +4,7 @@ import {
   getAdminSubjectsOverride,
   getBundledSubjects,
   setAdminSubjectsOverride,
+  syncSubjectsFromCloud,
   type Subject,
 } from "@/lib/subjects";
 
@@ -42,17 +43,21 @@ export default function SubjectsTab() {
   const [usingOverride, setUsingOverride] = useState(false);
 
   useEffect(() => {
-    const override = getAdminSubjectsOverride();
-    const bundled = getBundledSubjects();
-    if (override) {
-      setItems(override.subjects.map(fromSubject));
-      setFallback(override.fallback_subject);
-      setUsingOverride(true);
-    } else {
-      setItems(bundled.subjects.map(fromSubject));
-      setFallback(bundled.fallback_subject);
-      setUsingOverride(false);
-    }
+    (async () => {
+      // Pull latest from cloud first so a different device's edits show up.
+      await syncSubjectsFromCloud();
+      const override = getAdminSubjectsOverride();
+      const bundled = getBundledSubjects();
+      if (override) {
+        setItems(override.subjects.map(fromSubject));
+        setFallback(override.fallback_subject);
+        setUsingOverride(true);
+      } else {
+        setItems(bundled.subjects.map(fromSubject));
+        setFallback(bundled.fallback_subject);
+        setUsingOverride(false);
+      }
+    })();
   }, []);
 
   function update(idx: number, patch: Partial<EditableSubject>) {
@@ -67,16 +72,16 @@ export default function SubjectsTab() {
     setItems((prev) => prev.filter((_, i) => i !== idx));
   }
 
-  function save() {
+  async function save() {
     const cfg = toConfig(items, fallback);
-    setAdminSubjectsOverride(cfg);
+    await setAdminSubjectsOverride(cfg);
     setSavedAt(Date.now());
     setUsingOverride(true);
   }
 
-  function revertToBundled() {
+  async function revertToBundled() {
     if (!confirm("Discard your overrides and use the bundled subjects.json?")) return;
-    setAdminSubjectsOverride(null);
+    await setAdminSubjectsOverride(null);
     const b = getBundledSubjects();
     setItems(b.subjects.map(fromSubject));
     setFallback(b.fallback_subject);

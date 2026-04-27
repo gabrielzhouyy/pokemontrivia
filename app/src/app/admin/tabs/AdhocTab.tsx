@@ -5,6 +5,7 @@ import {
   deleteAdhocQuestion,
   getAdhocBank,
   importAdhocBank,
+  syncAdhocFromCloud,
   SEEDED_AGES,
   type SeededAge,
 } from "@/lib/adhoc";
@@ -30,7 +31,13 @@ export default function AdhocTab() {
     setBank(getAdhocBank(age, tier));
   }
 
-  useEffect(refresh, [age, tier]);
+  useEffect(() => {
+    (async () => {
+      await syncAdhocFromCloud();
+      refresh();
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [age, tier]);
 
   function reset() {
     setPrompt("");

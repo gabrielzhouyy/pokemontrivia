@@ -59,14 +59,22 @@ export function subjectFor(pokemonId: number): SubjectId {
   return cfg.fallback_subject;
 }
 
-// Save Oak's edits. Pass `null` to clear the override.
-export function setAdminSubjectsOverride(cfg: SubjectsConfig | null): void {
-  if (typeof window === "undefined") return;
-  if (cfg === null) {
-    localStorage.removeItem("pmc:admin:subjects");
-  } else {
-    localStorage.setItem("pmc:admin:subjects", JSON.stringify(cfg));
+// Save Oak's edits. Pass `null` to clear the override. Writes to BOTH
+// localStorage (for instant local effect) and the cloud (admin-only PUT)
+// so changes propagate to other devices.
+export async function setAdminSubjectsOverride(cfg: SubjectsConfig | null): Promise<void> {
+  if (typeof window !== "undefined") {
+    if (cfg === null) {
+      localStorage.removeItem("pmc:admin:subjects");
+    } else {
+      localStorage.setItem("pmc:admin:subjects", JSON.stringify(cfg));
+    }
   }
+  await fetch("/api/admin/subjects", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ config: cfg }),
+  });
 }
 
 export function getAdminSubjectsOverride(): SubjectsConfig | null {
@@ -76,6 +84,24 @@ export function getAdminSubjectsOverride(): SubjectsConfig | null {
     return raw ? (JSON.parse(raw) as SubjectsConfig) : null;
   } catch {
     return null;
+  }
+}
+
+// Pull the latest override from the cloud and write it to localStorage.
+// Called from loadCurrentProfile so every player session gets the fresh config.
+export async function syncSubjectsFromCloud(): Promise<void> {
+  if (typeof window === "undefined") return;
+  try {
+    const res = await fetch("/api/config/subjects", { cache: "no-store" });
+    if (!res.ok) return;
+    const j = (await res.json()) as { override: SubjectsConfig | null };
+    if (j.override && j.override.subjects && j.override.subjects.length > 0) {
+      localStorage.setItem("pmc:admin:subjects", JSON.stringify(j.override));
+    } else {
+      localStorage.removeItem("pmc:admin:subjects");
+    }
+  } catch {
+    // Offline / network error → keep whatever is in localStorage.
   }
 }
 

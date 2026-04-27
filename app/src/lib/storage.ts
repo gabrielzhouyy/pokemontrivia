@@ -9,6 +9,8 @@ import {
   DEFAULT_AGE,
   newProfile as newProfileObj,
 } from "./profile-types";
+import { syncSubjectsFromCloud } from "./subjects";
+import { syncAdhocFromCloud } from "./adhoc";
 
 export type { Profile, OwnedPokemon };
 export { DEFAULT_AGE };
@@ -60,6 +62,11 @@ export async function loadCurrentProfile(): Promise<Profile | null> {
   if (res.status === 401 || res.status === 404) return null;
   if (!res.ok) return null;
   const j = (await res.json()) as { profile: Profile };
+  // Refresh admin overrides into localStorage so cross-device admin edits
+  // (subjects + ad-hoc questions) take effect on this device. Best-effort
+  // — failures here don't block the profile load.
+  void syncSubjectsFromCloud();
+  void syncAdhocFromCloud();
   return j.profile;
 }
 
