@@ -5,42 +5,39 @@ import { requireSession } from "@/lib/auth";
 import type { Profile } from "@/lib/profile-types";
 
 // Assemble the kid's full Profile from the relational tables. Mirrors the
-// shape used by the frontend (src/lib/storage.ts Profile type).
+// shape used by the frontend (src/lib/storage.ts Profile type). Fires all
+// 6 queries concurrently — they're independent.
 async function assembleProfile(userId: number): Promise<Profile | null> {
   const db = getDb();
-  const [user] = await db.select().from(schema.users).where(eq(schema.users.id, userId));
+
+  const [userRows, statsRows, ownedRows, caughtRows, evolvedRows, historyRows] =
+    await Promise.all([
+      db.select().from(schema.users).where(eq(schema.users.id, userId)),
+      db.select().from(schema.userStats).where(eq(schema.userStats.userId, userId)),
+      db.select().from(schema.pokemonOwned).where(eq(schema.pokemonOwned.userId, userId)),
+      db
+        .select({ speciesId: schema.caught.speciesId })
+        .from(schema.caught)
+        .where(eq(schema.caught.userId, userId)),
+      db
+        .select({ speciesId: schema.evolved.speciesId })
+        .from(schema.evolved)
+        .where(eq(schema.evolved.userId, userId)),
+      db.select().from(schema.questionHistory).where(eq(schema.questionHistory.userId, userId)),
+    ]);
+
+  const user = userRows[0];
   if (!user) return null;
+  const stats = statsRows[0];
 
-  const [stats] = await db
-    .select()
-    .from(schema.userStats)
-    .where(eq(schema.userStats.userId, userId));
-
-  const ownedRows = await db
-    .select()
-    .from(schema.pokemonOwned)
-    .where(eq(schema.pokemonOwned.userId, userId));
   const owned: Profile["owned"] = {};
   for (const row of ownedRows) {
     owned[row.speciesId] = { level: row.level, evolved: row.evolved };
   }
 
-  const caughtRows = await db
-    .select({ speciesId: schema.caught.speciesId })
-    .from(schema.caught)
-    .where(eq(schema.caught.userId, userId));
   const caught = caughtRows.map((r) => r.speciesId);
-
-  const evolvedRows = await db
-    .select({ speciesId: schema.evolved.speciesId })
-    .from(schema.evolved)
-    .where(eq(schema.evolved.userId, userId));
   const evolved = evolvedRows.map((r) => r.speciesId);
 
-  const historyRows = await db
-    .select()
-    .from(schema.questionHistory)
-    .where(eq(schema.questionHistory.userId, userId));
   const history: Profile["history"] = {};
   for (const row of historyRows) {
     history[row.questionId] = {

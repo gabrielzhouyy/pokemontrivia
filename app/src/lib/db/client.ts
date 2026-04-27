@@ -1,18 +1,14 @@
-// Database client (server-side only). Imports the postgres-js driver and
-// wires it to Drizzle. Designed for Supabase's transaction pooler URL,
-// which is short-lived-connection friendly for Vercel serverless.
+// Database client (server-side only). Uses Neon's HTTP driver so each query
+// rides over a single HTTPS request instead of holding a TCP+TLS connection.
+// This eliminates the cold-start handshake on Vercel serverless. Drizzle's
+// neon-http adapter speaks the same SQL builder as before.
 
-import { drizzle } from "drizzle-orm/postgres-js";
-import postgres from "postgres";
+import { drizzle } from "drizzle-orm/neon-http";
+import { neon } from "@neondatabase/serverless";
 import * as schema from "./schema";
 
 const url = process.env.DATABASE_URL;
-if (!url && process.env.NODE_ENV !== "test") {
-  // We only throw at first use, not at import time — that way Next.js can
-  // build pages that don't touch the DB without crashing.
-}
 
-let _client: ReturnType<typeof postgres> | null = null;
 let _db: ReturnType<typeof drizzle<typeof schema>> | null = null;
 
 export function getDb() {
@@ -22,11 +18,7 @@ export function getDb() {
       "DATABASE_URL is not set. Add it to app/.env.local — see README for setup.",
     );
   }
-  // `prepare: false` is required when connecting through Supabase's transaction
-  // pooler (PgBouncer) since PgBouncer doesn't support prepared statements
-  // across the connection pool.
-  _client = postgres(url, { prepare: false });
-  _db = drizzle(_client, { schema });
+  _db = drizzle(neon(url), { schema });
   return _db;
 }
 
