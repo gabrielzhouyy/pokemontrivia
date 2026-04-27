@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   adminPasswordExists,
@@ -67,6 +68,12 @@ export default function AdminLoginPage() {
   return (
     <main className="flex flex-1 items-center justify-center p-6">
       <div className="w-full max-w-sm bg-white rounded-3xl shadow-xl p-8">
+        <Link
+          href="/login"
+          className="inline-flex items-center gap-1 text-sm font-bold text-gray-600 hover:text-gray-900 mb-3"
+        >
+          ← Back to player sign in
+        </Link>
         <div className="text-center mb-4">
           <div className="text-5xl mb-2">🧓</div>
           <h1 className="text-2xl font-extrabold">Professor Oak</h1>
