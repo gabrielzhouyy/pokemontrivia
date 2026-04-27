@@ -6,6 +6,7 @@ type UserSummary = {
   id: number;
   username: string;
   age: number;
+  bankId: number | null;
   caughtCount: number;
   evolvedCount: number;
   totalAnswered: number;
@@ -16,26 +17,48 @@ type UserSummary = {
   createdAt: number;
 };
 
+type BankOption = { id: number; name: string };
+
 export default function UsersTab() {
   const [users, setUsers] = useState<UserSummary[] | null>(null);
+  const [banks, setBanks] = useState<BankOption[]>([]);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState<number | null>(null);
 
   async function refresh() {
     setError("");
-    const res = await fetch("/api/admin/users", { cache: "no-store" });
-    if (!res.ok) {
+    const [usersRes, banksRes] = await Promise.all([
+      fetch("/api/admin/users", { cache: "no-store" }),
+      fetch("/api/admin/banks", { cache: "no-store" }),
+    ]);
+    if (!usersRes.ok) {
       setError("Failed to load players");
       setUsers([]);
       return;
     }
-    const j = (await res.json()) as { users: UserSummary[] };
-    setUsers(j.users);
+    const usersJ = (await usersRes.json()) as { users: UserSummary[] };
+    setUsers(usersJ.users);
+    if (banksRes.ok) {
+      const banksJ = (await banksRes.json()) as { banks: BankOption[] };
+      setBanks(banksJ.banks);
+    }
   }
 
   useEffect(() => {
     refresh();
   }, []);
+
+  async function setBank(user: UserSummary, bankId: number | null) {
+    setBusy(user.id);
+    const res = await fetch(`/api/admin/users/${user.id}/bank`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ bankId }),
+    });
+    setBusy(null);
+    if (res.ok) refresh();
+    else setError("Failed to assign bank");
+  }
 
   async function setAge(user: UserSummary, age: number) {
     setBusy(user.id);
@@ -120,6 +143,25 @@ export default function UsersTab() {
                 {Array.from({ length: 11 }, (_, i) => i + 5).map((a) => (
                   <option key={a} value={a}>
                     {a}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="flex items-center gap-2">
+              <span className="text-sm font-bold">Bank</span>
+              <select
+                value={u.bankId ?? ""}
+                onChange={(e) => {
+                  const v = e.target.value === "" ? null : Number(e.target.value);
+                  if (v !== u.bankId) setBank(u, v);
+                }}
+                disabled={busy === u.id}
+                className="p-2 border-2 border-gray-300 rounded-xl text-sm disabled:opacity-50"
+              >
+                <option value="">— none —</option>
+                {banks.map((b) => (
+                  <option key={b.id} value={b.id}>
+                    {b.name}
                   </option>
                 ))}
               </select>

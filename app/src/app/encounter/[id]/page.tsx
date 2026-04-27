@@ -46,7 +46,7 @@ export default function EncounterPage({ params }: { params: Promise<{ id: string
       setProfile(p);
       cancel = setTimeout(() => {
         const subject = subjectFor(pkmn.id);
-        const q = pickQuestion(p.age, subject, pkmn.tier, p.history);
+        const q = pickQuestion(subject, pkmn.tier, p.history);
         setQuestion(q);
         setPhase("question");
       }, 1100);
@@ -86,7 +86,7 @@ export default function EncounterPage({ params }: { params: Promise<{ id: string
         setTimeout(() => router.replace("/pokedex"), 1800);
       } else {
         setAttempt(attempt + 1);
-        const nextQ = pickQuestion(p.age, subjectFor(pokemon.id), pokemon.tier, p.history);
+        const nextQ = pickQuestion(subjectFor(pokemon.id), pokemon.tier, p.history);
         setQuestion(nextQ);
       }
     }

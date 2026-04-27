@@ -1,38 +1,7 @@
-// Age-7 banks (the only seeded bucket today).
-import a7MathT1 from "../../data/questions/age-7/math/tier-1.json";
-import a7MathT2 from "../../data/questions/age-7/math/tier-2.json";
-import a7MathT3 from "../../data/questions/age-7/math/tier-3.json";
-import a7MathT4 from "../../data/questions/age-7/math/tier-4.json";
-import a7EnT1 from "../../data/questions/age-7/english/tier-1.json";
-import a7EnT2 from "../../data/questions/age-7/english/tier-2.json";
-import a7EnT3 from "../../data/questions/age-7/english/tier-3.json";
-import a7EnT4 from "../../data/questions/age-7/english/tier-4.json";
-import a7ZhT1 from "../../data/questions/age-7/chinese/tier-1.json";
-import a7ZhT2 from "../../data/questions/age-7/chinese/tier-2.json";
-import a7ZhT3 from "../../data/questions/age-7/chinese/tier-3.json";
-import a7ZhT4 from "../../data/questions/age-7/chinese/tier-4.json";
-import a7AdT1 from "../../data/questions/age-7/general/tier-1.json";
-import a7AdT2 from "../../data/questions/age-7/general/tier-2.json";
-import a7AdT3 from "../../data/questions/age-7/general/tier-3.json";
-import a7AdT4 from "../../data/questions/age-7/general/tier-4.json";
-
-// Age-12 banks (empty stubs; admin can populate via Oak).
-import a12MathT1 from "../../data/questions/age-12/math/tier-1.json";
-import a12MathT2 from "../../data/questions/age-12/math/tier-2.json";
-import a12MathT3 from "../../data/questions/age-12/math/tier-3.json";
-import a12MathT4 from "../../data/questions/age-12/math/tier-4.json";
-import a12EnT1 from "../../data/questions/age-12/english/tier-1.json";
-import a12EnT2 from "../../data/questions/age-12/english/tier-2.json";
-import a12EnT3 from "../../data/questions/age-12/english/tier-3.json";
-import a12EnT4 from "../../data/questions/age-12/english/tier-4.json";
-import a12ZhT1 from "../../data/questions/age-12/chinese/tier-1.json";
-import a12ZhT2 from "../../data/questions/age-12/chinese/tier-2.json";
-import a12ZhT3 from "../../data/questions/age-12/chinese/tier-3.json";
-import a12ZhT4 from "../../data/questions/age-12/chinese/tier-4.json";
-import a12AdT1 from "../../data/questions/age-12/general/tier-1.json";
-import a12AdT2 from "../../data/questions/age-12/general/tier-2.json";
-import a12AdT3 from "../../data/questions/age-12/general/tier-3.json";
-import a12AdT4 from "../../data/questions/age-12/general/tier-4.json";
+// Drop 5c: questions are sourced from the cloud via /api/config/bank
+// and cached in localStorage. No more bundled JSON imports — the master
+// pool + bank assignments live in Postgres. Drop 5b's seed script is
+// the bridge that backfilled the bundled questions there.
 
 import { FALLBACK_SUBJECT, type SubjectId } from "./subjects";
 
@@ -50,86 +19,67 @@ export type Question = {
 
 type Tier = 1 | 2 | 3 | 4;
 
-// Age buckets we have seeded folders for. Add a row here when you seed
-// a new age-N folder of bundled questions.
-export const SEEDED_AGES = [7, 12] as const;
-export type SeededAge = (typeof SEEDED_AGES)[number];
-
-type SubjectBank = Record<Tier, Question[]>;
-type AgeBank = Record<SubjectId, SubjectBank>;
-
-const BUNDLED: Record<SeededAge, AgeBank> = {
-  7: {
-    math: { 1: a7MathT1 as Question[], 2: a7MathT2 as Question[], 3: a7MathT3 as Question[], 4: a7MathT4 as Question[] },
-    english: { 1: a7EnT1 as Question[], 2: a7EnT2 as Question[], 3: a7EnT3 as Question[], 4: a7EnT4 as Question[] },
-    chinese: { 1: a7ZhT1 as Question[], 2: a7ZhT2 as Question[], 3: a7ZhT3 as Question[], 4: a7ZhT4 as Question[] },
-    "general": { 1: a7AdT1 as Question[], 2: a7AdT2 as Question[], 3: a7AdT3 as Question[], 4: a7AdT4 as Question[] },
-  },
-  12: {
-    math: { 1: a12MathT1 as Question[], 2: a12MathT2 as Question[], 3: a12MathT3 as Question[], 4: a12MathT4 as Question[] },
-    english: { 1: a12EnT1 as Question[], 2: a12EnT2 as Question[], 3: a12EnT3 as Question[], 4: a12EnT4 as Question[] },
-    chinese: { 1: a12ZhT1 as Question[], 2: a12ZhT2 as Question[], 3: a12ZhT3 as Question[], 4: a12ZhT4 as Question[] },
-    "general": { 1: a12AdT1 as Question[], 2: a12AdT2 as Question[], 3: a12AdT3 as Question[], 4: a12AdT4 as Question[] },
-  },
+type CachedBank = {
+  bankId: number | null;
+  bankName?: string;
+  questions: Array<Question & { subject: SubjectId; ageSuggestion?: number }>;
+  fetchedAt: number;
 };
 
-// Sort seeded ages by distance to the kid's age (closest first).
-function seededAgesByDistance(age: number): SeededAge[] {
-  return [...SEEDED_AGES].sort((a, b) => Math.abs(age - a) - Math.abs(age - b));
-}
+const CACHE_KEY = "pmc:bank:active";
 
-// Read admin-authored ad-hoc overlay from localStorage (Oak's UI writes here).
-// Shape: { "age-7": { "1": [Q,...], "2": [...], ... }, "age-12": {...} }
-function readAdminAdhocOverlay(age: SeededAge, tier: Tier): Question[] {
-  if (typeof window === "undefined") return [];
+function readCache(): CachedBank | null {
+  if (typeof window === "undefined") return null;
   try {
-    const raw = localStorage.getItem("pmc:admin:adhoc");
-    if (!raw) return [];
-    const parsed = JSON.parse(raw) as Record<string, Record<string, Question[]>>;
-    return parsed[`age-${age}`]?.[String(tier)] ?? [];
+    const raw = localStorage.getItem(CACHE_KEY);
+    return raw ? (JSON.parse(raw) as CachedBank) : null;
   } catch {
-    return [];
+    return null;
   }
 }
 
-const ALL_BY_ID = new Map<string, Question>();
-for (const ageBank of Object.values(BUNDLED)) {
-  for (const subjectBank of Object.values(ageBank)) {
-    for (const tier of [1, 2, 3, 4] as const) {
-      for (const q of subjectBank[tier]) ALL_BY_ID.set(q.id, q);
-    }
+function writeCache(b: CachedBank): void {
+  if (typeof window === "undefined") return;
+  localStorage.setItem(CACHE_KEY, JSON.stringify(b));
+}
+
+// Pull the current user's bank from the server. Called by storage.ts on
+// every loadCurrentProfile so cross-device admin edits propagate after
+// the kid's next page load.
+export async function syncBankFromCloud(): Promise<void> {
+  if (typeof window === "undefined") return;
+  try {
+    const res = await fetch("/api/config/bank", { cache: "no-store" });
+    if (!res.ok) return;
+    const j = (await res.json()) as {
+      bankId: number | null;
+      bankName?: string;
+      questions: Array<Question & { subject: string; ageSuggestion?: number }>;
+    };
+    writeCache({
+      bankId: j.bankId,
+      bankName: j.bankName,
+      questions: (j.questions ?? []) as CachedBank["questions"],
+      fetchedAt: Date.now(),
+    });
+  } catch {
+    // Offline → keep whatever's already cached.
   }
 }
 
-export function getQuestionById(id: string): Question | undefined {
-  return ALL_BY_ID.get(id);
+// Filter the cached bank for the (subject, tier) the encounter needs.
+// Falls back to the configured fallback subject (e.g. "math") if the
+// requested subject has no questions in the bank.
+function bankFor(subject: SubjectId, tier: Tier): Question[] {
+  const cache = readCache();
+  if (!cache || cache.questions.length === 0) return [];
+  const exact = cache.questions.filter((q) => q.subject === subject && q.tier === tier);
+  if (exact.length > 0) return exact;
+  return cache.questions.filter((q) => q.subject === FALLBACK_SUBJECT && q.tier === tier);
 }
 
-// Resolve which bank to actually serve from. Tries each seeded age (closest
-// first), checking both the requested subject and the configured fallback
-// subject at each. Returns the first non-empty.
-function resolveBank(age: number, subject: SubjectId, tier: Tier): Question[] {
-  const ages = seededAgesByDistance(age);
-  for (const a of ages) {
-    const ageBank = BUNDLED[a];
-    if (!ageBank) continue;
-    let bank = ageBank[subject]?.[tier] ?? [];
-    if (subject === "general") {
-      bank = [...bank, ...readAdminAdhocOverlay(a, tier)];
-    }
-    if (bank.length > 0) return bank;
-  }
-  // Final fallback: the configured fallback subject at the closest seeded age.
-  for (const a of ages) {
-    const ageBank = BUNDLED[a];
-    const bank = ageBank?.[FALLBACK_SUBJECT]?.[tier];
-    if (bank && bank.length > 0) return bank;
-  }
-  return [];
-}
-
-export function getBank(age: number, subject: SubjectId, tier: Tier): Question[] {
-  return resolveBank(age, subject, tier);
+export function getBank(subject: SubjectId, tier: Tier): Question[] {
+  return bankFor(subject, tier);
 }
 
 export type QuestionHistoryEntry = {
@@ -142,13 +92,18 @@ export type QuestionHistoryEntry = {
 
 export type QuestionHistory = Record<string, QuestionHistoryEntry>;
 
+// Spaced repetition: missed questions resurface after a few encounters.
+// 1. Surface a "due" review (previously missed, reviewCounter ticked to 0).
+// 2. Else pick a fresh (never-seen) question from the bank.
+// 3. Else pick any random question.
 export function pickQuestion(
-  age: number,
   subject: SubjectId,
   tier: Tier,
   history: QuestionHistory,
-): Question {
-  const bank = resolveBank(age, subject, tier);
+): Question | null {
+  const bank = bankFor(subject, tier);
+  if (bank.length === 0) return null;
+
   const due = bank.filter((q) => {
     const h = history[q.id];
     return h && !h.correct && (h.reviewCounter ?? 0) <= 0;
@@ -161,6 +116,15 @@ export function pickQuestion(
   return bank[Math.floor(Math.random() * bank.length)];
 }
 
+// Look up by id across the cached bank (used to render review prompts etc).
+export function getQuestionById(id: string): Question | undefined {
+  const cache = readCache();
+  if (!cache) return undefined;
+  return cache.questions.find((q) => q.id === id);
+}
+
+// After answering, update history. Decrement reviewCounters on OTHER
+// outstanding questions.
 export function recordAnswer(
   history: QuestionHistory,
   questionId: string,
