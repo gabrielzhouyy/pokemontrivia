@@ -19,6 +19,10 @@ export const users = pgTable("users", {
   role: text("role").notNull().default("player"), // 'player' | 'admin'
   age: integer("age").notNull().default(7),
   starterId: integer("starter_id"),
+  // Drop 5b: which bank of questions this user draws from. Null = unassigned
+  // (player UI falls back to the legacy bundled-JSON picker until 5c flips
+  // the runtime to use banks).
+  bankId: integer("bank_id"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
 
@@ -111,9 +115,55 @@ export const adminQuestions = pgTable(
   (t) => [primaryKey({ columns: [t.age, t.subject, t.tier] })],
 );
 
+// ---------------- Drop 5b: master question pool + banks ----------------
+
+// Single source of truth for every question — bundled (seeded from JSON)
+// and admin-authored alike. Drop 5c's runtime picker reads from here via
+// bank_questions instead of from the JSON files at module load.
+export const questions = pgTable("questions", {
+  id: text("id").primaryKey(),
+  subject: text("subject").notNull(), // 'math' | 'english' | 'chinese' | 'general'
+  tier: integer("tier").notNull(),
+  // Which age bucket the question was originally authored for (7 or 12).
+  // Used as a soft suggestion when admin curates a bank, not a hard filter.
+  ageSuggestion: integer("age_suggestion").notNull().default(7),
+  prompt: text("prompt").notNull(),
+  answer: text("answer").notNull(),
+  format: text("format").notNull(), // 'multiple_choice' | 'number_pad' | 'text_pad'
+  choices: jsonb("choices").$type<string[] | null>(),
+  skill: text("skill").notNull().default("custom"),
+  source: text("source").notNull().default("bundled"), // 'bundled' | 'custom'
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+});
+
+// A named, reusable collection of questions. Many users can share one bank.
+export const banks = pgTable("banks", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull().unique(),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
+});
+
+// Many-to-many: which questions are inside a bank.
+export const bankQuestions = pgTable(
+  "bank_questions",
+  {
+    bankId: integer("bank_id")
+      .notNull()
+      .references(() => banks.id, { onDelete: "cascade" }),
+    questionId: text("question_id")
+      .notNull()
+      .references(() => questions.id, { onDelete: "cascade" }),
+  },
+  (t) => [primaryKey({ columns: [t.bankId, t.questionId] })],
+);
+
 export type DbUser = typeof users.$inferSelect;
 export type DbPokemonOwned = typeof pokemonOwned.$inferSelect;
 export type DbCaught = typeof caught.$inferSelect;
 export type DbEvolved = typeof evolved.$inferSelect;
 export type DbQuestionHistory = typeof questionHistory.$inferSelect;
 export type DbUserStats = typeof userStats.$inferSelect;
+export type DbQuestion = typeof questions.$inferSelect;
+export type DbBank = typeof banks.$inferSelect;
+export type DbBankQuestion = typeof bankQuestions.$inferSelect;
