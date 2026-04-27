@@ -13,7 +13,7 @@ export async function GET() {
     const rows = await db
       .select()
       .from(schema.adminQuestions)
-      .where(eq(schema.adminQuestions.subject, "ad-hoc"));
+      .where(eq(schema.adminQuestions.subject, "general"));
     const overlay: Record<string, Record<string, unknown[]>> = {};
     for (const row of rows) {
       const ageKey = `age-${row.age}`;

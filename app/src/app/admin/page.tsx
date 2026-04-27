@@ -12,7 +12,7 @@ type Tab = "users" | "subjects" | "adhoc" | "export";
 const TABS: { id: Tab; label: string; emoji: string }[] = [
   { id: "users", label: "Users", emoji: "👥" },
   { id: "subjects", label: "Subjects", emoji: "📚" },
-  { id: "adhoc", label: "Ad-hoc questions", emoji: "✏️" },
+  { id: "adhoc", label: "General questions", emoji: "✏️" },
   { id: "export", label: "Export", emoji: "📦" },
 ];
 
@@ -51,7 +51,7 @@ export default function AdminDashboard() {
             onClick={() => {
               if (
                 confirm(
-                  "Reset admin? This clears your password AND all admin overrides (subjects, ad-hoc questions). Player profiles are kept.",
+                  "Reset admin? This clears your password AND all admin overrides (subjects, general questions). Player profiles are kept.",
                 )
               ) {
                 (async () => {

@@ -110,10 +110,10 @@ export default function AdhocTab() {
 
   return (
     <div>
-      <h2 className="text-xl font-extrabold mb-3">Ad-hoc questions</h2>
+      <h2 className="text-xl font-extrabold mb-3">General questions</h2>
       <p className="text-sm text-gray-600 mb-4">
-        Authored questions live here. Map a Pokemon range to subject &quot;ad-hoc&quot; in the Subjects
-        tab to use them in encounters.
+        Authored questions live here. Map a Pokemon range to subject &quot;general&quot; in the
+        Subjects tab to use them in encounters.
       </p>
 
       <div className="flex flex-wrap gap-3 mb-4">

@@ -52,14 +52,14 @@ export default function ExportTab() {
                 className="border-2 border-gray-200 rounded-2xl p-4 flex items-center gap-3"
               >
                 <div className="flex-1">
-                  <div className="font-bold">age-{age}/ad-hoc/tier-{tier}.json</div>
+                  <div className="font-bold">age-{age}/general/tier-{tier}.json</div>
                   <div className="text-xs text-gray-500">
                     {bank.length} question{bank.length === 1 ? "" : "s"}
                   </div>
                 </div>
                 <button
                   onClick={() =>
-                    downloadJson(`age-${age}-adhoc-tier-${tier}.json`, bank)
+                    downloadJson(`age-${age}-general-tier-${tier}.json`, bank)
                   }
                   disabled={bank.length === 0}
                   className="bg-blue-200 hover:bg-blue-300 disabled:bg-gray-100 disabled:text-gray-400 px-4 py-2 rounded-2xl text-sm font-bold active:scale-95 transition"
@@ -89,7 +89,7 @@ export default function ExportTab() {
       <h3 className="font-extrabold mt-6 mb-2">How to make these permanent</h3>
       <ol className="list-decimal list-inside text-sm text-gray-700 space-y-1">
         <li>Download <code>subjects.json</code> → replace <code>app/data/subjects.json</code> in the repo.</li>
-        <li>Download an ad-hoc bank → replace <code>app/data/questions/age-N/ad-hoc/tier-T.json</code> with the same name.</li>
+        <li>Download a general bank → replace <code>app/data/questions/age-N/general/tier-T.json</code> with the same name.</li>
         <li>Commit and push. Once the kid pulls/refreshes, the bundled JSON kicks in everywhere.</li>
       </ol>
     </div>

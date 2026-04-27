@@ -58,6 +58,20 @@ export default function UsersTab() {
     else setError("Failed to reset progress");
   }
 
+  async function del(user: UserSummary) {
+    if (
+      !confirm(
+        `Delete ${user.username} permanently? All their progress (caught, evolved, history) is wiped. This cannot be undone.`,
+      )
+    )
+      return;
+    setBusy(user.id);
+    const res = await fetch(`/api/admin/users/${user.id}`, { method: "DELETE" });
+    setBusy(null);
+    if (res.ok) refresh();
+    else setError("Failed to delete user");
+  }
+
   if (users === null) {
     return <div className="text-center text-gray-500 py-10">Loading players…</div>;
   }
@@ -94,18 +108,21 @@ export default function UsersTab() {
             </div>
             <label className="flex items-center gap-2">
               <span className="text-sm font-bold">Age</span>
-              <input
-                type="number"
-                min={3}
-                max={18}
-                defaultValue={u.age}
-                onBlur={(e) => {
+              <select
+                value={u.age}
+                onChange={(e) => {
                   const v = Number(e.target.value);
                   if (v && v !== u.age) setAge(u, v);
                 }}
                 disabled={busy === u.id}
-                className="w-16 p-2 border-2 border-gray-300 rounded-xl text-center disabled:opacity-50"
-              />
+                className="p-2 border-2 border-gray-300 rounded-xl text-sm disabled:opacity-50"
+              >
+                {Array.from({ length: 11 }, (_, i) => i + 5).map((a) => (
+                  <option key={a} value={a}>
+                    {a}
+                  </option>
+                ))}
+              </select>
             </label>
             <button
               onClick={() => reset(u)}
@@ -113,6 +130,13 @@ export default function UsersTab() {
               className="bg-red-100 hover:bg-red-200 text-red-700 disabled:opacity-50 px-3 py-2 rounded-2xl text-sm font-bold active:scale-95 transition"
             >
               Reset progress
+            </button>
+            <button
+              onClick={() => del(u)}
+              disabled={busy === u.id}
+              className="bg-red-500 hover:bg-red-600 text-white disabled:opacity-50 px-3 py-2 rounded-2xl text-sm font-bold active:scale-95 transition"
+            >
+              Delete
             </button>
           </div>
         ))}

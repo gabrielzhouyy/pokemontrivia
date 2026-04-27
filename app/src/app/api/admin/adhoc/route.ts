@@ -17,7 +17,7 @@ export async function PUT(req: Request) {
       return NextResponse.json({ error: "Missing overlay" }, { status: 400 });
     }
     const db = getDb();
-    await db.delete(schema.adminQuestions).where(eq(schema.adminQuestions.subject, "ad-hoc"));
+    await db.delete(schema.adminQuestions).where(eq(schema.adminQuestions.subject, "general"));
     const rows: { age: number; subject: string; tier: number; questions: unknown[] }[] = [];
     for (const [ageKey, tiers] of Object.entries(body.overlay)) {
       const age = Number(ageKey.replace(/^age-/, ""));
@@ -26,7 +26,7 @@ export async function PUT(req: Request) {
         const tier = Number(tierKey);
         if (!Number.isFinite(tier)) continue;
         if (!Array.isArray(qs)) continue;
-        rows.push({ age, subject: "ad-hoc", tier, questions: qs });
+        rows.push({ age, subject: "general", tier, questions: qs });
       }
     }
     if (rows.length > 0) await db.insert(schema.adminQuestions).values(rows);

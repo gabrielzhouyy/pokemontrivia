@@ -11,10 +11,10 @@ import a7ZhT1 from "../../data/questions/age-7/chinese/tier-1.json";
 import a7ZhT2 from "../../data/questions/age-7/chinese/tier-2.json";
 import a7ZhT3 from "../../data/questions/age-7/chinese/tier-3.json";
 import a7ZhT4 from "../../data/questions/age-7/chinese/tier-4.json";
-import a7AdT1 from "../../data/questions/age-7/ad-hoc/tier-1.json";
-import a7AdT2 from "../../data/questions/age-7/ad-hoc/tier-2.json";
-import a7AdT3 from "../../data/questions/age-7/ad-hoc/tier-3.json";
-import a7AdT4 from "../../data/questions/age-7/ad-hoc/tier-4.json";
+import a7AdT1 from "../../data/questions/age-7/general/tier-1.json";
+import a7AdT2 from "../../data/questions/age-7/general/tier-2.json";
+import a7AdT3 from "../../data/questions/age-7/general/tier-3.json";
+import a7AdT4 from "../../data/questions/age-7/general/tier-4.json";
 
 // Age-12 banks (empty stubs; admin can populate via Oak).
 import a12MathT1 from "../../data/questions/age-12/math/tier-1.json";
@@ -29,10 +29,10 @@ import a12ZhT1 from "../../data/questions/age-12/chinese/tier-1.json";
 import a12ZhT2 from "../../data/questions/age-12/chinese/tier-2.json";
 import a12ZhT3 from "../../data/questions/age-12/chinese/tier-3.json";
 import a12ZhT4 from "../../data/questions/age-12/chinese/tier-4.json";
-import a12AdT1 from "../../data/questions/age-12/ad-hoc/tier-1.json";
-import a12AdT2 from "../../data/questions/age-12/ad-hoc/tier-2.json";
-import a12AdT3 from "../../data/questions/age-12/ad-hoc/tier-3.json";
-import a12AdT4 from "../../data/questions/age-12/ad-hoc/tier-4.json";
+import a12AdT1 from "../../data/questions/age-12/general/tier-1.json";
+import a12AdT2 from "../../data/questions/age-12/general/tier-2.json";
+import a12AdT3 from "../../data/questions/age-12/general/tier-3.json";
+import a12AdT4 from "../../data/questions/age-12/general/tier-4.json";
 
 import { FALLBACK_SUBJECT, type SubjectId } from "./subjects";
 
@@ -63,13 +63,13 @@ const BUNDLED: Record<SeededAge, AgeBank> = {
     math: { 1: a7MathT1 as Question[], 2: a7MathT2 as Question[], 3: a7MathT3 as Question[], 4: a7MathT4 as Question[] },
     english: { 1: a7EnT1 as Question[], 2: a7EnT2 as Question[], 3: a7EnT3 as Question[], 4: a7EnT4 as Question[] },
     chinese: { 1: a7ZhT1 as Question[], 2: a7ZhT2 as Question[], 3: a7ZhT3 as Question[], 4: a7ZhT4 as Question[] },
-    "ad-hoc": { 1: a7AdT1 as Question[], 2: a7AdT2 as Question[], 3: a7AdT3 as Question[], 4: a7AdT4 as Question[] },
+    "general": { 1: a7AdT1 as Question[], 2: a7AdT2 as Question[], 3: a7AdT3 as Question[], 4: a7AdT4 as Question[] },
   },
   12: {
     math: { 1: a12MathT1 as Question[], 2: a12MathT2 as Question[], 3: a12MathT3 as Question[], 4: a12MathT4 as Question[] },
     english: { 1: a12EnT1 as Question[], 2: a12EnT2 as Question[], 3: a12EnT3 as Question[], 4: a12EnT4 as Question[] },
     chinese: { 1: a12ZhT1 as Question[], 2: a12ZhT2 as Question[], 3: a12ZhT3 as Question[], 4: a12ZhT4 as Question[] },
-    "ad-hoc": { 1: a12AdT1 as Question[], 2: a12AdT2 as Question[], 3: a12AdT3 as Question[], 4: a12AdT4 as Question[] },
+    "general": { 1: a12AdT1 as Question[], 2: a12AdT2 as Question[], 3: a12AdT3 as Question[], 4: a12AdT4 as Question[] },
   },
 };
 
@@ -114,7 +114,7 @@ function resolveBank(age: number, subject: SubjectId, tier: Tier): Question[] {
     const ageBank = BUNDLED[a];
     if (!ageBank) continue;
     let bank = ageBank[subject]?.[tier] ?? [];
-    if (subject === "ad-hoc") {
+    if (subject === "general") {
       bank = [...bank, ...readAdminAdhocOverlay(a, tier)];
     }
     if (bank.length > 0) return bank;

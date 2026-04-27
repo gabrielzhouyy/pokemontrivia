@@ -3,7 +3,7 @@
     { "id": "math",    "label": "Math",    "pokemon_range": [1, 50] },
     { "id": "english", "label": "English", "pokemon_range": [51, 100] },
     { "id": "chinese", "label": "Chinese", "pokemon_range": [101, 151] },
-    { "id": "ad-hoc",  "label": "Ad-hoc",  "pokemon_range": null }
+    { "id": "general", "label": "General", "pokemon_range": null }
   ],
   "fallback_subject": "math"
 }
