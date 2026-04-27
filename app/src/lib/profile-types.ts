@@ -14,7 +14,8 @@ export type Profile = {
   // PIN never round-trips from server; this is just the field shape.
   pin: string;
   starterId: number | null;
-  age: number;
+  // Singapore Primary level (1–6).
+  priLevel: number;
   caught: number[];
   owned: Record<number, OwnedPokemon>;
   evolved: number[];
@@ -28,14 +29,16 @@ export type Profile = {
   createdAt: number;
 };
 
-export const DEFAULT_AGE = 7;
+export const DEFAULT_PRI_LEVEL = 1;
+export const PRI_LEVELS = [1, 2, 3, 4, 5, 6] as const;
+export type PriLevel = (typeof PRI_LEVELS)[number];
 
 export function newProfile(username: string, pin: string): Profile {
   return {
     username,
     pin,
     starterId: null,
-    age: DEFAULT_AGE,
+    priLevel: DEFAULT_PRI_LEVEL,
     caught: [],
     owned: {},
     evolved: [],

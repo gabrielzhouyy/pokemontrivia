@@ -23,7 +23,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
           custom: {
             subject: string;
             tier: number;
-            ageSuggestion?: number;
+            priLevel?: number;
             prompt: string;
             answer: string;
             format: Format;
@@ -52,7 +52,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
         id: questionId,
         subject: c.subject,
         tier: c.tier,
-        ageSuggestion: c.ageSuggestion ?? 7,
+        priLevel: c.priLevel ?? 1,
         prompt: c.prompt,
         answer: c.answer,
         format: c.format,

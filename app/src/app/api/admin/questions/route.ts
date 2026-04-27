@@ -15,7 +15,7 @@ export async function GET(req: Request) {
     const { searchParams } = new URL(req.url);
     const subject = searchParams.get("subject");
     const tier = searchParams.get("tier");
-    const age = searchParams.get("age");
+    const pri = searchParams.get("pri");
     const q = searchParams.get("q");
     const limit = Math.min(Number(searchParams.get("limit") ?? 200), 1000);
 
@@ -23,7 +23,7 @@ export async function GET(req: Request) {
     const where: SQL[] = [];
     if (subject) where.push(eq(schema.questions.subject, subject));
     if (tier) where.push(eq(schema.questions.tier, Number(tier)));
-    if (age) where.push(eq(schema.questions.ageSuggestion, Number(age)));
+    if (pri) where.push(eq(schema.questions.priLevel, Number(pri)));
     if (q && q.length >= 2) {
       const orClause = or(
         ilike(schema.questions.prompt, `%${q}%`),

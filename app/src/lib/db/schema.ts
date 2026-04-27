@@ -17,11 +17,11 @@ export const users = pgTable("users", {
   // bcrypt hash of the plaintext PIN (player) or password (admin).
   pinHash: text("pin_hash").notNull(),
   role: text("role").notNull().default("player"), // 'player' | 'admin'
-  age: integer("age").notNull().default(7),
+  // Singapore Primary level: 1 = Pri 1 (age ~7) … 6 = Pri 6 (age ~12).
+  // Drives which bundled "Pri N" bank is suggested at registration time.
+  priLevel: integer("pri_level").notNull().default(1),
   starterId: integer("starter_id"),
-  // Drop 5b: which bank of questions this user draws from. Null = unassigned
-  // (player UI falls back to the legacy bundled-JSON picker until 5c flips
-  // the runtime to use banks).
+  // Drop 5b: which bank of questions this user draws from. Null = unassigned.
   bankId: integer("bank_id"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
@@ -124,9 +124,9 @@ export const questions = pgTable("questions", {
   id: text("id").primaryKey(),
   subject: text("subject").notNull(), // 'math' | 'english' | 'chinese' | 'general'
   tier: integer("tier").notNull(),
-  // Which age bucket the question was originally authored for (7 or 12).
-  // Used as a soft suggestion when admin curates a bank, not a hard filter.
-  ageSuggestion: integer("age_suggestion").notNull().default(7),
+  // Singapore Primary curriculum level (1-6) the question targets.
+  // A bank "Pri N" contains questions where pri_level <= N (cumulative).
+  priLevel: integer("pri_level").notNull().default(1),
   prompt: text("prompt").notNull(),
   answer: text("answer").notNull(),
   format: text("format").notNull(), // 'multiple_choice' | 'number_pad' | 'text_pad'

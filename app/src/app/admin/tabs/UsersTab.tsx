@@ -1,11 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
-import { DEFAULT_AGE } from "@/lib/profile-types";
+import { DEFAULT_PRI_LEVEL, PRI_LEVELS } from "@/lib/profile-types";
 
 type UserSummary = {
   id: number;
   username: string;
-  age: number;
+  priLevel: number;
   bankId: number | null;
   caughtCount: number;
   evolvedCount: number;
@@ -60,16 +60,16 @@ export default function UsersTab() {
     else setError("Failed to assign bank");
   }
 
-  async function setAge(user: UserSummary, age: number) {
+  async function setPriLevel(user: UserSummary, priLevel: number) {
     setBusy(user.id);
     const res = await fetch(`/api/admin/users/${user.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ age }),
+      body: JSON.stringify({ priLevel }),
     });
     setBusy(null);
     if (res.ok) refresh();
-    else setError("Failed to set age");
+    else setError("Failed to set Pri level");
   }
 
   async function reset(user: UserSummary) {
@@ -113,7 +113,8 @@ export default function UsersTab() {
     <div>
       <h2 className="text-xl font-extrabold mb-3">Players (server)</h2>
       <p className="text-sm text-gray-600 mb-4">
-        Set each kid&apos;s age to control which question bank they get. Default is age {DEFAULT_AGE}.
+        Set each kid&apos;s Singapore Primary level (1–6). The Bank dropdown lets you override
+        which question pool they pull from. Default is Pri {DEFAULT_PRI_LEVEL}.
       </p>
       {error && <p className="text-red-500 mb-3 font-bold">{error}</p>}
       <div className="space-y-3">
@@ -130,19 +131,19 @@ export default function UsersTab() {
               </div>
             </div>
             <label className="flex items-center gap-2">
-              <span className="text-sm font-bold">Age</span>
+              <span className="text-sm font-bold">Pri</span>
               <select
-                value={u.age}
+                value={u.priLevel}
                 onChange={(e) => {
                   const v = Number(e.target.value);
-                  if (v && v !== u.age) setAge(u, v);
+                  if (v && v !== u.priLevel) setPriLevel(u, v);
                 }}
                 disabled={busy === u.id}
                 className="p-2 border-2 border-gray-300 rounded-xl text-sm disabled:opacity-50"
               >
-                {Array.from({ length: 11 }, (_, i) => i + 5).map((a) => (
+                {PRI_LEVELS.map((a) => (
                   <option key={a} value={a}>
-                    {a}
+                    Pri {a}
                   </option>
                 ))}
               </select>

@@ -3,12 +3,14 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { login as apiLogin, register as apiRegister } from "@/lib/storage";
+import { PRI_LEVELS } from "@/lib/profile-types";
 import { playClick, playWrong } from "@/lib/audio";
 
 export default function LoginPage() {
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [pin, setPin] = useState("");
+  const [priLevel, setPriLevel] = useState<number>(1);
   const [error, setError] = useState("");
   const [shaking, setShaking] = useState(false);
 
@@ -31,10 +33,10 @@ export default function LoginPage() {
     if (pin.length !== 4) return setError("PIN must be 4 digits");
     setBusy(true);
     try {
-      // Try login first; if it 401s, register.
+      // Try login first; if it 401s, register (Pri level applied to new profile).
       let profile = await apiLogin(u, pin);
       if (!profile) {
-        profile = await apiRegister(u, pin);
+        profile = await apiRegister(u, pin, priLevel);
         if (!profile) {
           // Username exists with a different PIN.
           playWrong();
@@ -85,6 +87,21 @@ export default function LoginPage() {
           placeholder="e.g. Ash"
           autoFocus
         />
+
+        <label className="block text-sm font-bold mb-1">
+          Primary level <span className="text-gray-400 font-normal">(new players only)</span>
+        </label>
+        <select
+          value={priLevel}
+          onChange={(e) => setPriLevel(Number(e.target.value))}
+          className="w-full text-lg p-3 border-2 border-gray-300 rounded-2xl focus:border-red-400 outline-none mb-4"
+        >
+          {PRI_LEVELS.map((n) => (
+            <option key={n} value={n}>
+              Pri {n}
+            </option>
+          ))}
+        </select>
 
         <label className="block text-sm font-bold mb-1">4-digit PIN</label>
         <div className="flex justify-center gap-3 my-3">

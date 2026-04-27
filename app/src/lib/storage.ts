@@ -6,14 +6,14 @@
 import {
   type Profile,
   type OwnedPokemon,
-  DEFAULT_AGE,
+  DEFAULT_PRI_LEVEL,
   newProfile as newProfileObj,
 } from "./profile-types";
 import { syncSubjectsFromCloud } from "./subjects";
 import { syncBankFromCloud } from "./questions";
 
 export type { Profile, OwnedPokemon };
-export { DEFAULT_AGE };
+export { DEFAULT_PRI_LEVEL };
 
 const LEGACY_KEY_PREFIX = "pmc:profile:";
 const LEGACY_KEY_CURRENT = "pmc:current";
@@ -31,11 +31,15 @@ export async function login(username: string, pin: string): Promise<Profile | nu
   return loadCurrentProfile();
 }
 
-export async function register(username: string, pin: string): Promise<Profile | null> {
+export async function register(
+  username: string,
+  pin: string,
+  priLevel?: number,
+): Promise<Profile | null> {
   const res = await fetch("/api/auth/register", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username, pin }),
+    body: JSON.stringify({ username, pin, priLevel }),
   });
   if (!res.ok) return null;
   await maybeMigrateLocalProfile(username);

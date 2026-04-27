@@ -1,1 +1,184 @@
-[]
+[
+  {
+    "id": "p5-zh-t3-1",
+    "tier": 3,
+    "skill": "idiom",
+    "format": "multiple_choice",
+    "prompt": "What does 一心一意 mean?",
+    "answer": "wholeheartedly",
+    "choices": [
+      "wholeheartedly",
+      "halfhearted",
+      "two minds",
+      "always different"
+    ]
+  },
+  {
+    "id": "p5-zh-t3-2",
+    "tier": 3,
+    "skill": "idiom",
+    "format": "multiple_choice",
+    "prompt": "What does 不可思议 mean?",
+    "answer": "unimaginable/incredible",
+    "choices": [
+      "thinking carefully",
+      "must think",
+      "unimaginable/incredible",
+      "thoughtful"
+    ]
+  },
+  {
+    "id": "p5-zh-t3-3",
+    "tier": 3,
+    "skill": "idiom",
+    "format": "multiple_choice",
+    "prompt": "What does 入乡随俗 mean?",
+    "answer": "when in Rome, do as Romans",
+    "choices": [
+      "go to countryside",
+      "follow customs",
+      "when in Rome, do as Romans",
+      "return home"
+    ]
+  },
+  {
+    "id": "p5-zh-t3-4",
+    "tier": 3,
+    "skill": "time",
+    "format": "multiple_choice",
+    "prompt": "What does 早上 mean?",
+    "answer": "morning",
+    "choices": [
+      "morning",
+      "evening",
+      "night",
+      "afternoon"
+    ]
+  },
+  {
+    "id": "p5-zh-t3-5",
+    "tier": 3,
+    "skill": "time",
+    "format": "multiple_choice",
+    "prompt": "What does 下午 mean?",
+    "answer": "afternoon",
+    "choices": [
+      "midnight",
+      "morning",
+      "afternoon",
+      "evening"
+    ]
+  },
+  {
+    "id": "p5-zh-t3-6",
+    "tier": 3,
+    "skill": "time",
+    "format": "multiple_choice",
+    "prompt": "What does 晚上 mean?",
+    "answer": "evening/night",
+    "choices": [
+      "morning",
+      "evening/night",
+      "afternoon",
+      "noon"
+    ]
+  },
+  {
+    "id": "p5-zh-t3-7",
+    "tier": 3,
+    "skill": "time",
+    "format": "multiple_choice",
+    "prompt": "What does 昨天 mean?",
+    "answer": "yesterday",
+    "choices": [
+      "today",
+      "tomorrow",
+      "yesterday",
+      "last week"
+    ]
+  },
+  {
+    "id": "p5-zh-t3-8",
+    "tier": 3,
+    "skill": "time",
+    "format": "multiple_choice",
+    "prompt": "What does 明天 mean?",
+    "answer": "tomorrow",
+    "choices": [
+      "tomorrow",
+      "today",
+      "next week",
+      "yesterday"
+    ]
+  },
+  {
+    "id": "p5-zh-t3-9",
+    "tier": 3,
+    "skill": "time",
+    "format": "multiple_choice",
+    "prompt": "What does 星期一 mean?",
+    "answer": "Monday",
+    "choices": [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Friday"
+    ]
+  },
+  {
+    "id": "p5-zh-t3-10",
+    "tier": 3,
+    "skill": "time",
+    "format": "multiple_choice",
+    "prompt": "What does 星期天 mean?",
+    "answer": "Sunday",
+    "choices": [
+      "Monday",
+      "Friday",
+      "Sunday",
+      "Saturday"
+    ]
+  },
+  {
+    "id": "p5-zh-t3-11",
+    "tier": 3,
+    "skill": "phrase",
+    "format": "multiple_choice",
+    "prompt": "How do you say 'I love you' in Chinese?",
+    "answer": "我爱你",
+    "choices": [
+      "我喜欢你",
+      "我想你",
+      "我爱你",
+      "你爱我"
+    ]
+  },
+  {
+    "id": "p5-zh-t3-12",
+    "tier": 3,
+    "skill": "phrase",
+    "format": "multiple_choice",
+    "prompt": "How do you say 'I'm sorry' formally?",
+    "answer": "对不起",
+    "choices": [
+      "谢谢",
+      "对不起",
+      "请进",
+      "再见"
+    ]
+  },
+  {
+    "id": "p5-zh-t3-13",
+    "tier": 3,
+    "skill": "phrase",
+    "format": "multiple_choice",
+    "prompt": "What does 慢慢来 mean?",
+    "answer": "take it slow",
+    "choices": [
+      "come quickly",
+      "walk slowly",
+      "go slowly",
+      "take it slow"
+    ]
+  }
+]

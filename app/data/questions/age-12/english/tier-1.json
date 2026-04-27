@@ -1,1 +1,212 @@
-[]
+[
+  {
+    "id": "p4-en-t1-1",
+    "tier": 1,
+    "skill": "tense_present",
+    "format": "multiple_choice",
+    "prompt": "She ___ to school every day.",
+    "answer": "walks",
+    "choices": [
+      "walks",
+      "walked",
+      "walking",
+      "walk"
+    ]
+  },
+  {
+    "id": "p4-en-t1-2",
+    "tier": 1,
+    "skill": "tense_present",
+    "format": "multiple_choice",
+    "prompt": "They ___ playing in the park.",
+    "answer": "are",
+    "choices": [
+      "are",
+      "be",
+      "am",
+      "is"
+    ]
+  },
+  {
+    "id": "p4-en-t1-3",
+    "tier": 1,
+    "skill": "tense_past",
+    "format": "multiple_choice",
+    "prompt": "Yesterday I ___ a book.",
+    "answer": "read",
+    "choices": [
+      "reads",
+      "read",
+      "reader",
+      "reading"
+    ]
+  },
+  {
+    "id": "p4-en-t1-4",
+    "tier": 1,
+    "skill": "tense_past",
+    "format": "multiple_choice",
+    "prompt": "He ___ his friend last week.",
+    "answer": "met",
+    "choices": [
+      "meets",
+      "meet",
+      "meeting",
+      "met"
+    ]
+  },
+  {
+    "id": "p4-en-t1-5",
+    "tier": 1,
+    "skill": "plural",
+    "format": "multiple_choice",
+    "prompt": "One mouse, two ___.",
+    "answer": "mice",
+    "choices": [
+      "mice",
+      "mices",
+      "mouses",
+      "mouse"
+    ]
+  },
+  {
+    "id": "p4-en-t1-6",
+    "tier": 1,
+    "skill": "plural",
+    "format": "multiple_choice",
+    "prompt": "One leaf, two ___.",
+    "answer": "leaves",
+    "choices": [
+      "leafes",
+      "leaves",
+      "leaf",
+      "leafs"
+    ]
+  },
+  {
+    "id": "p4-en-t1-7",
+    "tier": 1,
+    "skill": "plural",
+    "format": "multiple_choice",
+    "prompt": "One child, two ___.",
+    "answer": "children",
+    "choices": [
+      "childs",
+      "childrens",
+      "children",
+      "childes"
+    ]
+  },
+  {
+    "id": "p4-en-t1-8",
+    "tier": 1,
+    "skill": "plural",
+    "format": "multiple_choice",
+    "prompt": "One foot, two ___.",
+    "answer": "feet",
+    "choices": [
+      "feet",
+      "foots",
+      "feets",
+      "feets"
+    ]
+  },
+  {
+    "id": "p4-en-t1-9",
+    "tier": 1,
+    "skill": "synonym",
+    "format": "multiple_choice",
+    "prompt": "Synonym of HAPPY?",
+    "answer": "joyful",
+    "choices": [
+      "sad",
+      "tired",
+      "joyful",
+      "angry"
+    ]
+  },
+  {
+    "id": "p4-en-t1-10",
+    "tier": 1,
+    "skill": "synonym",
+    "format": "multiple_choice",
+    "prompt": "Synonym of BIG?",
+    "answer": "large",
+    "choices": [
+      "small",
+      "tiny",
+      "low",
+      "large"
+    ]
+  },
+  {
+    "id": "p4-en-t1-11",
+    "tier": 1,
+    "skill": "antonym",
+    "format": "multiple_choice",
+    "prompt": "Antonym of TALL?",
+    "answer": "short",
+    "choices": [
+      "long",
+      "high",
+      "short",
+      "wide"
+    ]
+  },
+  {
+    "id": "p4-en-t1-12",
+    "tier": 1,
+    "skill": "antonym",
+    "format": "multiple_choice",
+    "prompt": "Antonym of FAST?",
+    "answer": "slow",
+    "choices": [
+      "quick",
+      "slow",
+      "swift",
+      "rapid"
+    ]
+  },
+  {
+    "id": "p4-en-t1-13",
+    "tier": 1,
+    "skill": "preposition",
+    "format": "multiple_choice",
+    "prompt": "The cat is ___ the table.",
+    "answer": "on",
+    "choices": [
+      "at",
+      "in",
+      "on",
+      "of"
+    ]
+  },
+  {
+    "id": "p4-en-t1-14",
+    "tier": 1,
+    "skill": "preposition",
+    "format": "multiple_choice",
+    "prompt": "I will see you ___ Monday.",
+    "answer": "on",
+    "choices": [
+      "on",
+      "at",
+      "in",
+      "by"
+    ]
+  },
+  {
+    "id": "p4-en-t1-15",
+    "tier": 1,
+    "skill": "article",
+    "format": "multiple_choice",
+    "prompt": "I bought ___ apple.",
+    "answer": "an",
+    "choices": [
+      "the",
+      "of",
+      "an",
+      "a"
+    ]
+  }
+]

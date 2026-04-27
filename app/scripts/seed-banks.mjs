@@ -1,9 +1,7 @@
-// Seeds the questions / banks / bank_questions tables from the bundled
-// JSON files in app/data/questions/age-{7,12}/<subject>/tier-N.json.
+// Seeds the questions table from JSON files, classifies pri_level by skill,
+// and rebuilds the 6 bundled "Pri N" banks (cumulative).
 //
-// Idempotent: re-runs upsert each question by id, recreates the "Default"
-// bank's links, and assigns any user without a bank → Default.
-//
+// Idempotent: re-runs upsert each question, recreates each bank's links.
 // Re-run with: cd app && node scripts/seed-banks.mjs
 import { config as loadEnv } from "dotenv";
 import { neon } from "@neondatabase/serverless";
@@ -23,13 +21,100 @@ if (!url) {
 const sql = neon(url);
 
 const QDIR = join(__dirname, "..", "data", "questions");
-
 const SUBJECTS = ["math", "english", "chinese", "general"];
 
-// Read every JSON file and collect questions tagged with their (subject, age).
+// Classify a question's Pri level (1–6) from its `skill` tag and tier.
+// Singapore MOE Primary Math/English/Chinese curriculum (rough bucketing).
+function classifyPri(skill, subject, tier) {
+  const s = (skill || "").toLowerCase();
+
+  // Math — Pri 1
+  if (s.includes("addition_within_10") || s.includes("subtraction_within_10")) return 1;
+  // Math — Pri 2
+  if (s.includes("addition_within_20") || s.includes("subtraction_within_20")) return 2;
+  if (s.includes("skip_counting")) return 2;
+  if (s === "multiplication_2x" || s === "multiplication_5x" || s === "multiplication_10x")
+    return 2;
+  if (s.includes("addition_within_100") || s.includes("subtraction_within_100")) return 2;
+  // Math — Pri 3
+  if (s.startsWith("multiplication_")) return 3;
+  if (s.includes("place_value")) return 3;
+  // Math — Pri 4
+  if (s === "fractions_of_number" || s === "fractions_add") return 4;
+  if (s.startsWith("decimals_")) return 4;
+  if (s === "factors" || s === "multiples_lcm") return 4;
+  if (s === "area_rectangle" || s === "perimeter_rectangle" || s === "angles_straight") return 4;
+  if (s === "time_minutes") return 4;
+  if (s === "multi_step_addition" || s === "multi_step_subtraction") return 4;
+  // Math — Pri 5
+  if (s === "percentage_of" || s === "ratio_simplify") return 5;
+  if (s === "fractions_x_whole" || s === "decimal_x_whole" || s === "mean") return 5;
+  // Math — Pri 6
+  if (s.startsWith("algebra_")) return 6;
+  if (s === "speed" || s === "distance") return 6;
+  if (s === "area_circle") return 6;
+  if (s === "percentage_increase" || s === "ratio_total") return 6;
+
+  // English
+  if (subject === "english") {
+    if (
+      s === "letter_order" ||
+      s === "phonics" ||
+      s === "spell_cvc" ||
+      s === "word_id" ||
+      s === "vowels"
+    )
+      return 1;
+    if (
+      s === "cloze" ||
+      s === "sight_words" ||
+      s === "plural" ||
+      s === "past_tense" ||
+      s === "opposites" ||
+      s === "tense_present" ||
+      s === "tense_past" ||
+      s === "synonym" ||
+      s === "antonym" ||
+      s === "preposition" ||
+      s === "article"
+    )
+      return 2;
+    if (
+      s === "conjunction" ||
+      s === "compound" ||
+      s === "comparison" ||
+      s === "vocab" ||
+      s === "homophone"
+    )
+      return 3;
+    if (s === "spell_clue" || s === "spell_missing" || s === "spell_copy" || s === "spell_emoji") {
+      return tier >= 4 ? 4 : 3;
+    }
+    if (s === "idiom" || s === "passive") return 5;
+    if (s === "conditional" || s === "reported" || s === "vocab_advanced") return 6;
+  }
+
+  // Chinese
+  if (subject === "chinese") {
+    if (s === "char_en2zh" || s === "char_zh2en") return 1;
+    if (s === "phrase_en2zh" || s === "phrase_zh2en") return 2;
+    if (s.startsWith("family_") || s.startsWith("object_")) return 3;
+    if (s.startsWith("sentence_")) return 4;
+    // Pri 4-6 additions
+    if (s === "family" || s === "verb_basic" || s === "object") return 4;
+    if (s === "measure_word" || s === "adjective" || s === "color") return 4;
+    if (s === "idiom" || s === "time" || s === "phrase") return 5;
+    if (s === "advanced_idiom" || s === "sentence") return 6;
+    if (s === "particle" || s === "comparative" || s === "vocab") return 6;
+  }
+
+  // Last-resort: tier-based fallback so nothing's accidentally hidden.
+  return Math.min(6, Math.max(1, tier));
+}
+
+// Read every JSON file and collect questions.
 const all = [];
 for (const ageDir of readdirSync(QDIR).filter((d) => d.startsWith("age-"))) {
-  const age = Number(ageDir.replace("age-", ""));
   for (const subject of SUBJECTS) {
     for (let tier = 1; tier <= 4; tier++) {
       const path = join(QDIR, ageDir, subject, `tier-${tier}.json`);
@@ -46,7 +131,7 @@ for (const ageDir of readdirSync(QDIR).filter((d) => d.startsWith("age-"))) {
           id: q.id,
           subject,
           tier,
-          ageSuggestion: age,
+          priLevel: classifyPri(q.skill, subject, tier),
           prompt: q.prompt,
           answer: q.answer,
           format: q.format,
@@ -60,18 +145,16 @@ for (const ageDir of readdirSync(QDIR).filter((d) => d.startsWith("age-"))) {
 }
 console.log(`Loaded ${all.length} questions from JSON.`);
 
-// Upsert each question. Drizzle's bulk insert.onConflictDoUpdate would be
-// ideal but we're using raw `sql` here for simplicity. Loop is fine —
-// we're talking ~800 rows.
+// Upsert all questions.
 let upserted = 0;
 for (const q of all) {
   await sql`
-    insert into questions (id, subject, tier, age_suggestion, prompt, answer, format, choices, skill, source)
-    values (${q.id}, ${q.subject}, ${q.tier}, ${q.ageSuggestion}, ${q.prompt}, ${q.answer}, ${q.format}, ${q.choices ? JSON.stringify(q.choices) : null}::jsonb, ${q.skill}, ${q.source})
+    insert into questions (id, subject, tier, pri_level, prompt, answer, format, choices, skill, source)
+    values (${q.id}, ${q.subject}, ${q.tier}, ${q.priLevel}, ${q.prompt}, ${q.answer}, ${q.format}, ${q.choices ? JSON.stringify(q.choices) : null}::jsonb, ${q.skill}, ${q.source})
     on conflict (id) do update set
       subject = excluded.subject,
       tier = excluded.tier,
-      age_suggestion = excluded.age_suggestion,
+      pri_level = excluded.pri_level,
       prompt = excluded.prompt,
       answer = excluded.answer,
       format = excluded.format,
@@ -80,40 +163,71 @@ for (const q of all) {
       source = excluded.source
   `;
   upserted++;
-  if (upserted % 100 === 0) console.log(`  upserted ${upserted}/${all.length}…`);
+  if (upserted % 200 === 0) console.log(`  upserted ${upserted}/${all.length}…`);
 }
 console.log(`Upserted ${upserted} questions.`);
 
-// Ensure the Default bank exists.
-const [defaultBank] = await sql`
-  insert into banks (name) values ('Default')
-  on conflict (name) do update set updated_at = now()
-  returning id
-`;
-console.log(`Default bank id: ${defaultBank.id}`);
+// Print pri_level distribution.
+const dist = await sql`select pri_level, count(*) as c from questions group by pri_level order by pri_level`;
+console.log("Pri-level distribution:", dist);
 
-// Repopulate Default's question links from the questions we just upserted.
-// Wipe first so questions removed from JSON aren't dangling.
-await sql`delete from bank_questions where bank_id = ${defaultBank.id}`;
-const ids = all.map((q) => q.id);
-if (ids.length > 0) {
-  // Bulk insert in chunks of 500.
-  const chunkSize = 500;
-  for (let i = 0; i < ids.length; i += chunkSize) {
-    const chunk = ids.slice(i, i + chunkSize);
-    const values = chunk.map((id) => `(${defaultBank.id}, '${id.replace(/'/g, "''")}')`).join(",");
-    await sql.query(`insert into bank_questions (bank_id, question_id) values ${values}`);
-  }
+// Ensure the 6 "Pri N" banks exist.
+const banks = {};
+for (let n = 1; n <= 6; n++) {
+  const [b] = await sql`
+    insert into banks (name) values (${`Pri ${n}`})
+    on conflict (name) do update set updated_at = now()
+    returning id
+  `;
+  banks[n] = b.id;
 }
-console.log(`Linked ${ids.length} questions to Default bank.`);
+console.log("Pri banks:", banks);
 
-// Assign any user without a bank to Default.
-const updated = await sql`
-  update users set bank_id = ${defaultBank.id}
-  where bank_id is null and role = 'player'
-  returning username
-`;
-console.log(`Assigned Default bank to ${updated.length} unassigned player(s):`, updated.map((u) => u.username));
+// Repopulate each Pri N bank's links: questions where pri_level <= N.
+for (let n = 1; n <= 6; n++) {
+  const bankId = banks[n];
+  await sql`delete from bank_questions where bank_id = ${bankId}`;
+  const matching = await sql`select id from questions where pri_level <= ${n}`;
+  if (matching.length > 0) {
+    const chunkSize = 500;
+    for (let i = 0; i < matching.length; i += chunkSize) {
+      const chunk = matching.slice(i, i + chunkSize);
+      const values = chunk.map((q) => `(${bankId}, '${q.id.replace(/'/g, "''")}')`).join(",");
+      await sql.query(`insert into bank_questions (bank_id, question_id) values ${values}`);
+    }
+  }
+  console.log(`  Pri ${n} bank: ${matching.length} questions`);
+}
+
+// Migrate any users on the legacy "Default" bank → matching Pri N (by their priLevel).
+const [defaultBank] = await sql`select id from banks where name = 'Default'`;
+if (defaultBank) {
+  let totalMoved = 0;
+  for (let n = 1; n <= 6; n++) {
+    const moved = await sql`
+      update users set bank_id = ${banks[n]}
+      where bank_id = ${defaultBank.id} and pri_level = ${n}
+      returning username
+    `;
+    totalMoved += moved.length;
+  }
+  console.log(`Migrated ${totalMoved} user(s) from Default → matching Pri bank.`);
+  // Tear down the Default bank now that nobody references it.
+  await sql`delete from banks where id = ${defaultBank.id}`;
+  console.log("Removed legacy Default bank.");
+}
+
+// Assign any remaining unassigned players → their Pri N bank.
+let totalAssigned = 0;
+for (let n = 1; n <= 6; n++) {
+  const r = await sql`
+    update users set bank_id = ${banks[n]}
+    where role = 'player' and bank_id is null and pri_level = ${n}
+    returning username
+  `;
+  totalAssigned += r.length;
+}
+console.log(`Assigned ${totalAssigned} previously-unassigned player(s).`);
 
 console.log("Seed complete.");
 process.exit(0);

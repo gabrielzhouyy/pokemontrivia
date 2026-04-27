@@ -1,1 +1,184 @@
-[]
+[
+  {
+    "id": "p6-zh-t4-1",
+    "tier": 4,
+    "skill": "advanced_idiom",
+    "format": "multiple_choice",
+    "prompt": "What does 画蛇添足 mean?",
+    "answer": "doing more than necessary",
+    "choices": [
+      "add detail to art",
+      "doing more than necessary",
+      "draw with extra feet",
+      "paint a snake well"
+    ]
+  },
+  {
+    "id": "p6-zh-t4-2",
+    "tier": 4,
+    "skill": "advanced_idiom",
+    "format": "multiple_choice",
+    "prompt": "What does 守株待兔 mean?",
+    "answer": "wait for fortune without effort",
+    "choices": [
+      "hunt rabbits",
+      "wait for fortune without effort",
+      "wait by tree stumps",
+      "protect rabbits"
+    ]
+  },
+  {
+    "id": "p6-zh-t4-3",
+    "tier": 4,
+    "skill": "advanced_idiom",
+    "format": "multiple_choice",
+    "prompt": "What does 自相矛盾 mean?",
+    "answer": "contradict oneself",
+    "choices": [
+      "fight with spear",
+      "shield and spear",
+      "self-defense",
+      "contradict oneself"
+    ]
+  },
+  {
+    "id": "p6-zh-t4-4",
+    "tier": 4,
+    "skill": "sentence",
+    "format": "multiple_choice",
+    "prompt": "我今天去图书馆 means ___",
+    "answer": "Today I am going to the library",
+    "choices": [
+      "The library is far",
+      "Today I am going to the library",
+      "I went to the library yesterday",
+      "Tomorrow I will go to the library"
+    ]
+  },
+  {
+    "id": "p6-zh-t4-5",
+    "tier": 4,
+    "skill": "sentence",
+    "format": "multiple_choice",
+    "prompt": "请问，洗手间在哪里? means ___",
+    "answer": "Excuse me, where is the bathroom?",
+    "choices": [
+      "Excuse me, where is the bathroom?",
+      "Excuse me, who are you?",
+      "What is the time?",
+      "Can I help you?"
+    ]
+  },
+  {
+    "id": "p6-zh-t4-6",
+    "tier": 4,
+    "skill": "sentence",
+    "format": "multiple_choice",
+    "prompt": "他比我高 means ___",
+    "answer": "He is taller than me",
+    "choices": [
+      "He is shorter than me",
+      "He is heavier than me",
+      "He is taller than me",
+      "He is the same height as me"
+    ]
+  },
+  {
+    "id": "p6-zh-t4-7",
+    "tier": 4,
+    "skill": "particle",
+    "format": "multiple_choice",
+    "prompt": "Which particle marks a question? 你好___?",
+    "answer": "吗",
+    "choices": [
+      "吗",
+      "了",
+      "在",
+      "的"
+    ]
+  },
+  {
+    "id": "p6-zh-t4-8",
+    "tier": 4,
+    "skill": "particle",
+    "format": "multiple_choice",
+    "prompt": "Which particle marks completed action? 我吃___饭",
+    "answer": "了",
+    "choices": [
+      "的",
+      "吗",
+      "在",
+      "了"
+    ]
+  },
+  {
+    "id": "p6-zh-t4-9",
+    "tier": 4,
+    "skill": "particle",
+    "format": "multiple_choice",
+    "prompt": "Which particle indicates possession? 这是我___书",
+    "answer": "的",
+    "choices": [
+      "在",
+      "的",
+      "了",
+      "吗"
+    ]
+  },
+  {
+    "id": "p6-zh-t4-10",
+    "tier": 4,
+    "skill": "comparative",
+    "format": "multiple_choice",
+    "prompt": "Pick the comparative form: He is taller than her",
+    "answer": "他比她高",
+    "choices": [
+      "他没有她高",
+      "她比他高",
+      "他比她高",
+      "他和她一样高"
+    ]
+  },
+  {
+    "id": "p6-zh-t4-11",
+    "tier": 4,
+    "skill": "comparative",
+    "format": "multiple_choice",
+    "prompt": "Pick the negative comparative: He is NOT as tall as her",
+    "answer": "他没有她高",
+    "choices": [
+      "他和她一样高",
+      "他比她高",
+      "他没有她高",
+      "她比他高"
+    ]
+  },
+  {
+    "id": "p6-zh-t4-12",
+    "tier": 4,
+    "skill": "vocab",
+    "format": "multiple_choice",
+    "prompt": "What does 努力 mean?",
+    "answer": "make effort / hard-working",
+    "choices": [
+      "playful",
+      "make effort / hard-working",
+      "lazy",
+      "tired"
+    ]
+  },
+  {
+    "id": "p6-zh-t4-13",
+    "tier": 4,
+    "skill": "vocab",
+    "format": "multiple_choice",
+    "prompt": "What does 重要 mean?",
+    "answer": "important",
+    "choices": [
+      "small",
+      "heavy",
+      "fast",
+      "important"
+    ]
+  }
+]

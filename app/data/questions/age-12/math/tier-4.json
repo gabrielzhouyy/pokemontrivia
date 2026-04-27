@@ -1,1 +1,374 @@
-[]
+[
+  {
+    "id": "p4-algebra_linear-110",
+    "tier": 4,
+    "skill": "algebra_linear",
+    "format": "multiple_choice",
+    "prompt": "If 3x + 5 = 11, what is x?",
+    "answer": "2",
+    "choices": [
+      "1",
+      "3",
+      "2",
+      "4"
+    ]
+  },
+  {
+    "id": "p4-algebra_linear-111",
+    "tier": 4,
+    "skill": "algebra_linear",
+    "format": "multiple_choice",
+    "prompt": "If 2x + 7 = 17, what is x?",
+    "answer": "5",
+    "choices": [
+      "4",
+      "6",
+      "7",
+      "5"
+    ]
+  },
+  {
+    "id": "p4-algebra_linear-112",
+    "tier": 4,
+    "skill": "algebra_linear",
+    "format": "multiple_choice",
+    "prompt": "If 5x + 4 = 24, what is x?",
+    "answer": "4",
+    "choices": [
+      "6",
+      "3",
+      "5",
+      "4"
+    ]
+  },
+  {
+    "id": "p4-algebra_linear-113",
+    "tier": 4,
+    "skill": "algebra_linear",
+    "format": "multiple_choice",
+    "prompt": "If 4x + 9 = 25, what is x?",
+    "answer": "4",
+    "choices": [
+      "3",
+      "5",
+      "6",
+      "4"
+    ]
+  },
+  {
+    "id": "p4-algebra_linear-114",
+    "tier": 4,
+    "skill": "algebra_linear",
+    "format": "multiple_choice",
+    "prompt": "If 6x + 3 = 27, what is x?",
+    "answer": "4",
+    "choices": [
+      "5",
+      "3",
+      "6",
+      "4"
+    ]
+  },
+  {
+    "id": "p4-algebra_linear-115",
+    "tier": 4,
+    "skill": "algebra_linear",
+    "format": "multiple_choice",
+    "prompt": "If 7x + 1 = 22, what is x?",
+    "answer": "3",
+    "choices": [
+      "5",
+      "3",
+      "2",
+      "4"
+    ]
+  },
+  {
+    "id": "p4-algebra_linear-116",
+    "tier": 4,
+    "skill": "algebra_linear",
+    "format": "multiple_choice",
+    "prompt": "If 8x + 6 = 30, what is x?",
+    "answer": "3",
+    "choices": [
+      "5",
+      "3",
+      "2",
+      "4"
+    ]
+  },
+  {
+    "id": "p4-algebra_linear-117",
+    "tier": 4,
+    "skill": "algebra_linear",
+    "format": "multiple_choice",
+    "prompt": "If 4x - 1 = 13, what is x?",
+    "answer": "3.5",
+    "choices": [
+      "4.5",
+      "5.5",
+      "2.5",
+      "3.5"
+    ]
+  },
+  {
+    "id": "p4-algebra_linear-118",
+    "tier": 4,
+    "skill": "algebra_linear",
+    "format": "multiple_choice",
+    "prompt": "If 5x - 2 = 17, what is x?",
+    "answer": "3.8",
+    "choices": [
+      "2.8",
+      "5.8",
+      "3.8",
+      "4.8"
+    ]
+  },
+  {
+    "id": "p4-algebra_linear-119",
+    "tier": 4,
+    "skill": "algebra_linear",
+    "format": "multiple_choice",
+    "prompt": "If 3x - 4 = 22, what is x?",
+    "answer": "8.666666666666666",
+    "choices": [
+      "9.666666666666666",
+      "10.666666666666666",
+      "8.666666666666666",
+      "7.666666666666666"
+    ]
+  },
+  {
+    "id": "p4-speed-120",
+    "tier": 4,
+    "skill": "speed",
+    "format": "number_pad",
+    "prompt": "A car travels 100 km in 2 hours. Its speed in km/h = ?",
+    "answer": "50"
+  },
+  {
+    "id": "p4-speed-121",
+    "tier": 4,
+    "skill": "speed",
+    "format": "number_pad",
+    "prompt": "A car travels 120 km in 3 hours. Its speed in km/h = ?",
+    "answer": "40"
+  },
+  {
+    "id": "p4-speed-122",
+    "tier": 4,
+    "skill": "speed",
+    "format": "number_pad",
+    "prompt": "A car travels 150 km in 5 hours. Its speed in km/h = ?",
+    "answer": "30"
+  },
+  {
+    "id": "p4-speed-123",
+    "tier": 4,
+    "skill": "speed",
+    "format": "number_pad",
+    "prompt": "A car travels 240 km in 4 hours. Its speed in km/h = ?",
+    "answer": "60"
+  },
+  {
+    "id": "p4-speed-124",
+    "tier": 4,
+    "skill": "speed",
+    "format": "number_pad",
+    "prompt": "A car travels 60 km in 2 hours. Its speed in km/h = ?",
+    "answer": "30"
+  },
+  {
+    "id": "p4-speed-125",
+    "tier": 4,
+    "skill": "speed",
+    "format": "number_pad",
+    "prompt": "A car travels 180 km in 3 hours. Its speed in km/h = ?",
+    "answer": "60"
+  },
+  {
+    "id": "p4-distance-126",
+    "tier": 4,
+    "skill": "distance",
+    "format": "number_pad",
+    "prompt": "Speed 60 km/h for 3 hours. Distance in km = ?",
+    "answer": "180"
+  },
+  {
+    "id": "p4-distance-127",
+    "tier": 4,
+    "skill": "distance",
+    "format": "number_pad",
+    "prompt": "Speed 80 km/h for 2 hours. Distance in km = ?",
+    "answer": "160"
+  },
+  {
+    "id": "p4-distance-128",
+    "tier": 4,
+    "skill": "distance",
+    "format": "number_pad",
+    "prompt": "Speed 50 km/h for 4 hours. Distance in km = ?",
+    "answer": "200"
+  },
+  {
+    "id": "p4-area_circle-129",
+    "tier": 4,
+    "skill": "area_circle",
+    "format": "number_pad",
+    "prompt": "Area of a circle with radius 2 cm (use π = 3.14). cm² = ?",
+    "answer": "12.56"
+  },
+  {
+    "id": "p4-area_circle-130",
+    "tier": 4,
+    "skill": "area_circle",
+    "format": "number_pad",
+    "prompt": "Area of a circle with radius 3 cm (use π = 3.14). cm² = ?",
+    "answer": "28.26"
+  },
+  {
+    "id": "p4-area_circle-131",
+    "tier": 4,
+    "skill": "area_circle",
+    "format": "number_pad",
+    "prompt": "Area of a circle with radius 5 cm (use π = 3.14). cm² = ?",
+    "answer": "78.5"
+  },
+  {
+    "id": "p4-area_circle-132",
+    "tier": 4,
+    "skill": "area_circle",
+    "format": "number_pad",
+    "prompt": "Area of a circle with radius 10 cm (use π = 3.14). cm² = ?",
+    "answer": "314"
+  },
+  {
+    "id": "p4-area_circle-133",
+    "tier": 4,
+    "skill": "area_circle",
+    "format": "number_pad",
+    "prompt": "Area of a circle with radius 4 cm (use π = 3.14). cm² = ?",
+    "answer": "50.24"
+  },
+  {
+    "id": "p4-area_circle-134",
+    "tier": 4,
+    "skill": "area_circle",
+    "format": "number_pad",
+    "prompt": "Area of a circle with radius 6 cm (use π = 3.14). cm² = ?",
+    "answer": "113.04"
+  },
+  {
+    "id": "p4-percentage_increase-135",
+    "tier": 4,
+    "skill": "percentage_increase",
+    "format": "multiple_choice",
+    "prompt": "200 increases by 10%. New value = ?",
+    "answer": "220",
+    "choices": [
+      "220",
+      "240",
+      "180",
+      "210"
+    ]
+  },
+  {
+    "id": "p4-percentage_increase-136",
+    "tier": 4,
+    "skill": "percentage_increase",
+    "format": "multiple_choice",
+    "prompt": "150 increases by 20%. New value = ?",
+    "answer": "180",
+    "choices": [
+      "180",
+      "120",
+      "210",
+      "170"
+    ]
+  },
+  {
+    "id": "p4-percentage_increase-137",
+    "tier": 4,
+    "skill": "percentage_increase",
+    "format": "multiple_choice",
+    "prompt": "80 increases by 25%. New value = ?",
+    "answer": "100",
+    "choices": [
+      "120",
+      "60",
+      "105",
+      "100"
+    ]
+  },
+  {
+    "id": "p4-percentage_increase-138",
+    "tier": 4,
+    "skill": "percentage_increase",
+    "format": "multiple_choice",
+    "prompt": "300 increases by 15%. New value = ?",
+    "answer": "345",
+    "choices": [
+      "390",
+      "345",
+      "255",
+      "315"
+    ]
+  },
+  {
+    "id": "p4-ratio_total-139",
+    "tier": 4,
+    "skill": "ratio_total",
+    "format": "multiple_choice",
+    "prompt": "Ratio 2:3, total = 100. The first part = ?",
+    "answer": "40",
+    "choices": [
+      "60",
+      "40",
+      "30",
+      "50"
+    ]
+  },
+  {
+    "id": "p4-ratio_total-140",
+    "tier": 4,
+    "skill": "ratio_total",
+    "format": "multiple_choice",
+    "prompt": "Ratio 3:5, total = 80. The first part = ?",
+    "answer": "30",
+    "choices": [
+      "30",
+      "40",
+      "20",
+      "50"
+    ]
+  },
+  {
+    "id": "p4-ratio_total-141",
+    "tier": 4,
+    "skill": "ratio_total",
+    "format": "multiple_choice",
+    "prompt": "Ratio 4:1, total = 50. The first part = ?",
+    "answer": "40",
+    "choices": [
+      "30",
+      "10",
+      "50",
+      "40"
+    ]
+  },
+  {
+    "id": "p4-ratio_total-142",
+    "tier": 4,
+    "skill": "ratio_total",
+    "format": "multiple_choice",
+    "prompt": "Ratio 3:7, total = 150. The first part = ?",
+    "answer": "45",
+    "choices": [
+      "105",
+      "45",
+      "35",
+      "55"
+    ]
+  }
+]

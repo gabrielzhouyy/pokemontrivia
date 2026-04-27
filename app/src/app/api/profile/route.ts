@@ -52,7 +52,7 @@ async function assembleProfile(userId: number): Promise<Profile | null> {
     username: user.username,
     pin: "", // server never returns the hash
     starterId: user.starterId,
-    age: user.age,
+    priLevel: user.priLevel,
     caught,
     owned,
     evolved,
@@ -77,7 +77,7 @@ async function persistProfile(userId: number, profile: Profile): Promise<void> {
     .update(schema.users)
     .set({
       starterId: profile.starterId,
-      age: profile.age,
+      priLevel: profile.priLevel,
     })
     .where(eq(schema.users.id, userId));
 

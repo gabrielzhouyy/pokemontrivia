@@ -12,7 +12,7 @@ export async function GET() {
       .select({
         id: schema.users.id,
         username: schema.users.username,
-        age: schema.users.age,
+        priLevel: schema.users.priLevel,
         starterId: schema.users.starterId,
         bankId: schema.users.bankId,
         createdAt: schema.users.createdAt,
@@ -44,7 +44,7 @@ export async function GET() {
       return {
         id: p.id,
         username: p.username,
-        age: p.age,
+        priLevel: p.priLevel,
         bankId: p.bankId,
         caughtCount: caughtByUser.get(p.id) ?? 0,
         evolvedCount: evolvedByUser.get(p.id) ?? 0,

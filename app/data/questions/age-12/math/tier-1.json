@@ -1,1 +1,442 @@
-[]
+[
+  {
+    "id": "p1-decimals_addition-1",
+    "tier": 1,
+    "skill": "decimals_addition",
+    "format": "number_pad",
+    "prompt": "3.1 + 3.1 = ?",
+    "answer": "6.2"
+  },
+  {
+    "id": "p1-decimals_addition-2",
+    "tier": 1,
+    "skill": "decimals_addition",
+    "format": "number_pad",
+    "prompt": "2.6 + 1.4 = ?",
+    "answer": "4"
+  },
+  {
+    "id": "p1-decimals_addition-3",
+    "tier": 1,
+    "skill": "decimals_addition",
+    "format": "number_pad",
+    "prompt": "2.8 + 2.0 = ?",
+    "answer": "4.8"
+  },
+  {
+    "id": "p1-decimals_addition-4",
+    "tier": 1,
+    "skill": "decimals_addition",
+    "format": "number_pad",
+    "prompt": "5.7 + 1.9 = ?",
+    "answer": "7.6"
+  },
+  {
+    "id": "p1-decimals_addition-5",
+    "tier": 1,
+    "skill": "decimals_addition",
+    "format": "number_pad",
+    "prompt": "1.5 + 3.3 = ?",
+    "answer": "4.8"
+  },
+  {
+    "id": "p1-decimals_addition-6",
+    "tier": 1,
+    "skill": "decimals_addition",
+    "format": "number_pad",
+    "prompt": "3.2 + 3.1 = ?",
+    "answer": "6.3"
+  },
+  {
+    "id": "p1-decimals_addition-7",
+    "tier": 1,
+    "skill": "decimals_addition",
+    "format": "number_pad",
+    "prompt": "1.8 + 3.3 = ?",
+    "answer": "5.1"
+  },
+  {
+    "id": "p1-decimals_addition-8",
+    "tier": 1,
+    "skill": "decimals_addition",
+    "format": "number_pad",
+    "prompt": "4.8 + 1.7 = ?",
+    "answer": "6.5"
+  },
+  {
+    "id": "p1-decimals_addition-9",
+    "tier": 1,
+    "skill": "decimals_addition",
+    "format": "number_pad",
+    "prompt": "3.0 + 3.4 = ?",
+    "answer": "6.4"
+  },
+  {
+    "id": "p1-decimals_addition-10",
+    "tier": 1,
+    "skill": "decimals_addition",
+    "format": "number_pad",
+    "prompt": "5.1 + 2.7 = ?",
+    "answer": "7.8"
+  },
+  {
+    "id": "p1-decimals_addition-11",
+    "tier": 1,
+    "skill": "decimals_addition",
+    "format": "number_pad",
+    "prompt": "1.0 + 2.9 = ?",
+    "answer": "3.9"
+  },
+  {
+    "id": "p1-decimals_addition-12",
+    "tier": 1,
+    "skill": "decimals_addition",
+    "format": "number_pad",
+    "prompt": "3.8 + 2.7 = ?",
+    "answer": "6.5"
+  },
+  {
+    "id": "p1-decimals_addition-13",
+    "tier": 1,
+    "skill": "decimals_addition",
+    "format": "number_pad",
+    "prompt": "3.3 + 3.1 = ?",
+    "answer": "6.4"
+  },
+  {
+    "id": "p1-decimals_addition-14",
+    "tier": 1,
+    "skill": "decimals_addition",
+    "format": "number_pad",
+    "prompt": "2.2 + 3.1 = ?",
+    "answer": "5.3"
+  },
+  {
+    "id": "p1-decimals_addition-15",
+    "tier": 1,
+    "skill": "decimals_addition",
+    "format": "number_pad",
+    "prompt": "4.7 + 1.0 = ?",
+    "answer": "5.7"
+  },
+  {
+    "id": "p1-decimals_addition-16",
+    "tier": 1,
+    "skill": "decimals_addition",
+    "format": "number_pad",
+    "prompt": "1.5 + 2.8 = ?",
+    "answer": "4.3"
+  },
+  {
+    "id": "p1-decimals_addition-17",
+    "tier": 1,
+    "skill": "decimals_addition",
+    "format": "number_pad",
+    "prompt": "4.2 + 1.4 = ?",
+    "answer": "5.6"
+  },
+  {
+    "id": "p1-decimals_addition-18",
+    "tier": 1,
+    "skill": "decimals_addition",
+    "format": "number_pad",
+    "prompt": "2.0 + 2.7 = ?",
+    "answer": "4.7"
+  },
+  {
+    "id": "p1-decimals_subtraction-19",
+    "tier": 1,
+    "skill": "decimals_subtraction",
+    "format": "number_pad",
+    "prompt": "5.9 - 2.7 = ?",
+    "answer": "3.2"
+  },
+  {
+    "id": "p1-decimals_subtraction-20",
+    "tier": 1,
+    "skill": "decimals_subtraction",
+    "format": "number_pad",
+    "prompt": "6.0 - 1.5 = ?",
+    "answer": "4.5"
+  },
+  {
+    "id": "p1-decimals_subtraction-21",
+    "tier": 1,
+    "skill": "decimals_subtraction",
+    "format": "number_pad",
+    "prompt": "7.0 - 0.5 = ?",
+    "answer": "6.5"
+  },
+  {
+    "id": "p1-decimals_subtraction-22",
+    "tier": 1,
+    "skill": "decimals_subtraction",
+    "format": "number_pad",
+    "prompt": "4.2 - 2.7 = ?",
+    "answer": "1.5"
+  },
+  {
+    "id": "p1-decimals_subtraction-23",
+    "tier": 1,
+    "skill": "decimals_subtraction",
+    "format": "number_pad",
+    "prompt": "5.3 - 2.5 = ?",
+    "answer": "2.8"
+  },
+  {
+    "id": "p1-decimals_subtraction-24",
+    "tier": 1,
+    "skill": "decimals_subtraction",
+    "format": "number_pad",
+    "prompt": "3.7 - 2.7 = ?",
+    "answer": "1"
+  },
+  {
+    "id": "p1-decimals_subtraction-25",
+    "tier": 1,
+    "skill": "decimals_subtraction",
+    "format": "number_pad",
+    "prompt": "6.6 - 1.5 = ?",
+    "answer": "5.1"
+  },
+  {
+    "id": "p1-decimals_subtraction-26",
+    "tier": 1,
+    "skill": "decimals_subtraction",
+    "format": "number_pad",
+    "prompt": "3.2 - 1.6 = ?",
+    "answer": "1.6"
+  },
+  {
+    "id": "p1-decimals_subtraction-27",
+    "tier": 1,
+    "skill": "decimals_subtraction",
+    "format": "number_pad",
+    "prompt": "7.0 - 2.5 = ?",
+    "answer": "4.5"
+  },
+  {
+    "id": "p1-decimals_subtraction-28",
+    "tier": 1,
+    "skill": "decimals_subtraction",
+    "format": "number_pad",
+    "prompt": "6.1 - 1.6 = ?",
+    "answer": "4.5"
+  },
+  {
+    "id": "p1-decimals_subtraction-29",
+    "tier": 1,
+    "skill": "decimals_subtraction",
+    "format": "number_pad",
+    "prompt": "6.8 - 2.5 = ?",
+    "answer": "4.3"
+  },
+  {
+    "id": "p1-decimals_subtraction-30",
+    "tier": 1,
+    "skill": "decimals_subtraction",
+    "format": "number_pad",
+    "prompt": "6.6 - 1.9 = ?",
+    "answer": "4.7"
+  },
+  {
+    "id": "p1-time_minutes-62",
+    "tier": 1,
+    "skill": "time_minutes",
+    "format": "number_pad",
+    "prompt": "1 h 30 min = ___ minutes",
+    "answer": "90"
+  },
+  {
+    "id": "p1-time_minutes-63",
+    "tier": 1,
+    "skill": "time_minutes",
+    "format": "number_pad",
+    "prompt": "2 h 15 min = ___ minutes",
+    "answer": "135"
+  },
+  {
+    "id": "p1-time_minutes-64",
+    "tier": 1,
+    "skill": "time_minutes",
+    "format": "number_pad",
+    "prompt": "3 h 45 min = ___ minutes",
+    "answer": "225"
+  },
+  {
+    "id": "p1-time_minutes-65",
+    "tier": 1,
+    "skill": "time_minutes",
+    "format": "number_pad",
+    "prompt": "4 h 20 min = ___ minutes",
+    "answer": "260"
+  },
+  {
+    "id": "p1-time_minutes-66",
+    "tier": 1,
+    "skill": "time_minutes",
+    "format": "number_pad",
+    "prompt": "5 h 50 min = ___ minutes",
+    "answer": "350"
+  },
+  {
+    "id": "p1-multi_step_addition-143",
+    "tier": 1,
+    "skill": "multi_step_addition",
+    "format": "number_pad",
+    "prompt": "42 + 38 + 40 = ?",
+    "answer": "120"
+  },
+  {
+    "id": "p1-multi_step_addition-144",
+    "tier": 1,
+    "skill": "multi_step_addition",
+    "format": "number_pad",
+    "prompt": "21 + 23 + 36 = ?",
+    "answer": "80"
+  },
+  {
+    "id": "p1-multi_step_addition-145",
+    "tier": 1,
+    "skill": "multi_step_addition",
+    "format": "number_pad",
+    "prompt": "65 + 22 + 24 = ?",
+    "answer": "111"
+  },
+  {
+    "id": "p1-multi_step_addition-146",
+    "tier": 1,
+    "skill": "multi_step_addition",
+    "format": "number_pad",
+    "prompt": "41 + 53 + 29 = ?",
+    "answer": "123"
+  },
+  {
+    "id": "p1-multi_step_addition-147",
+    "tier": 1,
+    "skill": "multi_step_addition",
+    "format": "number_pad",
+    "prompt": "92 + 58 + 24 = ?",
+    "answer": "174"
+  },
+  {
+    "id": "p1-multi_step_addition-148",
+    "tier": 1,
+    "skill": "multi_step_addition",
+    "format": "number_pad",
+    "prompt": "81 + 28 + 24 = ?",
+    "answer": "133"
+  },
+  {
+    "id": "p1-multi_step_addition-149",
+    "tier": 1,
+    "skill": "multi_step_addition",
+    "format": "number_pad",
+    "prompt": "36 + 53 + 13 = ?",
+    "answer": "102"
+  },
+  {
+    "id": "p1-multi_step_addition-150",
+    "tier": 1,
+    "skill": "multi_step_addition",
+    "format": "number_pad",
+    "prompt": "80 + 26 + 17 = ?",
+    "answer": "123"
+  },
+  {
+    "id": "p1-multi_step_addition-151",
+    "tier": 1,
+    "skill": "multi_step_addition",
+    "format": "number_pad",
+    "prompt": "99 + 66 + 44 = ?",
+    "answer": "209"
+  },
+  {
+    "id": "p1-multi_step_addition-152",
+    "tier": 1,
+    "skill": "multi_step_addition",
+    "format": "number_pad",
+    "prompt": "62 + 31 + 22 = ?",
+    "answer": "115"
+  },
+  {
+    "id": "p1-multi_step_addition-153",
+    "tier": 1,
+    "skill": "multi_step_addition",
+    "format": "number_pad",
+    "prompt": "52 + 35 + 14 = ?",
+    "answer": "101"
+  },
+  {
+    "id": "p1-multi_step_addition-154",
+    "tier": 1,
+    "skill": "multi_step_addition",
+    "format": "number_pad",
+    "prompt": "63 + 49 + 24 = ?",
+    "answer": "136"
+  },
+  {
+    "id": "p1-multi_step_subtraction-155",
+    "tier": 1,
+    "skill": "multi_step_subtraction",
+    "format": "number_pad",
+    "prompt": "250 - 50 - 10 = ?",
+    "answer": "190"
+  },
+  {
+    "id": "p1-multi_step_subtraction-156",
+    "tier": 1,
+    "skill": "multi_step_subtraction",
+    "format": "number_pad",
+    "prompt": "163 - 38 - 22 = ?",
+    "answer": "103"
+  },
+  {
+    "id": "p1-multi_step_subtraction-157",
+    "tier": 1,
+    "skill": "multi_step_subtraction",
+    "format": "number_pad",
+    "prompt": "128 - 26 - 37 = ?",
+    "answer": "65"
+  },
+  {
+    "id": "p1-multi_step_subtraction-158",
+    "tier": 1,
+    "skill": "multi_step_subtraction",
+    "format": "number_pad",
+    "prompt": "248 - 40 - 47 = ?",
+    "answer": "161"
+  },
+  {
+    "id": "p1-multi_step_subtraction-159",
+    "tier": 1,
+    "skill": "multi_step_subtraction",
+    "format": "number_pad",
+    "prompt": "186 - 99 - 36 = ?",
+    "answer": "51"
+  },
+  {
+    "id": "p1-multi_step_subtraction-160",
+    "tier": 1,
+    "skill": "multi_step_subtraction",
+    "format": "number_pad",
+    "prompt": "269 - 72 - 29 = ?",
+    "answer": "168"
+  },
+  {
+    "id": "p1-multi_step_subtraction-161",
+    "tier": 1,
+    "skill": "multi_step_subtraction",
+    "format": "number_pad",
+    "prompt": "166 - 20 - 24 = ?",
+    "answer": "122"
+  },
+  {
+    "id": "p1-multi_step_subtraction-162",
+    "tier": 1,
+    "skill": "multi_step_subtraction",
+    "format": "number_pad",
+    "prompt": "149 - 95 - 30 = ?",
+    "answer": "24"
+  }
+]

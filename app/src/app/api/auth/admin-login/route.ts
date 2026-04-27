@@ -24,7 +24,7 @@ export async function POST(req: Request) {
     const pinHash = await hashPassword(password);
     const [created] = await db
       .insert(schema.users)
-      .values({ username: "oak", pinHash, role: "admin", age: 0 })
+      .values({ username: "oak", pinHash, role: "admin", priLevel: 1 })
       .returning();
     await setSession({ userId: created.id, username: created.username, role: "admin" });
     return NextResponse.json({ ok: true, role: "admin" });

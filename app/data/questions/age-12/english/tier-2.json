@@ -1,1 +1,212 @@
-[]
+[
+  {
+    "id": "p4-en-t2-1",
+    "tier": 2,
+    "skill": "conjunction",
+    "format": "multiple_choice",
+    "prompt": "I was tired, ___ I went to bed.",
+    "answer": "so",
+    "choices": [
+      "or",
+      "so",
+      "but",
+      "if"
+    ]
+  },
+  {
+    "id": "p4-en-t2-2",
+    "tier": 2,
+    "skill": "conjunction",
+    "format": "multiple_choice",
+    "prompt": "She is small ___ very strong.",
+    "answer": "but",
+    "choices": [
+      "or",
+      "but",
+      "so",
+      "if"
+    ]
+  },
+  {
+    "id": "p4-en-t2-3",
+    "tier": 2,
+    "skill": "conjunction",
+    "format": "multiple_choice",
+    "prompt": "Bring an umbrella ___ it might rain.",
+    "answer": "because",
+    "choices": [
+      "so",
+      "or",
+      "because",
+      "but"
+    ]
+  },
+  {
+    "id": "p4-en-t2-4",
+    "tier": 2,
+    "skill": "compound",
+    "format": "multiple_choice",
+    "prompt": "What is the past tense of 'go'?",
+    "answer": "went",
+    "choices": [
+      "goed",
+      "went",
+      "going",
+      "gone"
+    ]
+  },
+  {
+    "id": "p4-en-t2-5",
+    "tier": 2,
+    "skill": "compound",
+    "format": "multiple_choice",
+    "prompt": "What is the past tense of 'sing'?",
+    "answer": "sang",
+    "choices": [
+      "singed",
+      "singing",
+      "sung",
+      "sang"
+    ]
+  },
+  {
+    "id": "p4-en-t2-6",
+    "tier": 2,
+    "skill": "compound",
+    "format": "multiple_choice",
+    "prompt": "What is the past tense of 'buy'?",
+    "answer": "bought",
+    "choices": [
+      "bought",
+      "bought",
+      "buyed",
+      "buying"
+    ]
+  },
+  {
+    "id": "p4-en-t2-7",
+    "tier": 2,
+    "skill": "compound",
+    "format": "multiple_choice",
+    "prompt": "What is the past tense of 'know'?",
+    "answer": "knew",
+    "choices": [
+      "knowing",
+      "knew",
+      "knowed",
+      "known"
+    ]
+  },
+  {
+    "id": "p4-en-t2-8",
+    "tier": 2,
+    "skill": "comparison",
+    "format": "multiple_choice",
+    "prompt": "Faster than 'fast' is ___.",
+    "answer": "faster",
+    "choices": [
+      "faster",
+      "fasting",
+      "more fast",
+      "fastest"
+    ]
+  },
+  {
+    "id": "p4-en-t2-9",
+    "tier": 2,
+    "skill": "comparison",
+    "format": "multiple_choice",
+    "prompt": "The ___ runner won.",
+    "answer": "fastest",
+    "choices": [
+      "more fast",
+      "fastest",
+      "more faster",
+      "faster"
+    ]
+  },
+  {
+    "id": "p4-en-t2-10",
+    "tier": 2,
+    "skill": "comparison",
+    "format": "multiple_choice",
+    "prompt": "She is ___ than her sister.",
+    "answer": "taller",
+    "choices": [
+      "taller",
+      "more taller",
+      "more tall",
+      "tallest"
+    ]
+  },
+  {
+    "id": "p4-en-t2-11",
+    "tier": 2,
+    "skill": "vocab",
+    "format": "multiple_choice",
+    "prompt": "What does 'enormous' mean?",
+    "answer": "very big",
+    "choices": [
+      "very small",
+      "very loud",
+      "very big",
+      "very fast"
+    ]
+  },
+  {
+    "id": "p4-en-t2-12",
+    "tier": 2,
+    "skill": "vocab",
+    "format": "multiple_choice",
+    "prompt": "What does 'whisper' mean?",
+    "answer": "speak softly",
+    "choices": [
+      "shout",
+      "speak loudly",
+      "speak softly",
+      "sing"
+    ]
+  },
+  {
+    "id": "p4-en-t2-13",
+    "tier": 2,
+    "skill": "vocab",
+    "format": "multiple_choice",
+    "prompt": "What does 'ancient' mean?",
+    "answer": "very old",
+    "choices": [
+      "very big",
+      "very old",
+      "very small",
+      "very new"
+    ]
+  },
+  {
+    "id": "p4-en-t2-14",
+    "tier": 2,
+    "skill": "homophone",
+    "format": "multiple_choice",
+    "prompt": "Which one means a body part? hear / here",
+    "answer": "hear",
+    "choices": [
+      "neither",
+      "both",
+      "hear",
+      "here"
+    ]
+  },
+  {
+    "id": "p4-en-t2-15",
+    "tier": 2,
+    "skill": "homophone",
+    "format": "multiple_choice",
+    "prompt": "Which one means belonging to them? their / there",
+    "answer": "their",
+    "choices": [
+      "both",
+      "neither",
+      "their",
+      "there"
+    ]
+  }
+]

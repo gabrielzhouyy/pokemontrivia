@@ -1,1 +1,164 @@
-[]
+[
+  {
+    "id": "p6-en-t4-1",
+    "tier": 4,
+    "skill": "spell_clue",
+    "format": "text_pad",
+    "prompt": "A long-distance race (8 letters)",
+    "answer": "MARATHON"
+  },
+  {
+    "id": "p6-en-t4-2",
+    "tier": 4,
+    "skill": "spell_clue",
+    "format": "text_pad",
+    "prompt": "Person who studies the past (10 letters)",
+    "answer": "HISTORIAN"
+  },
+  {
+    "id": "p6-en-t4-3",
+    "tier": 4,
+    "skill": "spell_clue",
+    "format": "text_pad",
+    "prompt": "The home of a king or queen (6 letters)",
+    "answer": "PALACE"
+  },
+  {
+    "id": "p6-en-t4-4",
+    "tier": 4,
+    "skill": "spell_clue",
+    "format": "text_pad",
+    "prompt": "A book of maps (5 letters)",
+    "answer": "ATLAS"
+  },
+  {
+    "id": "p6-en-t4-5",
+    "tier": 4,
+    "skill": "spell_missing",
+    "format": "text_pad",
+    "prompt": "ACQU_INTANCE",
+    "answer": "ACQUAINTANCE"
+  },
+  {
+    "id": "p6-en-t4-6",
+    "tier": 4,
+    "skill": "spell_missing",
+    "format": "text_pad",
+    "prompt": "RE_TAURANT",
+    "answer": "RESTAURANT"
+  },
+  {
+    "id": "p6-en-t4-7",
+    "tier": 4,
+    "skill": "spell_missing",
+    "format": "text_pad",
+    "prompt": "M_LLENNIUM",
+    "answer": "MILLENNIUM"
+  },
+  {
+    "id": "p6-en-t4-8",
+    "tier": 4,
+    "skill": "spell_missing",
+    "format": "text_pad",
+    "prompt": "NECE_SARY",
+    "answer": "NECESSARY"
+  },
+  {
+    "id": "p6-en-t4-9",
+    "tier": 4,
+    "skill": "conditional",
+    "format": "multiple_choice",
+    "prompt": "If I ___ rich, I would buy a yacht.",
+    "answer": "were",
+    "choices": [
+      "be",
+      "was",
+      "were",
+      "am"
+    ]
+  },
+  {
+    "id": "p6-en-t4-10",
+    "tier": 4,
+    "skill": "conditional",
+    "format": "multiple_choice",
+    "prompt": "If it rains, we ___ stay home.",
+    "answer": "will",
+    "choices": [
+      "would",
+      "shall",
+      "will",
+      "could"
+    ]
+  },
+  {
+    "id": "p6-en-t4-11",
+    "tier": 4,
+    "skill": "conditional",
+    "format": "multiple_choice",
+    "prompt": "I wish I ___ play the piano.",
+    "answer": "could",
+    "choices": [
+      "will",
+      "would",
+      "could",
+      "can"
+    ]
+  },
+  {
+    "id": "p6-en-t4-12",
+    "tier": 4,
+    "skill": "passive",
+    "format": "multiple_choice",
+    "prompt": "The cake ___ baked by mom yesterday.",
+    "answer": "was",
+    "choices": [
+      "been",
+      "is",
+      "was",
+      "has"
+    ]
+  },
+  {
+    "id": "p6-en-t4-13",
+    "tier": 4,
+    "skill": "reported",
+    "format": "multiple_choice",
+    "prompt": "He said: \"I am tired.\" → He said he ___ tired.",
+    "answer": "was",
+    "choices": [
+      "was",
+      "be",
+      "is",
+      "had"
+    ]
+  },
+  {
+    "id": "p6-en-t4-14",
+    "tier": 4,
+    "skill": "reported",
+    "format": "multiple_choice",
+    "prompt": "She asked: \"Where is John?\" → She asked where John ___.",
+    "answer": "was",
+    "choices": [
+      "was",
+      "had",
+      "be",
+      "is"
+    ]
+  },
+  {
+    "id": "p6-en-t4-15",
+    "tier": 4,
+    "skill": "vocab_advanced",
+    "format": "multiple_choice",
+    "prompt": "What does 'meticulous' mean?",
+    "answer": "very careful",
+    "choices": [
+      "very lazy",
+      "very loud",
+      "very fast",
+      "very careful"
+    ]
+  }
+]

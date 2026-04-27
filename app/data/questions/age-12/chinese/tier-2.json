@@ -1,1 +1,198 @@
-[]
+[
+  {
+    "id": "p4-zh-t2-1",
+    "tier": 2,
+    "skill": "measure_word",
+    "format": "multiple_choice",
+    "prompt": "Measure word for books: ___ 书",
+    "answer": "本",
+    "choices": [
+      "本",
+      "个",
+      "只",
+      "条"
+    ]
+  },
+  {
+    "id": "p4-zh-t2-2",
+    "tier": 2,
+    "skill": "measure_word",
+    "format": "multiple_choice",
+    "prompt": "Measure word for cars: ___ 车",
+    "answer": "辆",
+    "choices": [
+      "只",
+      "条",
+      "个",
+      "辆"
+    ]
+  },
+  {
+    "id": "p4-zh-t2-3",
+    "tier": 2,
+    "skill": "measure_word",
+    "format": "multiple_choice",
+    "prompt": "Measure word for fish: ___ 鱼",
+    "answer": "条",
+    "choices": [
+      "本",
+      "只",
+      "个",
+      "条"
+    ]
+  },
+  {
+    "id": "p4-zh-t2-4",
+    "tier": 2,
+    "skill": "measure_word",
+    "format": "multiple_choice",
+    "prompt": "Measure word for cats: ___ 猫",
+    "answer": "只",
+    "choices": [
+      "只",
+      "本",
+      "个",
+      "条"
+    ]
+  },
+  {
+    "id": "p4-zh-t2-5",
+    "tier": 2,
+    "skill": "measure_word",
+    "format": "multiple_choice",
+    "prompt": "Measure word for people: ___ 人",
+    "answer": "个",
+    "choices": [
+      "个",
+      "条",
+      "本",
+      "只"
+    ]
+  },
+  {
+    "id": "p4-zh-t2-6",
+    "tier": 2,
+    "skill": "adjective",
+    "format": "multiple_choice",
+    "prompt": "What does 高兴 mean?",
+    "answer": "happy",
+    "choices": [
+      "sad",
+      "tired",
+      "happy",
+      "angry"
+    ]
+  },
+  {
+    "id": "p4-zh-t2-7",
+    "tier": 2,
+    "skill": "adjective",
+    "format": "multiple_choice",
+    "prompt": "What does 漂亮 mean?",
+    "answer": "beautiful",
+    "choices": [
+      "ugly",
+      "beautiful",
+      "fast",
+      "tall"
+    ]
+  },
+  {
+    "id": "p4-zh-t2-8",
+    "tier": 2,
+    "skill": "adjective",
+    "format": "multiple_choice",
+    "prompt": "What does 聪明 mean?",
+    "answer": "smart/clever",
+    "choices": [
+      "tall",
+      "happy",
+      "smart/clever",
+      "dumb"
+    ]
+  },
+  {
+    "id": "p4-zh-t2-9",
+    "tier": 2,
+    "skill": "adjective",
+    "format": "multiple_choice",
+    "prompt": "What does 累 mean?",
+    "answer": "tired",
+    "choices": [
+      "happy",
+      "thirsty",
+      "tired",
+      "hungry"
+    ]
+  },
+  {
+    "id": "p4-zh-t2-10",
+    "tier": 2,
+    "skill": "adjective",
+    "format": "multiple_choice",
+    "prompt": "What does 饿 mean?",
+    "answer": "hungry",
+    "choices": [
+      "thirsty",
+      "hungry",
+      "full",
+      "tired"
+    ]
+  },
+  {
+    "id": "p4-zh-t2-11",
+    "tier": 2,
+    "skill": "color",
+    "format": "multiple_choice",
+    "prompt": "What does 红色 mean?",
+    "answer": "red",
+    "choices": [
+      "yellow",
+      "blue",
+      "red",
+      "green"
+    ]
+  },
+  {
+    "id": "p4-zh-t2-12",
+    "tier": 2,
+    "skill": "color",
+    "format": "multiple_choice",
+    "prompt": "What does 蓝色 mean?",
+    "answer": "blue",
+    "choices": [
+      "green",
+      "red",
+      "blue",
+      "yellow"
+    ]
+  },
+  {
+    "id": "p4-zh-t2-13",
+    "tier": 2,
+    "skill": "color",
+    "format": "multiple_choice",
+    "prompt": "What does 绿色 mean?",
+    "answer": "green",
+    "choices": [
+      "green",
+      "yellow",
+      "blue",
+      "red"
+    ]
+  },
+  {
+    "id": "p4-zh-t2-14",
+    "tier": 2,
+    "skill": "color",
+    "format": "multiple_choice",
+    "prompt": "What does 黄色 mean?",
+    "answer": "yellow",
+    "choices": [
+      "green",
+      "blue",
+      "red",
+      "yellow"
+    ]
+  }
+]
