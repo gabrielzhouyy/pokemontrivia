@@ -68,14 +68,32 @@ export async function syncBankFromCloud(): Promise<void> {
 }
 
 // Filter the cached bank for the (subject, tier) the encounter needs.
-// Falls back to the configured fallback subject (e.g. "math") if the
-// requested subject has no questions in the bank.
+// Walks a fallback ladder so a sparsely-curated bank still serves *some*
+// question rather than nothing:
+//   1. exact (subject, tier)
+//   2. same subject, any tier
+//   3. fallback subject, same tier
+//   4. fallback subject, any tier
+//   5. any question in the bank
+// Returns [] only when the bank is completely empty.
 function bankFor(subject: SubjectId, tier: Tier): Question[] {
   const cache = readCache();
   if (!cache || cache.questions.length === 0) return [];
-  const exact = cache.questions.filter((q) => q.subject === subject && q.tier === tier);
+  const all = cache.questions;
+
+  const exact = all.filter((q) => q.subject === subject && q.tier === tier);
   if (exact.length > 0) return exact;
-  return cache.questions.filter((q) => q.subject === FALLBACK_SUBJECT && q.tier === tier);
+
+  const sameSubject = all.filter((q) => q.subject === subject);
+  if (sameSubject.length > 0) return sameSubject;
+
+  const fallbackTier = all.filter((q) => q.subject === FALLBACK_SUBJECT && q.tier === tier);
+  if (fallbackTier.length > 0) return fallbackTier;
+
+  const fallbackAny = all.filter((q) => q.subject === FALLBACK_SUBJECT);
+  if (fallbackAny.length > 0) return fallbackAny;
+
+  return all;
 }
 
 export function getBank(subject: SubjectId, tier: Tier): Question[] {
@@ -121,6 +139,14 @@ export function getQuestionById(id: string): Question | undefined {
   const cache = readCache();
   if (!cache) return undefined;
   return cache.questions.find((q) => q.id === id);
+}
+
+// True if the player's currently-cached bank has zero questions. Used by
+// pages to decide whether to show the "ask Professor Oak" empty state
+// instead of a hung Pokemon screen.
+export function bankIsEmpty(): boolean {
+  const cache = readCache();
+  return !cache || cache.questions.length === 0;
 }
 
 // After answering, update history. Decrement reviewCounters on OTHER

@@ -3,6 +3,7 @@ import { useEffect, useState, use } from "react";
 import { useRouter } from "next/navigation";
 import { getPokemon } from "@/lib/pokemon";
 import {
+  bankIsEmpty,
   pickQuestion,
   recordAnswer,
   type Question,
@@ -203,6 +204,23 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
           />
         );
       })()}
+
+      {!evolving && !question && bankIsEmpty() && (
+        <div className="fixed inset-0 bg-black/40 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-3xl shadow-2xl p-6 max-w-sm text-center">
+            <p className="text-2xl font-extrabold text-yellow-600 mb-2">🧓 Ask Professor Oak!</p>
+            <p className="text-gray-600">
+              Your question bank doesn&apos;t have any questions yet.
+            </p>
+            <button
+              onClick={() => router.replace("/pokedex")}
+              className="mt-4 bg-yellow-300 hover:bg-yellow-400 px-5 py-3 rounded-2xl font-bold active:scale-95 transition"
+            >
+              ← Back to Pokedex
+            </button>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

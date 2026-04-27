@@ -3,6 +3,7 @@ import { useEffect, useState, use } from "react";
 import { useRouter } from "next/navigation";
 import { getPokemon } from "@/lib/pokemon";
 import {
+  bankIsEmpty,
   pickQuestion,
   recordAnswer,
   type Question,
@@ -12,7 +13,7 @@ import { loadCurrentProfile, saveProfile, type Profile } from "@/lib/storage";
 import { playCatch } from "@/lib/audio";
 import QuestionModal from "@/components/QuestionModal";
 
-type Phase = "intro" | "question" | "caught" | "fled";
+type Phase = "intro" | "question" | "caught" | "fled" | "no-questions";
 
 export default function EncounterPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
@@ -47,6 +48,10 @@ export default function EncounterPage({ params }: { params: Promise<{ id: string
       cancel = setTimeout(() => {
         const subject = subjectFor(pkmn.id);
         const q = pickQuestion(subject, pkmn.tier, p.history);
+        if (!q || bankIsEmpty()) {
+          setPhase("no-questions");
+          return;
+        }
         setQuestion(q);
         setPhase("question");
       }, 1100);
@@ -167,6 +172,23 @@ export default function EncounterPage({ params }: { params: Promise<{ id: string
             {pokemon.name} got away…
           </p>
           <p className="text-gray-600 mt-1">Try again from the Pokedex.</p>
+        </div>
+      )}
+
+      {phase === "no-questions" && (
+        <div className="mt-6 text-center max-w-md">
+          <p className="text-2xl font-extrabold text-yellow-600 animate-bounce-in">
+            🧓 Ask Professor Oak!
+          </p>
+          <p className="text-gray-600 mt-2">
+            Your question bank doesn&apos;t have any questions for {pokemon.name} yet.
+          </p>
+          <button
+            onClick={() => router.replace("/pokedex")}
+            className="mt-4 bg-yellow-300 hover:bg-yellow-400 px-5 py-3 rounded-2xl font-bold active:scale-95 transition"
+          >
+            ← Back to Pokedex
+          </button>
         </div>
       )}
     </main>
