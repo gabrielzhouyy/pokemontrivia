@@ -1,176 +1,135 @@
 "use client";
-import type { QuestionHistory } from "./questions";
-import { POKEMON } from "./pokemon";
+// Client-side storage layer. After Drop 4b this is a thin async wrapper
+// around /api/profile. Same exported names as before so callers don't
+// need updating beyond awaiting the calls.
 
-// New shape (Drop 1c): one entry per species id.
-// `evolved: true` means this species line was evolved past — it stays in the
-// Pokedex frozen at its evolve level and is no longer trainable.
-export type OwnedPokemon = {
-  level: number;
-  evolved: boolean;
-};
+import {
+  type Profile,
+  type OwnedPokemon,
+  DEFAULT_AGE,
+  newProfile as newProfileObj,
+} from "./profile-types";
 
-// Old (pre-Drop-1c) shape — kept here only so loadProfile can migrate.
-type OwnedPokemonV1 = {
-  id: number;
-  level: number;
-  speciesId: number;
-};
+export type { Profile, OwnedPokemon };
+export { DEFAULT_AGE };
 
-export type Profile = {
-  username: string;
-  pin: string;
-  starterId: number | null;
-  // The kid's age — drives which question bank bucket is used. Default 7.
-  age: number;
-  // Set of species IDs the player has obtained (caught in wild OR via evolution).
-  caught: number[];
-  // One entry per owned species, keyed by species id directly.
-  owned: Record<number, OwnedPokemon>;
-  // Set of base species IDs the player has evolved at least once
-  // (used for "first evolution" / "evolve all" stats).
-  evolved: number[];
-  history: QuestionHistory;
-  stats: {
-    totalAnswered: number;
-    correct: number;
-    currentStreak: number;
-    longestStreak: number;
-  };
-  createdAt: number;
-};
+const LEGACY_KEY_PREFIX = "pmc:profile:";
+const LEGACY_KEY_CURRENT = "pmc:current";
 
-export const DEFAULT_AGE = 7;
+// ---------- Auth-flow helpers (used by /login and /admin/login) ----------
 
-const KEY_PREFIX = "pmc:profile:";
-const KEY_CURRENT = "pmc:current";
-
-export function profileKey(username: string) {
-  return KEY_PREFIX + username.toLowerCase();
+export async function login(username: string, pin: string): Promise<Profile | null> {
+  const res = await fetch("/api/auth/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, pin }),
+  });
+  if (!res.ok) return null;
+  await maybeMigrateLocalProfile(username);
+  return loadCurrentProfile();
 }
 
-// Detect + migrate v1 owned shape to v2. The v1 shape was keyed by base species
-// id with an indirect `speciesId` pointing to the current evolved form. Split
-// each v1 entry into two v2 entries: base id locked at evolve_level, evolved
-// id active at the current level.
-function migrateOwned(profile: Profile): Profile {
-  const ownedAny = profile.owned as unknown as Record<number, unknown>;
-  const sample = Object.values(ownedAny)[0];
-  const isV1 =
-    sample &&
-    typeof sample === "object" &&
-    "speciesId" in (sample as object) &&
-    "id" in (sample as object);
-  if (!isV1) return profile;
-
-  const newOwned: Record<number, OwnedPokemon> = {};
-  const newCaught = new Set<number>(profile.caught);
-  for (const [, entry] of Object.entries(ownedAny)) {
-    const v1 = entry as OwnedPokemonV1;
-    if (v1.id === v1.speciesId) {
-      // Never evolved — single entry.
-      newOwned[v1.id] = { level: v1.level, evolved: false };
-      newCaught.add(v1.id);
-    } else {
-      // Was evolved: walk the chain from v1.id to v1.speciesId, freezing
-      // intermediate forms at their evolve_level.
-      let cur = v1.id;
-      while (cur !== v1.speciesId) {
-        const sp = POKEMON.find((p) => p.id === cur);
-        if (!sp || sp.evolves_to === null || sp.evolve_level === null) break;
-        newOwned[cur] = { level: sp.evolve_level, evolved: true };
-        newCaught.add(cur);
-        cur = sp.evolves_to;
-      }
-      newOwned[v1.speciesId] = { level: v1.level, evolved: false };
-      newCaught.add(v1.speciesId);
-    }
-  }
-  return { ...profile, owned: newOwned, caught: Array.from(newCaught) };
+export async function register(username: string, pin: string): Promise<Profile | null> {
+  const res = await fetch("/api/auth/register", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, pin }),
+  });
+  if (!res.ok) return null;
+  await maybeMigrateLocalProfile(username);
+  return loadCurrentProfile();
 }
 
-function migrateAge(profile: Profile): Profile {
-  if (typeof profile.age === "number" && profile.age > 0) return profile;
-  return { ...profile, age: DEFAULT_AGE };
+export async function logout(): Promise<void> {
+  await fetch("/api/auth/logout", { method: "POST" });
 }
 
-export function loadProfile(username: string): Profile | null {
+export async function getCurrentUsername(): Promise<string | null> {
   if (typeof window === "undefined") return null;
-  const raw = localStorage.getItem(profileKey(username));
-  if (!raw) return null;
+  const res = await fetch("/api/auth/me", { cache: "no-store" });
+  if (!res.ok) return null;
+  const j = (await res.json()) as { session: { username: string; role: string } | null };
+  return j.session?.username ?? null;
+}
+
+// ---------- Profile read/write ----------
+
+export async function loadCurrentProfile(): Promise<Profile | null> {
+  if (typeof window === "undefined") return null;
+  const res = await fetch("/api/profile", { cache: "no-store" });
+  if (res.status === 401 || res.status === 404) return null;
+  if (!res.ok) return null;
+  const j = (await res.json()) as { profile: Profile };
+  return j.profile;
+}
+
+export async function saveProfile(profile: Profile): Promise<void> {
+  await fetch("/api/profile", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ profile }),
+  });
+}
+
+// ---------- Migration: upload any pre-existing localStorage profile ----------
+
+// On first cloud login for a username, look for a legacy localStorage
+// profile under that name and seed the cloud with it. Idempotent: cleared
+// after upload so subsequent logins skip this path.
+async function maybeMigrateLocalProfile(username: string): Promise<void> {
+  if (typeof window === "undefined") return;
+  const key = LEGACY_KEY_PREFIX + username.toLowerCase();
+  const raw = localStorage.getItem(key);
+  if (!raw) return;
+  let local: Profile;
   try {
-    const parsed = JSON.parse(raw) as Profile;
-    const afterOwned = migrateOwned(parsed);
-    const final = migrateAge(afterOwned);
-    if (final !== parsed) {
-      // Persist migration so it only runs once.
-      localStorage.setItem(profileKey(username), JSON.stringify(final));
-    }
-    return final;
+    local = JSON.parse(raw) as Profile;
   } catch {
-    return null;
+    return;
   }
+
+  // Fetch current cloud profile. If it has any meaningful content
+  // (caught Pokemon or stats > 0), don't overwrite.
+  const current = await loadCurrentProfile();
+  if (current && (current.caught.length > 0 || current.stats.totalAnswered > 0)) {
+    localStorage.removeItem(key);
+    return;
+  }
+  // Strip the legacy `pin` field — server uses bcrypt hash, not raw pin.
+  const safe: Profile = { ...local, pin: "", username };
+  await saveProfile(safe);
+  localStorage.removeItem(key);
 }
 
+// ---------- Helpers preserved for backward compatibility ----------
+
+export const newProfile = newProfileObj;
+
+// Lists profiles known to this device. Pre-Drop-4b this read localStorage;
+// post-Drop-4b that's not meaningful (the cloud has them). Kept as a
+// no-op stub so the admin Users tab compiles; Drop 4c will replace it
+// with an admin-only `/api/admin/users` call.
 export function listAllProfiles(): Profile[] {
-  if (typeof window === "undefined") return [];
-  const profiles: Profile[] = [];
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    if (!key || !key.startsWith(KEY_PREFIX)) continue;
-    const username = key.slice(KEY_PREFIX.length);
-    const p = loadProfile(username);
-    if (p) profiles.push(p);
-  }
-  return profiles;
+  return [];
 }
 
-export function resetProfile(username: string): Profile | null {
-  const existing = loadProfile(username);
-  if (!existing) return null;
-  const fresh = newProfile(existing.username, existing.pin);
-  fresh.age = existing.age;
-  saveProfile(fresh);
-  return fresh;
+export function resetProfile(_username: string): Profile | null {
+  // Replaced by /api/admin/users/[id]/reset in Drop 4c.
+  return null;
 }
 
-export function saveProfile(profile: Profile): void {
+// Legacy alias kept so older callers compile during the migration.
+export function loadProfile(_username: string): Profile | null {
+  return null;
+}
+
+// Helper to detect the legacy localStorage state (used by login UI hints).
+export function hasLegacyLocalProfile(username: string): boolean {
+  if (typeof window === "undefined") return false;
+  return !!localStorage.getItem(LEGACY_KEY_PREFIX + username.toLowerCase());
+}
+
+export function clearLegacyCurrentMarker(): void {
   if (typeof window === "undefined") return;
-  localStorage.setItem(profileKey(profile.username), JSON.stringify(profile));
-  localStorage.setItem(KEY_CURRENT, profile.username);
-}
-
-export function getCurrentUsername(): string | null {
-  if (typeof window === "undefined") return null;
-  return localStorage.getItem(KEY_CURRENT);
-}
-
-export function loadCurrentProfile(): Profile | null {
-  const u = getCurrentUsername();
-  return u ? loadProfile(u) : null;
-}
-
-export function logout(): void {
-  if (typeof window === "undefined") return;
-  localStorage.removeItem(KEY_CURRENT);
-}
-
-export function newProfile(username: string, pin: string): Profile {
-  return {
-    username,
-    pin,
-    starterId: null,
-    age: DEFAULT_AGE,
-    caught: [],
-    owned: {},
-    evolved: [],
-    history: {},
-    stats: {
-      totalAnswered: 0,
-      correct: 0,
-      currentStreak: 0,
-      longestStreak: 0,
-    },
-    createdAt: Date.now(),
-  };
+  localStorage.removeItem(LEGACY_KEY_CURRENT);
 }

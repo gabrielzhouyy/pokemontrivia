@@ -11,9 +11,11 @@ export default function StarterPage() {
   const [confirming, setConfirming] = useState(false);
 
   useEffect(() => {
-    const p = loadCurrentProfile();
-    if (!p) router.replace("/login");
-    else if (p.starterId) router.replace("/pokedex");
+    (async () => {
+      const p = await loadCurrentProfile();
+      if (!p) router.replace("/login");
+      else if (p.starterId) router.replace("/pokedex");
+    })();
   }, [router]);
 
   function pick(id: number) {
@@ -21,14 +23,14 @@ export default function StarterPage() {
     setChosen(id);
   }
 
-  function confirm() {
+  async function confirm() {
     if (chosen === null) return;
-    const p = loadCurrentProfile();
+    const p = await loadCurrentProfile();
     if (!p) return;
     p.starterId = chosen;
     p.caught = [chosen];
     p.owned[chosen] = { level: 5, evolved: false };
-    saveProfile(p);
+    await saveProfile(p);
     setConfirming(true);
     playCatch();
     setTimeout(() => router.replace("/pokedex"), 1600);

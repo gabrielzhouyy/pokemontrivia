@@ -17,9 +17,11 @@ export default function StatsPage() {
   const [profile, setProfile] = useState<Profile | null>(null);
 
   useEffect(() => {
-    const p = loadCurrentProfile();
-    if (!p) router.replace("/login");
-    else setProfile(p);
+    (async () => {
+      const p = await loadCurrentProfile();
+      if (!p) router.replace("/login");
+      else setProfile(p);
+    })();
   }, [router]);
 
   if (!profile) return null;

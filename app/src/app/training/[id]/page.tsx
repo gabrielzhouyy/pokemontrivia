@@ -31,27 +31,29 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
   const [evolveMessage, setEvolveMessage] = useState("");
 
   useEffect(() => {
-    const p = loadCurrentProfile();
-    if (!p) {
-      router.replace("/login");
-      return;
-    }
-    const owned = p.owned[speciesId];
-    // Not owned at all → bounce to encounter (or pokedex if evolution-only).
-    if (!owned) {
+    (async () => {
+      const p = await loadCurrentProfile();
+      if (!p) {
+        router.replace("/login");
+        return;
+      }
+      const owned = p.owned[speciesId];
+      // Not owned at all → bounce to encounter (or pokedex if evolution-only).
+      if (!owned) {
+        const sp = getPokemon(speciesId);
+        router.replace(sp.evolution_only ? "/pokedex" : `/encounter/${speciesId}`);
+        return;
+      }
+      // Owned but already evolved past — this slot is locked.
+      if (owned.evolved) {
+        router.replace("/pokedex");
+        return;
+      }
+      setProfile(p);
       const sp = getPokemon(speciesId);
-      router.replace(sp.evolution_only ? "/pokedex" : `/encounter/${speciesId}`);
-      return;
-    }
-    // Owned but already evolved past — this slot is locked.
-    if (owned.evolved) {
-      router.replace("/pokedex");
-      return;
-    }
-    setProfile(p);
-    const sp = getPokemon(speciesId);
-    setQuestion(pickQuestion(p.age, subjectFor(sp.id), sp.tier, p.history));
-    setQSerial((s) => s + 1);
+      setQuestion(pickQuestion(p.age, subjectFor(sp.id), sp.tier, p.history));
+      setQSerial((s) => s + 1);
+    })();
   }, [router, speciesId]);
 
   if (!profile) return null;
@@ -71,17 +73,22 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
     setQSerial((s) => s + 1);
   }
 
-  function handleAnswer(correct: boolean) {
-    const p = loadCurrentProfile();
-    if (!p || !question) return;
-    p.history = recordAnswer(p.history, question.id, correct);
-    p.stats.totalAnswered += 1;
+  async function handleAnswer(correct: boolean) {
+    if (!profile || !question) return;
+    const p: Profile = {
+      ...profile,
+      history: recordAnswer(profile.history, question.id, correct),
+      stats: { ...profile.stats, totalAnswered: profile.stats.totalAnswered + 1 },
+      owned: { ...profile.owned },
+      caught: [...profile.caught],
+      evolved: [...profile.evolved],
+    };
     if (!correct) {
       p.stats.currentStreak = 0;
-      saveProfile(p);
       setProfile(p);
       pushFloat("Try again!", "text-red-500");
       nextQuestion(p, speciesId);
+      await saveProfile(p);
       return;
     }
     p.stats.correct += 1;
@@ -110,7 +117,6 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
     } else {
       p.owned[speciesId] = { level, evolved: false };
     }
-    saveProfile(p);
     setProfile(p);
 
     pushFloat("+1 Level!", "text-yellow-500");
@@ -118,6 +124,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
     if (didEvolve) {
       setEvolving(true);
       playEvolve();
+      await saveProfile(p);
       setTimeout(() => {
         setEvolving(false);
         setEvolveMessage("");
@@ -126,6 +133,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
       }, 2400);
     } else {
       nextQuestion(p, speciesId);
+      await saveProfile(p);
     }
   }
 

@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { loadProfile, newProfile, saveProfile } from "@/lib/storage";
+import { login as apiLogin, register as apiRegister } from "@/lib/storage";
 import { playClick, playWrong } from "@/lib/audio";
 
 export default function LoginPage() {
@@ -23,33 +23,31 @@ export default function LoginPage() {
     setPin(pin.slice(0, -1));
     setError("");
   }
-  function submit() {
+  const [busy, setBusy] = useState(false);
+
+  async function submit() {
     const u = username.trim();
-    if (!u) {
-      setError("Type your name first!");
-      return;
-    }
-    if (pin.length !== 4) {
-      setError("PIN must be 4 digits");
-      return;
-    }
-    const existing = loadProfile(u);
-    if (existing) {
-      if (existing.pin !== pin) {
-        playWrong();
-        setShaking(true);
-        setError("Wrong PIN, try again!");
-        setPin("");
-        setTimeout(() => setShaking(false), 400);
-        return;
+    if (!u) return setError("Type your name first!");
+    if (pin.length !== 4) return setError("PIN must be 4 digits");
+    setBusy(true);
+    try {
+      // Try login first; if it 401s, register.
+      let profile = await apiLogin(u, pin);
+      if (!profile) {
+        profile = await apiRegister(u, pin);
+        if (!profile) {
+          // Username exists with a different PIN.
+          playWrong();
+          setShaking(true);
+          setError("Wrong PIN, try again!");
+          setPin("");
+          setTimeout(() => setShaking(false), 400);
+          return;
+        }
       }
-      saveProfile(existing);
-      if (!existing.starterId) router.replace("/starter");
-      else router.replace("/pokedex");
-    } else {
-      const p = newProfile(u, pin);
-      saveProfile(p);
-      router.replace("/starter");
+      router.replace(profile.starterId ? "/pokedex" : "/starter");
+    } finally {
+      setBusy(false);
     }
   }
 
@@ -127,7 +125,8 @@ export default function LoginPage() {
           </button>
           <button
             onClick={submit}
-            className="bg-green-500 hover:bg-green-600 text-white active:scale-95 transition rounded-2xl py-4 text-xl font-bold"
+            disabled={busy}
+            className="bg-green-500 hover:bg-green-600 disabled:bg-gray-300 text-white active:scale-95 transition rounded-2xl py-4 text-xl font-bold"
             aria-label="Submit"
           >
             ✓

@@ -25,55 +25,62 @@ export default function EncounterPage({ params }: { params: Promise<{ id: string
   const [question, setQuestion] = useState<Question | null>(null);
 
   useEffect(() => {
-    const p = loadCurrentProfile();
-    if (!p) {
-      router.replace("/login");
-      return;
-    }
-    const pkmn = getPokemon(pokemonId);
-    // Evolution-only species (Ivysaur, Charmeleon, …) cannot appear in the
-    // wild — only via evolution. Bounce the player back to the Pokedex.
-    if (pkmn.evolution_only) {
-      router.replace("/pokedex");
-      return;
-    }
-    if (p.caught.includes(pokemonId)) {
-      router.replace(`/training/${pokemonId}`);
-      return;
-    }
-    setProfile(p);
-    const t = setTimeout(() => {
-      const subject = subjectFor(pkmn.id);
-      const q = pickQuestion(p.age, subject, pkmn.tier, p.history);
-      setQuestion(q);
-      setPhase("question");
-    }, 1100);
-    return () => clearTimeout(t);
+    let cancel: ReturnType<typeof setTimeout> | null = null;
+    (async () => {
+      const p = await loadCurrentProfile();
+      if (!p) {
+        router.replace("/login");
+        return;
+      }
+      const pkmn = getPokemon(pokemonId);
+      // Evolution-only species (Ivysaur, Charmeleon, …) cannot appear in the
+      // wild — only via evolution. Bounce the player back to the Pokedex.
+      if (pkmn.evolution_only) {
+        router.replace("/pokedex");
+        return;
+      }
+      if (p.caught.includes(pokemonId)) {
+        router.replace(`/training/${pokemonId}`);
+        return;
+      }
+      setProfile(p);
+      cancel = setTimeout(() => {
+        const subject = subjectFor(pkmn.id);
+        const q = pickQuestion(p.age, subject, pkmn.tier, p.history);
+        setQuestion(q);
+        setPhase("question");
+      }, 1100);
+    })();
+    return () => {
+      if (cancel) clearTimeout(cancel);
+    };
   }, [router, pokemonId]);
 
   if (!profile) return null;
   const pokemon = getPokemon(pokemonId);
 
-  function handleAnswer(correct: boolean) {
-    const p = loadCurrentProfile();
-    if (!p || !question) return;
-    p.history = recordAnswer(p.history, question.id, correct);
-    p.stats.totalAnswered += 1;
+  async function handleAnswer(correct: boolean) {
+    if (!profile || !question) return;
+    const p: Profile = {
+      ...profile,
+      history: recordAnswer(profile.history, question.id, correct),
+      stats: { ...profile.stats, totalAnswered: profile.stats.totalAnswered + 1 },
+    };
     if (correct) {
       p.stats.correct += 1;
       p.stats.currentStreak += 1;
       p.stats.longestStreak = Math.max(p.stats.longestStreak, p.stats.currentStreak);
       p.caught = Array.from(new Set([...p.caught, pokemonId]));
-      p.owned[pokemonId] = { level: 5, evolved: false };
-      saveProfile(p);
+      p.owned = { ...p.owned, [pokemonId]: { level: 5, evolved: false } };
       setProfile(p);
       setPhase("caught");
       playCatch();
+      await saveProfile(p);
       setTimeout(() => router.replace("/pokedex"), 2200);
     } else {
       p.stats.currentStreak = 0;
-      saveProfile(p);
       setProfile(p);
+      await saveProfile(p);
       if (attempt >= 3) {
         setPhase("fled");
         setTimeout(() => router.replace("/pokedex"), 1800);

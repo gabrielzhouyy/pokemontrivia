@@ -19,17 +19,19 @@ export default function PokedexPage() {
   const [muteState, setMuteState] = useState(false);
 
   useEffect(() => {
-    const p = loadCurrentProfile();
-    if (!p) {
-      router.replace("/login");
-      return;
-    }
-    if (!p.starterId) {
-      router.replace("/starter");
-      return;
-    }
-    setProfile(p);
-    setMuteState(isMuted());
+    (async () => {
+      const p = await loadCurrentProfile();
+      if (!p) {
+        router.replace("/login");
+        return;
+      }
+      if (!p.starterId) {
+        router.replace("/starter");
+        return;
+      }
+      setProfile(p);
+      setMuteState(isMuted());
+    })();
   }, [router]);
 
   if (!profile) return <div className="flex flex-1 items-center justify-center">Loading…</div>;
@@ -68,8 +70,10 @@ export default function PokedexPage() {
           </button>
           <button
             onClick={() => {
-              logout();
-              router.replace("/login");
+              (async () => {
+                await logout();
+                router.replace("/login");
+              })();
             }}
             className="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-2xl font-bold active:scale-95 transition"
           >
