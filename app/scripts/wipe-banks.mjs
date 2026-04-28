@@ -1,0 +1,11 @@
+import { config } from "dotenv";
+import { neon } from "@neondatabase/serverless";
+import { join, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+const __dirname = dirname(fileURLToPath(import.meta.url));
+config({ path: join(__dirname, "..", ".env.local") });
+const sql = neon(process.env.DATABASE_URL);
+await sql`delete from bank_questions`;
+await sql`delete from banks`;
+console.log("Done — all banks wiped.");
+process.exit(0);
