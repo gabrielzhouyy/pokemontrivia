@@ -31,6 +31,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
   // the modal stays locked on its previous feedback state.
   const [qSerial, setQSerial] = useState(0);
   const [floats, setFloats] = useState<{ key: number; text: string; cls: string }[]>([]);
+  const [levelUpText, setLevelUpText] = useState("");
   const [evolving, setEvolving] = useState(false);
   const [evolveMessage, setEvolveMessage] = useState("");
   const [evolvedPokemon, setEvolvedPokemon] = useState<ReturnType<typeof getPokemon> | null>(null);
@@ -74,6 +75,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
   }
 
   function nextQuestion(p: Profile, sid: number) {
+    setLevelUpText("");
     const sp = getPokemon(sid);
     setQuestion(pickQuestion(subjectFor(sp.id), sp.tier, p.history));
     setQSerial((s) => s + 1);
@@ -127,7 +129,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
     setProfile(p);
 
     const oldLevel = ownedNow.level;
-    pushFloat(`${cur.name} Lv.${oldLevel} → Lv.${level}`, "text-yellow-500");
+    setLevelUpText(`${cur.name} Lv.${oldLevel} → Lv.${level}`);
 
     if (didEvolve) {
       const evo = getPokemon(evolvedToId);
@@ -136,8 +138,8 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
       setEvolving(true);
       playEvolve();
       await saveProfile(p);
-      // Phase 2: swap to evolved sprite halfway through
-      setTimeout(() => setShowNewForm(true), 1400);
+      // Phase 2: swap to evolved sprite after 1s
+      setTimeout(() => setShowNewForm(true), 1000);
       // End: route to evolved form's training page
       setTimeout(() => {
         setEvolving(false);
@@ -145,7 +147,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
         setEvolvedPokemon(null);
         setShowNewForm(false);
         router.replace(`/training/${evolvedToId}`);
-      }, 2800);
+      }, 3200);
     } else {
       nextQuestion(p, speciesId);
       await saveProfile(p);
@@ -211,6 +213,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
           onAnswer={handleAnswer}
           imageUrl={current.sprite}
           imageName={current.name}
+          levelUpText={levelUpText}
           onExit={() => router.replace("/pokedex")}
           exitLabel="← Stop training"
         />

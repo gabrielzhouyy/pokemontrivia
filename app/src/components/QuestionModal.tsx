@@ -15,6 +15,7 @@ type Props = {
   // can tap any time (except mid feedback-reveal) to leave the loop.
   onExit?: () => void;
   exitLabel?: string;
+  levelUpText?: string;
 };
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -31,7 +32,7 @@ function answersMatch(typed: string, answer: string): boolean {
   return typed.trim().toUpperCase() === answer.trim().toUpperCase();
 }
 
-export default function QuestionModal({ question, onAnswer, imageUrl, imageName, subtitle, onExit, exitLabel }: Props) {
+export default function QuestionModal({ question, onAnswer, imageUrl, imageName, subtitle, onExit, exitLabel, levelUpText }: Props) {
   const [typed, setTyped] = useState("");
   const [feedback, setFeedback] = useState<"none" | "correct" | "wrong">("none");
   const [locked, setLocked] = useState(false);
@@ -210,7 +211,12 @@ export default function QuestionModal({ question, onAnswer, imageUrl, imageName,
         {feedback !== "none" && (
           <div className="mt-4 space-y-2">
             {feedback === "correct" && (
-              <p className="text-center text-green-600 font-extrabold text-xl">Correct! 🎉</p>
+              <div className="text-center space-y-0.5">
+                <p className="text-green-600 font-extrabold text-xl">Correct! 🎉</p>
+                {levelUpText && (
+                  <p className="text-yellow-600 font-bold text-sm">{levelUpText}</p>
+                )}
+              </div>
             )}
             {feedback === "wrong" && (
               <p className="text-center text-red-500 font-extrabold text-base">
