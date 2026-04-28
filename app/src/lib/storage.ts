@@ -9,7 +9,6 @@ import {
   DEFAULT_PRI_LEVEL,
   newProfile as newProfileObj,
 } from "./profile-types";
-import { syncSubjectsFromCloud } from "./subjects";
 import { syncBankFromCloud } from "./questions";
 
 export type { Profile, OwnedPokemon };
@@ -69,10 +68,8 @@ export async function loadCurrentProfile(): Promise<Profile | null> {
   if (res.status === 401 || res.status === 404) return null;
   if (!res.ok) return null;
   const j = (await res.json()) as { profile: Profile };
-  // Refresh admin overrides into localStorage so cross-device admin edits
-  // (subjects + bank questions) take effect on this device. Best-effort —
-  // failures here don't block the profile load.
-  void syncSubjectsFromCloud();
+  // Refresh bank questions into localStorage so admin edits take effect on
+  // this device. Best-effort — failures here don't block the profile load.
   void syncBankFromCloud();
   return j.profile;
 }

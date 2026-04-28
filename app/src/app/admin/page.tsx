@@ -3,13 +3,13 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { endAdminSession, isAdminAuthenticated, resetAdmin } from "@/lib/admin";
 import UsersTab from "./tabs/UsersTab";
-import SubjectsTab from "./tabs/SubjectsTab";
+import QuestionsTab from "./tabs/QuestionsTab";
 
-type Tab = "users" | "subjects";
+type Tab = "users" | "questions";
 
 const TABS: { id: Tab; label: string; emoji: string }[] = [
   { id: "users", label: "Users", emoji: "👥" },
-  { id: "subjects", label: "Subjects", emoji: "📚" },
+  { id: "questions", label: "Questions", emoji: "❓" },
 ];
 
 export default function AdminDashboard() {
@@ -92,7 +92,7 @@ export default function AdminDashboard() {
 
       <section className="bg-white rounded-2xl shadow p-4 sm:p-6">
         {tab === "users" && <UsersTab />}
-        {tab === "subjects" && <SubjectsTab />}
+        {tab === "questions" && <QuestionsTab />}
       </section>
     </main>
   );

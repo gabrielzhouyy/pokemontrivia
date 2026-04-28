@@ -130,6 +130,7 @@ export const questions = pgTable("questions", {
   choices: jsonb("choices").$type<string[] | null>(),
   skill: text("skill").notNull().default("custom"),
   source: text("source").notNull().default("bundled"), // 'bundled' | 'custom'
+  explanation: text("explanation"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
 
