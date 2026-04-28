@@ -6,6 +6,9 @@ import { playCorrect, playWrong, playClick } from "@/lib/audio";
 type Props = {
   question: Question;
   onAnswer: (correct: boolean) => void;
+  // Optional Pokemon sprite shown in the modal header.
+  imageUrl?: string;
+  imageName?: string;
   // Optional info shown above the question (e.g. "Attempt 2 of 3")
   subtitle?: string;
   // Optional escape hatch — when set, the modal shows a "back" pill the player
@@ -28,7 +31,7 @@ function answersMatch(typed: string, answer: string): boolean {
   return typed.trim().toUpperCase() === answer.trim().toUpperCase();
 }
 
-export default function QuestionModal({ question, onAnswer, subtitle, onExit, exitLabel }: Props) {
+export default function QuestionModal({ question, onAnswer, imageUrl, imageName, subtitle, onExit, exitLabel }: Props) {
   const [typed, setTyped] = useState("");
   const [feedback, setFeedback] = useState<"none" | "correct" | "wrong">("none");
   const [locked, setLocked] = useState(false);
@@ -101,10 +104,14 @@ export default function QuestionModal({ question, onAnswer, subtitle, onExit, ex
             {exitLabel ?? "← Back to Pokedex"}
           </button>
         )}
+        {imageUrl && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={imageUrl} alt={imageName ?? ""} className="w-16 h-16 object-contain mx-auto mb-1" />
+        )}
         {subtitle && (
           <p className="text-center text-sm text-gray-500 font-bold mb-2">{subtitle}</p>
         )}
-        <div className="text-xl sm:text-2xl font-extrabold text-center my-4 leading-snug">
+        <div className="text-base sm:text-lg font-extrabold text-center my-3 leading-snug">
           {question.prompt}
         </div>
 

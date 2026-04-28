@@ -145,6 +145,8 @@ export default function EncounterPage({ params }: { params: Promise<{ id: string
           key={`${question.id}-${attempt}`}
           question={question}
           onAnswer={handleAnswer}
+          imageUrl={pokemon.sprite}
+          imageName={pokemon.name}
           onExit={() => router.replace("/pokedex")}
           exitLabel="← Run away"
         />

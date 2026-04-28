@@ -199,6 +199,8 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
           key={qSerial}
           question={question}
           onAnswer={handleAnswer}
+          imageUrl={current.sprite}
+          imageName={current.name}
           onExit={() => router.replace("/pokedex")}
           exitLabel="← Stop training"
         />
