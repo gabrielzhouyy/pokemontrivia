@@ -6,7 +6,6 @@ import {
   adminPasswordExists,
   isAdminAuthenticated,
   setAdminPassword,
-  startAdminSession,
   verifyAdminPassword,
 } from "@/lib/admin";
 
@@ -35,7 +34,6 @@ export default function AdminLoginPage() {
     setBusy(true);
     try {
       await setAdminPassword(password);
-      startAdminSession();
       router.replace("/admin");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to set password");
@@ -49,7 +47,6 @@ export default function AdminLoginPage() {
     setBusy(true);
     const ok = await verifyAdminPassword(password);
     if (ok) {
-      startAdminSession();
       router.replace("/admin");
     } else {
       setError("Wrong password");

@@ -4,14 +4,12 @@ import { useRouter } from "next/navigation";
 import { endAdminSession, isAdminAuthenticated, resetAdmin } from "@/lib/admin";
 import UsersTab from "./tabs/UsersTab";
 import SubjectsTab from "./tabs/SubjectsTab";
-import BanksTab from "./tabs/BanksTab";
 
-type Tab = "users" | "subjects" | "banks";
+type Tab = "users" | "subjects";
 
 const TABS: { id: Tab; label: string; emoji: string }[] = [
   { id: "users", label: "Users", emoji: "👥" },
   { id: "subjects", label: "Subjects", emoji: "📚" },
-  { id: "banks", label: "Question banks", emoji: "🗂️" },
 ];
 
 export default function AdminDashboard() {
@@ -49,7 +47,7 @@ export default function AdminDashboard() {
             onClick={() => {
               if (
                 confirm(
-                  "Reset admin? This clears your password and admin session. Player profiles, banks, and questions are kept.",
+                  "Reset admin? This clears your password and admin session. Player profiles are kept.",
                 )
               ) {
                 (async () => {
@@ -95,7 +93,6 @@ export default function AdminDashboard() {
       <section className="bg-white rounded-2xl shadow p-4 sm:p-6">
         {tab === "users" && <UsersTab />}
         {tab === "subjects" && <SubjectsTab />}
-        {tab === "banks" && <BanksTab />}
       </section>
     </main>
   );

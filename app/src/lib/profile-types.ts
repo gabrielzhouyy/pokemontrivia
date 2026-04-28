@@ -14,7 +14,7 @@ export type Profile = {
   // PIN never round-trips from server; this is just the field shape.
   pin: string;
   starterId: number | null;
-  // Singapore Primary level (1–6).
+  // Difficulty level: 1=preK–K, 2=1st–3rd Grade, 3=4th–5th Grade, 4=Adult.
   priLevel: number;
   caught: number[];
   owned: Record<number, OwnedPokemon>;
@@ -30,7 +30,7 @@ export type Profile = {
 };
 
 export const DEFAULT_PRI_LEVEL = 1;
-export const PRI_LEVELS = [1, 2, 3, 4, 5, 6] as const;
+export const PRI_LEVELS = [1, 2, 3, 4] as const;
 export type PriLevel = (typeof PRI_LEVELS)[number];
 
 export function newProfile(username: string, pin: string): Profile {

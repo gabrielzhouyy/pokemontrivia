@@ -16,7 +16,6 @@ export type { Profile, OwnedPokemon };
 export { DEFAULT_PRI_LEVEL };
 
 const LEGACY_KEY_PREFIX = "pmc:profile:";
-const LEGACY_KEY_CURRENT = "pmc:current";
 
 // ---------- Auth-flow helpers (used by /login and /admin/login) ----------
 
@@ -116,35 +115,4 @@ async function maybeMigrateLocalProfile(username: string): Promise<void> {
   localStorage.removeItem(key);
 }
 
-// ---------- Helpers preserved for backward compatibility ----------
-
 export const newProfile = newProfileObj;
-
-// Lists profiles known to this device. Pre-Drop-4b this read localStorage;
-// post-Drop-4b that's not meaningful (the cloud has them). Kept as a
-// no-op stub so the admin Users tab compiles; Drop 4c will replace it
-// with an admin-only `/api/admin/users` call.
-export function listAllProfiles(): Profile[] {
-  return [];
-}
-
-export function resetProfile(_username: string): Profile | null {
-  // Replaced by /api/admin/users/[id]/reset in Drop 4c.
-  return null;
-}
-
-// Legacy alias kept so older callers compile during the migration.
-export function loadProfile(_username: string): Profile | null {
-  return null;
-}
-
-// Helper to detect the legacy localStorage state (used by login UI hints).
-export function hasLegacyLocalProfile(username: string): boolean {
-  if (typeof window === "undefined") return false;
-  return !!localStorage.getItem(LEGACY_KEY_PREFIX + username.toLowerCase());
-}
-
-export function clearLegacyCurrentMarker(): void {
-  if (typeof window === "undefined") return;
-  localStorage.removeItem(LEGACY_KEY_CURRENT);
-}

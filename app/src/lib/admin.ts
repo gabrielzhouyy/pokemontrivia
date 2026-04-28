@@ -1,17 +1,11 @@
 "use client";
 
-// Drop 4c: admin auth moved from localStorage to the cloud API.
-// /admin/login posts to /api/auth/admin-login which sets the same session
-// cookie as players (with role='admin'). Auth state is now "do I have a
-// valid admin cookie?" — checked via /api/auth/me.
-
 export async function adminPasswordExists(): Promise<boolean> {
   // Check by attempting a login with no credentials. The endpoint returns
   // { enroll: true } when no admin row exists yet, otherwise an error.
   const res = await fetch("/api/auth/admin-login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    // Empty body — server will see no password, return enroll status.
     body: JSON.stringify({ password: "x" }),
   });
   if (!res.ok) return true; // a 401 means an admin exists and the password is wrong
@@ -40,10 +34,6 @@ export async function verifyAdminPassword(password: string): Promise<boolean> {
   return res.ok;
 }
 
-// startAdminSession is implicit: /api/auth/admin-login sets the cookie
-// already. Kept as a no-op so existing call sites compile.
-export function startAdminSession(): void {}
-
 export async function isAdminAuthenticated(): Promise<boolean> {
   const res = await fetch("/api/auth/me", { cache: "no-store" });
   if (!res.ok) return false;
@@ -56,12 +46,8 @@ export async function endAdminSession(): Promise<void> {
 }
 
 export async function resetAdmin(): Promise<void> {
-  // No "delete admin user" endpoint yet — this is a stop-gap that just
-  // logs out and clears local overrides. Admin row stays in DB (Drop 4d
-  // can add a confirm-prompted DELETE endpoint if needed).
   await endAdminSession();
   if (typeof window !== "undefined") {
     localStorage.removeItem("pmc:admin:subjects");
-    localStorage.removeItem("pmc:admin:adhoc");
   }
 }

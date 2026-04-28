@@ -4,31 +4,31 @@ import { getDb, schema } from "@/lib/db/client";
 import { requireSession } from "@/lib/auth";
 import { questionsForBank } from "@/lib/curriculum";
 
-// GET — returns the current user's assigned bank and its questions.
-// Questions are read from bundled JSON files (no DB query needed).
+const BANK_NAME: Record<number, string> = {
+  1: "preK\u2013K",
+  2: "1st\u20133rd Grade",
+  3: "4th\u20135th Grade",
+  4: "Adult",
+};
+
+// GET — returns the current user's difficulty tier and its questions from
+// bundled JSON. No DB lookup for banks needed — priLevel drives everything.
 export async function GET() {
   try {
     const session = await requireSession();
     const db = getDb();
 
     const [user] = await db
-      .select({ bankId: schema.users.bankId })
+      .select({ priLevel: schema.users.priLevel })
       .from(schema.users)
       .where(eq(schema.users.id, session.userId));
-    if (!user || user.bankId === null) {
-      return NextResponse.json({ bankId: null, questions: [] });
-    }
+    if (!user) return NextResponse.json({ bankId: null, questions: [] });
 
-    const [bank] = await db
-      .select()
-      .from(schema.banks)
-      .where(eq(schema.banks.id, user.bankId));
-    if (!bank) return NextResponse.json({ bankId: null, questions: [] });
-
+    const bankName = BANK_NAME[user.priLevel] ?? BANK_NAME[1];
     return NextResponse.json({
-      bankId: bank.id,
-      bankName: bank.name,
-      questions: questionsForBank(bank.name),
+      bankId: null,
+      bankName,
+      questions: questionsForBank(bankName),
     });
   } catch (e) {
     const status = (e as { status?: number }).status ?? 500;

@@ -3,7 +3,7 @@ import { eq } from "drizzle-orm";
 import { getDb, schema } from "@/lib/db/client";
 import { requireAdmin } from "@/lib/auth";
 
-// PUT — assign a player to a bank. Pass `bankId: null` to unassign.
+// PUT — set a player's difficulty level (priLevel 1–4).
 export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     await requireAdmin();
@@ -11,21 +11,14 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
     const userId = Number(id);
     if (!userId) return NextResponse.json({ error: "Bad id" }, { status: 400 });
 
-    const body = (await req.json()) as { bankId: number | null };
-    const db = getDb();
-
-    if (body.bankId !== null) {
-      const [bank] = await db
-        .select({ id: schema.banks.id })
-        .from(schema.banks)
-        .where(eq(schema.banks.id, body.bankId));
-      if (!bank) return NextResponse.json({ error: "Bank not found" }, { status: 404 });
+    const body = (await req.json()) as { priLevel?: number };
+    const priLevel = body.priLevel;
+    if (typeof priLevel !== "number" || priLevel < 1 || priLevel > 4) {
+      return NextResponse.json({ error: "priLevel must be 1–4" }, { status: 400 });
     }
 
-    await db
-      .update(schema.users)
-      .set({ bankId: body.bankId })
-      .where(eq(schema.users.id, userId));
+    const db = getDb();
+    await db.update(schema.users).set({ priLevel }).where(eq(schema.users.id, userId));
     return NextResponse.json({ ok: true });
   } catch (e) {
     const status = (e as { status?: number }).status ?? 500;

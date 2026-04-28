@@ -14,7 +14,6 @@ export async function GET() {
         username: schema.users.username,
         priLevel: schema.users.priLevel,
         starterId: schema.users.starterId,
-        bankId: schema.users.bankId,
         createdAt: schema.users.createdAt,
       })
       .from(schema.users)
@@ -45,7 +44,6 @@ export async function GET() {
         id: p.id,
         username: p.username,
         priLevel: p.priLevel,
-        bankId: p.bankId,
         caughtCount: caughtByUser.get(p.id) ?? 0,
         evolvedCount: evolvedByUser.get(p.id) ?? 0,
         totalAnswered: total,

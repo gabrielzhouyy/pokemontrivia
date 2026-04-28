@@ -28,32 +28,3 @@ export async function DELETE(_req: Request, { params }: { params: Promise<{ id: 
     return NextResponse.json({ error: (e as Error).message }, { status });
   }
 }
-
-// Admin-only: update a player profile's Pri level.
-export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {
-  try {
-    await requireAdmin();
-    const { id } = await params;
-    const userId = Number(id);
-    if (!userId) return NextResponse.json({ error: "Bad id" }, { status: 400 });
-    const body = (await req.json()) as { priLevel?: number };
-    const priLevel = body.priLevel;
-    if (typeof priLevel !== "number" || priLevel < 1 || priLevel > 6) {
-      return NextResponse.json({ error: "priLevel must be 1-6" }, { status: 400 });
-    }
-    const db = getDb();
-    const [target] = await db
-      .select({ id: schema.users.id, role: schema.users.role })
-      .from(schema.users)
-      .where(eq(schema.users.id, userId));
-    if (!target) return NextResponse.json({ error: "Not found" }, { status: 404 });
-    if (target.role !== "player") {
-      return NextResponse.json({ error: "Can only edit player profiles" }, { status: 400 });
-    }
-    await db.update(schema.users).set({ priLevel }).where(eq(schema.users.id, userId));
-    return NextResponse.json({ ok: true });
-  } catch (e) {
-    const status = (e as { status?: number }).status ?? 500;
-    return NextResponse.json({ error: (e as Error).message }, { status });
-  }
-}
