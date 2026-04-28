@@ -33,6 +33,8 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
   const [floats, setFloats] = useState<{ key: number; text: string; cls: string }[]>([]);
   const [evolving, setEvolving] = useState(false);
   const [evolveMessage, setEvolveMessage] = useState("");
+  const [evolvedPokemon, setEvolvedPokemon] = useState<ReturnType<typeof getPokemon> | null>(null);
+  const [showNewForm, setShowNewForm] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -68,7 +70,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
   function pushFloat(text: string, cls: string) {
     const key = Date.now() + Math.random();
     setFloats((f) => [...f, { key, text, cls }]);
-    setTimeout(() => setFloats((f) => f.filter((x) => x.key !== key)), 1000);
+    setTimeout(() => setFloats((f) => f.filter((x) => x.key !== key)), 1800);
   }
 
   function nextQuestion(p: Profile, sid: number) {
@@ -124,18 +126,26 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
     }
     setProfile(p);
 
-    pushFloat(`+${gain} Levels!`, "text-yellow-500");
+    const oldLevel = ownedNow.level;
+    pushFloat(`${cur.name} Lv.${oldLevel} → Lv.${level}`, "text-yellow-500");
 
     if (didEvolve) {
+      const evo = getPokemon(evolvedToId);
+      setEvolvedPokemon(evo);
+      setShowNewForm(false);
       setEvolving(true);
       playEvolve();
       await saveProfile(p);
+      // Phase 2: swap to evolved sprite halfway through
+      setTimeout(() => setShowNewForm(true), 1400);
+      // End: route to evolved form's training page
       setTimeout(() => {
         setEvolving(false);
         setEvolveMessage("");
-        // Route to the evolved form's training page so the kid keeps going.
+        setEvolvedPokemon(null);
+        setShowNewForm(false);
         router.replace(`/training/${evolvedToId}`);
-      }, 2400);
+      }, 2800);
     } else {
       nextQuestion(p, speciesId);
       await saveProfile(p);
@@ -158,8 +168,8 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
         <div className="relative inline-block">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={current.sprite}
-            alt={current.name}
+            src={evolving && showNewForm && evolvedPokemon ? evolvedPokemon.sprite : current.sprite}
+            alt={evolving && showNewForm && evolvedPokemon ? evolvedPokemon.name : current.name}
             className={`w-56 h-56 object-contain ${evolving ? "animate-evolve" : "animate-bounce-in"}`}
           />
           <div className="absolute -top-4 right-0 pointer-events-none">
@@ -188,8 +198,8 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
 
       {evolving && (
         <div className="fixed inset-0 bg-yellow-100/70 flex items-center justify-center z-40 pointer-events-none">
-          <p className="text-3xl font-extrabold text-yellow-700 animate-bounce-in text-center">
-            {evolveMessage}
+          <p className="text-3xl font-extrabold text-yellow-700 animate-bounce-in text-center px-4">
+            {showNewForm && evolvedPokemon ? `Meet ${evolvedPokemon.name}!` : evolveMessage}
           </p>
         </div>
       )}
