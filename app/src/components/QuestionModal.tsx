@@ -88,7 +88,7 @@ export default function QuestionModal({ question, onAnswer, subtitle, onExit, ex
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center p-4 z-50">
       <div
-        className={`bg-white rounded-3xl shadow-2xl p-6 w-full max-w-md ${
+        className={`bg-white rounded-3xl shadow-2xl p-4 w-full max-w-md ${
           feedback === "wrong" ? "animate-shake" : ""
         } ${feedback === "correct" ? "ring-4 ring-green-400" : ""}`}
       >
@@ -104,7 +104,7 @@ export default function QuestionModal({ question, onAnswer, subtitle, onExit, ex
         {subtitle && (
           <p className="text-center text-sm text-gray-500 font-bold mb-2">{subtitle}</p>
         )}
-        <div className="text-3xl sm:text-4xl font-extrabold text-center my-6">
+        <div className="text-xl sm:text-2xl font-extrabold text-center my-4 leading-snug">
           {question.prompt}
         </div>
 
@@ -118,7 +118,7 @@ export default function QuestionModal({ question, onAnswer, subtitle, onExit, ex
                 : isAnswer
                 ? "bg-green-400 text-white"
                 : "bg-gray-200 text-gray-500";
-              const sizeCls = choicesContainCJK ? "text-3xl py-6" : "text-2xl py-5";
+              const sizeCls = choicesContainCJK ? "text-2xl py-4" : "text-lg py-4";
               return (
                 <button
                   key={c}

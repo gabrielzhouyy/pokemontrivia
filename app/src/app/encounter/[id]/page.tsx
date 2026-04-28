@@ -8,7 +8,7 @@ import {
   recordAnswer,
   type Question,
 } from "@/lib/questions";
-import { subjectFor, getSubject } from "@/lib/subjects";
+import { subjectFor } from "@/lib/subjects";
 import { loadCurrentProfile, saveProfile, type Profile } from "@/lib/storage";
 import { playCatch } from "@/lib/audio";
 import QuestionModal from "@/components/QuestionModal";
@@ -140,23 +140,15 @@ export default function EncounterPage({ params }: { params: Promise<{ id: string
         </div>
       </div>
 
-      {phase === "question" && question && (() => {
-        const sub = getSubject(subjectFor(pokemon.id));
-        const prefix = sub && sub.id !== "math" ? `${sub.label} — ` : "";
-        // key forces a fresh modal per attempt — important when the bank
-        // has only 1 question and pickQuestion returns the same object,
-        // which would otherwise leave the modal locked in its "wrong" state.
-        return (
-          <QuestionModal
-            key={`${question.id}-${attempt}`}
-            question={question}
-            onAnswer={handleAnswer}
-            subtitle={`${prefix}Throw ${attempt} of 3 — answer to catch ${pokemon.name}!`}
-            onExit={() => router.replace("/pokedex")}
-            exitLabel="← Run away"
-          />
-        );
-      })()}
+      {phase === "question" && question && (
+        <QuestionModal
+          key={`${question.id}-${attempt}`}
+          question={question}
+          onAnswer={handleAnswer}
+          onExit={() => router.replace("/pokedex")}
+          exitLabel="← Run away"
+        />
+      )}
 
       {phase === "caught" && (
         <div className="mt-6 text-center">

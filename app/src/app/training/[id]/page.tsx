@@ -8,7 +8,7 @@ import {
   recordAnswer,
   type Question,
 } from "@/lib/questions";
-import { subjectFor, getSubject } from "@/lib/subjects";
+import { subjectFor } from "@/lib/subjects";
 import { loadCurrentProfile, saveProfile, type Profile } from "@/lib/storage";
 import { playEvolve } from "@/lib/audio";
 import QuestionModal from "@/components/QuestionModal";
@@ -194,20 +194,15 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
         </div>
       )}
 
-      {!evolving && question && (() => {
-        const sub = getSubject(subjectFor(current.id));
-        const prefix = sub && sub.id !== "math" ? `${sub.label} — ` : "";
-        return (
-          <QuestionModal
-            key={qSerial}
-            question={question}
-            onAnswer={handleAnswer}
-            subtitle={`${prefix}Train ${current.name} L${owned.level} — answer to level up!`}
-            onExit={() => router.replace("/pokedex")}
-            exitLabel="← Stop training"
-          />
-        );
-      })()}
+      {!evolving && question && (
+        <QuestionModal
+          key={qSerial}
+          question={question}
+          onAnswer={handleAnswer}
+          onExit={() => router.replace("/pokedex")}
+          exitLabel="← Stop training"
+        />
+      )}
 
       {!evolving && !question && bankIsEmpty() && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center p-4 z-50">
