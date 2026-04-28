@@ -1,0 +1,22 @@
+[
+  {"id": "m1301", "prompt": "24 + 37 =", "answer": "61", "choices": ["51", "61", "71", "54"]},
+  {"id": "m1302", "prompt": "What is 5 x 4?", "answer": "20", "choices": ["15", "20", "25", "9"]},
+  {"id": "m1303", "prompt": "Which is even?", "answer": "12", "choices": ["7", "9", "11", "12"]},
+  {"id": "m1304", "prompt": "100 - 45 =", "answer": "55", "choices": ["45", "55", "65", "60"]},
+  {"id": "m1305", "prompt": "What is 1/2 of 20?", "answer": "10", "choices": ["5", "10", "15", "2"]},
+  {"id": "m1306", "prompt": "A triangle has how many sides?", "answer": "3", "choices": ["3", "4", "5", "6"]},
+  {"id": "m1307", "prompt": "Round 48 to the nearest ten.", "answer": "50", "choices": ["40", "45", "50", "60"]},
+  {"id": "m1308", "prompt": "How many minutes in 1 hour?", "answer": "60", "choices": ["30", "60", "100", "12"]},
+  {"id": "m1309", "prompt": "18 divided by 3 =", "answer": "6", "choices": ["4", "5", "6", "3"]},
+  {"id": "m1310", "prompt": "Which number is in the hundreds place: 472?", "answer": "4", "choices": ["4", "7", "2", "0"]},
+  {"id": "m1311", "prompt": "8 + 8 + 8 is the same as...", "answer": "3 x 8", "choices": ["8 x 8", "3 x 8", "2 x 8", "24 x 1"]},
+  {"id": "m1312", "prompt": "Double of 15?", "answer": "30", "choices": ["20", "25", "30", "45"]},
+  {"id": "m1313", "prompt": "What is 50 + 50 + 50?", "answer": "150", "choices": ["100", "120", "150", "200"]},
+  {"id": "m1314", "prompt": "How many days in 2 weeks?", "answer": "14", "choices": ["7", "10", "14", "20"]},
+  {"id": "m1315", "prompt": "Which is greater: 1/4 or 1/2?", "answer": "1/2", "choices": ["1/4", "1/2", "Equal", "None"]},
+  {"id": "m1316", "prompt": "What is 9 x 3?", "answer": "27", "choices": ["21", "24", "27", "30"]},
+  {"id": "m1317", "prompt": "A rectangle has how many vertices?", "answer": "4", "choices": ["4", "3", "5", "6"]},
+  {"id": "m1318", "prompt": "Subtract 10 from 82.", "answer": "72", "choices": ["62", "72", "92", "81"]},
+  {"id": "m1319", "prompt": "What is 0 x 100?", "answer": "0", "choices": ["0", "1", "100", "10"]},
+  {"id": "m1320", "prompt": "Value of 3 nickels?", "answer": "15 cents", "choices": ["5", "10", "15", "3"]}
+]

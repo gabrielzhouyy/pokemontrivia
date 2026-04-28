@@ -1,9 +1,8 @@
 {
   "subjects": [
-    { "id": "math",    "label": "Math",    "pokemon_range": [1, 50] },
-    { "id": "english", "label": "English", "pokemon_range": [51, 100] },
-    { "id": "chinese", "label": "Chinese", "pokemon_range": [101, 151] },
-    { "id": "general", "label": "General", "pokemon_range": null }
+    { "id": "math",             "label": "Math",             "pokemon_range": null, "parity": "odd"  },
+    { "id": "singapore_trivia", "label": "Singapore Trivia", "pokemon_range": null, "parity": "even" },
+    { "id": "general",          "label": "General",          "pokemon_range": null }
   ],
   "fallback_subject": "math"
 }

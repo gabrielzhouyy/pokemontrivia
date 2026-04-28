@@ -12,7 +12,7 @@ export async function adminPasswordExists(): Promise<boolean> {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     // Empty body — server will see no password, return enroll status.
-    body: JSON.stringify({ password: "x".repeat(8) }),
+    body: JSON.stringify({ password: "x" }),
   });
   if (!res.ok) return true; // a 401 means an admin exists and the password is wrong
   const j = (await res.json()) as { enroll?: boolean; ok?: boolean };
@@ -20,7 +20,6 @@ export async function adminPasswordExists(): Promise<boolean> {
 }
 
 export async function setAdminPassword(password: string): Promise<void> {
-  if (password.length < 8) throw new Error("Password must be at least 8 characters");
   const res = await fetch("/api/auth/admin-login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },

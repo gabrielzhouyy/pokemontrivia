@@ -8,6 +8,8 @@ export type Subject = {
   // Inclusive range. `null` means "not assigned to any Pokemon by default"
   // — the dad still has to map it via Oak's range editor (typical for ad-hoc).
   pokemon_range: [number, number] | null;
+  // Optional parity-based routing: "odd" matches odd IDs, "even" matches even.
+  parity?: "odd" | "even";
 };
 
 type SubjectsConfig = {
@@ -52,6 +54,8 @@ export function getSubject(id: SubjectId): Subject | undefined {
 export function subjectFor(pokemonId: number): SubjectId {
   const cfg = activeConfig();
   for (const s of cfg.subjects) {
+    if (s.parity === "odd"  && pokemonId % 2 === 1) return s.id;
+    if (s.parity === "even" && pokemonId % 2 === 0) return s.id;
     if (!s.pokemon_range) continue;
     const [lo, hi] = s.pokemon_range;
     if (pokemonId >= lo && pokemonId <= hi) return s.id;

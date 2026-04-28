@@ -31,7 +31,6 @@ export default function AdminLoginPage() {
   async function handleFirstRun(e: React.FormEvent) {
     e.preventDefault();
     setError("");
-    if (password.length < 8) return setError("Password must be at least 8 characters");
     if (password !== confirm) return setError("Passwords don't match");
     setBusy(true);
     try {
@@ -86,7 +85,7 @@ export default function AdminLoginPage() {
 
         {mode === "first-run" ? (
           <form onSubmit={handleFirstRun}>
-            <label className="block text-sm font-bold mb-1">Choose a password (8+ chars)</label>
+            <label className="block text-sm font-bold mb-1">Choose a password</label>
             <input
               type="password"
               value={password}
@@ -133,9 +132,6 @@ export default function AdminLoginPage() {
         )}
 
         {error && <p className="text-red-500 text-center mt-3 font-bold">{error}</p>}
-        <p className="text-xs text-gray-400 text-center mt-4">
-          This is a local admin. Password is stored in your browser only.
-        </p>
       </div>
     </main>
   );

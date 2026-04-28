@@ -1,0 +1,22 @@
+[
+  {"id": "s1301", "prompt": "Who founded modern Singapore in 1819?", "answer": "Stamford Raffles", "choices": ["Lee Kuan Yew", "Stamford Raffles", "Sang Nila Utama", "Yusof Ishak"]},
+  {"id": "s1302", "prompt": "What is the national language?", "answer": "Malay", "choices": ["English", "Mandarin", "Malay", "Tamil"]},
+  {"id": "s1303", "prompt": "Which district is for shopping?", "answer": "Orchard Road", "choices": ["Jurong", "Orchard Road", "Sentosa", "Changi"]},
+  {"id": "s1304", "prompt": "What is the 'Little Red Dot'?", "answer": "Singapore", "choices": ["Japan", "Singapore", "Bali", "Taiwan"]},
+  {"id": "s1305", "prompt": "National flower of Singapore?", "answer": "Vanda Miss Joaquim", "choices": ["Rose", "Lily", "Vanda Miss Joaquim", "Tulip"]},
+  {"id": "s1306", "prompt": "Who is on the $50 note?", "answer": "Yusof Ishak", "choices": ["Lee Kuan Yew", "Yusof Ishak", "Goh Chok Tong", "SR Nathan"]},
+  {"id": "s1307", "prompt": "Singapore's first PM?", "answer": "Lee Kuan Yew", "choices": ["Lee Hsien Loong", "Lee Kuan Yew", "David Marshall", "Tony Tan"]},
+  {"id": "s1308", "prompt": "What is 'Singlish'?", "answer": "Local slang", "choices": ["A sport", "Local slang", "A food", "A dance"]},
+  {"id": "s1309", "prompt": "The highest point in SG?", "answer": "Bukit Timah Hill", "choices": ["Mount Faber", "Bukit Timah Hill", "Fort Canning", "Jurong Hill"]},
+  {"id": "s1310", "prompt": "Official name of the airport?", "answer": "Changi Airport", "choices": ["Paya Lebar", "Seletar", "Changi Airport", "Tengah"]},
+  {"id": "s1311", "prompt": "Total stars on the flag?", "answer": "Five", "choices": ["Four", "Five", "Six", "Seven"]},
+  {"id": "s1312", "prompt": "Which resort is on an island?", "answer": "Sentosa", "choices": ["Marina Bay", "Sentosa", "Clarke Quay", "Boat Quay"]},
+  {"id": "s1313", "prompt": "National Day date?", "answer": "9 August", "choices": ["4 July", "9 August", "1 January", "31 August"]},
+  {"id": "s1314", "prompt": "What is a 'Hawker Centre'?", "answer": "Food court", "choices": ["School", "Food court", "Park", "Museum"]},
+  {"id": "s1315", "prompt": "Which animal is the Zoo famous for?", "answer": "Orangutan", "choices": ["Panda", "Lion", "Orangutan", "Tiger"]},
+  {"id": "s1316", "prompt": "Name of the train system?", "answer": "MRT", "choices": ["LRT", "MRT", "BTS", "MTR"]},
+  {"id": "s1317", "prompt": "Symbol on the flag for a 'young nation'?", "answer": "Crescent Moon", "choices": ["Star", "Sun", "Crescent Moon", "Lion"]},
+  {"id": "s1318", "prompt": "Popular breakfast: ___ Toast.", "answer": "Kaya", "choices": ["Butter", "Kaya", "Cheese", "Garlic"]},
+  {"id": "s1319", "prompt": "Island for the army?", "answer": "Pulau Tekong", "choices": ["Sentosa", "Pulau Ubin", "Pulau Tekong", "Kusu Island"]},
+  {"id": "s1320", "prompt": "What is the tallest indoor waterfall?", "answer": "HSBC Rain Vortex", "choices": ["Cloud Forest", "Rain Vortex", "Jurong Falls", "Sentosa Falls"]}
+]

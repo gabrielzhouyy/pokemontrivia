@@ -1,0 +1,22 @@
+[
+  {"id": "s4501", "prompt": "UNESCO World Heritage site in SG?", "answer": "Botanic Gardens", "choices": ["Gardens by the Bay", "Botanic Gardens", "Sentosa", "Zoo"]},
+  {"id": "s4502", "prompt": "Year of SG independence?", "answer": "1965", "choices": ["1963", "1965", "1959", "1945"]},
+  {"id": "s4503", "prompt": "Meaning of the 5 stars?", "answer": "Ideals of nation", "choices": ["5 races", "5 stars in sky", "Ideals of nation", "5 islands"]},
+  {"id": "s4504", "prompt": "Oldest public library?", "answer": "Queenstown", "choices": ["Central", "Queenstown", "Jurong", "Tampines"]},
+  {"id": "s4505", "prompt": "First Olympian from SG?", "answer": "Lloyd Valberg", "choices": ["Tan Howe Liang", "Lloyd Valberg", "Joseph Schooling", "Feng Tianwei"]},
+  {"id": "s4506", "prompt": "Common ingredient NOT in Kaya?", "answer": "Flour", "choices": ["Coconut Milk", "Eggs", "Sugar", "Flour"]},
+  {"id": "s4507", "prompt": "Which MRT line is purple?", "answer": "North East Line", "choices": ["East West", "North East Line", "Circle Line", "Downtown"]},
+  {"id": "s4508", "prompt": "Last surviving kampong?", "answer": "Lorong Buangkok", "choices": ["Pulau Ubin", "Lorong Buangkok", "Changi", "Kranji"]},
+  {"id": "s4509", "prompt": "Highest point in SG (meters)?", "answer": "163m", "choices": ["100m", "163m", "200m", "80m"]},
+  {"id": "s4510", "prompt": "Singapore's 2nd PM?", "answer": "Goh Chok Tong", "choices": ["Lee Hsien Loong", "Goh Chok Tong", "Tony Tan", "Wong Kan Seng"]},
+  {"id": "s4511", "prompt": "The 'Garden City' vision was by?", "answer": "Lee Kuan Yew", "choices": ["Lee Kuan Yew", "Raffles", "SR Nathan", "Goh Chok Tong"]},
+  {"id": "s4512", "prompt": "Which water is recycled in SG?", "answer": "NEWater", "choices": ["Raw Water", "NEWater", "Sea Water", "Rain Water"]},
+  {"id": "s4513", "prompt": "Famous historical hotel named after a founder?", "answer": "Raffles Hotel", "choices": ["Fullerton", "Raffles Hotel", "Goodwood Park", "Shangri-La"]},
+  {"id": "s4514", "prompt": "Meaning of 'Majulah'?", "answer": "Onward", "choices": ["Backward", "Onward", "Victory", "Peace"]},
+  {"id": "s4515", "prompt": "What is the 'Green Corridor'?", "answer": "Old railway track", "choices": ["A park", "Old railway track", "A highway", "A beach"]},
+  {"id": "s4516", "prompt": "Which satellite town was the first?", "answer": "Toa Payoh", "choices": ["Ang Mo Kio", "Toa Payoh", "Tampines", "Bedok"]},
+  {"id": "s4517", "prompt": "How many main languages in the Pledge?", "answer": "4", "choices": ["1", "2", "3", "4"]},
+  {"id": "s4518", "prompt": "Where is the 'Dragon Kiln'?", "answer": "Jurong", "choices": ["Jurong", "Pasir Ris", "Punggol", "Bukit Timah"]},
+  {"id": "s4519", "prompt": "Original name of Sentosa?", "answer": "Pulau Blakang Mati", "choices": ["Pulau Ubin", "Pulau Blakang Mati", "Kusu", "St Johns"]},
+  {"id": "s4520", "prompt": "River that runs through the CBD?", "answer": "Singapore River", "choices": ["Kallang River", "Singapore River", "Rochor Canal", "Punggol River"]}
+]

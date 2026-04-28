@@ -10,8 +10,8 @@ import { hashPassword, setSession, verifyPassword } from "@/lib/auth";
 export async function POST(req: Request) {
   const body = (await req.json()) as { password?: string; enroll?: boolean };
   const password = body.password;
-  if (!password || password.length < 8) {
-    return NextResponse.json({ error: "Password must be at least 8 chars" }, { status: 400 });
+  if (!password) {
+    return NextResponse.json({ error: "Password is required" }, { status: 400 });
   }
 
   const db = getDb();

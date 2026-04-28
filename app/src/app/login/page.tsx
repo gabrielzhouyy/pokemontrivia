@@ -150,9 +150,6 @@ export default function LoginPage() {
         </div>
 
         {error && <p className="text-red-500 text-center mt-4 font-bold">{error}</p>}
-        <p className="text-xs text-gray-400 text-center mt-4">
-          Your progress is saved on this device.
-        </p>
       </div>
     </main>
   );
