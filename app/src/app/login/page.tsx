@@ -3,7 +3,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { login as apiLogin, register as apiRegister } from "@/lib/storage";
-import { PRI_LEVELS } from "@/lib/profile-types";
 import { playClick, playWrong } from "@/lib/audio";
 
 export default function LoginPage() {
@@ -58,7 +57,7 @@ export default function LoginPage() {
     <main className="flex flex-1 items-center justify-center p-6">
       <div className={`w-full max-w-sm bg-white rounded-3xl shadow-xl p-8 ${shaking ? "animate-shake" : ""}`}>
         <h1 className="text-3xl font-extrabold text-center mb-2">
-          Pokemon <span className="text-red-500">Math</span> Catcher
+          Catch <span className="text-red-500">THREE</span> pokemon and win a sticker!
         </h1>
         <p className="text-center text-gray-600 mb-4">Who&apos;s playing?</p>
 
@@ -89,17 +88,16 @@ export default function LoginPage() {
           autoFocus
         />
 
-        <label className="block text-sm font-bold mb-1">Primary level</label>
+        <label className="block text-sm font-bold mb-1">Difficulty</label>
         <select
           value={priLevel}
           onChange={(e) => setPriLevel(Number(e.target.value))}
           className="w-full text-lg p-3 border-2 border-gray-300 rounded-2xl focus:border-red-400 outline-none mb-4"
         >
-          {PRI_LEVELS.map((n) => (
-            <option key={n} value={n}>
-              Pri {n}
-            </option>
-          ))}
+          <option value={1}>Easy (PreK – K)</option>
+          <option value={2}>Medium (Grade 1–3)</option>
+          <option value={3}>Hard (Grade 4–5)</option>
+          <option value={4}>Very Hard (Adult)</option>
         </select>
 
         <label className="block text-sm font-bold mb-1">4-digit PIN</label>

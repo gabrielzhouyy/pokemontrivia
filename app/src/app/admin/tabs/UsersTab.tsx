@@ -1,11 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-import { DEFAULT_PRI_LEVEL, PRI_LEVELS } from "@/lib/profile-types";
 
 type UserSummary = {
   id: number;
   username: string;
-  priLevel: number;
   bankId: number | null;
   caughtCount: number;
   evolvedCount: number;
@@ -60,18 +58,6 @@ export default function UsersTab() {
     else setError("Failed to assign bank");
   }
 
-  async function setPriLevel(user: UserSummary, priLevel: number) {
-    setBusy(user.id);
-    const res = await fetch(`/api/admin/users/${user.id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ priLevel }),
-    });
-    setBusy(null);
-    if (res.ok) refresh();
-    else setError("Failed to set Pri level");
-  }
-
   async function reset(user: UserSummary) {
     if (!confirm(`Wipe ${user.username}'s progress? Their age stays the same.`)) return;
     setBusy(user.id);
@@ -111,11 +97,7 @@ export default function UsersTab() {
 
   return (
     <div>
-      <h2 className="text-xl font-extrabold mb-3">Players (server)</h2>
-      <p className="text-sm text-gray-600 mb-4">
-        Set each kid&apos;s Singapore Primary level (1–6). The Bank dropdown lets you override
-        which question pool they pull from. Default is Pri {DEFAULT_PRI_LEVEL}.
-      </p>
+      <h2 className="text-xl font-extrabold mb-3">Players</h2>
       {error && <p className="text-red-500 mb-3 font-bold">{error}</p>}
       <div className="space-y-3">
         {users.map((u) => (
@@ -130,24 +112,6 @@ export default function UsersTab() {
                 {u.currentStreak}
               </div>
             </div>
-            <label className="flex items-center gap-2">
-              <span className="text-sm font-bold">Pri</span>
-              <select
-                value={u.priLevel}
-                onChange={(e) => {
-                  const v = Number(e.target.value);
-                  if (v && v !== u.priLevel) setPriLevel(u, v);
-                }}
-                disabled={busy === u.id}
-                className="p-2 border-2 border-gray-300 rounded-xl text-sm disabled:opacity-50"
-              >
-                {PRI_LEVELS.map((a) => (
-                  <option key={a} value={a}>
-                    Pri {a}
-                  </option>
-                ))}
-              </select>
-            </label>
             <label className="flex items-center gap-2">
               <span className="text-sm font-bold">Bank</span>
               <select
