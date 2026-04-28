@@ -155,6 +155,12 @@ export default function EncounterPage({ params }: { params: Promise<{ id: string
           <p className="text-3xl font-extrabold text-green-500 animate-bounce-in">
             Gotcha! {pokemon.name} was caught!
           </p>
+          <button
+            onClick={() => router.replace("/pokedex")}
+            className="mt-4 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-2xl font-bold text-lg active:scale-95 transition animate-bounce-in"
+          >
+            Back to Pokédex
+          </button>
         </div>
       )}
 

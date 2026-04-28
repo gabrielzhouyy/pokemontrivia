@@ -45,7 +45,7 @@ export default function QuestionModal({ question, onAnswer, subtitle, onExit, ex
     setFeedback(correct ? "correct" : "wrong");
     if (correct) playCorrect();
     else playWrong();
-    setTimeout(() => onAnswer(correct), 900);
+    setTimeout(() => onAnswer(correct), correct ? 900 : 2000);
   }
 
   function pickChoice(c: string) {

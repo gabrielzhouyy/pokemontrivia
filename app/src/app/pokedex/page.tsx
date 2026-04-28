@@ -77,7 +77,7 @@ export default function PokedexPage() {
             }}
             className="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-2xl font-bold active:scale-95 transition"
           >
-            Logout
+            Change User
           </button>
         </div>
       </header>
