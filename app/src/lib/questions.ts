@@ -97,6 +97,16 @@ function bankFor(subject: SubjectId, tier: Tier): Question[] {
   return all;
 }
 
+// All questions for a given tier across all subjects (used for training so
+// both subjects are naturally mixed rather than one Pokémon always getting
+// pure math or pure Singapore trivia).
+function bankForTier(tier: Tier): Question[] {
+  const cache = readCache();
+  if (!cache || cache.questions.length === 0) return [];
+  const tiered = cache.questions.filter((q) => q.tier === tier);
+  return tiered.length > 0 ? tiered : cache.questions;
+}
+
 export function getBank(subject: SubjectId, tier: Tier): Question[] {
   return bankFor(subject, tier);
 }
@@ -115,12 +125,13 @@ export type QuestionHistory = Record<string, QuestionHistoryEntry>;
 // 1. Surface a "due" review (previously missed, reviewCounter ticked to 0).
 // 2. Else pick a fresh (never-seen) question from the bank.
 // 3. Else pick any random question.
+// Pass subject=null to draw from all subjects (used by training).
 export function pickQuestion(
-  subject: SubjectId,
+  subject: SubjectId | null,
   tier: Tier,
   history: QuestionHistory,
 ): Question | null {
-  const bank = bankFor(subject, tier);
+  const bank = subject !== null ? bankFor(subject, tier) : bankForTier(tier);
   if (bank.length === 0) return null;
 
   const due = bank.filter((q) => {

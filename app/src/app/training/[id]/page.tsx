@@ -8,7 +8,6 @@ import {
   recordAnswer,
   type Question,
 } from "@/lib/questions";
-import { subjectFor } from "@/lib/subjects";
 import { loadCurrentProfile, saveProfile, type Profile } from "@/lib/storage";
 import { playEvolve } from "@/lib/audio";
 import QuestionModal from "@/components/QuestionModal";
@@ -17,6 +16,10 @@ const LEVEL_CAP = 100;
 // Event multiplier: set both to 1 to restore default (+1 per correct answer).
 const LEVEL_GAIN_MIN = 3;
 const LEVEL_GAIN_MAX = 9;
+
+function rollGain() {
+  return Math.floor(Math.random() * (LEVEL_GAIN_MAX - LEVEL_GAIN_MIN + 1)) + LEVEL_GAIN_MIN;
+}
 
 export default function TrainingPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
@@ -31,7 +34,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
   // the modal stays locked on its previous feedback state.
   const [qSerial, setQSerial] = useState(0);
   const [floats, setFloats] = useState<{ key: number; text: string; cls: string }[]>([]);
-  const [levelUpText, setLevelUpText] = useState("");
+  const [pendingGain, setPendingGain] = useState(rollGain);
   const [evolving, setEvolving] = useState(false);
   const [evolveMessage, setEvolveMessage] = useState("");
   const [evolvedPokemon, setEvolvedPokemon] = useState<ReturnType<typeof getPokemon> | null>(null);
@@ -58,7 +61,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
       }
       setProfile(p);
       const sp = getPokemon(speciesId);
-      setQuestion(pickQuestion(subjectFor(sp.id), sp.tier, p.history));
+      setQuestion(pickQuestion(null, sp.tier, p.history));
       setQSerial((s) => s + 1);
     })();
   }, [router, speciesId]);
@@ -67,6 +70,8 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
   const owned = profile.owned[speciesId];
   if (!owned) return null;
   const current = getPokemon(speciesId);
+  const previewLevel = Math.min(LEVEL_CAP, owned.level + pendingGain);
+  const levelUpPreview = `${current.name} Lv.${owned.level} → Lv.${previewLevel}`;
 
   function pushFloat(text: string, cls: string) {
     const key = Date.now() + Math.random();
@@ -75,9 +80,9 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
   }
 
   function nextQuestion(p: Profile, sid: number) {
-    setLevelUpText("");
+    setPendingGain(rollGain());
     const sp = getPokemon(sid);
-    setQuestion(pickQuestion(subjectFor(sp.id), sp.tier, p.history));
+    setQuestion(pickQuestion(null, sp.tier, p.history));
     setQSerial((s) => s + 1);
   }
 
@@ -105,7 +110,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
 
     const ownedNow = p.owned[speciesId];
     let level = ownedNow.level;
-    const gain = Math.floor(Math.random() * (LEVEL_GAIN_MAX - LEVEL_GAIN_MIN + 1)) + LEVEL_GAIN_MIN;
+    const gain = pendingGain;
     if (level < LEVEL_CAP) level = Math.min(LEVEL_CAP, level + gain);
 
     const cur = getPokemon(speciesId);
@@ -128,8 +133,6 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
     }
     setProfile(p);
 
-    const oldLevel = ownedNow.level;
-    setLevelUpText(`${cur.name} Lv.${oldLevel} → Lv.${level}`);
 
     if (didEvolve) {
       const evo = getPokemon(evolvedToId);
@@ -213,7 +216,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
           onAnswer={handleAnswer}
           imageUrl={current.sprite}
           imageName={current.name}
-          levelUpText={levelUpText}
+          levelUpText={levelUpPreview}
           onExit={() => router.replace("/pokedex")}
           exitLabel="← Stop training"
         />
