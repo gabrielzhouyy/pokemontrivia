@@ -8,7 +8,8 @@
       "Similar to Alameda County",
       "It is the size of Rhode Island",
       "It is smaller than the Facebook campus"
-    ]
+    ],
+    "explanation": "Singapore covers approximately 280 square miles, which is very close to the land area of Alameda County in the San Francisco Bay Area."
   },
   {
     "id": "sv02",
@@ -19,7 +20,8 @@
       "Spain",
       "China",
       "Britain"
-    ]
+    ],
+    "explanation": "Sir Stamford Raffles established Singapore as a British trading post in 1819. It remained a British colony until gaining independence in the 1960s."
   },
   {
     "id": "sv03",
@@ -30,7 +32,8 @@
       "10% total",
       "37% of salary (20% from employee, 17% from employer)",
       "0% (It is funded entirely by the government)"
-    ]
+    ],
+    "explanation": "The Central Provident Fund (CPF) is a comprehensive social security system. For those aged 55 and below, the employee contributes 20% and the employer 17%, totaling a 37% savings rate for housing, healthcare, and retirement."
   },
   {
     "id": "sv04",
@@ -41,7 +44,8 @@
       "Chinese, Malay, Indian, and Others",
       "English, Spanish, Mandarin, and Tagalog",
       "Asian, Caucasian, Hispanic, and Black"
-    ]
+    ],
+    "explanation": "Singapore uses the 'CMIO' model to manage its multiculturalism. Roughly 74% are Chinese, 13.5% Malay, 9% Indian, and 3% 'Others' (including Eurasians)."
   },
   {
     "id": "sv05",
@@ -52,7 +56,8 @@
       "Never; it stays 80°F-90°F year-round",
       "It has a rainy season that stays a constant 50°F",
       "It has four seasons similar to Sacramento"
-    ]
+    ],
+    "explanation": "Located just 1 degree north of the equator, Singapore has a tropical rainforest climate with uniform temperatures, high humidity, and abundant rainfall throughout the year."
   },
   {
     "id": "sv06",
@@ -63,7 +68,8 @@
       "By roughly 40% to 60%",
       "It actually doubles the cost",
       "0% (AI cannot understand Singlish)"
-    ]
+    ],
+    "explanation": "Singlish uses a unique grammar structure that drops unnecessary pronouns and prepositions. Because it conveys the same meaning with fewer words and characters, it significantly reduces token usage in Large Language Models."
   },
   {
     "id": "sv07",
@@ -74,7 +80,8 @@
       "It allows visa-free access to more countries (195+)",
       "It works as a global driver's license",
       "It is made of a chip-embedded gold leaf"
-    ]
+    ],
+    "explanation": "The Henley Passport Index frequently ranks Singapore #1, as its citizens can enter roughly 195 destinations without a prior visa, the highest number of any nationality."
   },
   {
     "id": "sv08",
@@ -85,7 +92,8 @@
       "About 4 hours",
       "A full weekend",
       "They don't pay taxes"
-    ]
+    ],
+    "explanation": "Due to the No-Filing Service (NFS), the government pre-fills tax data from employers. Most taxpayers simply log in, verify the numbers, and click 'submit' in seconds."
   },
   {
     "id": "sv09",
@@ -96,9 +104,10 @@
       "50% of the facade",
       "100% (The green area must equal or exceed the land area used)",
       "Greenery is only required for government buildings"
-    ]
+    ],
+    "explanation": "Under the Landscaping for Urban Spaces and High-Rises (LUSH) program, developers must replace the greenery lost from the site by incorporating vertical gardens, rooftop greenery, and planters."
   },
-{
+  {
     "id": "sv10",
     "prompt": "Singapore is a global leader in heavy engineering. Which of these did they historically build the most of globally?",
     "answer": "Offshore oil rigs",
@@ -107,7 +116,8 @@
       "Microchips for smartphones",
       "Offshore oil rigs",
       "Social media algorithms"
-    ]
+    ],
+    "explanation": "At its peak, Singaporean companies (like Keppel and Sembcorp) built about 70% of the world's jack-up oil rigs and converted 20% of the world's floating production storage units."
   },
   {
     "id": "sv11",
@@ -118,7 +128,8 @@
       "Wearing a hoodie in public",
       "Forgetting to flush a public toilet",
       "Taking photos of the skyline"
-    ]
+    ],
+    "explanation": "Singapore has strict hygiene laws. While rare to be caught by a 'toilet police,' it is technically illegal to not flush a public toilet and carries a fine for repeat offenders."
   },
   {
     "id": "sv12",
@@ -129,7 +140,8 @@
       "Its world-class 'Hawker' street food",
       "Ski resorts",
       "Lego theme parks"
-    ]
+    ],
+    "explanation": "Singapore's Hawker Culture is inscribed on the UNESCO Representative List of the Intangible Cultural Heritage of Humanity, representing a melting pot of affordable, high-quality cuisines."
   },
   {
     "id": "sv13",
@@ -140,7 +152,8 @@
       "2 years of full-time service, plus annual training for the next 10 years",
       "4 years of active duty, similar to the US Marines",
       "Voluntary service only"
-    ]
+    ],
+    "explanation": "National Service (NS) is mandatory for all male citizens and second-generation permanent residents. After 2 years of active duty, they become 'Operationally Ready National Servicemen' (reservists)."
   },
   {
     "id": "sv14",
@@ -151,7 +164,8 @@
       "Chewing gum",
       "Soda cans",
       "Paper newspapers"
-    ]
+    ],
+    "explanation": "The ban was implemented in 1992 because gum was causing maintenance issues on the MRT (train) doors and sidewalks. You can only buy dental or nicotine gum from a pharmacist with a prescription."
   },
   {
     "id": "sv15",
@@ -162,7 +176,8 @@
       "A giant shopping mall",
       "Liquid hydrocarbons (oil and fuel)",
       "Data centers for the government"
-    ]
+    ],
+    "explanation": "The Jurong Rock Caverns are Southeast Asia's first underground oil storage facility. By building downward, Singapore saved about 60 hectares of usable surface land."
   },
   {
     "id": "sv16",
@@ -173,7 +188,8 @@
       "The state of California",
       "The entire North American continent",
       "A standard golf course"
-    ]
+    ],
+    "explanation": "Bukit Timah Nature Reserve is a primary rainforest. Scientists have noted that a single 40-acre plot there contains more tree species than all of North America combined."
   },
   {
     "id": "sv17",
@@ -184,7 +200,8 @@
       "Monaco and Vatican City",
       "Luxembourg and San Marino",
       "Dubai and Abu Dhabi"
-    ]
+    ],
+    "explanation": "A city-state is a sovereign state that consists of a single city and its dependent territories. Singapore, Monaco, and Vatican City are the only fully independent ones remaining."
   },
   {
     "id": "sv18",
@@ -195,6 +212,7 @@
       "$300 SGD (approx. $225 USD)",
       "$2,000 SGD",
       "Community service only"
-    ]
+    ],
+    "explanation": "Singapore has strict anti-littering laws. First-time offenders for small items are usually issued a $300 composition fine, while larger items or repeat offenses can lead to court and a Corrective Work Order (CWO)."
   }
 ]

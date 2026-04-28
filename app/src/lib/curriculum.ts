@@ -11,7 +11,7 @@ import grade45Singapore from "../../data/questions/curriculum/grade-4-5/singapor
 import adultMath from "../../data/questions/curriculum/adult/math.json";
 import adultSingapore from "../../data/questions/curriculum/adult/singapore_trivia.json";
 
-type RawQuestion = { id: string; prompt: string; answer: string; choices: string[] };
+type RawQuestion = { id: string; prompt: string; answer: string; choices: string[]; explanation?: string };
 
 type BundledQuestion = {
   id: string;
@@ -22,6 +22,7 @@ type BundledQuestion = {
   answer: string;
   format: "multiple_choice";
   choices: string[];
+  explanation?: string;
 };
 
 function bundle(raw: RawQuestion[], subject: SubjectId): BundledQuestion[] {
@@ -34,6 +35,7 @@ function bundle(raw: RawQuestion[], subject: SubjectId): BundledQuestion[] {
     answer: q.answer,
     format: "multiple_choice",
     choices: q.choices,
+    ...(q.explanation ? { explanation: q.explanation } : {}),
   }));
 }
 

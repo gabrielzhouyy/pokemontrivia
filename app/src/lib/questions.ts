@@ -15,6 +15,7 @@ export type Question = {
   answer: string;
   format: QuestionFormat;
   choices?: string[];
+  explanation?: string;
 };
 
 type Tier = 1 | 2 | 3 | 4;

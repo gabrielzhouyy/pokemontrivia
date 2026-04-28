@@ -8,7 +8,8 @@
       "The Merlion",
       "The Water-Tiger",
       "The Golden Gate Lion"
-    ]
+    ],
+    "explanation": "The Merlion's fish body represents Singapore's origin as a fishing village, and the lion head represents its original name, Singapura, which means 'Lion City' in Sanskrit."
   },
   {
     "id": "kids02",
@@ -19,7 +20,8 @@
       "By flying a kite",
       "By driving across a big bridge",
       "By swimming"
-    ]
+    ],
+    "explanation": "Singapore is connected to Malaysia by two land bridges called the Causeway and the Second Link. Thousands of people drive or take the bus across them every day!"
   },
   {
     "id": "kids03",
@@ -30,7 +32,8 @@
       "Giant batteries",
       "Windmills",
       "They are plugged into a wall"
-    ]
+    ],
+    "explanation": "These 'Supertrees' at Gardens by the Bay have special solar cells on their tops to soak up sunlight during the day so they can light up for a beautiful show at night."
   },
   {
     "id": "kids04",
@@ -41,162 +44,5 @@
       "A giant indoor waterfall",
       "A mountain of candy",
       "A rocket ship"
-    ]
-  },
-  {
-    "id": "kids05",
-    "prompt": "Singapore is very close to the Equator. This means the weather there is always:",
-    "answer": "Hot and rainy (like a jungle)",
-    "choices": [
-      "Cold and snowy",
-      "Hot and rainy (like a jungle)",
-      "Dry and dusty",
-      "Exactly like a winter day in Fremont"
-    ]
-  },
-  {
-    "id": "kids06",
-    "prompt": "Singapore is known for being one of the cleanest cities in the world. Which of these is NOT allowed in Singapore to keep the streets clean?",
-    "answer": "Chewing gum",
-    "choices": [
-      "Ice cream",
-      "Chewing gum",
-      "Backpacks",
-      "Bicycles"
-    ]
-  },
-  {
-    "id": "kids07",
-    "prompt": "What color is the Singapore flag?",
-    "answer": "Red and White",
-    "choices": [
-      "Blue and Gold (like the Warriors)",
-      "Red and White",
-      "Green and Yellow",
-      "Purple and Orange"
-    ]
-  },
-  {
-    "id": "kids08",
-    "prompt": "Singapore has a special 'Night Safari.' What can you do there?",
-    "answer": "See wild animals at night without cages",
-    "choices": [
-      "Sleep in a tent on the sidewalk",
-      "See wild animals at night without cages",
-      "Watch movies about space",
-      "Go shopping for toys"
-    ]
-  },
-  {
-    "id": "kids09",
-    "prompt": "Singapore has a famous building called Marina Bay Sands that looks like a giant ship. Where is the ship sitting?",
-    "answer": "On top of three huge towers",
-    "choices": [
-      "In the middle of the ocean",
-      "On top of three huge towers",
-      "Under the ground",
-      "On a giant pile of sand"
-    ]
-  },
-  {
-    "id": "kids10",
-    "prompt": "In Singapore, many people eat at 'Hawker Centers.' These are most like which place in a US mall?",
-    "answer": "A giant food court",
-    "choices": [
-      "A toy store",
-      "A giant food court",
-      "A movie theater",
-      "A library"
-    ]
-  },
-  {
-    "id": "kids11",
-    "prompt": "Instead of a yellow school bus, many kids in Singapore take the 'MRT' to school. What is the MRT?",
-    "answer": "A fast underground train",
-    "choices": [
-      "A boat with sails",
-      "A fast underground train",
-      "A skateboard",
-      "A helicopter"
-    ]
-  },
-  {
-    "id": "kids12",
-    "prompt": "Singapore has a nickname because it is so small but very strong. What is it?",
-    "answer": "The Little Red Dot",
-    "choices": [
-      "The Big Green Leaf",
-      "The Little Red Dot",
-      "The Blue Star",
-      "The Golden Triangle"
-    ]
-  },
-  {
-    "id": "kids13",
-    "prompt": "There is a special fruit in Singapore called the Durian. It is famous because it is very spiky and:",
-    "answer": "It smells very, very strong",
-    "choices": [
-      "It tastes like chocolate",
-      "It is invisible",
-      "It smells very, very strong",
-      "It grows underground"
-    ]
-  },
-  {
-    "id": "kids14",
-    "prompt": "Singapore is so green that even the buildings have plants growing on the walls. What is this called?",
-    "answer": "Vertical Gardens",
-    "choices": [
-      "Magic Moss",
-      "Sky Forests",
-      "Vertical Gardens",
-      "Wall Grass"
-    ]
-  },
-  {
-    "id": "kids15",
-    "prompt": "Singapore is an island. What is all around the country?",
-    "answer": "The ocean",
-    "choices": [
-      "The ocean",
-      "Mountains and snow",
-      "A giant desert",
-      "Only other cities"
-    ]
-  },
-  {
-    "id": "kids16",
-    "prompt": "If you go to a park in Singapore, you might see a large lizard that looks like a small dragon. What is it?",
-    "answer": "A Monitor Lizard",
-    "choices": [
-      "A Komodo Dragon",
-      "A Monitor Lizard",
-      "A Godzilla baby",
-      "A Chameleon"
-    ]
-  },
-  {
-    "id": "kids17",
-    "prompt": "Singapore’s money is very colorful. It isn't made of paper like US dollars. What is it made of?",
-    "answer": "Plastic (Polymer)",
-    "choices": [
-      "Metal",
-      "Plastic (Polymer)",
-      "Cloth",
-      "Wood"
-    ]
-  },
-  {
-    "id": "kids18",
-    "prompt": "The 'Singapore Flyer' is a giant wheel that lets you see the whole city. It is most like which ride?",
-    "answer": "A Ferris Wheel",
-    "choices": [
-      "A Roller Coaster",
-      "A Ferris Wheel",
-      "A Bumper Car",
-      "A Merry-Go-Round"
-    ]
-  }
-]
-
-
+    ],
+    "explanation": "Called the HSBC

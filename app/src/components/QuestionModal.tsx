@@ -48,7 +48,6 @@ export default function QuestionModal({ question, onAnswer, imageUrl, imageName,
     setFeedback(correct ? "correct" : "wrong");
     if (correct) playCorrect();
     else playWrong();
-    setTimeout(() => onAnswer(correct), correct ? 900 : 2000);
   }
 
   function pickChoice(c: string) {
@@ -208,13 +207,28 @@ export default function QuestionModal({ question, onAnswer, imageUrl, imageName,
           </>
         )}
 
-        {feedback === "correct" && (
-          <p className="text-center text-green-600 font-extrabold text-2xl mt-4">Correct! 🎉</p>
-        )}
-        {feedback === "wrong" && (
-          <p className="text-center text-red-500 font-extrabold text-xl mt-4">
-            Not quite — answer was <span className="uppercase">{question.answer}</span>
-          </p>
+        {feedback !== "none" && (
+          <div className="mt-4 space-y-2">
+            {feedback === "correct" && (
+              <p className="text-center text-green-600 font-extrabold text-xl">Correct! 🎉</p>
+            )}
+            {feedback === "wrong" && (
+              <p className="text-center text-red-500 font-extrabold text-base">
+                Not quite — answer: <span className="uppercase">{question.answer}</span>
+              </p>
+            )}
+            {question.explanation && (
+              <p className="text-center text-gray-700 text-sm leading-snug px-1">
+                {question.explanation}
+              </p>
+            )}
+            <button
+              onClick={() => onAnswer(feedback === "correct")}
+              className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 rounded-2xl active:scale-95 transition text-base"
+            >
+              Continue →
+            </button>
+          </div>
         )}
       </div>
     </div>
