@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
-import { eq, inArray } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import { getDb, schema } from "@/lib/db/client";
 import { requireSession } from "@/lib/auth";
+import { questionsForBank } from "@/lib/curriculum";
 
-// GET — returns the current user's assigned bank along with all its
-// questions. Used by the player session to populate localStorage cache;
-// from there the encounter/training pickers run locally.
+// GET — returns the current user's assigned bank and its questions.
+// Questions are read from bundled JSON files (no DB query needed).
 export async function GET() {
   try {
     const session = await requireSession();
@@ -25,20 +25,10 @@ export async function GET() {
       .where(eq(schema.banks.id, user.bankId));
     if (!bank) return NextResponse.json({ bankId: null, questions: [] });
 
-    const links = await db
-      .select({ qid: schema.bankQuestions.questionId })
-      .from(schema.bankQuestions)
-      .where(eq(schema.bankQuestions.bankId, bank.id));
-    const ids = links.map((l) => l.qid);
-    const questions =
-      ids.length > 0
-        ? await db.select().from(schema.questions).where(inArray(schema.questions.id, ids))
-        : [];
-
     return NextResponse.json({
       bankId: bank.id,
       bankName: bank.name,
-      questions,
+      questions: questionsForBank(bank.name),
     });
   } catch (e) {
     const status = (e as { status?: number }).status ?? 500;

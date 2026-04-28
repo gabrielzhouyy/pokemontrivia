@@ -1,10 +1,8 @@
-# Pokemon Math Catcher
+# Pokemon Trivia
 
-A web-based Pokemon catching game where a 7-year-old answers math, English,
-or Chinese questions to catch and train Gen 1 Pokemon. Designed as a
-learning-while-playing tool for one specific kid (the dad's son), with a
-Professor Oak admin dashboard for the dad to curate questions and manage
-profiles.
+A web-based Pokemon catching game where players answer Math and Singapore Trivia
+questions to catch and train Gen 1 Pokemon. Designed as a learning-while-playing
+tool for events, with a Professor Oak admin dashboard to manage players and banks.
 
 ```
 ┌─────────────────────────────────────────────┐
@@ -15,18 +13,15 @@ profiles.
 │     │                     │                 │
 │     ├── /encounter/[id]   ├── Users         │
 │     ├── /training/[id]    ├── Subjects      │
-│     └── /stats            ├── Ad-hoc Qs     │
-│                           └── Export        │
+│     └── /stats            └── Banks         │
 └─────────────────────────────────────────────┘
 ```
 
 ## Stack
 
-- **Frontend / API**: Next.js 16 (App Router) + React 19 + TypeScript +
-  Tailwind v4. Single deploy on Vercel.
+- **Frontend / API**: Next.js 16 (App Router) + React 19 + TypeScript + Tailwind v4. Single deploy on Vercel.
 - **Database**: Postgres (Neon free tier). Drizzle ORM.
-- **Auth**: HMAC-signed session cookies (kid PIN, admin password — both
-  bcrypt-hashed server-side).
+- **Auth**: HMAC-signed session cookies (player PIN, admin password — both bcrypt-hashed server-side).
 - **Sprites**: PokeAPI public CDN (no hosting needed).
 - **Audio**: Pre-rendered chiptune-style WAVs in `app/public/audio/`.
 
@@ -54,71 +49,99 @@ node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 3. **Root Directory**: `app` (the Next.js app lives one folder deep).
 4. **Environment Variables**:
    - `DATABASE_URL` — your Neon connection string.
-   - `SESSION_SECRET` — fresh 32-byte hex (do **not** reuse the local
-     dev secret).
+   - `SESSION_SECRET` — fresh 32-byte hex (do **not** reuse the local dev secret).
 5. Click **Deploy**.
 6. After ~1–2 minutes you'll get a `*.vercel.app` URL.
+
+### First-time setup after deploy
+
+```bash
+cd app
+npm run db:push                  # push schema to Neon
+node scripts/seed-banks.mjs      # create the 4 grade banks in DB
+```
 
 ### iPad / mobile access
 
 The app is mobile-responsive. On iPad: open the URL in Safari → Share →
-"Add to Home Screen". The kid can then launch it like an app icon.
+"Add to Home Screen". Players can then launch it like an app icon.
 
 ## Question banks
 
-Question banks live under `app/data/questions/age-<N>/<subject>/tier-<T>.json`.
+Questions live under `app/data/questions/curriculum/` as static JSON files
+bundled with the app. No DB seeding needed for questions — edit the JSON and redeploy.
 
-Currently seeded:
-- `age-7/math/` — 4 tiers, ~600 hand-curated arithmetic + multiplication
-  + fractions + place-value questions
-- `age-7/english/` — 4 tiers, letters → CVC → spelling → harder grammar
-- `age-7/chinese/` — 4 tiers, basic chars → greetings → family/objects → sentences
-- `age-7/ad-hoc/` — empty stubs (admin populates via Professor Oak UI)
-- `age-12/*/*` — empty stubs for when the kid grows out of age-7 banks
-
-Regenerate / re-seed:
-
-```bash
-cd app
-node scripts/generate-pokemon-data.mjs   # 151 Gen 1 Pokemon + tiers + evolution data
-node scripts/generate-questions.mjs       # math banks
-node scripts/generate-english-chinese.mjs # english + chinese banks
 ```
+data/questions/curriculum/
+├── prek-k/
+│   ├── math.json
+│   └── singapore_trivia.json
+├── grade-1-3/
+│   ├── math.json
+│   └── singapore_trivia.json
+├── grade-4-5/
+│   ├── math.json
+│   └── singapore_trivia.json
+└── adult/
+    ├── math.json
+    └── singapore_trivia.json
+```
+
+Each file is a JSON array of questions:
+
+```json
+[
+  {
+    "id": "unique-id",
+    "prompt": "Question text",
+    "answer": "Correct answer",
+    "choices": ["A", "B", "C", "D"]
+  }
+]
+```
+
+### Subject routing
+
+Pokemon are assigned subjects by ID parity:
+- **Odd** Pokemon ID → Math
+- **Even** Pokemon ID → Singapore Trivia
+
+## Grade banks
+
+There are 4 grade banks. Assign players in the Professor Oak admin:
+
+| Bank | Difficulty |
+|------|-----------|
+| preK–K | Easy |
+| 1st–3rd Grade | Medium |
+| 4th–5th Grade | Hard |
+| Adult | Very Hard |
 
 ## Professor Oak admin
 
-Visit `/admin/login`. First time, you'll be asked to set an admin password
-(8+ chars). After that, the four tabs are:
+Visit `/admin/login`. First time, set an admin password. After that, the tabs are:
 
-- **Users** — list all kids on this server, edit their age (which bank
-  they get), reset their progress.
-- **Subjects** — edit which Pokemon ranges map to which subject. Default:
-  Math `[1, 50]` / English `[51, 100]` / Chinese `[101, 151]`. Save edits
-  to the cloud (admin only) or export as JSON.
-- **Ad-hoc questions** — author per-(age, tier) custom questions in the
-  form. Use the Subjects tab to map a Pokemon range to subject `ad-hoc`
-  and those questions become the pool for that range.
-- **Export** — download cloud config + ad-hoc banks as JSON for the
-  audit trail.
+- **Users** — list all players, assign their grade bank, reset progress.
+- **Subjects** — configure which Pokemon ID ranges map to which subject.
+- **Banks** — view the 4 grade banks and their question counts.
 
 ## Repository layout
 
 ```
 .
 ├── README.md                    (this file)
-├── Pokemon Plan.md              original product brief
-├── Game Spec.md                 v1 product spec
-├── Clarifications-*.md          design Q&A logs
 ├── app/                         the Next.js application
-│   ├── data/                    bundled JSON (Pokemon, questions, subjects)
+│   ├── data/
+│   │   ├── questions/curriculum/  bundled question JSON files
+│   │   ├── pokemon.json           Gen 1 Pokemon data
+│   │   └── subjects.json          subject routing config
 │   ├── drizzle/                 Drizzle migration files
 │   ├── public/audio/            chiptune .wav files
-│   ├── scripts/                 content generators (Pokemon + question banks + audio)
+│   ├── scripts/                 utility scripts (seed-banks, wipe-banks)
 │   └── src/
 │       ├── app/                 routes (UI + API)
 │       ├── components/          shared UI (QuestionModal)
-│       └── lib/                 storage / auth / db / questions / subjects / audio
-└── ...
+│       └── lib/                 auth / db / curriculum / subjects / audio
 ```
 
 ## Build / typecheck
