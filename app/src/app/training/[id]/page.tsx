@@ -175,7 +175,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
           <img
             src={evolving && showNewForm && evolvedPokemon ? evolvedPokemon.sprite : current.sprite}
             alt={evolving && showNewForm && evolvedPokemon ? evolvedPokemon.name : current.name}
-            className={`w-56 h-56 object-contain ${evolving ? "animate-evolve" : "animate-bounce-in"}`}
+            className={`object-contain transition-all duration-500 ${evolving && showNewForm ? "w-72 h-72" : "w-56 h-56"} ${evolving ? "animate-evolve" : "animate-bounce-in"}`}
           />
           <div className="absolute -top-4 right-0 pointer-events-none">
             {floats.map((f) => (
