@@ -32,7 +32,7 @@ const NEW_GRADES = [
   { dir: "adult",     bankName: "Adult" },
 ];
 const NEW_SUBJECTS = ["math", "singapore_trivia"];
-const NCDIR = join(__dirname, "..", "data", "questions", "new-curriculum");
+const NCDIR = join(__dirname, "..", "data", "questions", "curriculum");
 
 console.log("Seeding new curriculum banks\u2026");
 for (const grade of NEW_GRADES) {

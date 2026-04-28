@@ -1,8 +1,7 @@
 {
   "subjects": [
     { "id": "math",             "label": "Math",             "pokemon_range": null, "parity": "odd"  },
-    { "id": "singapore_trivia", "label": "Singapore Trivia", "pokemon_range": null, "parity": "even" },
-    { "id": "general",          "label": "General",          "pokemon_range": null }
+    { "id": "singapore_trivia", "label": "Singapore", "pokemon_range": null, "parity": "even" }
   ],
   "fallback_subject": "math"
 }

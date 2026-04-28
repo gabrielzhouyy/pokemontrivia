@@ -1,0 +1,122 @@
+[
+  {
+    "id": "pk01",
+    "prompt": "Singapore is a 'City-State.' That means the whole country is just one big, high-tech city! How does its size compare to the Bay Area?",
+    "answer": "It is much smaller, about the size of one big city like San Jose",
+    "choices": ["It is as big as all of California", "It is much smaller, about the size of one big city like San Jose", "It is the size of a playground", "It is bigger than the moon"]
+  },
+  {
+    "id": "pk02",
+    "prompt": "The Merlion is a famous statue that breathes water. It has the head of a lion and the tail of a fish. Why the fish tail?",
+    "answer": "Because Singapore started as a small fishing village",
+    "choices": ["Because it likes to swim", "Because Singapore started as a small fishing village", "Because it's a mermaid", "To help it go faster"]
+  },
+  {
+    "id": "pk03",
+    "prompt": "Fremont has many trees, but Singapore has 'Supertrees' made of metal and plants. What is their job?",
+    "answer": "They collect solar power and rainwater",
+    "choices": ["They grow giant apples", "They are big umbrellas for giants", "They collect solar power and rainwater", "They are space ships"]
+  },
+  {
+    "id": "pk04",
+    "prompt": "In Singapore, the trains (MRT) don't have drivers—they are controlled by computers! What do we call a machine that works by itself?",
+    "answer": "A robot",
+    "choices": ["A car", "A robot", "A bicycle", "A toy"]
+  },
+  {
+    "id": "pk05",
+    "prompt": "The airport in Singapore has a 'Rain Vortex.' It is the world’s tallest indoor waterfall. Where does the water go?",
+    "answer": "Through a hole in the floor to be recycled",
+    "choices": ["Into a giant swimming pool", "It disappears into magic", "Through a hole in the floor to be recycled", "It turns into clouds"]
+  },
+  {
+    "id": "pk06",
+    "prompt": "Singapore is famous for being 'Green.' They even grow gardens on the sides of skyscrapers! Why do they do this?",
+    "answer": "To keep the buildings cool and the air clean",
+    "choices": ["To hide the buildings", "To keep the buildings cool and the air clean", "So monkeys can climb them", "To grow lunch for everyone"]
+  },
+  {
+    "id": "pk07",
+    "prompt": "You won't find chewing gum in Singapore stores. Why did the city decide to stop selling it?",
+    "answer": "To keep the trains and sidewalks clean and sticky-free",
+    "choices": ["Because it tastes bad", "To keep the trains and sidewalks clean and sticky-free", "Because it is too expensive", "Because the birds eat it"]
+  },
+  {
+    "id": "pk08",
+    "prompt": "Singapore is near the Equator. Unlike Fremont, which has a chilly winter, Singapore's weather is:",
+    "answer": "Summer all year long",
+    "choices": ["Always snowing", "Summer all year long", "Always dark", "Spring only"]
+  },
+  {
+    "id": "pk09",
+    "prompt": "Singapore has wild Otters that live in the city. How do they move around the busy streets?",
+    "answer": "They use the crosswalks and swim in the canals",
+    "choices": ["They take the bus", "They use the crosswalks and swim in the canals", "They fly over the cars", "They hide under cars"]
+  },
+  {
+    "id": "pk10",
+    "prompt": "The money in Singapore is made of a special plastic called polymer. Why is this better than paper money?",
+    "answer": "It is hard to rip and stays clean even in the rain",
+    "choices": ["It smells like strawberries", "It is hard to rip and stays clean even in the rain", "It can float like a boat", "It changes color every day"]
+  },
+  {
+    "id": "pk11",
+    "prompt": "Singapore has a 'Night Safari' where you can see animals that stay awake when we sleep. What do we call animals that like the dark?",
+    "answer": "Nocturnal",
+    "choices": ["Sleepy", "Nocturnal", "Hidden", "Fast"]
+  },
+  {
+    "id": "pk12",
+    "prompt": "People in Singapore speak many languages, but they almost all speak English too. What do they call their special version of English?",
+    "answer": "Singlish",
+    "choices": ["Smart-talk", "Singlish", "Fast-talk", "New-English"]
+  },
+  {
+    "id": "pk13",
+    "prompt": "A 'Hawker Center' is a place where hundreds of chefs cook different foods in one place. It is most like:",
+    "answer": "A giant outdoor food festival",
+    "choices": ["A grocery store", "A giant outdoor food festival", "A school cafeteria", "A candy shop"]
+  },
+  {
+    "id": "pk14",
+    "prompt": "Singapore's flag has a Crescent Moon and 5 Stars. If red stands for friendship, what does the white color stand for?",
+    "answer": "Purity and goodness",
+    "choices": ["Clouds", "Purity and goodness", "Snow", "Milk"]
+  },
+  {
+    "id": "pk15",
+    "prompt": "Because Singapore is an island with almost no farms, where does most of its food come from?",
+    "answer": "It is brought in by ships and planes from other countries",
+    "choices": ["It is grown on the moon", "It is brought in by ships and planes from other countries", "People catch everything in the ocean", "They don't eat much"]
+  },
+  {
+    "id": "pk16",
+    "prompt": "There is a fruit in Singapore called a Durian that is shaped like a spiky ball. Many people aren't allowed to take it on the bus. Why?",
+    "answer": "It has a very strong smell that fills up the whole bus",
+    "choices": ["It is too heavy", "It is too sharp", "It has a very strong smell that fills up the whole bus", "It might explode"]
+  },
+  {
+    "id": "pk17",
+    "prompt": "Singapore uses 'NEWater.' They take old water, clean it with high-tech filters, and make it drinkable again. This is called:",
+    "answer": "Recycling",
+    "choices": ["Magic", "Recycling", "Cooking", "Painting"]
+  },
+  {
+    "id": "pk18",
+    "prompt": "The Marina Bay Sands is a building with a park and a pool on the very top. It looks like a ship sitting on three towers. Why build the park so high?",
+    "answer": "To save space on the ground",
+    "choices": ["So it can fly away", "To save space on the ground", "To be closer to the sun", "So the birds have a place to sit"]
+  },
+  {
+    "id": "pk19",
+    "prompt": "Singapore is one of the safest cities in the world. What is a 'rule' that helps keep the city safe and clean?",
+    "answer": "Always put your trash in the bin and follow the signs",
+    "choices": ["No talking in public", "Always put your trash in the bin and follow the signs", "No wearing shoes outside", "Only walking on your tiptoes"]
+  },
+  {
+    "id": "pk20",
+    "prompt": "Singapore is known for being a 'Melting Pot' of people from all over Asia. This is just like which city in California?",
+    "answer": "Fremont",
+    "choices": ["Fremont", "Death Valley", "The North Pole", "A desert island"]
+  }
+]

@@ -12,9 +12,7 @@ import {
 // in the active config.
 const SUBJECTS = [
   { id: "math", label: "Math" },
-  { id: "english", label: "English" },
-  { id: "chinese", label: "Chinese" },
-  { id: "general", label: "General" },
+  { id: "singapore_trivia", label: "Singapore" },
 ] as const;
 
 type SubjectId = (typeof SUBJECTS)[number]["id"];

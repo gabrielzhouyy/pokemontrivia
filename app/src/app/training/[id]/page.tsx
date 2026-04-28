@@ -14,6 +14,9 @@ import { playEvolve } from "@/lib/audio";
 import QuestionModal from "@/components/QuestionModal";
 
 const LEVEL_CAP = 100;
+// Event multiplier: set both to 1 to restore default (+1 per correct answer).
+const LEVEL_GAIN_MIN = 3;
+const LEVEL_GAIN_MAX = 9;
 
 export default function TrainingPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
@@ -98,7 +101,8 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
 
     const ownedNow = p.owned[speciesId];
     let level = ownedNow.level;
-    if (level < LEVEL_CAP) level += 1;
+    const gain = Math.floor(Math.random() * (LEVEL_GAIN_MAX - LEVEL_GAIN_MIN + 1)) + LEVEL_GAIN_MIN;
+    if (level < LEVEL_CAP) level = Math.min(LEVEL_CAP, level + gain);
 
     const cur = getPokemon(speciesId);
     const evolvesAt = cur.evolve_level;
@@ -120,7 +124,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
     }
     setProfile(p);
 
-    pushFloat("+1 Level!", "text-yellow-500");
+    pushFloat(`+${gain} Levels!`, "text-yellow-500");
 
     if (didEvolve) {
       setEvolving(true);

@@ -31,7 +31,7 @@ type BankDetail = {
 
 type MasterQuestion = BankDetail["questions"][number];
 
-const SUBJECTS = ["math", "english", "chinese", "general"] as const;
+const SUBJECTS = ["math", "singapore_trivia"] as const;
 const TIERS = [1, 2, 3, 4] as const;
 type Subject = (typeof SUBJECTS)[number];
 type Tier = (typeof TIERS)[number];

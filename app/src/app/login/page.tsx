@@ -57,7 +57,7 @@ export default function LoginPage() {
     <main className="flex flex-1 items-center justify-center p-6">
       <div className={`w-full max-w-sm bg-white rounded-3xl shadow-xl p-8 ${shaking ? "animate-shake" : ""}`}>
         <h1 className="text-3xl font-extrabold text-center mb-2">
-          Catch <span className="text-red-500">THREE</span> pokemon and win a sticker!
+          Pokemon Trivia: Catch <span className="text-red-500">THREE</span> Pokemon and win a sticker!
         </h1>
         <p className="text-center text-gray-600 mb-4">Who&apos;s playing?</p>
 

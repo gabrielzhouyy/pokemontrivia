@@ -54,7 +54,7 @@ export default function PokedexPage() {
             href="/stats"
             className="bg-yellow-300 hover:bg-yellow-400 px-4 py-2 rounded-2xl font-bold active:scale-95 transition"
           >
-            🏆 Stats
+            Stats
           </Link>
           <button
             onClick={() => {
@@ -66,7 +66,7 @@ export default function PokedexPage() {
             className="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-2xl font-bold active:scale-95 transition"
             aria-label={muteState ? "Unmute" : "Mute"}
           >
-            {muteState ? "🔇" : "🔊"}
+            {muteState ? "Sound Off" : "Sound On"}
           </button>
           <button
             onClick={() => {
@@ -77,7 +77,7 @@ export default function PokedexPage() {
             }}
             className="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-2xl font-bold active:scale-95 transition"
           >
-            ⎋
+            Logout
           </button>
         </div>
       </header>
@@ -101,6 +101,8 @@ export default function PokedexPage() {
           <div className="text-xs text-gray-500">accuracy</div>
         </div>
       </div>
+
+      <p className="text-sm text-gray-500 text-center mb-3">Level up Pokemon by clicking on them</p>
 
       <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-8 gap-3 pb-8">
         {POKEMON.map((p, idx) => {

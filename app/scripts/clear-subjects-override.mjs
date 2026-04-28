@@ -1,0 +1,10 @@
+import { config } from "dotenv";
+import { neon } from "@neondatabase/serverless";
+import { join, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+const __dirname = dirname(fileURLToPath(import.meta.url));
+config({ path: join(__dirname, "..", ".env.local") });
+const sql = neon(process.env.DATABASE_URL);
+await sql`delete from admin_subjects`;
+console.log("Cleared admin subjects override — bundled subjects.json now active.");
+process.exit(0);

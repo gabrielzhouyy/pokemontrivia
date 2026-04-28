@@ -1,0 +1,200 @@
+[
+  {
+    "id": "sv01",
+    "prompt": "How does Singapore's physical size compare to the Bay Area?",
+    "answer": "Similar to Alameda County",
+    "choices": [
+      "It is larger than the state of California",
+      "Similar to Alameda County",
+      "It is the size of Rhode Island",
+      "It is smaller than the Facebook campus"
+    ]
+  },
+  {
+    "id": "sv02",
+    "prompt": "Singapore was a colony of which country?",
+    "answer": "Britain",
+    "choices": [
+      "France",
+      "Spain",
+      "China",
+      "Britain"
+    ]
+  },
+  {
+    "id": "sv03",
+    "prompt": "In the Bay Area, many workers contribute to a 401k. In Singapore, 'CPF' is a mandatory savings fund. What is the total combined monthly contribution for most employees?",
+    "answer": "37% of salary (20% from employee, 17% from employer)",
+    "choices": [
+      "5% (Standard matching)",
+      "10% total",
+      "37% of salary (20% from employee, 17% from employer)",
+      "0% (It is funded entirely by the government)"
+    ]
+  },
+  {
+    "id": "sv04",
+    "prompt": "Singapore is one of the most diverse cities in the world. What are the four official ethnic groups?",
+    "answer": "Chinese, Malay, Indian, and Others",
+    "choices": [
+      "Chinese, Japanese, Korean, and Vietnamese",
+      "Chinese, Malay, Indian, and Others",
+      "English, Spanish, Mandarin, and Tagalog",
+      "Asian, Caucasian, Hispanic, and Black"
+    ]
+  },
+  {
+    "id": "sv05",
+    "prompt": "While the Bay Area has distinct seasons (and fog), Singapore is near the Equator. How often does it 'winter' there?",
+    "answer": "Never; it stays 80°F-90°F year-round",
+    "choices": [
+      "It gets a light frost in January",
+      "Never; it stays 80°F-90°F year-round",
+      "It has a rainy season that stays a constant 50°F",
+      "It has four seasons similar to Sacramento"
+    ]
+  },
+  {
+    "id": "sv06",
+    "prompt": "Singapore's colloqial version of English, 'Singlish,' is highly efficient. For AI models, how much can communicating in Singlish reduce 'token' costs?",
+    "answer": "By roughly 40% to 60%",
+    "choices": [
+      "By roughly 5%",
+      "By roughly 40% to 60%",
+      "It actually doubles the cost",
+      "0% (AI cannot understand Singlish)"
+    ]
+  },
+  {
+    "id": "sv07",
+    "prompt": "The Singapore Passport is currently the 'strongest' in the world. What does this mean compared to a US Passport?",
+    "answer": "It allows visa-free access to more countries (195+)",
+    "choices": [
+      "It is valid for 50 years instead of 10",
+      "It allows visa-free access to more countries (195+)",
+      "It works as a global driver's license",
+      "It is made of a chip-embedded gold leaf"
+    ]
+  },
+  {
+    "id": "sv08",
+    "prompt": "Filing taxes in the US can take days. How long does the average Singaporean take to file their taxes online?",
+    "answer": "Under 1 minute",
+    "choices": [
+      "Under 1 minute",
+      "About 4 hours",
+      "A full weekend",
+      "They don't pay taxes"
+    ]
+  },
+  {
+    "id": "sv09",
+    "prompt": "To keep the 'City in a Garden' vision alive, all new buildings must replace the land they sit on with greenery at what ratio?",
+    "answer": "100% (The green area must equal or exceed the land area used)",
+    "choices": [
+      "10% (Rooftop only)",
+      "50% of the facade",
+      "100% (The green area must equal or exceed the land area used)",
+      "Greenery is only required for government buildings"
+    ]
+  },
+{
+    "id": "sv10",
+    "prompt": "Singapore is a global leader in heavy engineering. Which of these did they historically build the most of globally?",
+    "answer": "Offshore oil rigs",
+    "choices": [
+      "Electric vehicles",
+      "Microchips for smartphones",
+      "Offshore oil rigs",
+      "Social media algorithms"
+    ]
+  },
+  {
+    "id": "sv11",
+    "prompt": "If you are visiting Singapore and want to avoid a $150 fine, which of these daily habits should you be careful about?",
+    "answer": "Forgetting to flush a public toilet",
+    "choices": [
+      "Drinking water on the sidewalk",
+      "Wearing a hoodie in public",
+      "Forgetting to flush a public toilet",
+      "Taking photos of the skyline"
+    ]
+  },
+  {
+    "id": "sv12",
+    "prompt": "Which of these icons is Singapore most famous for internationally?",
+    "answer": "Its world-class 'Hawker' street food",
+    "choices": [
+      "Extensive hiking trails",
+      "Its world-class 'Hawker' street food",
+      "Ski resorts",
+      "Lego theme parks"
+    ]
+  },
+  {
+    "id": "sv13",
+    "prompt": "Singaporean men are required by law to serve in the military (National Service). What is the standard commitment?",
+    "answer": "2 years of full-time service, plus annual training for the next 10 years",
+    "choices": [
+      "6 months of basic training only",
+      "2 years of full-time service, plus annual training for the next 10 years",
+      "4 years of active duty, similar to the US Marines",
+      "Voluntary service only"
+    ]
+  },
+  {
+    "id": "sv14",
+    "prompt": "Singapore is famously 'clean and green.' Which of these items is famously banned from being imported or sold to prevent litter?",
+    "answer": "Chewing gum",
+    "choices": [
+      "Plastic straws",
+      "Chewing gum",
+      "Soda cans",
+      "Paper newspapers"
+    ]
+  },
+  {
+    "id": "sv15",
+    "prompt": "Singapore has a massive 'underground city.' What is stored 150 meters below ground in the Jurong Rock Caverns to save surface space?",
+    "answer": "Liquid hydrocarbons (oil and fuel)",
+    "choices": [
+      "The national gold reserve",
+      "A giant shopping mall",
+      "Liquid hydrocarbons (oil and fuel)",
+      "Data centers for the government"
+    ]
+  },
+  {
+    "id": "sv16",
+    "prompt": "Despite being a tiny island, the Bukit Timah Nature Reserve in Singapore is said to contain more species of trees than:",
+    "answer": "The entire North American continent",
+    "choices": [
+      "The city of San Francisco",
+      "The state of California",
+      "The entire North American continent",
+      "A standard golf course"
+    ]
+  },
+  {
+    "id": "sv17",
+    "prompt": "Singapore is one of only three 'City-States' left in the modern world. Who are the other two?",
+    "answer": "Monaco and Vatican City",
+    "choices": [
+      "Hong Kong and Macau",
+      "Monaco and Vatican City",
+      "Luxembourg and San Marino",
+      "Dubai and Abu Dhabi"
+    ]
+  },
+  {
+    "id": "sv18",
+    "prompt": "If you are caught littering a small item like a cigarette butt for the first time, what is the standard fine?",
+    "answer": "$300 SGD (approx. $225 USD)",
+    "choices": [
+      "$10 SGD",
+      "$300 SGD (approx. $225 USD)",
+      "$2,000 SGD",
+      "Community service only"
+    ]
+  }
+]
