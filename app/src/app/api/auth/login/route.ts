@@ -39,7 +39,7 @@ export async function POST(req: Request) {
   }
 
   if (user.color !== color) {
-    return NextResponse.json({ error: "Wrong colour, try again!" }, { status: 401 });
+    return NextResponse.json({ error: "Name already taken! Pick a different colour." }, { status: 401 });
   }
 
   // Existing user — optionally switch priLevel if they picked a different one

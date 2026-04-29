@@ -7,14 +7,9 @@ import { playClick, playWrong } from "@/lib/audio";
 
 const COLORS = [
   { name: "red",    hex: "#ef4444" },
-  { name: "orange", hex: "#f97316" },
-  { name: "yellow", hex: "#eab308" },
-  { name: "green",  hex: "#22c55e" },
   { name: "blue",   hex: "#3b82f6" },
-  { name: "purple", hex: "#a855f7" },
-  { name: "pink",   hex: "#ec4899" },
-  { name: "teal",   hex: "#14b8a6" },
-  { name: "gold",   hex: "#d97706" },
+  { name: "green",  hex: "#22c55e" },
+  { name: "yellow", hex: "#eab308" },
 ];
 
 export default function LoginPage() {
@@ -35,7 +30,7 @@ export default function LoginPage() {
       if (!profile) {
         playWrong();
         setShaking(true);
-        setError("Wrong colour, try again!");
+        setError("Name already taken! Pick a different colour.");
         setTimeout(() => setShaking(false), 400);
         return;
       }
@@ -94,22 +89,22 @@ export default function LoginPage() {
         </select>
 
         <label className="block text-sm font-bold mb-2">Pick your colour</label>
-        <div className="grid grid-cols-3 gap-3 my-3">
+        <div className="grid grid-cols-2 gap-3 my-3">
           {COLORS.map((c) => (
             <button
               key={c.name}
               onClick={() => { setColor(c.name); playClick(); setError(""); }}
-              className={`w-full aspect-square rounded-full transition active:scale-95 ${
+              className={`w-full py-5 rounded-2xl font-extrabold text-white text-lg capitalize transition active:scale-95 ${
                 color === c.name
-                  ? "ring-4 ring-offset-2 ring-gray-400 scale-110"
-                  : "hover:scale-105"
+                  ? "ring-4 ring-offset-2 ring-gray-400 scale-105"
+                  : "hover:scale-105 opacity-70"
               }`}
               style={{ backgroundColor: c.hex }}
-              aria-label={c.name}
-            />
+            >
+              {c.name}
+            </button>
           ))}
         </div>
-        <p className="text-center text-sm font-bold capitalize text-gray-700 mb-4">{color}</p>
 
         <button
           onClick={submit}
