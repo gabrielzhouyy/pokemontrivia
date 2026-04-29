@@ -151,7 +151,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
         setEvolvedPokemon(null);
         setShowNewForm(false);
         router.replace(`/training/${evolvedToId}`);
-      }, 3200);
+      }, 2900);
     } else {
       nextQuestion(p, speciesId);
       await saveProfile(p);

@@ -112,21 +112,50 @@ function writeWav(name, buffer) {
   writeWav("catch.wav", buf);
 }
 
-// evolve: 8-note rising triangle fanfare
+// evolve: GB-accurate evolution fanfare
+// Phase 1 — fast ascending sweep (C4→G5, 6 notes × 0.055s = 0.33s)
+// Phase 2 — triumphant stepwise climb (G5→A5→B5→C6 held, ~0.72s)
+// Two square-wave voices (main + harmony on phase 2) for DMG two-channel texture.
 {
-  const seq = [392, 523, 659, 784, 988, 1175, 1319, 1568];
-  const total = seq.length * 0.08 + 0.05;
+  const sweep  = [262, 330, 392, 523, 659, 784]; // C4 E4 G4 C5 E5 G5
+  const main   = [784, 880, 988, 1047];           // G5 A5 B5 C6
+  const harm   = [523, 587, 659, 784];            // C5 D5 E5 G5
+
+  const sweepStep = 0.055;
+  const p2Durs    = [0.11, 0.11, 0.11, 0.38];    // durations per phase-2 note
+  const p2Start   = sweep.length * sweepStep;     // 0.33s
+  const total     = p2Start + p2Durs.reduce((a, b) => a + b, 0); // ~1.05s
+
   const buf = new Float32Array(Math.floor(total * SAMPLE_RATE));
-  seq.forEach((f, i) =>
+
+  // Phase 1 — fast sweep
+  sweep.forEach((f, i) =>
     renderTone({
       buffer: buf,
-      offset: Math.floor(i * 0.08 * SAMPLE_RATE),
-      duration: 0.1,
+      offset: Math.floor(i * sweepStep * SAMPLE_RATE),
+      duration: sweepStep + 0.02,
       freq: f,
-      type: "triangle",
-      gain: 0.3,
+      type: "square",
+      gain: 0.32,
     }),
   );
+
+  // Phase 2 — main voice
+  let t = p2Start;
+  main.forEach((f, i) => {
+    const dur = p2Durs[i];
+    renderTone({ buffer: buf, offset: Math.floor(t * SAMPLE_RATE), duration: dur, freq: f, type: "square", gain: 0.35 });
+    t += dur;
+  });
+
+  // Phase 2 — harmony voice (same timing, lower gain)
+  t = p2Start;
+  harm.forEach((f, i) => {
+    const dur = p2Durs[i];
+    renderTone({ buffer: buf, offset: Math.floor(t * SAMPLE_RATE), duration: dur, freq: f, type: "square", gain: 0.18 });
+    t += dur;
+  });
+
   writeWav("evolve.wav", buf);
 }
 

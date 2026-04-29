@@ -2,7 +2,7 @@
 
 A web-based Pokemon catching game where players answer Math and Singapore Trivia
 questions to catch and train Gen 1 Pokemon. Designed as a learning-while-playing
-tool for events, with a Professor Oak admin dashboard to manage players and banks.
+tool for events, with a Professor Oak admin dashboard to manage players and question banks.
 
 ```
 ┌─────────────────────────────────────────────┐
@@ -12,8 +12,8 @@ tool for events, with a Professor Oak admin dashboard to manage players and bank
 │  /pokedex            /admin (dashboard)     │
 │     │                     │                 │
 │     ├── /encounter/[id]   ├── Users         │
-│     ├── /training/[id]    ├── Subjects      │
-│     └── /stats            └── Banks         │
+│     ├── /training/[id]    └── Questions     │
+│     └── /stats                              │
 └─────────────────────────────────────────────┘
 ```
 
@@ -32,8 +32,9 @@ cd app
 cp .env.example .env.local
 # Fill in DATABASE_URL (Neon) and SESSION_SECRET (32-byte hex)
 npm install
-npm run db:push   # create tables in your Neon project
-npm run dev       # http://localhost:3000
+npm run db:push      # create tables in your Neon project
+npm run db:seed      # seed questions from JSON files → DB
+npm run dev          # http://localhost:3000
 ```
 
 `SESSION_SECRET` generator:
@@ -57,8 +58,8 @@ node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 
 ```bash
 cd app
-npm run db:push                  # push schema to Neon
-node scripts/seed-banks.mjs      # create the 4 grade banks in DB
+npm run db:push      # push schema to Neon
+npm run db:seed      # populate questions from curriculum JSON files
 ```
 
 ### iPad / mobile access
@@ -68,8 +69,9 @@ The app is mobile-responsive. On iPad: open the URL in Safari → Share →
 
 ## Question banks
 
-Questions live under `app/data/questions/curriculum/` as static JSON files
-bundled with the app. No DB seeding needed for questions — edit the JSON and redeploy.
+Questions are stored in NeonDB (master source of truth) and can be managed via the
+Professor Oak admin panel. The bundled JSON files under `app/data/questions/curriculum/`
+are the seed source.
 
 ```
 data/questions/curriculum/
@@ -100,18 +102,30 @@ Each file is a JSON array of questions:
 ]
 ```
 
+### Keeping JSON and DB in sync
+
+If you or admin edit questions in the DB and then redeploy code, running `db:seed`
+would overwrite those changes. To prevent this, export the DB back to JSON first:
+
+```bash
+cd app
+npm run db:export    # pull current DB state → JSON files
+git diff data/       # review what changed
+# commit if needed, then redeploy
+npm run db:seed      # re-seed DB from JSON if schema was wiped
+```
+
 ### Subject routing
 
-Pokemon are assigned subjects by ID parity:
-- **Odd** Pokemon ID → Math
-- **Even** Pokemon ID → Singapore Trivia
+By default, training draws randomly from both subjects. Admin can pin individual
+players to one subject in the Users tab (see Professor Oak admin below).
 
-## Grade banks
+## Grade levels
 
-There are 4 grade banks. Assign players in the Professor Oak admin:
+There are 4 difficulty levels. Assign players in the Professor Oak admin:
 
-| Bank | Difficulty |
-|------|-----------|
+| Level | Difficulty |
+|-------|-----------|
 | preK–K | Easy |
 | 1st–3rd Grade | Medium |
 | 4th–5th Grade | Hard |
@@ -121,9 +135,8 @@ There are 4 grade banks. Assign players in the Professor Oak admin:
 
 Visit `/admin/login`. First time, set an admin password. After that, the tabs are:
 
-- **Users** — list all players, assign their grade bank, reset progress.
-- **Subjects** — configure which Pokemon ID ranges map to which subject.
-- **Banks** — view the 4 grade banks and their question counts.
+- **Users** — list all players, assign their grade level, pin subject filter (All / Math / Singapore), reset or delete progress.
+- **Questions** — view, create, edit, and delete questions across all difficulty levels.
 
 ## Repository layout
 
@@ -132,12 +145,12 @@ Visit `/admin/login`. First time, set an admin password. After that, the tabs ar
 ├── README.md                    (this file)
 ├── app/                         the Next.js application
 │   ├── data/
-│   │   ├── questions/curriculum/  bundled question JSON files
+│   │   ├── questions/curriculum/  bundled question JSON files (seed source)
 │   │   ├── pokemon.json           Gen 1 Pokemon data
 │   │   └── subjects.json          subject routing config
 │   ├── drizzle/                 Drizzle migration files
 │   ├── public/audio/            chiptune .wav files
-│   ├── scripts/                 utility scripts (seed-banks, wipe-banks)
+│   ├── scripts/                 utility scripts (seed, export)
 │   └── src/
 │       ├── app/                 routes (UI + API)
 │       ├── components/          shared UI (QuestionModal)
