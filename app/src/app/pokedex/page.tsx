@@ -144,14 +144,6 @@ export default function PokedexPage() {
                     ✓
                   </span>
                 )}
-                {isOwnedEvolved && (
-                  <span
-                    className="absolute top-0 right-0 bg-purple-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center"
-                    title="Evolved past — locked"
-                  >
-                    ⛓
-                  </span>
-                )}
                 {isLockedEvolutionOnly && (
                   <span
                     className="absolute top-0 right-0 bg-yellow-400 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center"
@@ -170,7 +162,6 @@ export default function PokedexPage() {
               {owned && (
                 <div className="text-[10px] text-gray-500">
                   L{owned.level}
-                  {owned.evolved && " ⛓"}
                 </div>
               )}
               {isLockedEvolutionOnly && (
