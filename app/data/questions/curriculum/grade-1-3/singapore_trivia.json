@@ -1,216 +1,117 @@
 [
   {
-    "id": "s1301",
-    "prompt": "Who founded modern Singapore in 1819?",
-    "answer": "Stamford Raffles",
+    "id": "s1341",
+    "prompt": "In the US, you might see squirrels or deer. In Singapore neighborhoods, which cute animal family is often seen playing in the rivers?",
+    "answer": "Otters",
     "choices": [
-      "Lee Kuan Yew",
-      "Stamford Raffles",
-      "Sang Nila Utama",
-      "Yusof Ishak"
+      "Polar Bears",
+      "Otters",
+      "Kangaroos",
+      "Zebras"
     ]
   },
   {
-    "id": "s1302",
-    "prompt": "What is the national language?",
-    "answer": "Malay",
+    "id": "s1342",
+    "prompt": "Because it is so hot, many Singaporean families go to 'Water Playgrounds.' Where are these often found?",
+    "answer": "On the roofs of malls",
     "choices": [
-      "English",
-      "Mandarin",
-      "Malay",
-      "Tamil"
+      "In the basement",
+      "On the roofs of malls",
+      "Inside the library",
+      "At the airport"
     ]
   },
   {
-    "id": "s1303",
-    "prompt": "Which district is for shopping?",
-    "answer": "Orchard Road",
+    "id": "s1343",
+    "prompt": "Which of these giant, lizard-like animals might you see walking near a park or a drain in Singapore?",
+    "answer": "Monitor Lizard",
     "choices": [
-      "Jurong",
-      "Orchard Road",
-      "Sentosa",
-      "Changi"
+      "Alligator",
+      "Monitor Lizard",
+      "Dinosaur",
+      "Dragon"
     ]
   },
   {
-    "id": "s1304",
-    "prompt": "What is the 'Little Red Dot'?",
-    "answer": "Singapore",
+    "id": "s1344",
+    "prompt": "In the US, you go to a 'Mall' to shop. In Singapore, malls also have what on the top floors?",
+    "answer": "Libraries",
     "choices": [
-      "Japan",
-      "Singapore",
-      "Bali",
-      "Taiwan"
+      "Swimming pools",
+      "Libraries",
+      "Petting zoos",
+      "Campgrounds"
     ]
   },
   {
-    "id": "s1305",
-    "prompt": "National flower of Singapore?",
-    "answer": "Vanda Miss Joaquim",
+    "id": "s1345",
+    "prompt": "Most Singaporean kids live in buildings called 'HDBs.' How do they get up to their front door?",
+    "answer": "The Elevator (Lift)",
     "choices": [
-      "Rose",
-      "Lily",
-      "Vanda Miss Joaquim",
-      "Tulip"
+      "A Ladder",
+      "A Trampoline",
+      "The Elevator (Lift)",
+      "A Giant Slide"
     ]
   },
   {
-    "id": "s1306",
-    "prompt": "Who is on the $50 note?",
-    "answer": "Yusof Ishak",
+    "id": "s1346",
+    "prompt": "When a Singaporean kid finishes their drink and wants to throw it away, they look for a ___?",
+    "answer": "Dustbin",
     "choices": [
-      "Lee Kuan Yew",
-      "Yusof Ishak",
-      "Goh Chok Tong",
-      "SR Nathan"
+      "Trash Hole",
+      "Dustbin",
+      "Garbage Cave",
+      "Waste Basket"
     ]
   },
   {
-    "id": "s1307",
-    "prompt": "Singapore's first PM?",
-    "answer": "Lee Kuan Yew",
+    "id": "s1347",
+    "prompt": "At a Singapore food center, you don't use a fork and knife for everything. What do many kids use for noodles?",
+    "answer": "Chopsticks",
     "choices": [
-      "Lee Hsien Loong",
-      "Lee Kuan Yew",
-      "David Marshall",
-      "Tony Tan"
+      "A Straw",
+      "Their hands",
+      "Chopsticks",
+      "A Toothpick"
     ]
   },
   {
-    "id": "s1308",
-    "prompt": "What is 'Singlish'?",
-    "answer": "Local slang",
+    "id": "s1348",
+    "prompt": "Since it rains almost every afternoon in Singapore, many walkways have what to keep kids dry?",
+    "answer": "Sheltered Roofs",
     "choices": [
-      "A sport",
-      "Local slang",
-      "A food",
-      "A dance"
+      "Umbrellas for everyone",
+      "Sheltered Roofs",
+      "Giant Fans",
+      "Tunnels"
     ]
   },
   {
-    "id": "s1309",
-    "prompt": "The highest point in SG?",
-    "answer": "Bukit Timah Hill",
+    "id": "s1349",
+    "prompt": "What is a popular chocolate malt drink that Singapore kids love to drink cold?",
+    "answer": "Milo",
     "choices": [
-      "Mount Faber",
-      "Bukit Timah Hill",
-      "Fort Canning",
-      "Jurong Hill"
+      "Orange Juice",
+      "Milo",
+      "Root Beer",
+      "Milkshake"
     ]
   },
   {
-    "id": "s1310",
-    "prompt": "Official name of the airport?",
-    "answer": "Changi Airport",
+    "id": "s1350",
+    "prompt": "In Singapore, many kids live in very tall buildings. What do they call the ground level where they play?",
+    "answer": "Void Deck",
     "choices": [
-      "Paya Lebar",
-      "Seletar",
-      "Changi Airport",
-      "Tengah"
+      "The Attic",
+      "Void Deck",
+      "The Garage",
+      "The Basement"
     ]
-  },
+  }
   {
-    "id": "s1311",
-    "prompt": "Total stars on the flag?",
-    "answer": "Five",
-    "choices": [
-      "Four",
-      "Five",
-      "Six",
-      "Seven"
-    ]
-  },
-  {
-    "id": "s1312",
-    "prompt": "Which resort is on an island?",
-    "answer": "Sentosa",
-    "choices": [
-      "Marina Bay",
-      "Sentosa",
-      "Clarke Quay",
-      "Boat Quay"
-    ]
-  },
-  {
-    "id": "s1313",
-    "prompt": "National Day date?",
-    "answer": "9 August",
-    "choices": [
-      "4 July",
-      "9 August",
-      "1 January",
-      "31 August"
-    ]
-  },
-  {
-    "id": "s1314",
-    "prompt": "What is a 'Hawker Centre'?",
-    "answer": "Food court",
-    "choices": [
-      "School",
-      "Food court",
-      "Park",
-      "Museum"
-    ]
-  },
-  {
-    "id": "s1315",
-    "prompt": "Which animal is the Zoo famous for?",
-    "answer": "Orangutan",
-    "choices": [
-      "Panda",
-      "Lion",
-      "Orangutan",
-      "Tiger"
-    ]
-  },
-  {
-    "id": "s1316",
-    "prompt": "Name of the train system?",
-    "answer": "MRT",
-    "choices": [
-      "LRT",
-      "MRT",
-      "BTS",
-      "MTR"
-    ]
-  },
-  {
-    "id": "s1317",
-    "prompt": "Symbol on the flag for a 'young nation'?",
-    "answer": "Crescent Moon",
-    "choices": [
-      "Star",
-      "Sun",
-      "Crescent Moon",
-      "Lion"
-    ]
-  },
-  {
-    "id": "s1318",
-    "prompt": "Popular breakfast: ___ Toast.",
-    "answer": "Kaya",
-    "choices": [
-      "Butter",
-      "Kaya",
-      "Cheese",
-      "Garlic"
-    ]
-  },
-  {
-    "id": "s1319",
-    "prompt": "Island for the army?",
-    "answer": "Pulau Tekong",
-    "choices": [
-      "Sentosa",
-      "Pulau Ubin",
-      "Pulau Tekong",
-      "Kusu Island"
-    ]
-  },
-  {
-    "id": "s1320",
-    "prompt": "How tall is the Rain Vortex waterfall in Singapore's airport?",
+    "id": "s1351",
+    "prompt": "How tall is the waterfall in Singapore's airport?",
     "answer": "HSBC Rain Vortex",
     "choices": [
       "7 stories tall (130ft/40m)",
@@ -220,3 +121,4 @@
     ]
   }
 ]
+
