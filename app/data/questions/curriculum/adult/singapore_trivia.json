@@ -214,15 +214,15 @@
       "Community service only"
     ],
     "explanation": "Singapore has strict anti-littering laws. First-time offenders for small items are usually issued a $300 composition fine, while larger items or repeat offenses can lead to court and a Corrective Work Order (CWO)."
-  }
-    {
+  },
+  {
     "id": "sv19",
     "prompt": "In California, a new Toyota Prius costs ~ $30k. How much would this car cost in Singapore?",
     "answer": "$170k USD, and you can only drive it for 10 years.",
     "choices": [
       "$30k USD",
       "$170k USD, and you can drive it for just 10yrs.",
-      "$$20k USD",
+      "$20k USD",
       "Singapore only allows car pooling, so you can't buy a car there"
     ],
     "explanation": "To own a car in Singapore, you must bid for a Certificate of Entitlement (COE)—a 10-year permit that currently costs around $100k via competitive auction."
