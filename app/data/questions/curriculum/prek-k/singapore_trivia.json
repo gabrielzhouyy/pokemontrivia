@@ -12,13 +12,13 @@
   },
   {
     "id": "pk02",
-    "prompt": "The Merlion is a famous statue that breathes water. It has the head of a lion and the tail of a fish. Why the fish tail?",
-    "answer": "Because Singapore started as a small fishing village",
+    "prompt": "Singapore students wear a school uniform to school. What is a school uniform?",
+    "answer": "A special matching outfit that you and all your friends wear to school",
     "choices": [
-      "Because it likes to swim",
-      "Because Singapore started as a small fishing village",
-      "Because it's a mermaid",
-      "To help it go faster"
+      "A special matching outfit that you and all your friends wear to school",
+      "An octopus hat",
+      "A stinky sock",
+      "Rainbow boots"
     ]
   },
   {
@@ -218,5 +218,17 @@
       "The North Pole",
       "A desert island"
     ]
+  },
+  {
+    "id": "si-1777486594290",
+    "prompt": "In Bringhurst, lunch is ready for you for free. How do Singapore students get their lunch?",
+    "answer": "Choose and pay for their food from canteen stalls",
+    "choices": [
+      "Choose and pay for their food from canteen stalls",
+      "Catching flying pizzas in the air",
+      "Digging for sandwiches in the dirt",
+      "Waiting for the lunch dragon to bring food"
+    ],
+    "explanation": "Students buy lunch from a CANTEEN during recess."
   }
 ]

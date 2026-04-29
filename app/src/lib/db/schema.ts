@@ -14,8 +14,10 @@ import {
 export const users = pgTable("users", {
   id: serial("id").primaryKey(),
   username: text("username").notNull().unique(),
-  // bcrypt hash of the plaintext PIN (player) or password (admin).
-  pinHash: text("pin_hash").notNull(),
+  // bcrypt hash of the plaintext password (admin only). Players use colour-based auth.
+  pinHash: text("pin_hash"),
+  // Colour chosen at registration — the player's identity alongside username.
+  color: text("color").notNull().default("red"),
   role: text("role").notNull().default("player"), // 'player' | 'admin'
   // Difficulty level: 1=preK–K, 2=1st–3rd Grade, 3=4th–5th Grade, 4=Adult.
   priLevel: integer("pri_level").notNull().default(1),

@@ -18,30 +18,15 @@ const LEGACY_KEY_PREFIX = "pmc:profile:";
 
 // ---------- Auth-flow helpers (used by /login and /admin/login) ----------
 
-export async function login(
+export async function loginOrRegister(
   username: string,
-  pin: string,
+  color: string,
   priLevel?: number,
 ): Promise<Profile | null> {
   const res = await fetch("/api/auth/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username, pin, priLevel }),
-  });
-  if (!res.ok) return null;
-  await maybeMigrateLocalProfile(username);
-  return loadCurrentProfile();
-}
-
-export async function register(
-  username: string,
-  pin: string,
-  priLevel?: number,
-): Promise<Profile | null> {
-  const res = await fetch("/api/auth/register", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username, pin, priLevel }),
+    body: JSON.stringify({ username, color, priLevel }),
   });
   if (!res.ok) return null;
   await maybeMigrateLocalProfile(username);

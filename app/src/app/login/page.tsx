@@ -2,50 +2,42 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { login as apiLogin, register as apiRegister } from "@/lib/storage";
+import { loginOrRegister } from "@/lib/storage";
 import { playClick, playWrong } from "@/lib/audio";
+
+const COLORS = [
+  { name: "red",    hex: "#ef4444" },
+  { name: "orange", hex: "#f97316" },
+  { name: "yellow", hex: "#eab308" },
+  { name: "green",  hex: "#22c55e" },
+  { name: "blue",   hex: "#3b82f6" },
+  { name: "purple", hex: "#a855f7" },
+  { name: "pink",   hex: "#ec4899" },
+  { name: "teal",   hex: "#14b8a6" },
+  { name: "gold",   hex: "#d97706" },
+];
 
 export default function LoginPage() {
   const router = useRouter();
   const [username, setUsername] = useState("");
-  const [pin, setPin] = useState("");
+  const [color, setColor] = useState("red");
   const [priLevel, setPriLevel] = useState<number>(1);
   const [error, setError] = useState("");
   const [shaking, setShaking] = useState(false);
-
-  function pressDigit(d: string) {
-    setError("");
-    if (pin.length >= 4) return;
-    playClick();
-    setPin(pin + d);
-  }
-  function backspace() {
-    playClick();
-    setPin(pin.slice(0, -1));
-    setError("");
-  }
   const [busy, setBusy] = useState(false);
 
   async function submit() {
     const u = username.trim();
     if (!u) return setError("Type your name first!");
-    if (pin.length !== 4) return setError("PIN must be 4 digits");
     setBusy(true);
     try {
-      // Try login first (passing priLevel so a returning kid can switch
-      // levels on this screen); if it 401s, fall back to register.
-      let profile = await apiLogin(u, pin, priLevel);
+      const profile = await loginOrRegister(u, color, priLevel);
       if (!profile) {
-        profile = await apiRegister(u, pin, priLevel);
-        if (!profile) {
-          // Username exists with a different PIN.
-          playWrong();
-          setShaking(true);
-          setError("Wrong PIN, try again!");
-          setPin("");
-          setTimeout(() => setShaking(false), 400);
-          return;
-        }
+        playWrong();
+        setShaking(true);
+        setError("Wrong colour, try again!");
+        setTimeout(() => setShaking(false), 400);
+        return;
       }
       router.replace(profile.starterId ? "/pokedex" : "/starter");
     } finally {
@@ -83,6 +75,7 @@ export default function LoginPage() {
         <input
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          onKeyDown={(e) => { if (e.key === "Enter") submit(); }}
           className="w-full text-lg p-3 border-2 border-gray-300 rounded-2xl focus:border-red-400 outline-none mb-4"
           placeholder="e.g. Ash"
           autoFocus
@@ -100,52 +93,31 @@ export default function LoginPage() {
           <option value={4}>Very Hard (Adult)</option>
         </select>
 
-        <label className="block text-sm font-bold mb-1">4-digit PIN</label>
-        <div className="flex justify-center gap-3 my-3">
-          {[0, 1, 2, 3].map((i) => (
-            <div
-              key={i}
-              className={`w-12 h-14 rounded-2xl border-2 ${
-                pin.length > i ? "bg-red-400 border-red-500" : "bg-gray-100 border-gray-300"
-              } flex items-center justify-center text-2xl font-bold text-white`}
-            >
-              {pin.length > i ? "•" : ""}
-            </div>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-3 gap-2 mt-3">
-          {["1", "2", "3", "4", "5", "6", "7", "8", "9"].map((d) => (
+        <label className="block text-sm font-bold mb-2">Pick your colour</label>
+        <div className="grid grid-cols-3 gap-3 my-3">
+          {COLORS.map((c) => (
             <button
-              key={d}
-              onClick={() => pressDigit(d)}
-              className="bg-gray-100 hover:bg-yellow-200 active:scale-95 transition rounded-2xl py-4 text-2xl font-bold"
-            >
-              {d}
-            </button>
+              key={c.name}
+              onClick={() => { setColor(c.name); playClick(); setError(""); }}
+              className={`w-full aspect-square rounded-full transition active:scale-95 ${
+                color === c.name
+                  ? "ring-4 ring-offset-2 ring-gray-400 scale-110"
+                  : "hover:scale-105"
+              }`}
+              style={{ backgroundColor: c.hex }}
+              aria-label={c.name}
+            />
           ))}
-          <button
-            onClick={backspace}
-            className="bg-gray-200 hover:bg-gray-300 active:scale-95 transition rounded-2xl py-4 text-xl font-bold"
-            aria-label="Backspace"
-          >
-            ⌫
-          </button>
-          <button
-            onClick={() => pressDigit("0")}
-            className="bg-gray-100 hover:bg-yellow-200 active:scale-95 transition rounded-2xl py-4 text-2xl font-bold"
-          >
-            0
-          </button>
-          <button
-            onClick={submit}
-            disabled={busy}
-            className="bg-green-500 hover:bg-green-600 disabled:bg-gray-300 text-white active:scale-95 transition rounded-2xl py-4 text-xl font-bold"
-            aria-label="Submit"
-          >
-            ✓
-          </button>
         </div>
+        <p className="text-center text-sm font-bold capitalize text-gray-700 mb-4">{color}</p>
+
+        <button
+          onClick={submit}
+          disabled={busy}
+          className="w-full bg-green-500 hover:bg-green-600 disabled:bg-gray-300 text-white rounded-2xl py-4 text-xl font-bold active:scale-95 transition"
+        >
+          {busy ? "…" : "Let's go!"}
+        </button>
 
         {error && <p className="text-red-500 text-center mt-4 font-bold">{error}</p>}
       </div>

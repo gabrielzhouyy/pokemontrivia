@@ -145,7 +145,7 @@
   },
   {
     "id": "sv13",
-    "prompt": "Singaporean men are required by law to serve in the military (National Service). What is the standard commitment?",
+    "prompt": "Singaporean men are required by law to serve in the military. What is the standard commitment?",
     "answer": "2 years of full-time service, plus annual training for the next 10 years",
     "choices": [
       "6 months of basic training only",
@@ -153,7 +153,7 @@
       "4 years of active duty, similar to the US Marines",
       "Voluntary service only"
     ],
-    "explanation": "National Service (NS) is mandatory for all male citizens and second-generation permanent residents. After 2 years of active duty, they become 'Operationally Ready National Servicemen' (reservists)."
+    "explanation": "National Service (NS) is mandatory for all male citizens and second-generation permanent residents. After 2 years of active duty, they become 'Operationally Ready National Servicemen' (reservists) for the next 10 years."
   },
   {
     "id": "sv14",
@@ -169,7 +169,7 @@
   },
   {
     "id": "sv15",
-    "prompt": "Singapore has a massive 'underground city.' What is stored 150 meters below ground in the Jurong Rock Caverns to save surface space?",
+    "prompt": "Singapore has a massive 'underground city.' What is stored 500ft (150m) below ground to save surface space?",
     "answer": "Liquid hydrocarbons (oil and fuel)",
     "choices": [
       "The national gold reserve",
