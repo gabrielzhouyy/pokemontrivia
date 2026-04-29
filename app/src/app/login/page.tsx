@@ -30,7 +30,7 @@ export default function LoginPage() {
       if (!profile) {
         playWrong();
         setShaking(true);
-        setError("Name already taken! Pick a different colour.");
+        setError("Name already taken! Pick a different name.");
         setTimeout(() => setShaking(false), 400);
         return;
       }
