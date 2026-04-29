@@ -7,8 +7,8 @@ import { playClick, playWrong } from "@/lib/audio";
 
 const COLORS = [
   { name: "red",    hex: "#ef4444" },
-  { name: "blue",   hex: "#3b82f6" },
   { name: "green",  hex: "#22c55e" },
+  { name: "blue",   hex: "#3b82f6" },
   { name: "yellow", hex: "#eab308" },
 ];
 
@@ -100,9 +100,7 @@ export default function LoginPage() {
                   : "hover:scale-105 opacity-70"
               }`}
               style={{ backgroundColor: c.hex }}
-            >
-              {c.name}
-            </button>
+            />
           ))}
         </div>
 
