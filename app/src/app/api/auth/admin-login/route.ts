@@ -30,6 +30,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true, role: "admin" });
   }
 
+  if (!admin.pinHash) return NextResponse.json({ error: "Wrong password" }, { status: 401 });
   const ok = await verifyPassword(password, admin.pinHash);
   if (!ok) return NextResponse.json({ error: "Wrong password" }, { status: 401 });
   await setSession({ userId: admin.id, username: admin.username, role: "admin" });
