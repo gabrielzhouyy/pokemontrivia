@@ -57,6 +57,7 @@ export default function QuestionsTab() {
   // editingId = question id being edited, "new" for add form, null for none
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editState, setEditState] = useState<EditState>(blankEdit());
+  const [savedMsg, setSavedMsg] = useState("");
 
   async function refresh() {
     setError("");
@@ -132,6 +133,8 @@ export default function QuestionsTab() {
       return;
     }
     setEditingId(null);
+    setSavedMsg("Saved ✓");
+    setTimeout(() => setSavedMsg(""), 600);
     refresh();
   }
 
@@ -249,6 +252,7 @@ export default function QuestionsTab() {
           <option value="math">Math</option>
           <option value="singapore_trivia">Singapore</option>
         </select>
+        {savedMsg && <span className="text-green-600 font-bold text-sm">{savedMsg}</span>}
         <button
           onClick={startAdd}
           className="ml-auto bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-2xl font-bold text-sm active:scale-95 transition"
@@ -269,7 +273,10 @@ export default function QuestionsTab() {
           {editingId === q.id ? (
             editForm
           ) : (
-            <div className="border-2 border-gray-200 rounded-2xl p-3 flex items-start gap-3">
+            <div
+              onClick={() => startEdit(q)}
+              className="border-2 border-gray-200 hover:border-blue-300 rounded-2xl p-3 flex items-start gap-3 cursor-pointer active:scale-[0.99] transition"
+            >
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-bold leading-snug line-clamp-2">{q.prompt}</p>
                 <div className="flex flex-wrap gap-1 mt-1">
@@ -286,21 +293,13 @@ export default function QuestionsTab() {
                   )}
                 </div>
               </div>
-              <div className="flex gap-2 shrink-0">
-                <button
-                  onClick={() => startEdit(q)}
-                  className="bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-xl text-sm font-bold active:scale-95 transition"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => del(q.id, q.prompt)}
-                  disabled={busy}
-                  className="bg-red-100 hover:bg-red-200 text-red-700 disabled:opacity-50 px-3 py-1.5 rounded-xl text-sm font-bold active:scale-95 transition"
-                >
-                  Delete
-                </button>
-              </div>
+              <button
+                onClick={(e) => { e.stopPropagation(); del(q.id, q.prompt); }}
+                disabled={busy}
+                className="bg-red-100 hover:bg-red-200 text-red-700 disabled:opacity-50 px-3 py-1.5 rounded-xl text-sm font-bold active:scale-95 transition shrink-0"
+              >
+                Delete
+              </button>
             </div>
           )}
         </div>

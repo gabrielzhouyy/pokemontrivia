@@ -174,7 +174,12 @@ export default function PokedexPage() {
                 </div>
               )}
               {isLockedEvolutionOnly && (
-                <div className="text-[10px] text-yellow-600 font-bold">evolve only</div>
+                <div className="text-[10px] text-yellow-600 font-bold leading-tight text-center">
+                  {(() => {
+                    const pre = POKEMON.find((x) => x.evolves_to === p.id);
+                    return pre ? `Evolve ${pre.name}` : "evolve only";
+                  })()}
+                </div>
               )}
             </>
           );

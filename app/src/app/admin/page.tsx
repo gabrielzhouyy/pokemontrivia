@@ -58,7 +58,7 @@ export default function AdminDashboard() {
             }}
             className="bg-gray-200 hover:bg-gray-300 px-3 py-2 rounded-2xl text-sm font-bold active:scale-95 transition"
           >
-            Reset admin
+            Reset password
           </button>
           <button
             onClick={() => {

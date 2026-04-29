@@ -151,7 +151,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
         setEvolvedPokemon(null);
         setShowNewForm(false);
         router.replace(`/training/${evolvedToId}`);
-      }, 2900);
+      }, 2100);
     } else {
       nextQuestion(p, speciesId);
       await saveProfile(p);
@@ -176,7 +176,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
           <img
             src={evolving && showNewForm && evolvedPokemon ? evolvedPokemon.sprite : current.sprite}
             alt={evolving && showNewForm && evolvedPokemon ? evolvedPokemon.name : current.name}
-            className={`object-contain ${evolving && showNewForm ? "w-80 h-80" : "w-56 h-56"} ${evolving ? "animate-evolve" : "animate-bounce-in"}`}
+            className={`object-contain ${evolving && showNewForm ? "w-80 h-80" : "w-56 h-56"} ${evolving && !showNewForm ? "animate-evolve" : "animate-bounce-in"}`}
           />
           <div className="absolute -top-4 right-0 pointer-events-none">
             {floats.map((f) => (
@@ -188,11 +188,19 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
         </div>
         <div className="mt-2">
           <p className="font-bold">{current.name} <span className="text-gray-500 text-sm">L{owned.level}</span></p>
-          <div className="w-64 h-3 bg-gray-200 rounded-full mt-1 overflow-hidden mx-auto">
-            <div
-              className="h-full bg-gradient-to-r from-yellow-300 to-red-400 transition-all"
-              style={{ width: `${owned.level}%` }}
-            />
+          <div className="relative w-64 h-3 bg-gray-200 rounded-full mt-1 mx-auto">
+            <div className="absolute inset-0 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-gradient-to-r from-yellow-300 to-red-400 transition-all"
+                style={{ width: `${owned.level}%` }}
+              />
+            </div>
+            {current.evolve_level && current.evolves_to && (
+              <div
+                className="absolute top-0 bottom-0 w-0.5 bg-white/90 z-10"
+                style={{ left: `${current.evolve_level}%` }}
+              />
+            )}
           </div>
           {current.evolve_level && current.evolves_to && (
             <p className="text-xs text-gray-500 mt-1">
@@ -217,6 +225,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
           onAnswer={handleAnswer}
           imageUrl={current.sprite}
           imageName={current.name}
+          subtitle={`+${pendingGain} lvls if correct`}
           levelUpText={levelUpPreview}
           onExit={() => router.replace("/pokedex")}
           exitLabel="← Stop training"

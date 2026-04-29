@@ -117,9 +117,18 @@ export default function UsersTab() {
           >
             <div className="flex-1 min-w-[140px]">
               <div className="font-bold text-lg">{u.username}</div>
-              <div className="text-xs text-gray-500">
+              <div className="text-xs text-gray-500 flex flex-wrap items-center gap-1">
                 {u.caughtCount} caught · {u.evolvedCount} evolved · {u.accuracy}% acc · streak{" "}
                 {u.currentStreak}
+                {u.subjectFilter && (
+                  <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${
+                    u.subjectFilter === "math"
+                      ? "bg-blue-100 text-blue-700"
+                      : "bg-yellow-100 text-yellow-700"
+                  }`}>
+                    {u.subjectFilter === "math" ? "Math only" : "SG only"}
+                  </span>
+                )}
               </div>
             </div>
             <label className="flex items-center gap-2">
