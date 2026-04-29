@@ -25,7 +25,7 @@
   },
   {
     "id": "sv03",
-    "prompt": "In the Bay Area, many workers contribute to a 401k. In Singapore, 'CPF' is a mandatory savings fund. What is the total combined monthly contribution for most employees?",
+    "prompt": "Singapore has a version of the 401k. The 'CPF' is a mandatory savings fund. How much of a person's monthly salary goes into this wallet?",
     "answer": "37% of salary (20% from employee, 17% from employer)",
     "choices": [
       "5% (Standard matching)",
@@ -109,7 +109,7 @@
   },
   {
     "id": "sv10",
-    "prompt": "Singapore is a global leader in heavy engineering. Which of these did they historically build the most of globally?",
+    "prompt": "Singapore is a global leader in heavy engineering. Singaporean companies built about 70% of what equipment in the world?",
     "answer": "Offshore oil rigs",
     "choices": [
       "Electric vehicles",

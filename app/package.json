@@ -10,7 +10,9 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "db:export": "node scripts/export-questions.mjs",
+    "db:seed": "node scripts/seed-questions.mjs"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",

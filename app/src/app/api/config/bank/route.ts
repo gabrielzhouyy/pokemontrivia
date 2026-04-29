@@ -17,7 +17,7 @@ export async function GET() {
     const db = getDb();
 
     const [user] = await db
-      .select({ priLevel: schema.users.priLevel })
+      .select({ priLevel: schema.users.priLevel, subjectFilter: schema.users.subjectFilter })
       .from(schema.users)
       .where(eq(schema.users.id, session.userId));
     if (!user) return NextResponse.json({ bankId: null, questions: [] });
@@ -30,6 +30,7 @@ export async function GET() {
     return NextResponse.json({
       bankId: null,
       bankName: BANK_NAME[user.priLevel] ?? BANK_NAME[1],
+      subjectFilter: user.subjectFilter ?? null,
       questions: qs.map((q) => ({
         id: q.id,
         subject: q.subject,

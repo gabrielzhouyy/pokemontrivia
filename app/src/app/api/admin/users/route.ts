@@ -13,6 +13,7 @@ export async function GET() {
         id: schema.users.id,
         username: schema.users.username,
         priLevel: schema.users.priLevel,
+        subjectFilter: schema.users.subjectFilter,
         starterId: schema.users.starterId,
         createdAt: schema.users.createdAt,
       })
@@ -44,6 +45,7 @@ export async function GET() {
         id: p.id,
         username: p.username,
         priLevel: p.priLevel,
+        subjectFilter: p.subjectFilter ?? null,
         caughtCount: caughtByUser.get(p.id) ?? 0,
         evolvedCount: evolvedByUser.get(p.id) ?? 0,
         totalAnswered: total,

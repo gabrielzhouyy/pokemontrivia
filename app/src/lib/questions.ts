@@ -23,6 +23,7 @@ type Tier = 1 | 2 | 3 | 4;
 type CachedBank = {
   bankId: number | null;
   bankName?: string;
+  subjectFilter?: string | null;
   questions: Array<Question & { subject: SubjectId; ageSuggestion?: number }>;
   fetchedAt: number;
 };
@@ -55,11 +56,13 @@ export async function syncBankFromCloud(): Promise<void> {
     const j = (await res.json()) as {
       bankId: number | null;
       bankName?: string;
+      subjectFilter?: string | null;
       questions: Array<Question & { subject: string; ageSuggestion?: number }>;
     };
     writeCache({
       bankId: j.bankId,
       bankName: j.bankName,
+      subjectFilter: j.subjectFilter ?? null,
       questions: (j.questions ?? []) as CachedBank["questions"],
       fetchedAt: Date.now(),
     });
@@ -159,6 +162,13 @@ export function getQuestionById(id: string): Question | undefined {
 export function bankIsEmpty(): boolean {
   const cache = readCache();
   return !cache || cache.questions.length === 0;
+}
+
+// Returns the admin-set subject filter for this user's cached bank.
+// null means "random" (all subjects mixed — the default).
+export function getSubjectFilter(): string | null {
+  const cache = readCache();
+  return cache?.subjectFilter ?? null;
 }
 
 // After answering, update history. Decrement reviewCounters on OTHER

@@ -22,6 +22,8 @@ export const users = pgTable("users", {
   starterId: integer("starter_id"),
   // Drop 5b: which bank of questions this user draws from. Null = unassigned.
   bankId: integer("bank_id"),
+  // Subject filter set by admin. Null = random (all subjects). 'math' or 'singapore_trivia' pins the user.
+  subjectFilter: text("subject_filter"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
 

@@ -89,17 +89,20 @@ export default function QuestionModal({ question, onAnswer, imageUrl, imageName,
     question.choices.some(containsCJK);
 
   return (
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center p-4 z-50">
+    <div
+      className="fixed inset-0 bg-black/40 flex items-center justify-center p-4 z-50"
+      onClick={onExit}
+    >
       <div
         className={`bg-white rounded-3xl shadow-2xl p-4 w-full max-w-md ${
           feedback === "wrong" ? "animate-shake" : ""
         } ${feedback === "correct" ? "ring-4 ring-green-400" : ""}`}
+        onClick={(e) => e.stopPropagation()}
       >
         {onExit && (
           <button
             onClick={onExit}
-            disabled={locked}
-            className="bg-gray-100 hover:bg-gray-200 disabled:opacity-40 text-sm font-bold rounded-full px-3 py-1 active:scale-95 transition mb-2"
+            className="bg-gray-100 hover:bg-gray-200 text-sm font-bold rounded-full px-3 py-1 active:scale-95 transition mb-2"
           >
             {exitLabel ?? "← Back to Pokedex"}
           </button>

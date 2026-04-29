@@ -5,6 +5,7 @@ type UserSummary = {
   id: number;
   username: string;
   priLevel: number;
+  subjectFilter: string | null;
   caughtCount: number;
   evolvedCount: number;
   totalAnswered: number;
@@ -53,6 +54,18 @@ export default function UsersTab() {
     setBusy(null);
     if (res.ok) refresh();
     else setError("Failed to update difficulty");
+  }
+
+  async function setSubjectFilter(user: UserSummary, subjectFilter: string | null) {
+    setBusy(user.id);
+    const res = await fetch(`/api/admin/users/${user.id}/bank`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ subjectFilter }),
+    });
+    setBusy(null);
+    if (res.ok) refresh();
+    else setError("Failed to update subject filter");
   }
 
   async function reset(user: UserSummary) {
@@ -125,6 +138,22 @@ export default function UsersTab() {
                     {DIFFICULTY_LABELS[n]}
                   </option>
                 ))}
+              </select>
+            </label>
+            <label className="flex items-center gap-2">
+              <span className="text-sm font-bold">Subject</span>
+              <select
+                value={u.subjectFilter ?? ""}
+                onChange={(e) => {
+                  const v = e.target.value || null;
+                  if (v !== u.subjectFilter) setSubjectFilter(u, v);
+                }}
+                disabled={busy === u.id}
+                className="p-2 border-2 border-gray-300 rounded-xl text-sm disabled:opacity-50"
+              >
+                <option value="">All (Random)</option>
+                <option value="math">Math only</option>
+                <option value="singapore_trivia">Singapore only</option>
               </select>
             </label>
             <button

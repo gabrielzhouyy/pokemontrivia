@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { getPokemon } from "@/lib/pokemon";
 import {
   bankIsEmpty,
+  getSubjectFilter,
   pickQuestion,
   recordAnswer,
   type Question,
@@ -61,7 +62,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
       }
       setProfile(p);
       const sp = getPokemon(speciesId);
-      setQuestion(pickQuestion(null, sp.tier, p.history));
+      setQuestion(pickQuestion(getSubjectFilter(), sp.tier, p.history));
       setQSerial((s) => s + 1);
     })();
   }, [router, speciesId]);
@@ -82,7 +83,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
   function nextQuestion(p: Profile, sid: number) {
     setPendingGain(rollGain());
     const sp = getPokemon(sid);
-    setQuestion(pickQuestion(null, sp.tier, p.history));
+    setQuestion(pickQuestion(getSubjectFilter(), sp.tier, p.history));
     setQSerial((s) => s + 1);
   }
 
