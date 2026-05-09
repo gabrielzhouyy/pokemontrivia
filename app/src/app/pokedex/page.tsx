@@ -63,7 +63,7 @@ export default function PokedexPage() {
           <h1 className="text-2xl sm:text-3xl font-extrabold">
             <span className="text-red-500">Poké</span>dex
           </h1>
-          <p className="text-sm text-gray-600">Trainer: <span className="font-bold">{profile.username}</span></p>
+          <p className="text-sm text-gray-600">Trainer: <span className="font-bold">{profile.username.charAt(0).toUpperCase() + profile.username.slice(1)}</span></p>
         </div>
         <div className="flex gap-2">
           <select

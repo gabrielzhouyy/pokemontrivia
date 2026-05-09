@@ -1,8 +1,9 @@
-# Pokemon Trivia
+# Poké-Go Singapore
 
-A web-based Pokemon catching game where players answer Math and Singapore Trivia
-questions to catch and train Gen 1 Pokemon. Designed as a learning-while-playing
-tool for events, with a Professor Oak admin dashboard to manage players and question banks.
+A web-based Pokémon catching game where players answer Math and Singapore Trivia
+questions to catch and train Gen 1 Pokémon. Designed as a learning-while-playing
+tool for events, with a **Quick Start** mode for instant demo play and a Professor
+Oak admin dashboard to manage players and question banks.
 
 ```
 ┌─────────────────────────────────────────────┐
@@ -21,9 +22,9 @@ tool for events, with a Professor Oak admin dashboard to manage players and ques
 
 - **Frontend / API**: Next.js 16 (App Router) + React 19 + TypeScript + Tailwind v4. Single deploy on Vercel.
 - **Database**: Postgres (Neon free tier). Drizzle ORM.
-- **Auth**: HMAC-signed session cookies (player PIN, admin password — both bcrypt-hashed server-side).
+- **Auth**: HMAC-signed session cookies (player login, admin password — bcrypt-hashed server-side).
 - **Sprites**: PokeAPI public CDN (no hosting needed).
-- **Audio**: Pre-rendered chiptune-style WAVs in `app/public/audio/`.
+- **Audio**: Pre-rendered chiptune-style WAVs in `app/public/audio/` + Web Audio API for the level-60 jingle.
 
 ## Local development
 
@@ -67,6 +68,14 @@ npm run db:seed      # populate questions from curriculum JSON files
 The app is mobile-responsive. On iPad: open the URL in Safari → Share →
 "Add to Home Screen". Players can then launch it like an app icon.
 
+## Quick Start
+
+The login page has a prominent **Quick Start** button that instantly drops the
+player into the game as "Ash" with Pikachu — no name or colour selection needed.
+Quick Start always resets to a fresh Pikachu-only state, making it ideal for demo
+and showcase scenarios. Players can switch to a named account at any time via
+"Change User" in the Pokédex.
+
 ## Question banks
 
 Questions are stored in NeonDB (master source of truth) and can be managed via the
@@ -89,19 +98,6 @@ data/questions/curriculum/
     └── singapore_trivia.json
 ```
 
-Each file is a JSON array of questions:
-
-```json
-[
-  {
-    "id": "unique-id",
-    "prompt": "Question text",
-    "answer": "Correct answer",
-    "choices": ["A", "B", "C", "D"]
-  }
-]
-```
-
 ### Keeping JSON and DB in sync
 
 If you or admin edit questions in the DB and then redeploy code, running `db:seed`
@@ -122,7 +118,8 @@ players to one subject in the Users tab (see Professor Oak admin below).
 
 ## Grade levels
 
-There are 4 difficulty levels. Assign players in the Professor Oak admin:
+There are 4 difficulty levels. Players can change their difficulty at any time via
+the dropdown in the Pokédex header. Admin can also set it per player in Professor Oak.
 
 | Level | Difficulty |
 |-------|-----------|

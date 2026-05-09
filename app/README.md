@@ -1,6 +1,6 @@
-# Pokemon Trivia App
+# Poké-Go Singapore
 
-Pokemon-themed trivia game for Singapore primary school students. Players catch and train Pokemon by answering math and Singapore trivia questions. Difficulty is set per user (`priLevel` 1–4). Built with Next.js App Router + Neon PostgreSQL.
+Pokémon-themed trivia game for Singapore events and schools. Players catch and train Gen 1 Pokémon by answering math and Singapore trivia questions. Features a **Quick Start** mode for instant demo play and a per-player difficulty selector. Built with Next.js App Router + Neon PostgreSQL.
 
 ---
 
@@ -48,11 +48,11 @@ npm run db:export    # Export Neon DB questions → JSON curriculum files
 | Route | File | Description |
 |---|---|---|
 | `/` | `src/app/page.tsx` | Landing / entry point |
-| `/login` | `src/app/login/page.tsx` | Player login + register (username + PIN) |
-| `/starter` | `src/app/starter/page.tsx` | Pick starter Pokemon on first login |
-| `/pokedex` | `src/app/pokedex/page.tsx` | Player's caught Pokemon grid |
-| `/encounter/[id]` | `src/app/encounter/[id]/page.tsx` | Answer a question to catch Pokemon `id` |
-| `/training/[id]` | `src/app/training/[id]/page.tsx` | Train owned Pokemon `id`; levels up + evolves |
+| `/login` | `src/app/login/page.tsx` | Quick Start (Ash + Pikachu) as primary CTA; named login as secondary |
+| `/starter` | `src/app/starter/page.tsx` | Pick starter Pokémon on first named login |
+| `/pokedex` | `src/app/pokedex/page.tsx` | Player's caught Pokémon grid; difficulty dropdown in header |
+| `/encounter/[id]` | `src/app/encounter/[id]/page.tsx` | Answer a question to catch Pokémon `id` |
+| `/training/[id]` | `src/app/training/[id]/page.tsx` | Train owned Pokémon `id`; levels up + evolves |
 | `/stats` | `src/app/stats/page.tsx` | Player answer stats dashboard |
 | `/admin` | `src/app/admin/page.tsx` | Professor Oak dashboard (Users + Questions tabs) |
 | `/admin/login` | `src/app/admin/login/page.tsx` | Admin password entry |
@@ -65,8 +65,8 @@ npm run db:export    # Export Neon DB questions → JSON curriculum files
 
 | Method | Path | File | Description |
 |---|---|---|---|
-| POST | `/api/auth/register` | `src/app/api/auth/register/route.ts` | Create player (username, PIN, priLevel) |
-| POST | `/api/auth/login` | `src/app/api/auth/login/route.ts` | Player login → set session cookie |
+| POST | `/api/auth/login` | `src/app/api/auth/login/route.ts` | Player login / auto-register → set session cookie |
+| POST | `/api/auth/quickstart` | `src/app/api/auth/quickstart/route.ts` | Reset + session "ash" user with Pikachu; always fresh state |
 | POST | `/api/auth/logout` | `src/app/api/auth/logout/route.ts` | Clear session cookie |
 | GET | `/api/auth/me` | `src/app/api/auth/me/route.ts` | Return current session user |
 | POST | `/api/auth/admin-login` | `src/app/api/auth/admin-login/route.ts` | Admin login / first-time enrollment |
@@ -76,17 +76,18 @@ npm run db:export    # Export Neon DB questions → JSON curriculum files
 | Method | Path | File | Description |
 |---|---|---|---|
 | GET/PUT | `/api/profile` | `src/app/api/profile/route.ts` | Fetch / save full player profile |
+| PATCH | `/api/profile/difficulty` | `src/app/api/profile/difficulty/route.ts` | Update `priLevel` + `bankId` without touching game state |
 | GET | `/api/config/bank` | `src/app/api/config/bank/route.ts` | Return questions + `subjectFilter` for user's `priLevel` |
 
 ### Admin
 
 | Method | Path | File | Description |
 |---|---|---|---|
-| GET | `/api/admin/users` | `src/app/api/admin/users/route.ts` | List all players (includes `subjectFilter`) |
+| GET | `/api/admin/users` | `src/app/api/admin/users/route.ts` | List all players |
 | DELETE | `/api/admin/users/[id]` | `src/app/api/admin/users/[id]/route.ts` | Delete player |
-| PUT | `/api/admin/users/[id]/bank` | `src/app/api/admin/users/[id]/bank/route.ts` | Set player `priLevel` (1–4) and/or `subjectFilter` (null/math/singapore_trivia) |
+| PUT | `/api/admin/users/[id]/bank` | `src/app/api/admin/users/[id]/bank/route.ts` | Set player `priLevel` and/or `subjectFilter` |
 | POST | `/api/admin/users/[id]/reset` | `src/app/api/admin/users/[id]/reset/route.ts` | Reset player profile |
-| GET/POST | `/api/admin/questions` | `src/app/api/admin/questions/route.ts` | List questions (filterable) / create question |
+| GET/POST | `/api/admin/questions` | `src/app/api/admin/questions/route.ts` | List / create questions |
 | PUT/DELETE | `/api/admin/questions/[id]` | `src/app/api/admin/questions/[id]/route.ts` | Edit / delete a question |
 
 ---
@@ -95,16 +96,16 @@ npm run db:export    # Export Neon DB questions → JSON curriculum files
 
 | File | Owns / Exports |
 |---|---|
-| `auth.ts` | `requireSession()`, `requireAdmin()` (server-only, throw `{status:401}`); session cookie sign/verify; PIN hashing |
+| `auth.ts` | `requireSession()`, `requireAdmin()` (server-only, throw `{status:401}`); session cookie sign/verify |
 | `admin.ts` | Client-only: `isAdminAuthenticated()`, `endAdminSession()`, `resetAdmin()` |
 | `db/client.ts` | `getDb()` — Drizzle client singleton; `schema` re-export |
 | `db/schema.ts` | All Drizzle table definitions (see DB Schema section) |
-| `pokemon.ts` | `getPokemon(id)` → `Pokemon` type (`id, name, tier, evolves_to, evolve_level, evolution_only, sprite, sprite_pixel`) |
-| `questions.ts` | `pickQuestion(subject\|null, tier, history)`, `recordAnswer()`, `syncBankFromCloud()`, `bankIsEmpty()`, `getSubjectFilter()`, `QuestionHistory` type |
-| `subjects.ts` | `subjectFor(pokemonId)` — parity routing (odd→math, even→singapore_trivia); `getSubjects()` from `data/subjects.json` |
-| `profile-types.ts` | `Profile`, `OwnedPokemon` (`{level, evolved}`) types; `newProfile()` |
-| `storage.ts` | Client-only: `login()`, `register()`, `logout()`, `loadCurrentProfile()`, `saveProfile()` — thin wrappers over fetch |
-| `audio.ts` | `playCorrect()`, `playWrong()`, `playClick()`, `playEvolve()` via Web Audio API |
+| `pokemon.ts` | `getPokemon(id)` → `Pokemon` type; `STARTERS = [1, 4, 7]` |
+| `questions.ts` | `pickQuestion()`, `recordAnswer()`, `syncBankFromCloud()`, `bankIsEmpty()`, `getSubjectFilter()` |
+| `subjects.ts` | `subjectFor(pokemonId)` — parity routing (odd→math, even→singapore_trivia) |
+| `profile-types.ts` | `Profile`, `OwnedPokemon` types; `newProfile()` |
+| `storage.ts` | Client-only: `loginOrRegister()`, `quickStart()`, `logout()`, `loadCurrentProfile()`, `saveProfile()` |
+| `audio.ts` | `playCorrect()`, `playWrong()`, `playClick()`, `playEvolve()`, `playMaxLevel()` (Web Audio API jingle at level 60) |
 
 ---
 
@@ -112,7 +113,7 @@ npm run db:export    # Export Neon DB questions → JSON curriculum files
 
 | File | Props | Description |
 |---|---|---|
-| `QuestionModal.tsx` | `question, onAnswer, imageUrl?, imageName?, levelUpText?, subtitle?, onExit?, exitLabel?` | Full-screen modal for answering questions. Supports `multiple_choice`, `number_pad`, `text_pad` formats. Shows feedback + explanation + level-up text. Calls `onAnswer(correct)` on Continue. Tapping outside the card or the back button calls `onExit` (any time, including mid-feedback). |
+| `QuestionModal.tsx` | `question, onAnswer, imageUrl?, imageName?, levelUpText?, subtitle?, onExit?, exitLabel?` | Full-screen modal for answering questions. Supports `multiple_choice`, `number_pad`, `text_pad` formats. |
 
 ---
 
@@ -120,8 +121,8 @@ npm run db:export    # Export Neon DB questions → JSON curriculum files
 
 | File | Description |
 |---|---|
-| `UsersTab.tsx` | Table of all players; inline difficulty dropdown; **Subject filter dropdown** (All/Math/Singapore); Reset / Delete buttons |
-| `QuestionsTab.tsx` | Filter by difficulty + subject; inline add/edit form (prompt, answer, choices, explanation); delete |
+| `UsersTab.tsx` | Table of all players; inline difficulty dropdown; subject filter; Reset / Delete buttons |
+| `QuestionsTab.tsx` | Filter by difficulty + subject; inline add/edit/delete |
 
 ---
 
@@ -129,10 +130,10 @@ npm run db:export    # Export Neon DB questions → JSON curriculum files
 
 | Table | Key Columns |
 |---|---|
-| `users` | `id, username, pinHash, role, priLevel (1–4), subjectFilter (null/math/singapore_trivia), starterId, bankId, createdAt` |
-| `questions` | `id, subject, priLevel, tier, prompt, answer, format, choices (json), skill, source, explanation` |
-| `banks` | `id, name` — named question collections (reserved, not yet wired to UI) |
-| `bank_questions` | `bankId, questionId` — many-to-many |
+| `users` | `id, username, pinHash, role, priLevel (1–4), subjectFilter, starterId, bankId, createdAt` |
+| `questions` | `id, subject, priLevel, tier, prompt, answer, format, choices (json), explanation` |
+| `banks` | `id, name` |
+| `bank_questions` | `bankId, questionId` |
 | `pokemon_owned` | `userId, speciesId, level, evolved` |
 | `caught` | `userId, speciesId` |
 | `evolved` | `userId, speciesId` |
@@ -145,16 +146,12 @@ npm run db:export    # Export Neon DB questions → JSON curriculum files
 
 | Path | Content |
 |---|---|
-| `pokemon.json` | All Pokemon: `id, name, tier, evolves_to, evolve_level, evolution_only, sprite, sprite_pixel` |
-| `subjects.json` | Subject definitions + parity routing (odd→math, even→singapore_trivia) |
-| `questions/curriculum/prek-k/math.json` | priLevel 1 math questions |
-| `questions/curriculum/prek-k/singapore_trivia.json` | priLevel 1 Singapore trivia |
-| `questions/curriculum/grade-1-3/math.json` | priLevel 2 math |
-| `questions/curriculum/grade-1-3/singapore_trivia.json` | priLevel 2 Singapore trivia |
-| `questions/curriculum/grade-4-5/math.json` | priLevel 3 math |
-| `questions/curriculum/grade-4-5/singapore_trivia.json` | priLevel 3 Singapore trivia |
-| `questions/curriculum/adult/math.json` | priLevel 4 math |
-| `questions/curriculum/adult/singapore_trivia.json` | priLevel 4 Singapore trivia |
+| `pokemon.json` | All Pokémon: `id, name, tier, evolves_to, evolve_level, evolution_only, sprite, sprite_pixel` |
+| `subjects.json` | Subject definitions + parity routing |
+| `questions/curriculum/prek-k/` | priLevel 1 questions (math + singapore_trivia) |
+| `questions/curriculum/grade-1-3/` | priLevel 2 questions |
+| `questions/curriculum/grade-4-5/` | priLevel 3 questions |
+| `questions/curriculum/adult/` | priLevel 4 questions |
 
 ---
 
@@ -162,41 +159,31 @@ npm run db:export    # Export Neon DB questions → JSON curriculum files
 
 | File | npm script | Purpose |
 |---|---|---|
-| `seed-questions.mjs` | `npm run db:seed` | Upsert all JSON curriculum questions into Neon `questions` table |
-| `export-questions.mjs` | `npm run db:export` | Export all questions from Neon DB back to the curriculum JSON files |
+| `seed-questions.mjs` | `npm run db:seed` | Upsert all JSON curriculum questions into Neon |
+| `export-questions.mjs` | `npm run db:export` | Export all questions from Neon back to JSON |
+| `generate-audio.mjs` | `node scripts/generate-audio.mjs` | Regenerate chiptune WAV files in `public/audio/` |
 
 ---
 
 ## Key Systems
 
-### Auth
-HMAC-signed session cookie keyed by `SESSION_SECRET`. `requireSession()` and `requireAdmin()` in `src/lib/auth.ts` are server-only guards — they throw `{ status: 401 }` which every API route catches and returns as a 401 JSON response. Client admin helpers live in `src/lib/admin.ts`.
+### Quick Start
+`POST /api/auth/quickstart` upserts a reserved `"ash"` user, wipes all game state, seeds Pikachu (species 25, L5), and sets a session. Every Quick Start click resets to this clean state — ideal for showcase/demo flows. The `quickStart()` helper in `storage.ts` calls this endpoint then loads the fresh profile.
 
-### priLevel Tiers
-`priLevel` is the single difficulty axis: **1**=preK–K, **2**=Grade 1–3, **3**=Grade 4–5, **4**=Adult. Stored on `users.priLevel`. Controls which questions are served (`/api/config/bank`) and shown in the admin Users tab.
+### Auth
+HMAC-signed session cookie keyed by `SESSION_SECRET`. `requireSession()` and `requireAdmin()` in `src/lib/auth.ts` are server-only guards. Client admin helpers live in `src/lib/admin.ts`.
+
+### priLevel / Difficulty
+`priLevel` is the single difficulty axis: **1**=preK–K, **2**=Grade 1–3, **3**=Grade 4–5, **4**=Adult. Stored on `users.priLevel`. Players can change it at any time via the Pokédex header dropdown — `PATCH /api/profile/difficulty` updates `priLevel` + `bankId`, then `syncBankFromCloud()` refreshes the question cache.
 
 ### Subject Filter
-`subjectFilter` on `users` (nullable text) controls which subject a player sees during training:
-- `null` — **random** (default): draws from both math and Singapore trivia, mixed
-- `'math'` — math questions only
-- `'singapore_trivia'` — Singapore trivia only
-
-Set by Professor Oak per player in the Users tab. Stored in the `pmc:bank:active` localStorage cache and read by `getSubjectFilter()` in `src/lib/questions.ts`. Encounter pages always filter by the Pokemon's assigned subject (unaffected by this setting).
+`subjectFilter` on `users` controls which subject a player sees during training: `null` = random (both), `'math'` = math only, `'singapore_trivia'` = trivia only. Set by Professor Oak per player.
 
 ### Question Bank
-`/api/config/bank` queries `questions` where `priLevel = users.priLevel` and also returns `subjectFilter`. The result is cached in `localStorage` at key `pmc:bank:active` via `syncBankFromCloud()` in `src/lib/questions.ts`, called on every `loadCurrentProfile()`. Admin edits to questions propagate on next player page load.
-
-### Question Picking
-`pickQuestion(subject | null, tier, history)` in `src/lib/questions.ts`. Priority: (1) due reviews (wrong + reviewCounter=0), (2) fresh (never seen), (3) random from pool. Training calls `pickQuestion(getSubjectFilter(), tier, history)` — `null` draws from all subjects, a specific subject ID filters to that subject. Encounter pages pass the Pokemon's assigned subject.
+`/api/config/bank` queries questions filtered by `users.priLevel`. Cached in `localStorage` at `pmc:bank:active` via `syncBankFromCloud()`, called on every `loadCurrentProfile()`.
 
 ### Levels & Evolution
-`LEVEL_GAIN_MIN=3 / LEVEL_GAIN_MAX=9` in `src/app/training/[id]/page.tsx`. Gain is pre-rolled into `pendingGain` state at question-load time and shown as `Lv.X → Lv.Y` in `QuestionModal` on correct answer. Evolution triggers when `level >= evolve_level && evolves_to !== null`: current slot frozen at `evolve_level` with `evolved:true`, new slot created for evolved form, auto-caught.
-
-### Evolution Animation
-Two-phase overlay in `src/app/training/[id]/page.tsx`. Phase 1 (0–1s): current sprite flashes (`animate-evolve`), message "A evolved into B!". Phase 2 (1s–3.2s): evolved sprite at `w-80 h-80` snaps in, message "Meet B!". At 3.2s routes to `/training/${evolvedToId}`.
-
-### Profile Shape
-Canonical type in `src/lib/profile-types.ts`. Server is source of truth (Neon DB). Client syncs via `loadCurrentProfile()` / `saveProfile()` in `src/lib/storage.ts` which wrap `GET/PUT /api/profile`. `OwnedPokemon = { level: number; evolved: boolean }`.
+`LEVEL_GAIN_MIN=3 / LEVEL_GAIN_MAX=9` per correct answer. Evolution triggers when `level >= evolve_level`. Evolution animation: Phase 1 (0–0.5s) old sprite flashes, Phase 2 (0.5s–1.92s) evolved sprite bounces in at `w-[29rem]`. When a Pokémon first reaches level 60, a chiptune "Gotta Catch 'Em All" jingle plays via `playMaxLevel()` and a celebratory overlay appears for 4 seconds.
 
 ### Question Modal UX
-`QuestionModal` (`src/components/QuestionModal.tsx`) is used by both encounter and training pages. The back button (`onExit`) is always tappable — it is not disabled during feedback reveal. Tapping the dark backdrop outside the white card also calls `onExit`, so players can leave at any point without being stuck waiting for "Continue →".
+`QuestionModal` is used by both encounter and training pages. The back button and backdrop tap always call `onExit` — players are never stuck.
