@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { POKEMON } from "@/lib/pokemon";
 import { loadCurrentProfile, type Profile, logout } from "@/lib/storage";
 import { isMuted, setMuted, playClick } from "@/lib/audio";
+import { syncBankFromCloud } from "@/lib/questions";
 
 const TIER_COLOR: Record<number, string> = {
   1: "bg-green-100 border-green-300",
@@ -17,6 +18,7 @@ export default function PokedexPage() {
   const router = useRouter();
   const [profile, setProfile] = useState<Profile | null>(null);
   const [muteState, setMuteState] = useState(false);
+  const [priLevel, setPriLevel] = useState<number>(1);
 
   useEffect(() => {
     (async () => {
@@ -30,9 +32,23 @@ export default function PokedexPage() {
         return;
       }
       setProfile(p);
+      setPriLevel(p.priLevel);
       setMuteState(isMuted());
     })();
   }, [router]);
+
+  async function handleDifficultyChange(e: React.ChangeEvent<HTMLSelectElement>) {
+    const level = Number(e.target.value);
+    setPriLevel(level);
+    const res = await fetch("/api/profile/difficulty", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ priLevel: level }),
+    });
+    if (res.ok) {
+      void syncBankFromCloud();
+    }
+  }
 
   if (!profile) return <div className="flex flex-1 items-center justify-center">Loading…</div>;
 
@@ -50,6 +66,16 @@ export default function PokedexPage() {
           <p className="text-sm text-gray-600">Trainer: <span className="font-bold">{profile.username}</span></p>
         </div>
         <div className="flex gap-2">
+          <select
+            value={priLevel}
+            onChange={handleDifficultyChange}
+            className="bg-white border-2 border-gray-300 hover:border-gray-400 px-3 py-2 rounded-2xl font-bold text-sm transition"
+          >
+            <option value={1}>Easy</option>
+            <option value={2}>Medium</option>
+            <option value={3}>Hard</option>
+            <option value={4}>Very Hard</option>
+          </select>
           <Link
             href="/stats"
             className="bg-yellow-300 hover:bg-yellow-400 px-4 py-2 rounded-2xl font-bold active:scale-95 transition"

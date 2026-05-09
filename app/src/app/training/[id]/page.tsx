@@ -142,8 +142,8 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
       setEvolving(true);
       playEvolve();
       await saveProfile(p);
-      // Phase 2: swap to evolved sprite after 1s
-      setTimeout(() => setShowNewForm(true), 1000);
+      // Phase 2: swap to evolved sprite after 0.5s
+      setTimeout(() => setShowNewForm(true), 500);
       // End: route to evolved form's training page
       setTimeout(() => {
         setEvolving(false);
@@ -151,7 +151,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
         setEvolvedPokemon(null);
         setShowNewForm(false);
         router.replace(`/training/${evolvedToId}`);
-      }, 2100);
+      }, 1100);
     } else {
       nextQuestion(p, speciesId);
       await saveProfile(p);
@@ -176,7 +176,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
           <img
             src={evolving && showNewForm && evolvedPokemon ? evolvedPokemon.sprite : current.sprite}
             alt={evolving && showNewForm && evolvedPokemon ? evolvedPokemon.name : current.name}
-            className={`object-contain ${evolving && showNewForm ? "w-80 h-80" : "w-56 h-56"} ${evolving && !showNewForm ? "animate-evolve" : "animate-bounce-in"}`}
+            className={`object-contain ${evolving && showNewForm ? "w-80 h-80" : "w-56 h-56"} ${evolving ? (showNewForm ? "animate-bounce-in" : "animate-evolve") : ""}`}
           />
           <div className="absolute -top-4 right-0 pointer-events-none">
             {floats.map((f) => (

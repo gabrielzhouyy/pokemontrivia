@@ -37,6 +37,12 @@ export async function logout(): Promise<void> {
   await fetch("/api/auth/logout", { method: "POST" });
 }
 
+export async function quickStart(): Promise<Profile | null> {
+  const res = await fetch("/api/auth/quickstart", { method: "POST" });
+  if (!res.ok) return null;
+  return loadCurrentProfile();
+}
+
 export async function getCurrentUsername(): Promise<string | null> {
   if (typeof window === "undefined") return null;
   const res = await fetch("/api/auth/me", { cache: "no-store" });
