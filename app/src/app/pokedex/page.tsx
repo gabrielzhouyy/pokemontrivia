@@ -71,10 +71,10 @@ export default function PokedexPage() {
             onChange={handleDifficultyChange}
             className="bg-white border-2 border-gray-300 hover:border-gray-400 px-3 py-2 rounded-2xl font-bold text-sm transition"
           >
-            <option value={1}>Easy</option>
-            <option value={2}>Medium</option>
-            <option value={3}>Hard</option>
-            <option value={4}>Very Hard</option>
+            <option value={1}>Easy (PreK–K)</option>
+            <option value={2}>Medium (Gr 1–3)</option>
+            <option value={3}>Hard (Gr 4–5)</option>
+            <option value={4}>Very Hard (Adult)</option>
           </select>
           <Link
             href="/stats"

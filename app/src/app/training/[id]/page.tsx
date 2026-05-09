@@ -10,7 +10,7 @@ import {
   type Question,
 } from "@/lib/questions";
 import { loadCurrentProfile, saveProfile, type Profile } from "@/lib/storage";
-import { playEvolve } from "@/lib/audio";
+import { playEvolve, playMaxLevel } from "@/lib/audio";
 import QuestionModal from "@/components/QuestionModal";
 
 const LEVEL_CAP = 100;
@@ -40,6 +40,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
   const [evolveMessage, setEvolveMessage] = useState("");
   const [evolvedPokemon, setEvolvedPokemon] = useState<ReturnType<typeof getPokemon> | null>(null);
   const [showNewForm, setShowNewForm] = useState(false);
+  const [maxLevelAlert, setMaxLevelAlert] = useState<string | null>(null);
 
   useEffect(() => {
     (async () => {
@@ -114,6 +115,8 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
     const gain = pendingGain;
     if (level < LEVEL_CAP) level = Math.min(LEVEL_CAP, level + gain);
 
+    const hitMaxLevel = ownedNow.level < 60 && level >= 60;
+
     const cur = getPokemon(speciesId);
     const evolvesAt = cur.evolve_level;
     let didEvolve = false;
@@ -153,8 +156,18 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
         router.replace(`/training/${evolvedToId}`);
       }, 1100);
     } else {
-      nextQuestion(p, speciesId);
-      await saveProfile(p);
+      if (hitMaxLevel) {
+        playMaxLevel();
+        setMaxLevelAlert(cur.name);
+        await saveProfile(p);
+        setTimeout(() => {
+          setMaxLevelAlert(null);
+          nextQuestion(p, speciesId);
+        }, 4000);
+      } else {
+        nextQuestion(p, speciesId);
+        await saveProfile(p);
+      }
     }
   }
 
@@ -174,9 +187,10 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
         <div className="relative inline-block">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
+            key={evolving ? (showNewForm ? "evolved" : "evolving") : "idle"}
             src={evolving && showNewForm && evolvedPokemon ? evolvedPokemon.sprite : current.sprite}
             alt={evolving && showNewForm && evolvedPokemon ? evolvedPokemon.name : current.name}
-            className={`object-contain ${evolving && showNewForm ? "w-80 h-80" : "w-56 h-56"} ${evolving ? (showNewForm ? "animate-bounce-in" : "animate-evolve") : ""}`}
+            className={`object-contain ${evolving && showNewForm ? "w-96 h-96" : "w-56 h-56"} ${evolving && !showNewForm ? "animate-evolve" : ""} ${evolving && showNewForm ? "animate-evolve-bounce-in" : ""}`}
           />
           <div className="absolute -top-4 right-0 pointer-events-none">
             {floats.map((f) => (
@@ -218,7 +232,15 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
         </div>
       )}
 
-      {!evolving && question && (
+      {maxLevelAlert && (
+        <div className="fixed inset-0 bg-yellow-100/80 flex items-center justify-center z-40 pointer-events-none">
+          <p className="text-3xl font-extrabold text-yellow-700 animate-bounce-in text-center px-4">
+            🎉 Your {maxLevelAlert} is at level 60 now!
+          </p>
+        </div>
+      )}
+
+      {!evolving && !maxLevelAlert && question && (
         <QuestionModal
           key={qSerial}
           question={question}
@@ -232,7 +254,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
         />
       )}
 
-      {!evolving && !question && bankIsEmpty() && (
+      {!evolving && !maxLevelAlert && !question && bankIsEmpty() && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-3xl shadow-2xl p-6 max-w-sm text-center">
             <p className="text-2xl font-extrabold text-yellow-600 mb-2">🧓 Ask Professor Oak!</p>

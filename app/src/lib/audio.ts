@@ -54,3 +54,43 @@ export const playWrong = () => play("wrong");
 export const playCatch = () => play("catch");
 export const playEvolve = () => play("evolve");
 export const playClick = () => play("click");
+
+// "Gotta catch 'em all" ending riff: d f g2, d d f g2, g2, d f g2
+export function playMaxLevel(): void {
+  if (isMuted()) return;
+  if (typeof window === "undefined") return;
+  try {
+    const ctx = new AudioContext();
+    // d=D5, f=F#5, g2=G6 (two octaves above D4)
+    const D = 587.33;
+    const F = 739.99;
+    const G2 = 1567.98;
+    const _ = 0; // rest
+    const notes: [number, number][] = [
+      [D, 0.11], [F, 0.11], [G2, 0.22],
+      [_, 0.05],
+      [D, 0.11], [D, 0.11], [F, 0.11], [G2, 0.22],
+      [_, 0.05],
+      [G2, 0.32],
+      [_, 0.05],
+      [D, 0.11], [F, 0.11], [G2, 0.42],
+    ];
+    let t = ctx.currentTime + 0.05;
+    for (const [freq, dur] of notes) {
+      if (freq === 0) { t += dur; continue; }
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.type = "square";
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0.18, t);
+      gain.gain.exponentialRampToValueAtTime(0.001, t + dur * 0.9);
+      osc.start(t);
+      osc.stop(t + dur);
+      t += dur;
+    }
+  } catch {
+    // AudioContext not available (e.g. SSR or restricted context) — silently skip
+  }
+}

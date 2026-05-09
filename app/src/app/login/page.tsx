@@ -59,7 +59,7 @@ export default function LoginPage() {
     <main className="flex flex-1 items-center justify-center p-6">
       <div className="w-full max-w-sm flex flex-col gap-4">
         <h1 className="text-3xl font-extrabold text-center">
-          Pokemon Trivia: Catch <span className="text-red-500">THREE</span> Pokemon and win a sticker!
+          Poké-Go <span className="text-red-500">Singapore</span>
         </h1>
 
         {/* Primary: Quick Start */}
