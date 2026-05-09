@@ -61,19 +61,22 @@ export function playMaxLevel(): void {
   if (typeof window === "undefined") return;
   try {
     const ctx = new AudioContext();
-    // d=G5, f=A5, g2=C6 — same pitch range as the evolve fanfare
-    const D = 784;   // G5
-    const F = 880;   // A5
-    const G2 = 1047; // C6
-    const _ = 0;     // rest
+    // Gotta catch 'em all … you teach me and I'll teach you
+    // Notes: G5=784, A5=880, B5=988, C6=1047 — same range as the evolve fanfare
+    // All durations +10% vs original, gain +10% vs original
+    const G5 = 784;
+    const A5 = 880;
+    const C6 = 1047;
+    const _  = 0; // rest
     const notes: [number, number][] = [
-      [D, 0.11], [F, 0.11], [G2, 0.22],
-      [_, 0.05],
-      [D, 0.11], [D, 0.11], [F, 0.11], [G2, 0.22],
-      [_, 0.05],
-      [G2, 0.32],
-      [_, 0.05],
-      [D, 0.11], [F, 0.11], [G2, 0.42],
+      // "Gotta catch 'em all" riff: d f g2, d d f g2, g2, d f g2
+      [G5, 0.12], [A5, 0.12], [C6, 0.24],
+      [_,  0.06],
+      [G5, 0.12], [G5, 0.12], [A5, 0.12], [C6, 0.24],
+      [_,  0.06],
+      [C6, 0.35],
+      [_,  0.06],
+      [G5, 0.12], [A5, 0.12], [C6, 0.46],
     ];
     let t = ctx.currentTime + 0.05;
     for (const [freq, dur] of notes) {
@@ -84,7 +87,7 @@ export function playMaxLevel(): void {
       gain.connect(ctx.destination);
       osc.type = "square";
       osc.frequency.value = freq;
-      gain.gain.setValueAtTime(0.33, t);
+      gain.gain.setValueAtTime(0.36, t);
       gain.gain.exponentialRampToValueAtTime(0.001, t + dur * 0.9);
       osc.start(t);
       osc.stop(t + dur);
