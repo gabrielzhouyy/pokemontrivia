@@ -154,7 +154,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
         setEvolvedPokemon(null);
         setShowNewForm(false);
         router.replace(`/training/${evolvedToId}`);
-      }, 1600);
+      }, 1920);
     } else {
       if (hitMaxLevel) {
         playMaxLevel();
