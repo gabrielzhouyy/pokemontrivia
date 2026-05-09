@@ -154,7 +154,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
         setEvolvedPokemon(null);
         setShowNewForm(false);
         router.replace(`/training/${evolvedToId}`);
-      }, 1100);
+      }, 1600);
     } else {
       if (hitMaxLevel) {
         playMaxLevel();
@@ -190,7 +190,7 @@ export default function TrainingPage({ params }: { params: Promise<{ id: string 
             key={evolving ? (showNewForm ? "evolved" : "evolving") : "idle"}
             src={evolving && showNewForm && evolvedPokemon ? evolvedPokemon.sprite : current.sprite}
             alt={evolving && showNewForm && evolvedPokemon ? evolvedPokemon.name : current.name}
-            className={`object-contain ${evolving && showNewForm ? "w-96 h-96" : "w-56 h-56"} ${evolving && !showNewForm ? "animate-evolve" : ""} ${evolving && showNewForm ? "animate-evolve-bounce-in" : ""}`}
+            className={`object-contain ${evolving && showNewForm ? "w-[29rem] h-[29rem]" : "w-56 h-56"} ${evolving && !showNewForm ? "animate-evolve" : ""} ${evolving && showNewForm ? "animate-evolve-bounce-in" : ""}`}
           />
           <div className="absolute -top-4 right-0 pointer-events-none">
             {floats.map((f) => (

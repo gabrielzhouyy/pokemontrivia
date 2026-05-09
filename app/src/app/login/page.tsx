@@ -79,7 +79,7 @@ export default function LoginPage() {
         {/* Divider */}
         <div className="flex items-center gap-3 text-gray-400 text-sm">
           <div className="flex-1 h-px bg-gray-200" />
-          <span>or sign in as a custom trainer</span>
+          <span>or sign in to track your progress</span>
           <div className="flex-1 h-px bg-gray-200" />
         </div>
 

@@ -61,11 +61,11 @@ export function playMaxLevel(): void {
   if (typeof window === "undefined") return;
   try {
     const ctx = new AudioContext();
-    // d=D5, f=F#5, g2=G6 (two octaves above D4)
-    const D = 587.33;
-    const F = 739.99;
-    const G2 = 1567.98;
-    const _ = 0; // rest
+    // d=G5, f=A5, g2=C6 — same pitch range as the evolve fanfare
+    const D = 784;   // G5
+    const F = 880;   // A5
+    const G2 = 1047; // C6
+    const _ = 0;     // rest
     const notes: [number, number][] = [
       [D, 0.11], [F, 0.11], [G2, 0.22],
       [_, 0.05],
@@ -84,7 +84,7 @@ export function playMaxLevel(): void {
       gain.connect(ctx.destination);
       osc.type = "square";
       osc.frequency.value = freq;
-      gain.gain.setValueAtTime(0.18, t);
+      gain.gain.setValueAtTime(0.33, t);
       gain.gain.exponentialRampToValueAtTime(0.001, t + dur * 0.9);
       osc.start(t);
       osc.stop(t + dur);
